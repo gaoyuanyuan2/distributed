@@ -32,6 +32,7 @@ DoS攻击是指故意的攻击网络协议实现的缺陷或直接通过野蛮�
 <br>基于TCP
 <br>叫一群“美女”，会有一组女生回头。
 ## 三、分布式通信-序列化
+### 1、简介
 <br><br>java序列化：数据大，效率低，不能跨语言。
 <br><br>通用性、安全性、优化性能。
 <br><br>UID 版本号：保证序列化和反序列化是同一个。
@@ -40,9 +41,14 @@ DoS攻击是指故意的攻击网络协议实现的缺陷或直接通过野蛮�
 <br><br>XML编码 易懂，跨语言。
 <br><br>HTTP RESTful 跨语言，无状态，数据大。
 <br><br>MessagePack 开源序列化框架
-<br><br>Protocol Buffers
+<br><br>Protocol Buffers:压缩字节数小、序列化快、缓存机制。
 <br><br>序列化实现深克隆
 <br>浅克隆：复制对象，不复制对象引用。
+### 2、主流
+<br>JSON/Hessian(2)/xml/protobuf/kryo/MsgPack/FST/thrift/protostuff/Avro
+
+
+
 
 
 
