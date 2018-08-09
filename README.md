@@ -33,7 +33,7 @@ DoS攻击是指故意的攻击网络协议实现的缺陷或直接通过野蛮�
 <br>叫一群“美女”，会有一组女生回头。
 ## 三、分布式通信-序列化
 ### 1、简介
-<br><br>java序列化：数据大，效率低，不能跨语言。
+java序列化：数据大，效率低，不能跨语言。
 <br><br>通用性、安全性、优化性能。
 <br><br>UID 版本号：保证序列化和反序列化是同一个。
 <br><br>序列化不保存静态变量的状态。Transient 不参与序列化。父类没实现序列化接口，子类实现了，父类属性不生效。
@@ -46,6 +46,50 @@ DoS攻击是指故意的攻击网络协议实现的缺陷或直接通过野蛮�
 <br>浅克隆：复制对象，不复制对象引用。
 ### 2、主流
 <br>JSON/Hessian(2)/xml/protobuf/kryo/MsgPack/FST/thrift/protostuff/Avro
+## 四、HTTP
+<br>1、基于TCP的可靠协议
+、无状态（cookie+session 保持状态）、多次请求
+<br><br> 2、服务端和客户端、资源、媒体类型、URI（资源名）和URL。
+<br>schema:http/https/ftp 、host:web服务器的ip地址或者域名、
+path:资源访问路径、query-string：查询次数
+<br><br>3、方法 GET/PUT/POST/HEAD/DELETE
+<br><br>4、报文
+<br> request消息结构包含三部分：（起始行、首部字段、主体）
+<br>METHOD/path/http/version-number
+<br>Header-Name:value
+<br>空行
+<br>主体 optional request body
+<br><br> response
+<br>http/version-number status code message
+<br>header-name:value
+<br>空行
+<br>body
+<br>状态码
+<br>1XX 提示信息
+<br>2XX 成功
+<br>3XX 重定向
+<br>4XX	客户端错误
+<br>5XX 服务端错误
+<br><br>缓存：静态资源
+<br><br>5、HTTPS
+<br>SSL/TLS 加密socket
+<br> ISOC在SSL的基础上发布了升级版本TLS1.2
+<br>公钥与私钥的作用是：用公钥加密的内容只能用私钥解密，用私钥加密的内容只能用公钥解密
+<br>当A->B资料时，A会使用B的公钥加密，这样才能确保只有B能解开，否则普罗大众都能解开加密的讯息
+，就是去了资料的保密性。验证方面则是使用签验章的机制，A传资料给大家时，会以自己的私钥做签章，如此所有收到讯息的人都可以用A的公钥进行验章，
+便可确认讯息是由 A 发出来的了
+<br>工作原理：通过第三方机构，使用第三方机构私钥对我们需要传输的公钥进行加密。
+通过算法验证服务器的数字证书，然后服务端生成回话秘钥，双方加解密。少了秘钥的传输过程。（主要是证书无法解密）
+<br><br>6、RESTful
+<br>资源、URI唯一标识、统一接口处理资源请求（POST/GET/PUT/DELETE/HEAD）、无状态（客户端保存cookie）
+<br> / 表示资源层级关系、?过滤资源、使用-或者_让URI的可读性更好
+<br>统一接口 GET POST PUT DELETE PATCH HEAD/DELETE
+<br>类型 ：accept Content-Type 描述格式
+<br>资源链接
+<br>状态转移，服务器不保存客户端状态。
+##五、RMI
+
+
 
 
 
