@@ -108,12 +108,12 @@ path:资源访问路径、query-string：查询次数
 <br>使用JRMP（远程信息交换协议），JRMP是专门为java定制的通信协议，java分布式解决方案。
 <br>不能重试、bio效率低、不跨平台、java原生序列化效率低、注册中心会挂没办法负载。
 ### 4、webservice
-## 1.跨语言调用
-## 2.WSDL 定义语言，.wsdl的文件类型、一个webservice对应唯一一个wsdl文档、调用关系链
-## 3.SOAP 简单对象访问协议，http+xml 
-## 4.SEI webservice 的终端接口，发布出去的接口
-## 5.复杂类型会丢失、大量数据效率低
-## 6.Axis、Axis2
+<br>1.跨语言调用
+<br>2.WSDL 定义语言，.wsdl的文件类型、一个webservice对应唯一一个wsdl文档、调用关系链
+<br>3.SOAP 简单对象访问协议，http+xml 
+<br>4.SEI webservice 的终端接口，发布出去的接口
+<br>5.复杂类型会丢失、大量数据效率低
+<br>6.Axis、Axis2
 <br>CXF Celtic+Xfire ，spring整合
 <br>Xfire 高性能
 <br>SpringMVC新的webservice
