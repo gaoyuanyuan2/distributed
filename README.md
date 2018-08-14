@@ -54,6 +54,9 @@ JSON/Hessian(2)/xml/protobuf/kryo/MsgPack/FST/thrift/protostuff/Avro
 path:资源访问路径、query-string：查询次数
 <br><br>3、方法 GET/PUT/POST/HEAD/DELETE
 <br><br>4、报文
+<br><br>
+![报文](https://github.com/gaoyuanyuan2/distributed/blob/master/img/2.png) 
+<br><br>
 <br> request消息结构包含三部分：（起始行、首部字段、主体）
 <br>METHOD/path/http/version-number
 <br>Header-Name:value
@@ -65,11 +68,13 @@ path:资源访问路径、query-string：查询次数
 <br>空行
 <br>body
 <br>状态码
-<br>1XX 提示信息
-<br>2XX 成功
-<br>3XX 重定向
-<br>4XX	客户端错误
-<br>5XX 服务端错误
+<br><br>200 OK 客戸端靖求成功
+<br>400 Bad Request 客戸端靖求有語法錯謨,不能岐服各器所理解
+<br>401 Unauthorized 请求未经授权,和www-Authenticate一起使用
+<br>403 Forbidden 服多器收到請求,但是拒绝提供服务
+<br>404 Not Found 请求资源不存在 eg url错误
+<br>500 Internal Server Error服各器发生不可预期的错误
+<br>503 Server Unavailable 服各器当前不能处理客戸端的靖求,一段吋同后可能恢夏正常
 <br><br>缓存：静态资源
 <br><br>5、HTTPS
 <br>SSL/TLS 加密socket
@@ -92,11 +97,23 @@ path:资源访问路径、query-string：查询次数
 <br>6.通过会话秘钥对内容进行对称加密传输（对称加密效率高）。
 <br><br>6、RESTful
 <br>资源、URI唯一标识、统一接口处理资源请求（POST/GET/PUT/DELETE/HEAD）、无状态（客户端保存cookie）
+<br>GET靖求 荻取Request-URI所标识的资源
+<br>POST在Request-URI所标识的资源 后附加新的数据
+<br>HEAD 靖求荻取由Request-URI所标识的资源的响应消息报文
+<br>PUT靖求服各器存偖一个资源, 并用Request-URI作内其标识DELETE靖求服务器刪除Request-URI所标识的资源
+<br>TRACE靖求服多器回送收到的靖求信息,主要用于测试或诊断
+<br>CONNECT保留將来使用
+<br>OPTIONS请求查询服务器的性能,或者査洵与资源相关的选项和
 <br> / 表示资源层级关系、?过滤资源、使用-或者_让URI的可读性更好
 <br>统一接口 GET POST PUT DELETE PATCH HEAD/DELETE
 <br>类型 ：accept Content-Type 描述格式
 <br>资源链接
 <br>状态转移，服务器不保存客户端状态。
+<br><br>7.get与post区別
+<br>1-get方式提交表単表単中的数据会在地址桜中昆示.而post方法則不会。
+<br>2.get方式提交表単K度是有限制的512字帯,而post理詑上是无限的。
+<br>3.get方式提交表単会在htp数据包中的第- -行出現,而post在空- -行的 body中出現4get方式永透是己字符方式提交.而post既可以已字篠也可以已字帯.
+
 ## 五、RMI
 ### 1、RPC :远程方法调用（规范）基于socket。
 1.Dubbo、Thrif、RMI、WebService、Hessain
