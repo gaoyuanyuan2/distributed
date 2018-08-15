@@ -80,6 +80,82 @@ Server端承诺会维护client端状态数据，这个状态仅仅维持一小�
 <br><br>第二步：创建myid
 <br>在每一个服务器的dataDir目录下创建一个myid的文件，文件就一行数据，数据内容是每台机器对应的server ID的数字
 <br><br>第三步：启动zookeeper
+### 8、zoo.cfg配置文件分析
+tickTime=2000  zookeeper中最小的时间单位长度 （ms）
+<br>initLimit=10follower节点启动后与leader节点完成数据同步的时间
+<br>syncLimit=5leader节点和follower节点进行心跳检测的最大延时时间
+<br>ataDir=/tmp/zookeeper表示zookeeper服务器存储快照文件的目录
+<br>dataLogDir表示配置 zookeeper事务日志的存储路径，默认指定在dataDir目录下
+<br>clientPort表示客户端和服务端建立连接的端口号： 2181
+### 9、zookeeper中的一些概念
+<br><br>1.数据模型
+<br>zookeeper的数据模型和文件系统类似，每一个节点称为：znode.  是zookeeper中的最小数据单元。每一个znode上都可以
+<br>保存数据和挂载子节点。 从而构成一个层次化的属性结构
+<br><br>2.节点特性
+<br>持久化节点  ： 节点创建后会一直存在zookeeper服务器上，直到主动删除
+<br>持久化有序节点 ：每个节点都会为它的一级子节点维护一个顺序
+<br>临时节点 ： 临时节点的生命周期和客户端的会话保持一致。当客户端会话失效，该节点自动清理
+<br>临时有序节点 ： 在临时节点上多勒一个顺序性特性
+<br><br>3.会话
+<br><br>
+![整体图](https://github.com/gaoyuanyuan2/distributed/blob/master/img/3.png) 
+<br><br>
+<br><br>4.Watcher
+<br>zookeeper提供了分布式数据发布/订阅,zookeeper允许客户端向服务器注册一个watcher监听。当服务器端的节点触发指定事件的时候
+<br>会触发watcher。服务端会向客户端发送一个事件通知
+<br>watcher的通知是一次性，一旦触发一次通知后，该watcher就失效
+<br><br>5.ACL
+<br>zookeeper提供控制节点访问权限的功能，用于有效的保证zookeeper中数据的安全性。避免误操作而导致系统出现重大事故。
+<br>CREATE /READ/WRITE/DELETE/ADMIN
+### 10、zookeeper的命令操作
+<br><br>1. create [-s] [-e] path data acl
+<br>-s表示节点是否有序
+<br>-e表示是否为临时节点
+<br>默认情况下，是持久化节点
+<br><br>2. get path [watch]
+<br>获得指定 path的信息
+<br><br>3.set path data [version]
+<br>修改节点 path对应的data
+<br>乐观锁的概念
+<br>数据库里面有一个 version字段去控制数据行的版本号
+<br><br>4.delete path [version]
+<br>删除节点
+<br>stat信息
+<br>cversion = 0子节点的版本号
+<br>aclVersion = 0表示acl的版本号，修改节点权限
+<br>dataVersion = 1表示的是当前节点数据的版本号
+<br><br>5.事务
+<br>czxid节点被创建时的事务ID
+<br>mzxid节点最后一次被更新的事务ID
+<br>pzxid当前节点下的子节点最后一次被修改时的事务ID
+<br><br>6.time
+<br>ctime = Sat Aug 05 20:48:26 CST 2017
+<br>mtime = Sat Aug 05 20:48:50 CST 2017
+<br><br>
+cZxid = 0x500000015
+<br>ctime = Sat Aug 05 20:48:26 CST 2017
+<br>mZxid = 0x500000016
+<br>mtime = Sat Aug 05 20:48:50 CST 2017
+<br>pZxid = 0x500000015
+<br>cversion = 0
+<br>dataVersion = 1
+<br>aclVersion = 0
+<br>ephemeralOwner = 0x0创建临时节点的时候，会有一个sessionId 。 该值存储的就是这个sessionid
+<br>dataLength = 3数据值长度
+<br>numChildren = 0子节点数
+### 11、javaAPI的使用
+<br>1.	导入jar包
+```Html
+<dependency>
+<groupId>org.apache.zookeeper</groupId>
+<artifactId>zookeeper</artifactId>
+<version>3.4.8</version>
+</dependency>
+```
+<br><br>2.	具体见代码
+<br>zkclient
+<br>curator
+
 
 
 
