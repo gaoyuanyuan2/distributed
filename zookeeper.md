@@ -147,9 +147,9 @@ cZxid = 0x500000015
 <br>1.	导入jar包
 ```Html
 <dependency>
-<groupId>org.apache.zookeeper</groupId>
-<artifactId>zookeeper</artifactId>
-<version>3.4.8</version>
+    <groupId>org.apache.zookeeper</groupId>
+    <artifactId>zookeeper</artifactId>
+    <version>3.4.8</version>
 </dependency>
 ```
 <br><br>2.	具体见代码
