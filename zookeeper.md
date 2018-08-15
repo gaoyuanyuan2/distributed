@@ -81,14 +81,14 @@ Server端承诺会维护client端状态数据，这个状态仅仅维持一小�
 <br>在每一个服务器的dataDir目录下创建一个myid的文件，文件就一行数据，数据内容是每台机器对应的server ID的数字
 <br><br>第三步：启动zookeeper
 ### 8、zoo.cfg配置文件分析
-tickTime=2000  zookeeper中最小的时间单位长度 （ms）
+<br>tickTime=2000  zookeeper中最小的时间单位长度 （ms）
 <br>initLimit=10follower节点启动后与leader节点完成数据同步的时间
 <br>syncLimit=5leader节点和follower节点进行心跳检测的最大延时时间
 <br>ataDir=/tmp/zookeeper表示zookeeper服务器存储快照文件的目录
 <br>dataLogDir表示配置 zookeeper事务日志的存储路径，默认指定在dataDir目录下
 <br>clientPort表示客户端和服务端建立连接的端口号： 2181
 ### 9、zookeeper中的一些概念
-<br><br>1.数据模型
+<br>1.数据模型
 <br>zookeeper的数据模型和文件系统类似，每一个节点称为：znode.  是zookeeper中的最小数据单元。每一个znode上都可以
 <br>保存数据和挂载子节点。 从而构成一个层次化的属性结构
 <br><br>2.节点特性
@@ -108,7 +108,7 @@ tickTime=2000  zookeeper中最小的时间单位长度 （ms）
 <br>zookeeper提供控制节点访问权限的功能，用于有效的保证zookeeper中数据的安全性。避免误操作而导致系统出现重大事故。
 <br>CREATE /READ/WRITE/DELETE/ADMIN
 ### 10、zookeeper的命令操作
-<br><br>1. create [-s] [-e] path data acl
+<br>1. create [-s] [-e] path data acl
 <br>-s表示节点是否有序
 <br>-e表示是否为临时节点
 <br>默认情况下，是持久化节点
@@ -145,7 +145,7 @@ cZxid = 0x500000015
 <br>numChildren = 0子节点数
 ### 11、javaAPI的使用
 <br>1.	导入jar包
-```Html
+```Xml
 <dependency>
     <groupId>org.apache.zookeeper</groupId>
     <artifactId>zookeeper</artifactId>
