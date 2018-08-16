@@ -144,7 +144,23 @@ cZxid = 0x500000015
 <br>dataLength = 3数据值长度
 <br>numChildren = 0子节点数
 ### 11、javaAPI的使用
-<br>1.	导入jar包
+<br>1.权限控制模式
+<br>schema：授权对象
+<br>ip     : 192.168.1.1
+<br>Digest  : username:password
+<br>world  : 开放式的权限控制模式，数据节点的访问权限对所有用户开放。 world:anyone
+<br>super：超级用户，可以对zookeeper上的数据节点进行操作
+<br><br>2.连接状态
+<br>KeeperStat.Expired 在一定时间内客户端没有收到服务器的通知， 则认为当前的会话已经过期了。
+<br>KeeperStat.Disconnected断开连接的状态
+<br>KeeperStat.SyncConnected客户端和服务器端在某一个节点上建立连接，并且完成一次version、zxid同步
+<br>KeeperStat.authFailed授权失败
+<br><br>3.事件类型
+<br>NodeCreated  当节点被创建的时候，触发
+<br>NodeChildrenChanged表示子节点被创建、被删除、子节点数据发生变化
+<br>NodeDataChanged节点数据发生变化
+<br>NodeDeleted节点被删除
+<br>None客户端和服务器端连接状态发生变化的时候，事件类型就是None
 ```Xml
 <dependency>
     <groupId>org.apache.zookeeper</groupId>
@@ -152,9 +168,73 @@ cZxid = 0x500000015
     <version>3.4.8</version>
 </dependency>
 ```
-<br><br>2.	具体见代码
-<br>zkclient
-<br>curator
+<br><br>4.zkclient
+```Xml
+<dependency>
+    <groupId>com.101tec</groupId>
+    <artifactId>zkclient</artifactId>
+    <version>0.10</version>
+</dependency>
+```
+<br><br>5.curator
+<br>Curator本身是Netflix公司开源的zookeeper客户端；
+<br>curator提供了各种应用场景的实现封装
+<br>curator-framework提供了fluent风格api
+<br>curator-replice 提供了实现封装
+<br><br>curator连接的重试策略
+<br>ExponentialBackoffRetry()衰减重试
+<br>RetryNTimes 指定最大重试次数
+<br>RetryOneTime 仅重试一次
+<br>RetryUnitilElapsed一直重试知道规定的时间
+###  12、zookeeper的实际应用场景
+<br><br>1.数据发布订阅/ 配置中心
+<br>实现配置信息的集中式管理和数据的动态更新
+<br>实现配置中心有两种模式：push、pull。
+<br>zookeeper采用的是推拉相结合的方式。 客户端向服务器端注册自己需要关注的节点。一旦节点数据发生变化，那么服务器端就会向客户端
+发送watcher事件通知。客户端收到通知后，主动到服务器端获取更新后的数据
+<br>1)数据量比较小
+<br>2)数据内容在运行时会发生动态变更
+<br>3)集群中的各个机器共享配置
+
+<br><br>2.watcher机制
+<br><br>3.统一配置管理（disconf）
+<br><br>4.分布式锁
+<br>通常实现分布式锁有几种方式
+<br>1)redis。 setNX存在则会返回0， 不存在
+<br>2)数据方式去实现
+<br>创建一个表， 通过索引唯一的方式
+<br>create table (id , methodname …)   methodname增加唯一索引
+<br>insert一条数据XXX  delete 语句删除这条记录
+<br>mysqlfor update
+<br>3)zookeeper实现
+<br><br>排他锁
+<br><br>共享锁（读锁）
+<br>实现共享锁，使用javaapi的方式
+
+<br><br>5.负载均衡
+<br>请求/数据分摊多个计算机单元上
+<br><br>6.ID生成器
+<br><br>7.分布式队列
+<br>先进先出队列
+<br>1.	通过getChildren获取指定根节点下的所有子节点，子节点就是任务
+<br>2.	确定自己节点在子节点中的顺序
+<br>3.	如果自己不是最小的子节点，那么监控比自己小的上一个子节点，否则处于等待
+<br>4.	接收watcher通知，重复流程
+<br><br>8.统一命名服务
+<br><br>9.master选举
+<br>master选举
+7<br>*24小时可用， 99.999%可用
+<br>master-slave模式
+<br>使用zookeeper解决
+
+
+
+
+
+
+
+
+
 
 
 
