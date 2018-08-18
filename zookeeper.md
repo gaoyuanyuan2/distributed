@@ -140,7 +140,7 @@ cZxid = 0x500000015
 <br>cversion = 0
 <br>dataVersion = 1
 <br>aclVersion = 0
-<br>ephemeralOwner = 0x0创建临时节点的时候，会有一个sessionId 。 该值存储的就是这个sessionid
+<br>ephemeralOwner = 0x0创建临时节点的时候（临时节点不能创建子节点），会有一个sessionId 。 该值存储的就是这个sessionid
 <br>dataLength = 3数据值长度
 <br>numChildren = 0子节点数
 ### 11、javaAPI的使用
