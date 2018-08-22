@@ -2,8 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1a69c435-9430-420c-b841-ddb13cb8216f" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/img/4.png" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/img/5.png" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change beforePath="$PROJECT_DIR$/zookeeper.md" afterPath="$PROJECT_DIR$/zookeeper.md" />
     </list>
@@ -33,11 +31,11 @@
         <entry file="file://$PROJECT_DIR$/zookeeper.md">
           <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
             <state split_layout="FIRST">
-              <first_editor relative-caret-position="617">
-                <caret line="287" column="13" lean-forward="false" selection-start-line="287" selection-start-column="13" selection-end-line="287" selection-end-column="13" />
+              <first_editor relative-caret-position="594">
+                <caret line="286" column="6" lean-forward="false" selection-start-line="286" selection-start-column="6" selection-end-line="286" selection-end-column="6" />
                 <folding>
-                  <marker date="1534914056579" expanded="true" signature="5474:5600" ph="..." />
-                  <marker date="1534914056579" expanded="true" signature="5643:5757" ph="..." />
+                  <marker date="1534914153137" expanded="true" signature="5474:5600" ph="..." />
+                  <marker date="1534914153137" expanded="true" signature="5643:5757" ph="..." />
                 </folding>
               </first_editor>
               <second_editor />
@@ -279,7 +277,7 @@
       <workItem from="1534302397233" duration="17000" />
       <workItem from="1534382389831" duration="4536000" />
       <workItem from="1534827395662" duration="2401000" />
-      <workItem from="1534913776233" duration="289000" />
+      <workItem from="1534913776233" duration="381000" />
     </task>
     <task id="LOCAL-00005" summary="ZK">
       <created>1534388931969</created>
@@ -288,11 +286,18 @@
       <option name="project" value="LOCAL" />
       <updated>1534388931969</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="ZK">
+      <created>1534914070695</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1534914070695</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="9146000" />
+    <option name="totallyTimeSpent" value="9238000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="2576" height="1416" extended-state="6" />
@@ -309,7 +314,7 @@
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2619237" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2619237" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -367,8 +372,8 @@
           <first_editor relative-caret-position="6417">
             <caret line="279" column="5" lean-forward="false" selection-start-line="279" selection-start-column="5" selection-end-line="279" selection-end-column="5" />
             <folding>
-              <marker date="1534914056579" expanded="true" signature="5474:5600" ph="..." />
-              <marker date="1534914056579" expanded="true" signature="5643:5757" ph="..." />
+              <marker date="1534914153137" expanded="true" signature="5474:5600" ph="..." />
+              <marker date="1534914153137" expanded="true" signature="5643:5757" ph="..." />
             </folding>
           </first_editor>
           <second_editor />
@@ -392,8 +397,8 @@
           <first_editor relative-caret-position="5221">
             <caret line="227" column="4" lean-forward="false" selection-start-line="227" selection-start-column="4" selection-end-line="227" selection-end-column="4" />
             <folding>
-              <marker date="1534914056579" expanded="true" signature="5474:5600" ph="..." />
-              <marker date="1534914056579" expanded="true" signature="5643:5757" ph="..." />
+              <marker date="1534914153137" expanded="true" signature="5474:5600" ph="..." />
+              <marker date="1534914153137" expanded="true" signature="5643:5757" ph="..." />
             </folding>
           </first_editor>
           <second_editor />
@@ -425,8 +430,8 @@
           <first_editor relative-caret-position="3381">
             <caret line="147" column="6" lean-forward="false" selection-start-line="147" selection-start-column="6" selection-end-line="147" selection-end-column="6" />
             <folding>
-              <marker date="1534914056579" expanded="true" signature="5474:5600" ph="..." />
-              <marker date="1534914056579" expanded="true" signature="5643:5757" ph="..." />
+              <marker date="1534914153137" expanded="true" signature="5474:5600" ph="..." />
+              <marker date="1534914153137" expanded="true" signature="5643:5757" ph="..." />
             </folding>
           </first_editor>
           <second_editor />
@@ -450,8 +455,8 @@
           <first_editor relative-caret-position="3381">
             <caret line="147" column="6" lean-forward="false" selection-start-line="147" selection-start-column="6" selection-end-line="147" selection-end-column="6" />
             <folding>
-              <marker date="1534914056579" expanded="true" signature="5474:5600" ph="..." />
-              <marker date="1534914056579" expanded="true" signature="5643:5757" ph="..." />
+              <marker date="1534914153137" expanded="true" signature="5474:5600" ph="..." />
+              <marker date="1534914153137" expanded="true" signature="5643:5757" ph="..." />
             </folding>
           </first_editor>
           <second_editor />
@@ -475,8 +480,8 @@
           <first_editor relative-caret-position="1541">
             <caret line="67" column="0" lean-forward="false" selection-start-line="67" selection-start-column="0" selection-end-line="67" selection-end-column="74" />
             <folding>
-              <marker date="1534914056579" expanded="true" signature="5474:5600" ph="..." />
-              <marker date="1534914056579" expanded="true" signature="5643:5757" ph="..." />
+              <marker date="1534914153137" expanded="true" signature="5474:5600" ph="..." />
+              <marker date="1534914153137" expanded="true" signature="5643:5757" ph="..." />
             </folding>
           </first_editor>
           <second_editor />
@@ -489,8 +494,8 @@
           <first_editor relative-caret-position="1541">
             <caret line="67" column="0" lean-forward="false" selection-start-line="67" selection-start-column="0" selection-end-line="67" selection-end-column="74" />
             <folding>
-              <marker date="1534914056579" expanded="true" signature="5474:5600" ph="..." />
-              <marker date="1534914056579" expanded="true" signature="5643:5757" ph="..." />
+              <marker date="1534914153137" expanded="true" signature="5474:5600" ph="..." />
+              <marker date="1534914153137" expanded="true" signature="5643:5757" ph="..." />
             </folding>
           </first_editor>
           <second_editor />
@@ -553,11 +558,11 @@
     <entry file="file://$PROJECT_DIR$/zookeeper.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="FIRST">
-          <first_editor relative-caret-position="617">
-            <caret line="287" column="13" lean-forward="false" selection-start-line="287" selection-start-column="13" selection-end-line="287" selection-end-column="13" />
+          <first_editor relative-caret-position="594">
+            <caret line="286" column="6" lean-forward="false" selection-start-line="286" selection-start-column="6" selection-end-line="286" selection-end-column="6" />
             <folding>
-              <marker date="1534914056579" expanded="true" signature="5474:5600" ph="..." />
-              <marker date="1534914056579" expanded="true" signature="5643:5757" ph="..." />
+              <marker date="1534914153137" expanded="true" signature="5474:5600" ph="..." />
+              <marker date="1534914153137" expanded="true" signature="5643:5757" ph="..." />
             </folding>
           </first_editor>
           <second_editor />

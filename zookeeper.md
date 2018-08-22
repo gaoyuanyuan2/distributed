@@ -279,12 +279,12 @@ leader节点主要负责把客户端的事务请求转化成一个事务提议�
 <br><br>
 ![zab](https://github.com/gaoyuanyuan2/distributed/blob/master/img/5.png) 
 <br><br>
-### 15.Acl权限的操作
+### 16.Acl权限的操作
 <br>保证存储在zookeeper上的数据安全性问题
 <br>schema(ip/Digest/world/super)
 <br>授权对象（192.168.1.1/11 , root:root / world:anyone/ super）
 
-### 16.数据存储
+### 17.数据存储
 <br>内存数据和磁盘数据
 <<br>br>zookeeper会定时把数据存储在磁盘上。
 <br><br>DataDir = 存储的是数据的快照
