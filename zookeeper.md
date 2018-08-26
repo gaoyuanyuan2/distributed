@@ -195,7 +195,6 @@ cZxid = 0x500000015
 <br>1)数据量比较小
 <br>2)数据内容在运行时会发生动态变更
 <br>3)集群中的各个机器共享配置
-
 <br><br>2.watcher机制
 <br><br>3.统一配置管理（disconf）
 <br><br>4.分布式锁
@@ -210,7 +209,6 @@ cZxid = 0x500000015
 <br><br>排他锁
 <br><br>共享锁（读锁）
 <br>实现共享锁，使用javaapi的方式
-
 <br><br>5.负载均衡
 <br>请求/数据分摊多个计算机单元上
 <br><br>6.ID生成器
@@ -226,6 +224,73 @@ cZxid = 0x500000015
 7<br>*24小时可用， 99.999%可用
 <br>master-slave模式
 <br>使用zookeeper解决
+###  13.zookeeper集群角色
+<br>1.leader
+<br>leader是zookeeper集群的核心。
+<br>1)事务请求的唯一调度者和处理者，保证集群事务处理的顺序性
+<br>2)集群内部各个服务器的调度者
+<br><br>2.follower
+<br>1)处理客户端非事务请求，以及转发事务请求给leader服务器
+<br>2)参与事务请求提议（proposal）的投票（客户端的一个事务请求，需要半数服务器投票通过以后才能通知leader commit； leader会发起一个提案，要求follower投票）
+<br>3)参与leader选举的投票
+<br><br>3.observer
+<br>观察zookeeper集群中最新状态的变化并将这些状态同步到observer服务器上
+<br>增加observer不影响集群中事务处理能力，同时还能提升集群的非事务处理能力
+###  14.zookeeper的集群组成
+<br>zookeeper一般是由 2n+1台服务器组成
+###  15.leader选举
+<br>1.FastLeaderElection
+<br>serverid : 在配置server集群的时候，给定服务器的标识id（myid）
+<br>zxid  : 服务器在运行时产生的数据ID， zxid的值越大，表示数据越新
+<br>Epoch: 选举的轮数
+<br>server的状态：Looking、 Following、Observering、Leading
+<br><br>2.第一次初始化启动的时候： LOOKING
+<br>1)	所有在集群中的server都会推荐自己为leader，然后把（myid、zxid、epoch）作为广播信息，广播给集群中的其他server, 然后等待其他服务器返回
+<br>2)	每个服务器都会接收来自集群中的其他服务器的投票。集群中的每个服务器在接受到投票后，开始判断投票的有效性
+<br>a)	判断逻辑时钟(Epoch) ，如果Epoch大于自己当前的Epoch，说明自己保存的Epoch是过期。更新Epoch，同时clear其他服务器发送过来的选举数据。判断是否需要更新当前自己的选举情况
+<br>b)	如果Epoch小于目前的Epoch，说明对方的epoch过期了，也就意味着对方服务器的选举轮数是过期的。这个时候，只需要讲自己的信息发送给对方
+<br><br>
+![c)](https://github.com/gaoyuanyuan2/distributed/blob/master/img/4.png) 
+<br><br>
+<br><br>3.ZAB协议
+<br>拜占庭问题
+<br><br>paxos协议主要就是如何保证在分布式环网络环境下，各个服务器如何达成一致最终保证数据的一致性问题
+<br><br>ZAB协议，基于paxos协议的一个改进。
+<br><br>zab协议为分布式协调服务zookeeper专门设计的一种支持崩溃恢复的原子广播协议
+<br>zookeeper并没有完全采用paxos算法， 而是采用zab Zookeeper atomic broadcast
+<br><br>4.zab协议的原理
+<br>1)在zookeeper的主备模式下，通过zab协议来保证集群中各个副本数据的一致性
+<br>2)zookeeper使用的是单一的主进程来接收并处理所有的事务请求，并采用zab协议，
+把数据的状态变更以事务请求的形式广播到其他的节点
+<br>3)zab协议在主备模型架构中，保证了同一时刻只能有一个主进程来广播服务器的状态变更
+<br>4)所有的事务请求必须由全局唯一的服务器来协调处理，这个的服务器叫leader，其他的叫follower
+leader节点主要负责把客户端的事务请求转化成一个事务提议（proposal），并分发给集群中的所有follower节点
+再等待所有follower节点的反馈。一旦超过半数服务器进行了正确的反馈，那么leader就会commit这条消息
+<br><br>5.崩溃恢复
+<br>原子广播
+<br>zab协议的工作原理
+<br>1)什么情况下zab协议会进入崩溃恢复模式
+<br>2)当服务器启动时
+<br>3)当leader服务器出现网络中断、崩溃或者重启的情况
+<br>4)集群中已经不存在过半的服务器与该leader保持正常通信
+<br><br>6.zab协议进入崩溃恢复模式会做什么
+<br>1)当leader出现问题，zab协议进入崩溃恢复模式，并且选举出新的leader。当新的leader选举出来以后，如果集群中已经有过半机器完成了leader服务器的状态同（数据同步），退出崩溃恢复，进入消息广播模式
+<br>2)当新的机器加入到集群中的时候，如果已经存在leader服务器，那么新加入的服务器就会自觉进入数据恢复模式，找到leader进行数据同步
+<br><br>
+![zab](https://github.com/gaoyuanyuan2/distributed/blob/master/img/5.png) 
+<br><br>
+### 16.Acl权限的操作
+<br>保证存储在zookeeper上的数据安全性问题
+<br>schema(ip/Digest/world/super)
+<br>授权对象（192.168.1.1/11 , root:root / world:anyone/ super）
+
+### 17.数据存储
+<br>内存数据和磁盘数据
+<<br>br>zookeeper会定时把数据存储在磁盘上。
+<br><br>DataDir = 存储的是数据的快照
+<br>快照： 存储某一个时刻全量的内存数据内容
+
+
 
 
 
