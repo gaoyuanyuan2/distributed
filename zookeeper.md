@@ -1,5 +1,5 @@
 ## 分布式协调服务-zookeeper
-### 1、分布式环境的特点
+### 1、分布式环境的特点(底层通信是netty)
 <br>1.分布性
 <br><br>2.并发性 程序运行过程中，并发性操作是很常见的。比如同一个分布式系统中的多个节点，同时访问一个共享资源。数据库、分布式存储
 <br><br>3.无序性 进程之间的消息通信，会出现顺序不一致问题
@@ -58,7 +58,7 @@ Server端承诺会维护client端状态数据，这个状态仅仅维持一小�
 {<br>start|start-foreground|stop|restart|status|upgrade|print-cmd}
 <br><br>5.	sh zkCli.sh -server  ip:port
 ### 7、集群环境
-<br>zookeeper集群, 包含三种角色: leader / follower /observer
+<br>zookeeper集群, 包含三种角色: leader / follower /observer（访问量高时加）
 <br><br>1.observer
 <br><br>1)observer 是一种特殊的zookeeper节点。可以帮助解决zookeeper的扩展性（如果大量客户端访问我们zookeeper集群，需要增加zookeeper集群机器数量。从而增加zookeeper集群的性能。 
 导致zookeeper写性能下降， zookeeper的数据变更需要半数以上服务器投票通过。造成网络消耗增加投票成本）
@@ -221,9 +221,12 @@ cZxid = 0x500000015
 <br><br>8.统一命名服务
 <br><br>9.master选举
 <br>master选举
+<br>心跳包（心跳保持一般是客户端向服务端发起的）
 7<br>*24小时可用， 99.999%可用
-<br>master-slave模式
+<br>master-slave模式（主提供服务，备不提供服务：备用，都是启动状态）
 <br>使用zookeeper解决
+Dubbo url 是临时节点，其他不是.不依赖容器
+异步处理只适应dubbo模式
 ###  13.zookeeper集群角色
 <br>1.leader
 <br>leader是zookeeper集群的核心。
