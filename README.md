@@ -59,9 +59,10 @@ path:资源访问路径、query-string：查询次数
 ![请求头](https://github.com/gaoyuanyuan2/distributed/blob/master/img/2.png) 
 <br><br>
 HTTP Request Header 请求头
-|Header	|解释 |	示例|
+
+|Header|解释|示例|
 |:--:|:--:|:--:|
-|Accept	|指定客户端能够接收的内容类型	|Accept: text/plain, text/html|
+|Accept|指定客户端能够接收的内容类型|Accept: text/plain, text/html|
 |Accept-Charset|	浏览器可以接受的字符编码集。|	Accept-Charset: iso-8859-5|
 |Accept-Encoding|	指定浏览器可以支持的web服务器返回内容压缩编码类型。|	Accept-Encoding: compress, gzip|
 |Accept-Language|	浏览器可接受的语言|	Accept-Language: en,zh|
@@ -76,6 +77,7 @@ HTTP Request Header 请求头
 |Expect|	请求的特定的服务器行为|	Expect: 100-continue|
 |From|	发出请求的用户的Email|	From: user@email.com|
 |Host|	指定请求的服务器的域名和端口号|	Host: www.zcmhi.com|
+
 <br><br>
 <br> request消息结构包含三部分：（起始行、首部字段、主体）
 <br>METHOD/path/http/version-number
