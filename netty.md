@@ -70,34 +70,34 @@ sc.configureBlocking(false);
  ```java
 sc.register(this.seletor, SelectionKey.OP_READ);
 ```
- <br>步步骤九:异步读取客户端请求消息到缓冲区
+ <br>步骤九:异步读取客户端请求消息到缓冲区
  ```java
 sc.read(this.readBuf);
 ```
- <br>步步骤十:对ByteBuffer进行编解码，如果有半包消息指针reset,继续读取后续的报文，将解码成功的消息封装成Task,投递到业务线程池中，进行业务逻辑编排。
- <br>步步骤十一:将POJO对象encode成ByteBuffer, 调用SocketChannel的异步write 接口，将消息异步发送给客户端
- <br>步 <br>步b. Client
- <br>步步骤一:打开SocketChannel,绑定客户端本地地址(可选，默认系统会随机分配一个可用的本地地址)
+ <br><br>步骤十:对ByteBuffer进行编解码，如果有半包消息指针reset,继续读取后续的报文，将解码成功的消息封装成Task,投递到业务线程池中，进行业务逻辑编排。
+ <br><br>步骤十一:将POJO对象encode成ByteBuffer, 调用SocketChannel的异步write 接口，将消息异步发送给客户端
+<br><br>b. Client
+ <br>步骤一:打开SocketChannel,绑定客户端本地地址(可选，默认系统会随机分配一个可用的本地地址)
  ```java
 sc = SocketChannel.open();
- <br>步步骤二：设置SocketChannel为非阻塞模式，同时设置客户端连接的TCP参数
+ <br>步骤二：设置SocketChannel为非阻塞模式，同时设置客户端连接的TCP参数
  ```java
 sc.configureBlocking(false);
 ```
- <br>步步骤三:异步连接服务端
+ <br>步骤三:异步连接服务端
   ```java
 sc.connect(address);
 ```
- <br>步步骤四:判断是否连接成功，如果连接成功，则直接注册读状态位到多路复用器中
- <br>步步骤五:向Reactor线程的多路复用器注册OP_CONNECT状态位，监听服务端的TCPACK应答
- <br>步步骤六:创建Reactor线程，创建多路复用器并启动线程
- <br>步步骤七:多路复用器在线程run方法的无限循环体内轮询准备就绪的Key
- <br>步步骤八:接收connect事件进行处理
- <br>步步骤九:判断连接结果，如果连接成功，注册读事件到多路复用器
- <br>步步骤十:注册读事件到多路复用器
- <br>步步骤十一:异步读客户端请求消息到缓冲区
- <br>步步骤十二:对ByteBuffer进行编解码，如果有半包消息接收缓冲区Reset, 继续读取后续的报文，将解码成功的消息封装成Task,投递到业务线程池中，进行业务逻辑编排。
- <br>步步骤十三:将POJO对象encode成ByteBuffer, 调用SocketChannel的异步write 接口,将消息异步发送给客户端。
+ <br><br>步骤四:判断是否连接成功，如果连接成功，则直接注册读状态位到多路复用器中
+ <br><br>步骤五:向Reactor线程的多路复用器注册OP_CONNECT状态位，监听服务端的TCPACK应答
+ <br><br>步骤六:创建Reactor线程，创建多路复用器并启动线程
+ <br><br>步骤七:多路复用器在线程run方法的无限循环体内轮询准备就绪的Key
+ <br><br>步骤八:接收connect事件进行处理
+ <br><br>步骤九:判断连接结果，如果连接成功，注册读事件到多路复用器
+ <br><br>步骤十:注册读事件到多路复用器
+ <br><br>步骤十一:异步读客户端请求消息到缓冲区
+ <br><br>步骤十二:对ByteBuffer进行编解码，如果有半包消息接收缓冲区Reset, 继续读取后续的报文，将解码成功的消息封装成Task,投递到业务线程池中，进行业务逻辑编排。
+ <br><br>步骤十三:将POJO对象encode成ByteBuffer, 调用SocketChannel的异步write 接口,将消息异步发送给客户端。
  <br> <br>c. NIO编程的优点总结如下。
   <br> <br>(1)客户端发起的连接操作是异步的，可以通过在多路复用器注册OP_ CONNECT等待后续结果，不需要像之前的客户端那样被同步阻塞。
    <br> <br>(2) SocketChannel 的读写操作都是异步的，如果没有可读写的数据它不会同步等待，直接返回，
