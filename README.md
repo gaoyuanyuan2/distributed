@@ -116,7 +116,7 @@ path:资源访问路径、query-string：查询次数
 <br>3.get方式提交表単会在htp数据包中的第- -行出現,而post在空- -行的 body中出現4get方式永透是己字符方式提交.而post既可以已字篠也可以已字帯.
 
 ## 五、RMI
-### 1、RPC :远程方法调用（规范）基于socket。
+### 1、RPC :远程方法调用（规范）基于socket。（rmi、webservice、http）
 1.Dubbo、Thrif、RMI、WebService、Hessain
 ### 2、RPC包含的要素
 传输协议 TCP/UDP
