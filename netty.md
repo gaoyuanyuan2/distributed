@@ -135,10 +135,17 @@ NIO2.0的异步套接字通道是真正的异步非阻塞I/O,对应于UNIX网络
   <br>业务程序来主动触发
   <br>我要开始接收东西了  In  响应型的动作
   <br>Netty来主动触发的，业务程序是被动接收(事件)
-<br><br>6. 拆包 粘包 协议
-<br>1) 定长，不够空格补全
-<br>2) 包尾添加特殊分隔符（适合文本）
-<br>3) 约定协议（将消息分为消息头和消息体）
+<br><br>6. 拆包、粘包
+<br><br>1) TCP粘包、拆包
+<br><br>a. 定长，不够空格补全
+<br><br>b. 包尾添加特殊分隔符（适合文本）
+<br><br>c. 约定协议（将消息分为消息头和消息体）
+<br><br>2) 常见用法
+<br><br>应用DelimiterBasedFrameDecoder和FixedL engthFrameDecoder进行开发非常简单，在绝大数情况下，
+只要将DelimiterBasedFrameDecoder或FixedLengthFrameDecoder添加到对应ChannelPipeline的起始位即可。
+
+
+
 
 
 

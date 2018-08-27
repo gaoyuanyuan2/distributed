@@ -56,7 +56,26 @@ path:资源访问路径、query-string：查询次数
 ###  3、方法 GET/PUT/POST/HEAD/DELETE
 ### 4、报文
 <br><br>
-![报文](https://github.com/gaoyuanyuan2/distributed/blob/master/img/2.png) 
+![请求头](https://github.com/gaoyuanyuan2/distributed/blob/master/img/2.png) 
+<br><br>
+HTTP Request Header 请求头
+|Header	|解释 |	示例|
+|:--:|:--:|:--:|
+|Accept	|指定客户端能够接收的内容类型	|Accept: text/plain, text/html|
+|Accept-Charset|	浏览器可以接受的字符编码集。|	Accept-Charset: iso-8859-5|
+|Accept-Encoding|	指定浏览器可以支持的web服务器返回内容压缩编码类型。|	Accept-Encoding: compress, gzip|
+|Accept-Language|	浏览器可接受的语言|	Accept-Language: en,zh|
+|Accept-Ranges|	可以请求网页实体的一个或者多个子范围字段|	Accept-Ranges: bytes|
+|Authorization|	HTTP授权的授权证书|	Authorization: Basic QWxhZGRpbjpvcGVuIHNlc2FtZQ==|
+|Cache-Control|	指定请求和响应遵循的缓存机制|	Cache-Control: no-cache|
+|Connection|	表示是否需要持久连接。|（HTTP 1.1默认进行持久连接）	Connection: close|
+|Cookie|	HTTP请求发送时，会把保存在该请求域名下的所有cookie值一起发送给web服务器。|	Cookie: $Version=1; Skin=new;|
+|Content-Length|	请求的内容长度|	Content-Length: 348|
+|Content-Type|	请求的与实体对应的MIME信息|	Content-Type: application/x-www-form-urlencoded|
+|Date|	请求发送的日期和时间|	Date: Tue, 15 Nov 2010 08:12:31 GMT|
+|Expect|	请求的特定的服务器行为|	Expect: 100-continue|
+|From|	发出请求的用户的Email|	From: user@email.com|
+|Host|	指定请求的服务器的域名和端口号|	Host: www.zcmhi.com|
 <br><br>
 <br> request消息结构包含三部分：（起始行、首部字段、主体）
 <br>METHOD/path/http/version-number
@@ -125,6 +144,7 @@ path:资源访问路径、query-string：查询次数
 ### 3、RMI
 使用JRMP（远程信息交换协议），JRMP是专门为java定制的通信协议，java分布式解决方案。
 <br>不能重试、bio效率低、不跨平台、java原生序列化效率低、注册中心会挂没办法负载。
+<br>Java序列化的两个目的：网络传输、对象持久化。
 ### 4、webservice
 1.跨语言调用
 <br>2.WSDL 定义语言，.wsdl的文件类型、一个webservice对应唯一一个wsdl文档、调用关系链
