@@ -37,7 +37,7 @@ Socket client = server.accept();//等待客户端连接，阻塞方法
 ```
  <br><br>2) NIO 同步非阻塞
   <br> <br>a. Server:
- <br>步骤一:打开ServerSocketChannel,用于监听客户端的连接，它是所有客户端连接的父管道
+ <br><br>步骤一:打开ServerSocketChannel,用于监听客户端的连接，它是所有客户端连接的父管道
  ```java
  ServerSocketChannel ssc = ServerSocketChannel.open();
 步骤二:绑定监听端口，设置连接为非阻塞模式
@@ -74,10 +74,10 @@ sc.register(this.seletor, SelectionKey.OP_READ);
  ```java
 sc.read(this.readBuf);
 ```
- <br><br>步骤十:对ByteBuffer进行编解码，如果有半包消息指针reset,继续读取后续的报文，将解码成功的消息封装成Task,投递到业务线程池中，进行业务逻辑编排。
+步骤十:对ByteBuffer进行编解码，如果有半包消息指针reset,继续读取后续的报文，将解码成功的消息封装成Task,投递到业务线程池中，进行业务逻辑编排。
  <br><br>步骤十一:将POJO对象encode成ByteBuffer, 调用SocketChannel的异步write 接口，将消息异步发送给客户端
 <br><br>b. Client
- <br>步骤一:打开SocketChannel,绑定客户端本地地址(可选，默认系统会随机分配一个可用的本地地址)
+ <br><br>步骤一:打开SocketChannel,绑定客户端本地地址(可选，默认系统会随机分配一个可用的本地地址)
  ```java
 sc = SocketChannel.open();
 ```
