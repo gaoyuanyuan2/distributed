@@ -78,7 +78,6 @@ path:资源访问路径、query-string：查询次数
 |From|	发出请求的用户的Email|	From: user@email.com|
 |Host|	指定请求的服务器的域名和端口号|	Host: www.zcmhi.com|
 
-<br><br>
 <br> request消息结构包含三部分：（起始行、首部字段、主体）
 <br>METHOD/path/http/version-number
 <br>Header-Name:value
