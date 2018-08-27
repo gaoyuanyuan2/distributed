@@ -187,7 +187,7 @@ WebSocket 只需要建立一次连接，就可以一直保持连接状态。这�
 <br><br>步骤9：执行Netty系统ChannelHandler和用户添加定制的ChannelHandler。ChannelPipeline根据网络事件的类型，调度并执行ChannelHandler，相关代码如下所示：
  <br><br>2. 客户端
  <br><br>![客户端时序图](https://github.com/gaoyuanyuan2/distributed/blob/master/img/7.png) 
-<br><br> 步骤1：用户线程创建Bootstrap实例
+<br><br>步骤1：用户线程创建Bootstrap实例
 <br><br>步骤2：创建处理客户端连接，I/O读写Reactor线程组NioEventLoopGroup
 <br><br>步骤3：创建NioSocketChannel
 <br><br>步骤4：创建默认的ChannelHandlerPipeline,用户调度和执行网络事件
