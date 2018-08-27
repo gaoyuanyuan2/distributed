@@ -40,37 +40,37 @@ Socket client = server.accept();//等待客户端连接，阻塞方法
  <br>步骤一:打开ServerSocketChannel,用于监听客户端的连接，它是所有客户端连接的父管道
  ```java
  ServerSocketChannel ssc = ServerSocketChannel.open();
- <br>步骤二:绑定监听端口，设置连接为非阻塞模式
+步骤二:绑定监听端口，设置连接为非阻塞模式
  ```java
  ssc.bind(new InetSocketAddress(port));
  ssc.configureBlocking(false);
  ```
- <br>步骤三:创建Reactor线程，创建多路复用器并启动线程
+步骤三:创建Reactor线程，创建多路复用器并启动线程
  ```java
 this.seletor = Selector.open();
 ```
- <br>步骤四:将ServerSocketChannel注册到Reactor线程的多路复用器Selector.上，监听ACCEPT事件
+步骤四:将ServerSocketChannel注册到Reactor线程的多路复用器Selector.上，监听ACCEPT事件
  ```java
 ssc.register(this.seletor, SelectionKey.OP_ACCEPT);
 ```
- <br>步骤五:多路复用器在线程run方法的无限循环体内轮询准备就绪的Key
+步骤五:多路复用器在线程run方法的无限循环体内轮询准备就绪的Key
  ```java
 this.seletor.select();
 Iterator<SelectionKey> keys = this.seletor.selectedKeys().iterator();
 ```
- <br>步骤六:多路复用器监听到有新的客户端接入，处理新的接入请求，完成TCP三次握手，建立物理链路
+步骤六:多路复用器监听到有新的客户端接入，处理新的接入请求，完成TCP三次握手，建立物理链路
  ```java
 SocketChannel sc = ssc.accept();
 ```
- <br>步骤七:设置客户端链路为非阻塞模式
+ 步骤七:设置客户端链路为非阻塞模式
  ```java
 sc.configureBlocking(false);
 ```
- <br>步骤八:将新接入的客户端连接注册到Reactor 线程的多路复用器上，监听读操作，读取客户端发送的网络消息
+步骤八:将新接入的客户端连接注册到Reactor 线程的多路复用器上，监听读操作，读取客户端发送的网络消息
  ```java
 sc.register(this.seletor, SelectionKey.OP_READ);
 ```
- <br>步骤九:异步读取客户端请求消息到缓冲区
+步骤九:异步读取客户端请求消息到缓冲区
  ```java
 sc.read(this.readBuf);
 ```
@@ -80,15 +80,16 @@ sc.read(this.readBuf);
  <br>步骤一:打开SocketChannel,绑定客户端本地地址(可选，默认系统会随机分配一个可用的本地地址)
  ```java
 sc = SocketChannel.open();
- <br>步骤二：设置SocketChannel为非阻塞模式，同时设置客户端连接的TCP参数
+```
+步骤二：设置SocketChannel为非阻塞模式，同时设置客户端连接的TCP参数
  ```java
 sc.configureBlocking(false);
 ```
- <br>步骤三:异步连接服务端
+步骤三:异步连接服务端
   ```java
 sc.connect(address);
 ```
- <br><br>步骤四:判断是否连接成功，如果连接成功，则直接注册读状态位到多路复用器中
+步骤四:判断是否连接成功，如果连接成功，则直接注册读状态位到多路复用器中
  <br><br>步骤五:向Reactor线程的多路复用器注册OP_CONNECT状态位，监听服务端的TCPACK应答
  <br><br>步骤六:创建Reactor线程，创建多路复用器并启动线程
  <br><br>步骤七:多路复用器在线程run方法的无限循环体内轮询准备就绪的Key
