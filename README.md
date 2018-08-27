@@ -59,6 +59,7 @@ path:资源访问路径、query-string：查询次数
 ![请求头](https://github.com/gaoyuanyuan2/distributed/blob/master/img/2.png) 
 <br><br>
 #### HTTP Request Header 请求头
+
 |Header|解释|示例|
 |:--:|:--:|:--:|
 |Accept|指定客户端能够接收的内容类型|Accept: text/plain, text/html|
