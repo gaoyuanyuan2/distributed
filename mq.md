@@ -58,6 +58,11 @@ JMSProvider会缓存每个生产者当前生产的所有消息，直到commit或
 <br>挂载网络磁盘，将数据文件保存到指定磁盘上即可完成master/slave模式
 <br><br>8.源码 
 <br>1) 责任链模式
+### 2、RabbitMQ
+<br>1. Exchange Type有三种：fanout、direct、topic。
+<br><br>1) fanout:把所有发送到该Exchange的消息投递到所有与它绑定的队列中。
+<br><br>2) direct:把消息投递到那些binding key与routing key完全匹配的队列中。
+<br><br>3) topic:将消息路由到binding key与routing key模式匹配的队列中。
 
 
 
