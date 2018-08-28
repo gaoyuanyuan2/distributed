@@ -50,6 +50,7 @@ Socket client = server.accept();//等待客户端连接，阻塞方法
  <br><br>步骤一:打开ServerSocketChannel,用于监听客户端的连接，它是所有客户端连接的父管道
  ```java
  ServerSocketChannel ssc = ServerSocketChannel.open();
+ ```
 步骤二:绑定监听端口，设置连接为非阻塞模式
  ```java
  ssc.bind(new InetSocketAddress(port));
