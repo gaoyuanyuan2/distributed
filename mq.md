@@ -221,6 +221,11 @@ batch.size每批次发送的数据大小
 <br>c0 [0,3,6,9]
 <br>c1 [1,4,7]
 <br>c2 [2,5,8]
+### 4、对比
+![对比](https://github.com/gaoyuanyuan2/notes/blob/master/img/3.png) 
+<br><br>Netty：实时性好，互联（会话）。
+<br>Mq：复杂服务总线。
+<br>RabbitMQ：底层通信是netty
 
 
 
