@@ -26,9 +26,11 @@
 ### 3、热部署
 ```xml
 <!--热部署-->
-<!--  devtcdevtools可以实现页面热部署(即页面修改后会立即生效，这个可以直接在application. properties文件中配置spring  ymeleaf.cache-false来实现) -->
+<!--  devtcdevtools可以实现页面热部署(即页面修改后会立即生效，
+这个可以直接在application. properties文件中配置spring  ymeleaf.cache-false来实现) -->
 <!--实现类文件热部署(类文件修改后不会立即生效)，实现对属性文件的热部署。-->
-<!--即devtools会监听classpath下的文件变动，并且会立即重启应用(发生在保存时机) ,注意:因为其采用的虚拟机机制，该项重启是很快的-->
+<!--即devtools会监听classpath下的文件变动，并且会立即重启应用(发生在保存时机) ,
+注意:因为其采用的虚拟机机制，该项重启是很快的-->
 <!-- (1) base classloader (Base类加载器) ;加载不改变的Class. 例如:第三方提供的jar包。 -->
 <!--(2) restart classloader (Restart类加载器) :加载正在开发的Class.-->
 <!--为什么重启很快，因为重启的时候只是加载了在开发的Class,没有重新加载第三方的jar包。-->

@@ -5,7 +5,7 @@
 <br>面向消息的中间件，使用消息传送提供者来协调消息传输操作。 MOM需要提供API和管理工具。 客户端调用api。 把消息发送到消息传送提供者指定的目的地
 在消息发送之后，客户端会技术执行其他的工作。并且在接收方收到这个消息确认之前。提供者一直保留该消息
 #### 2. 消息传递
-<br><br>1) 点对点(p2p)
+<br>1) 点对点(p2p)
 <br><br>a.	如果session关闭时，有一些消息已经收到，但还没有被签收，那么当消费者下次连接到相同的队列时，消息还会被签收
 <br><br>b.	如果用户在receive方法中设定了消息选择条件，那么不符合条件的消息会留在队列中不会被接收
 <br><br>c.	队列可以长久保存消息直到消息被消费者签收。消费者不需要担心因为消息丢失而时刻与jmsprovider保持连接状态
@@ -22,7 +22,7 @@
 <br>StreamMessage   输入输出流
 <br>ObjectMessage  可序列化对象
 #### 3. JMS的可靠性机制
-<br><br>JMS消息之后被确认后，才会认为是被成功消费。消息的消费包含三个阶段： 客户端接收消息、客户端处理消息、消息被确认
+<br>JMS消息之后被确认后，才会认为是被成功消费。消息的消费包含三个阶段： 客户端接收消息、客户端处理消息、消息被确认
 <br><br>1) 事务性会话
 <br>消息会在session.commit以后自动签收
 <br><br>2) 非事务性会话
@@ -50,7 +50,7 @@ JMSProvider会缓存每个生产者当前生产的所有消息，直到commit或
 但是因为有一部分没有消费的消息被broker2已经分发到broker1上去了，这些消息就好像消失了。除非有消费者重新连接到broker1上来消费。
 <br><br>消息回流处理
 #### 7. 高可用方案
-<br><br>1) 通过zookeeper+activemq实现高可用方案
+<<br>1) 通过zookeeper+activemq实现高可用方案
 <br>（master/slave模型）
 <br><br>2) 通过zookeeper+activemq实现高可用方案
 <br>（master/slave模型）
@@ -63,11 +63,11 @@ JMSProvider会缓存每个生产者当前生产的所有消息，直到commit或
 ![](https://github.com/gaoyuanyuan2/distributed/blob/master/img/14.png)
 <br><br>1. 概念
 <br><br>1) Message 是不具名的，它由消息头和消息体组成。消息体是不透明的，页消息头则由一系列的可选属性组
-包括routing-key. (路由键、priority (相对于其他消息的优先权)、delivery-mode (指出该消意可能需要持久性存储)等。
+包括routing-key。(路由键、priority (相对于其他消息的优先权)、delivery-mode (指出该消意可能需要持久性存储)等。
 <br><br>2) Publisher 消息的生产者，也是一个向交换器发布消息的客户端应用程序。
 <br><br>3) Exchange 交换器，用来接收生产者发送的消息并将这些消息路由给服务器中的队列。
-<br><br>Exchange有4种类型: direct(默认)， fanout, topic,和headers,不同类型的Exchange转发消息的策略有所区别。
-headers匹配AMQP消息的header而不是路由键，headers 交换器和direct交换器完全一致，但性能差很多，目前几不用
+<br><br>Exchange有4种类型: direct(默认)， fanout，topic，和headers,不同类型的Exchange转发消息的策略有所区别。
+headers匹配AMQP消息的header而不是路由键，headers 交换器和direct交换器完全一致，但性能差很多，目前几不用。
 <br><br>4) Queue 消息队列，用来保存消息直到发送给消费者。它是消息的容器，也是消息的终点。一个消息可以投入一个或者多个队列。消息一直在队列里，
 等待消费者连接到这个队列将其取走。
 <br><br>5) Binding 绑定，用于消息队列和交换器之间的关联，一个绑定就是基于路由键将交换器和消息队列连接起来的路由规则，所以可以将交换器理解成一个
@@ -80,7 +80,6 @@ headers匹配AMQP消息的header而不是路由键，headers 交换器和direct�
 <br>虚拟主机是共享相同的身份认证和加密环境的独立服务器域。每个vhost本质上就是一一个 mini版的RabbitMQ服务器，拥有自己的队列、交换器、绑定和权限机制。
 <br><br>10) vhost 是AMQP概念的基础，必须在连接时指定，RabbitMQ默认的vhost是/。
 <br><br>11) Broker 表示消息队列服务器实体
-<br><br>
 <br><br>2. Exchange Type有三种：fanout、direct、topic。
 <br><br>1) fanout:把所有发送到该Exchange的消息投递到所有与它绑定的队列中。很像子网广播，每台子网内的主机都获得了-份复制的消息。fanout 类型转发消息是最快的。
 <br><br>2) direct:把消息投递到那些binding key与routing key完全匹配的队列中。它是完全匹配、单播的模式。
@@ -183,7 +182,7 @@ batch.size每批次发送的数据大小
     //自动提交时间间隔
     props.put("auto.commit.interval.ms", "1000");
 ```
-<br><br>2)  手动提交
+2)  手动提交
 <br><br>3) 手动异步提交
 <br>consumer. commitASync() //手动异步ack
 <br><br>4) 手动同步提交
@@ -201,7 +200,7 @@ batch.size每批次发送的数据大小
 <br><br>2)	获得consumergroup的位移信息
 <br>bin/kafka-simple-consumer-shell.sh --topic __consumer_offsets --partition 15 -broker-list 192.168.11.140:9092,192.168.11.141:9092,192.168.11.138:9092 --formatter kafka.coordinator.group.GroupMetadataManager\$OffsetsMessageFormatter
 ####  13.kafka的分区分配策略
-<br><br>1) 在kafka中每个topic一般都会有很多个partitions。为了提高消息的消费速度，我们可能会启动多个consumer去消费； 同时，kafka存在consumergroup的概念，也就是group
+<br>1) 在kafka中每个topic一般都会有很多个partitions。为了提高消息的消费速度，我们可能会启动多个consumer去消费； 同时，kafka存在consumergroup的概念，也就是group
 .id一样的consumer，这些consumer属于一个consumergroup，组内的所有消费者协调在一起来消费消费订阅主题的所有分区。当然每一个分区只能由同一个消费组内的consumer来消费，那么同一个consumergroup里面的consumer是怎么去分配该消费哪个分区里的数据，这个就设计到了kafka内部分区分配策略（PartitionAssignmentStrategy）
 <br>在 Kafka 内部存在两种默认的分区分配策略：Range（默认） 和 RoundRobin。通过：partition.assignment.strategy指定
 <br><br>2) consumerrebalance
