@@ -32,6 +32,7 @@ Acceptor线程池只用于客户端的登录、握手和安全认证，一旦链
  <br>异步:相对于I0操作而言的，在同一时间，  同时完成多个操作(JDK AIO)
  <br>阻塞:相对于数据而言，判断数据有没有准备好，如果没有准备好，停住不前（BIO  accept）
 <br> 非阻塞:不管数据有没有准备好，都会给一个反馈（NIO） 
+<br><br>Socket又称套接字：服务端监听、客户端请求服务器，服务器确认，客户端确认，进行通信
  <br><br>1. BIO 同步阻塞
  ```java
 Socket client = server.accept();//等待客户端连接，阻塞方法
@@ -196,6 +197,8 @@ WebSocket 只需要建立一次连接，就可以一直保持连接状态。这�
 <br><br>步骤6：注册对应的网络监听状态位到多路复用选择器
 <br><br>步骤8：如果连接成功，设置Future结果，发送连接成功事件，触发ChannelHandlerPipeline执行
 <br><br>步骤9：由ChannelHandlerPipeline调度和执行系统和用户ChannelHandler
+### 12、常用场景
+<br>实时计价netty长连接、游戏、心跳检测
 
 
 

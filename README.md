@@ -97,6 +97,7 @@ path:资源访问路径、query-string：查询次数
 <br>500 Internal Server Error服各器发生不可预期的错误
 <br>503 Server Unavailable 服各器当前不能处理客戸端的靖求,一段吋同后可能恢夏正常
 <br><br>缓存：静态资源
+
 ### 5、HTTPS
 <br>1.SSL/TLS 加密socket
 <br> ISOC在SSL的基础上发布了升级版本TLS1.2
@@ -134,7 +135,8 @@ path:资源访问路径、query-string：查询次数
 <br>1-get方式提交表単表単中的数据会在地址桜中昆示.而post方法則不会。
 <br>2.get方式提交表単K度是有限制的512字帯,而post理詑上是无限的。
 <br>3.get方式提交表単会在htp数据包中的第- -行出現,而post在空- -行的 body中出現4get方式永透是己字符方式提交.而post既可以已字篠也可以已字帯.
-
+### 8.http请求流程
+<br>点击网址后，应用层的DNS协议会将网址解析为IP地址；在应用层，浏览器会给web服务器发送一个HTTP请求；在传输层，（上层的传输数据流分段）HTTP数据包会嵌入在TCP报文段中；在网络层中，TCP报文段再嵌入IP数据包中；在网络接口层，IP数据包嵌入到数据帧（以太网数据包）中在网络上传送；数据包经过多个网关的转发到达百度服务器，请求对应端口的服务；请求处理完成之后，服务器发回一个HTTP响应；浏览器以同样的过程读取到HTTP响应的内容（HTTP响应数据包），然后浏览器对接收到的HTML页面进行解析，把网页显示出来呈现给用户。
 ## 五、RMI
 ### 1、RPC :远程方法调用（规范）基于socket。（rmi、webservice、http）
 1.Dubbo、Thrif、RMI、WebService、Hessain
