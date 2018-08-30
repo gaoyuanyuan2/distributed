@@ -5,6 +5,7 @@ VARNISH:反向代理服务的加速器。（动静分离、不变数据（联系
 Mycat水平拆分、垂直拆分、分库分表
 Codis进一步加强redis高可用
 分布式文件系统
+Nginx + redis 解决session的一致性
 
 
 
