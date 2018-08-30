@@ -25,7 +25,7 @@
 <br><br>3.  防火墙再其次
 <br><br>4.  用户名密码在最后
 ### 4、MongoDB创建用户
-<br><br>1.  创建语法: createUser ( 2.6之前为addUser )
+<br>1.  创建语法: createUser ( 2.6之前为addUser )
 <br><br>2.  角色类型:内建类型( read,readWrite,dbAdmin,dbOwner,userAdmin )
 ### 5、MongoDB用户角色详解
 <br>1.数据库角色( read,readWrite,dbAdmin,dbOwner,userAdmin )
