@@ -22,9 +22,9 @@
 <br> 开发人员要处理分布式系统的复杂性
 <br> 多服务运维难度，随着服务的增加，运维的压力也在增大系统部署依赖服务间通信成本数据一致性系统集成测试性能监控.....
 <br><br>
-![对比](https://github.com/gaoyuanyuan2/notes/blob/master/img/16.png) 
+![对比](https://github.com/gaoyuanyuan2/distributed/blob/master/img/16.png) 
 <br><br>
-![对比](https://github.com/gaoyuanyuan2/notes/blob/master/img/17.png) 
+![对比](https://github.com/gaoyuanyuan2/distributed/blob/master/img/17.png) 
 <br><br>
 <br>4. SpringCloud和SpringBoot是什么关系
 <br>SpringCloud,基于SpringBoot提供了一套微服务解决方案，包括服务注册与发现，配置中心，全链路监控，服务网关，负载均衡，熔断器等组件，除了基于NetFlix的开源组件做高度抽象封装之外，还有一些选型中立的开源组件。
