@@ -18,8 +18,8 @@
         <entry file="file://$PROJECT_DIR$/README.md">
           <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
             <state split_layout="SPLIT">
-              <first_editor relative-caret-position="474">
-                <caret line="166" column="4" lean-forward="false" selection-start-line="166" selection-start-column="4" selection-end-line="166" selection-end-column="4" />
+              <first_editor relative-caret-position="359">
+                <caret line="161" column="5" lean-forward="true" selection-start-line="161" selection-start-column="5" selection-end-line="161" selection-end-column="5" />
                 <folding />
               </first_editor>
               <second_editor />
@@ -323,7 +323,7 @@
       <workItem from="1535518979918" duration="19036000" />
       <workItem from="1535591259610" duration="159000" />
       <workItem from="1535595548502" duration="2154000" />
-      <workItem from="1535598524543" duration="7711000" />
+      <workItem from="1535598524543" duration="7751000" />
     </task>
     <task id="LOCAL-00005" summary="ZK">
       <created>1534388931969</created>
@@ -528,11 +528,18 @@
       <option name="project" value="LOCAL" />
       <updated>1535616060825</updated>
     </task>
-    <option name="localTasksCounter" value="34" />
+    <task id="LOCAL-00034" summary="架构">
+      <created>1535616307413</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1535616307413</updated>
+    </task>
+    <option name="localTasksCounter" value="35" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="59224000" />
+    <option name="totallyTimeSpent" value="59264000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="2576" height="1416" extended-state="6" />
@@ -581,7 +588,8 @@
     <MESSAGE value="kafka" />
     <MESSAGE value="." />
     <MESSAGE value="springcloud" />
-    <option name="LAST_COMMIT_MESSAGE" value="springcloud" />
+    <MESSAGE value="架构" />
+    <option name="LAST_COMMIT_MESSAGE" value="架构" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -1069,8 +1077,8 @@
     <entry file="file://$PROJECT_DIR$/README.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
-          <first_editor relative-caret-position="474">
-            <caret line="166" column="4" lean-forward="false" selection-start-line="166" selection-start-column="4" selection-end-line="166" selection-end-column="4" />
+          <first_editor relative-caret-position="359">
+            <caret line="161" column="5" lean-forward="true" selection-start-line="161" selection-start-column="5" selection-end-line="161" selection-end-column="5" />
             <folding />
           </first_editor>
           <second_editor />

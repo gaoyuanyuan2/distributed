@@ -159,7 +159,7 @@ path:资源访问路径、query-string：查询次数
 <br>CXF Celtic+Xfire ，spring整合
 <br>Xfire 高性能
 <br>SpringMVC新的webservice
-## 六、Z会话层-DID原则
+## 六、会话层-DID原则
 <br>Design:按照10倍体量设计
 <br><br>Implement:按照3倍体量实现
 <br><br>Deploy:按照1.5倍部署
