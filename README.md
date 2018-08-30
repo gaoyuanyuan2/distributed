@@ -1,4 +1,5 @@
 ## 一、分布式架构概述
+![](https://github.com/gaoyuanyuan2/distributed/blob/master/img/25.jpg) 
 ### 1、分布式
 一个业务拆分成多个子系统，部署在不同的服务器上（相互调用）。
 ### 2、集群
@@ -158,7 +159,13 @@ path:资源访问路径、query-string：查询次数
 <br>CXF Celtic+Xfire ，spring整合
 <br>Xfire 高性能
 <br>SpringMVC新的webservice
-## 六、Zookeeper 分布式协调服务
+## 六、Z会话层-DID原则
+<br>Design:按照10倍体量设计
+<br><br>Implement:按照3倍体量实现
+<br><br>Deploy:按照1.5倍部署
+## 七、架构师
+架构能力规范、预见性、执行力、技术选型，引领团队的发展具备一定的运维能力(服务上的基本的部署工作可以独立完成)知己知彼、百战不殆。
+
 
 
 
