@@ -303,7 +303,9 @@ delete from lock where methodName=’’;
 <br>根据key的hash值取模 服务器的数量 。 
 <br>hash
 #### 集群的原理
-<br>Redis Cluster中，Sharding采用slot(槽)的概念，一共分成16384个槽，这有点儿类似前面讲的pre sharding思路。对于每个进入Redis的键值对，根据key进行散列，分配到这16384个slot中的某一个中。使用的hash算法也比较简单，就是CRC16后16384取模。Redis集群中的每个node(节点)负责分摊这16384个slot中的一部分，也就是说，每个slot都对应一个node负责处理。当动态添加或减少node节点时，需要将16384个槽做个再分配，槽中的键值也要迁移。当然，这一过程，在目前实现中，还处于半自动状态，需要人工介入。Redis集群，要保证16384个槽对应的node都正常工作，如果某个node发生故障，那它负责的slots也就失效，整个集群将不能工作。为了增加集群的可访问性，官方推荐的方案是将node配置成主从结构，即一个master主节点，挂n个slave从节点。这时，如果主节点失效，Redis Cluster会根据选举算法从slave节点中选择一个上升为主节点，整个集群继续对外提供服务。这非常类似服务器节点通过Sentinel监控架构成主从结构，只是Redis Cluster本身提供了故障转移容错的能力。
+<br>官方推荐的方案是将node配置成主从结构，即一个master主节点，挂n个slave从节点。
+这时，如果主节点失效，Redis Cluster会根据选举算法从slave节点中选择一个上升为主节点，
+整个集群继续对外提供服务。这非常类似服务器节点通过Sentinel监控架构成主从结构，只是Redis Cluster本身提供了故障转移容错的能力。
 <br><br>slot（槽）的概念，在redis集群中一共会有16384个槽，
 <br>根据key的CRC16算法，得到的结果再对16384进行取模。 假如有3个节点
 <br>node1  0 5460
