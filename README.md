@@ -1,4 +1,5 @@
 ## 一、分布式架构概述
+![](https://github.com/gaoyuanyuan2/distributed/blob/master/img/25.jpg) 
 ### 1、分布式
 一个业务拆分成多个子系统，部署在不同的服务器上（相互调用）。
 ### 2、集群
@@ -56,8 +57,28 @@ path:资源访问路径、query-string：查询次数
 ###  3、方法 GET/PUT/POST/HEAD/DELETE
 ### 4、报文
 <br><br>
-![报文](https://github.com/gaoyuanyuan2/distributed/blob/master/img/2.png) 
+![请求头](https://github.com/gaoyuanyuan2/distributed/blob/master/img/2.png) 
 <br><br>
+#### HTTP Request Header 请求头
+
+|Header|解释|示例|
+|:--:|:--:|:--:|
+|Accept|指定客户端能够接收的内容类型|Accept: text/plain, text/html|
+|Accept-Charset|	浏览器可以接受的字符编码集。|	Accept-Charset: iso-8859-5|
+|Accept-Encoding|	指定浏览器可以支持的web服务器返回内容压缩编码类型。|	Accept-Encoding: compress, gzip|
+|Accept-Language|	浏览器可接受的语言|	Accept-Language: en,zh|
+|Accept-Ranges|	可以请求网页实体的一个或者多个子范围字段|	Accept-Ranges: bytes|
+|Authorization|	HTTP授权的授权证书|	Authorization: Basic QWxhZGRpbjpvcGVuIHNlc2FtZQ==|
+|Cache-Control|	指定请求和响应遵循的缓存机制|	Cache-Control: no-cache|
+|Connection|	表示是否需要持久连接。|（HTTP 1.1默认进行持久连接）	Connection: close|
+|Cookie|	HTTP请求发送时，会把保存在该请求域名下的所有cookie值一起发送给web服务器。|	Cookie: $Version=1; Skin=new;|
+|Content-Length|	请求的内容长度|	Content-Length: 348|
+|Content-Type|	请求的与实体对应的MIME信息|	Content-Type: application/x-www-form-urlencoded|
+|Date|	请求发送的日期和时间|	Date: Tue, 15 Nov 2010 08:12:31 GMT|
+|Expect|	请求的特定的服务器行为|	Expect: 100-continue|
+|From|	发出请求的用户的Email|	From: user@email.com|
+|Host|	指定请求的服务器的域名和端口号|	Host: www.zcmhi.com|
+
 <br> request消息结构包含三部分：（起始行、首部字段、主体）
 <br>METHOD/path/http/version-number
 <br>Header-Name:value
@@ -77,6 +98,7 @@ path:资源访问路径、query-string：查询次数
 <br>500 Internal Server Error服各器发生不可预期的错误
 <br>503 Server Unavailable 服各器当前不能处理客戸端的靖求,一段吋同后可能恢夏正常
 <br><br>缓存：静态资源
+
 ### 5、HTTPS
 <br>1.SSL/TLS 加密socket
 <br> ISOC在SSL的基础上发布了升级版本TLS1.2
@@ -114,7 +136,8 @@ path:资源访问路径、query-string：查询次数
 <br>1-get方式提交表単表単中的数据会在地址桜中昆示.而post方法則不会。
 <br>2.get方式提交表単K度是有限制的512字帯,而post理詑上是无限的。
 <br>3.get方式提交表単会在htp数据包中的第- -行出現,而post在空- -行的 body中出現4get方式永透是己字符方式提交.而post既可以已字篠也可以已字帯.
-
+### 8.http请求流程
+<br>点击网址后，应用层的DNS协议会将网址解析为IP地址；在应用层，浏览器会给web服务器发送一个HTTP请求；在传输层，（上层的传输数据流分段）HTTP数据包会嵌入在TCP报文段中；在网络层中，TCP报文段再嵌入IP数据包中；在网络接口层，IP数据包嵌入到数据帧（以太网数据包）中在网络上传送；数据包经过多个网关的转发到达百度服务器，请求对应端口的服务；请求处理完成之后，服务器发回一个HTTP响应；浏览器以同样的过程读取到HTTP响应的内容（HTTP响应数据包），然后浏览器对接收到的HTML页面进行解析，把网页显示出来呈现给用户。
 ## 五、RMI
 ### 1、RPC :远程方法调用（规范）基于socket。（rmi、webservice、http）
 1.Dubbo、Thrif、RMI、WebService、Hessain
@@ -125,6 +148,7 @@ path:资源访问路径、query-string：查询次数
 ### 3、RMI
 使用JRMP（远程信息交换协议），JRMP是专门为java定制的通信协议，java分布式解决方案。
 <br>不能重试、bio效率低、不跨平台、java原生序列化效率低、注册中心会挂没办法负载。
+<br>Java序列化的两个目的：网络传输、对象持久化。
 ### 4、webservice
 1.跨语言调用
 <br>2.WSDL 定义语言，.wsdl的文件类型、一个webservice对应唯一一个wsdl文档、调用关系链
@@ -135,7 +159,13 @@ path:资源访问路径、query-string：查询次数
 <br>CXF Celtic+Xfire ，spring整合
 <br>Xfire 高性能
 <br>SpringMVC新的webservice
-## 六、Zookeeper 分布式协调服务
+## 六、会话层-DID原则
+<br>Design:按照10倍体量设计
+<br><br>Implement:按照3倍体量实现
+<br><br>Deploy:按照1.5倍部署
+## 七、架构师
+<br>架构能力规范、预见性、执行力、技术选型，引领团队的发展具备一定的运维能力(服务上的基本的部署工作可以独立完成)知己知彼、百战不殆。
+
 
 
 
