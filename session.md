@@ -2,7 +2,7 @@
 ### 1、关于session共享问题
 <br>Http协议是无状态的
 <br>html/css/js
-<br>jspservlet / cgi
+<br>jsp/servlet / cgi
 <br><br>cookie
 <br>session
 <br><br>1.基于session复制
