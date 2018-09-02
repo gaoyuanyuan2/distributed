@@ -35,7 +35,7 @@
 <br><br> 在互联网发展初期，流量不是特别大的时候，使用Apache完全满足需求。但是随着互联网的飞速发展，网站的流量以指数及增长，这个时候除了提升硬件性能以外，Apache Http server也开始遇到瓶颈了，于是这个时候Nginx的出现，就是为了解决大型网站高并发设计的，所以对于高并发来说，Nginx有先天的优势。因此Nginx也在慢慢取代Apache Http server。 而Nginx另一个强大的功能就是反向代理，现在大型网站分工详细，哪些服务器处理数据流，哪些处理静态文件，这些谁指挥，一般都是用nginx反向代理到内网服务器，这样就起到了负载均衡分流的作用。再次nginx高度模块化的设计，编写模块相对简单。
 
 ### 4、Rewrite的使用
-<br>1. <br>rewrite的使用
+<br>1. rewrite的使用
 <br>Rewrite通过ngx_http_rewrite_module模块支持url重写、支持if判断，但不支持else
 <br>rewrite功能就是，使用nginx提供的全局变量或自己设置的变量，结合正则表达式和标志位实现url重写以及重定向
 <br>rewrite只能放在server{},location{},if{}中，并且只能对域名后边的除去传递的参数外的字符串起作用
