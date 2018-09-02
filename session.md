@@ -6,7 +6,7 @@
 <br><br>cookie
 <br>session
 <br><br>1.基于session复制
-<br><br>2.基于session统一存储
+<br><br>2.基于session统一存储（Nginx + redis 解决session的一致性）
 <br><br>3.基于cookie机制
 
 ### 2、关于cookie和session的联系
