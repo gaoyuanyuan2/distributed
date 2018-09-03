@@ -19,13 +19,14 @@ http://man7.org/linux/man-pages/man1/top.1.html
 
 <br><br>4.  vmstat
 <br>vmstat 1 每秒看cpu
-<br>http://www.man7.org/linux/man-pages/man8/vmstat.8.html
+<br><br>http://www.man7.org/linux/man-pages/man8/vmstat.8.html
 
 ### 2、Memory
 <br>free -g 看内存g
 <br>free -m 看内存m
 <br>df -h james/ 查看文件大小， -h 人能看懂的
 <br>df -h 查看整个文件系统占有率
+<br><br>http://www.man7.org/linux/man-pages/man1/free.1.html
 
 ### 3、IO
 <br>iostat 1
