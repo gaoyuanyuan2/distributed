@@ -183,17 +183,17 @@ WebSocket 只需要建立一次连接，就可以一直保持连接状态。这�
  <br>链路空闲检测Handler-IdleStateHandler；
  <br>流量整形Handler-ChannelTrafficShapingHandler;
  <br>Base64编解码-Base64Decoder和Base64Encoder。
-<br><br> 步骤6：绑定并启动监听端口。在绑定监听端口之前系统会做一系列的初始化和检测工作，完成之后，会启动监听端口，并将ServerSocketChannel注册到Selector上监听客户端连接，相关代码如下：
-<br><br>步骤7：Selector轮询。由Reactor线程NioEventLoop负责调度和执行Selector轮询操作，选择准备就绪的Channel集合，相关代码如下：
-<br><br>步骤8：当轮询到准备就绪的Channel之后，就由Reactor线程NioEventLoop执行ChannelPipeline的相应方法，最终调度并执行ChannelHandler，代码如下：
-<br><br>步骤9：执行Netty系统ChannelHandler和用户添加定制的ChannelHandler。ChannelPipeline根据网络事件的类型，调度并执行ChannelHandler，相关代码如下所示：
+<br><br> 步骤6：绑定并启动监听端口。在绑定监听端口之前系统会做一系列的初始化和检测工作，完成之后，会启动监听端口，并将ServerSocketChannel注册到Selector上监听客户端连接
+<br><br>步骤7：Selector轮询。由Reactor线程NioEventLoop负责调度和执行Selector轮询操作，选择准备就绪的Channel集合
+<br><br>步骤8：当轮询到准备就绪的Channel之后，就由Reactor线程NioEventLoop执行ChannelPipeline的相应方法，最终调度并执行ChannelHandler
+<br><br>步骤9：执行Netty系统ChannelHandler和用户添加定制的ChannelHandler。ChannelPipeline根据网络事件的类型，调度并执行ChannelHandler
  <br><br>2. 客户端
  <br><br>![客户端时序图](https://github.com/gaoyuanyuan2/distributed/blob/master/img/7.png) 
 <br><br>步骤1：用户线程创建Bootstrap实例
 <br><br>步骤2：创建处理客户端连接，I/O读写Reactor线程组NioEventLoopGroup
 <br><br>步骤3：创建NioSocketChannel
 <br><br>步骤4：创建默认的ChannelHandlerPipeline,用户调度和执行网络事件
-<br><br>步骤5：异步发起TCP连接，如果成功将NioSocketChannel注册到多路复用选择器上,监听读操作位,用于数据读取和消息发送,如果失败，注册连接操作位到多路复用选择 器，等待连接结果
+<br><br>步骤5：异步发起TCP连接，如果成功将NioSocketChannel注册到多路复用选择器上,监听读操作位,用于数据读取和消息发送,如果失败，注册连接操作位到多路复用选择器，等待连接结果
 <br><br>步骤6：注册对应的网络监听状态位到多路复用选择器
 <br><br>步骤8：如果连接成功，设置Future结果，发送连接成功事件，触发ChannelHandlerPipeline执行
 <br><br>步骤9：由ChannelHandlerPipeline调度和执行系统和用户ChannelHandler
