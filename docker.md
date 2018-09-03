@@ -54,7 +54,7 @@
 <br>http://192.168.10.8:15672/
 <br><br>5. zookeeper
 <br>https://hub.docker.com/r/library/zookeeper/tags/
-<br>docker pull registry.docker-cn.com/library/zookeeper
+<br>docker pull registry.docker-cn.com/library/zookeeper 
 <br>docker run --name zk01 -p 2181:2181 --restart always -d 3621823e2780
 
 
