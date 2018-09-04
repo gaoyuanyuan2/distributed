@@ -15,7 +15,7 @@
 <br>最典型的是： zookeeper / etcd
 ### 4、经典的CAP/BASE理论
 <br>1.CAP
-<br>C（一致性 Consistency）: 所有节点上的数据，时刻保持一致
+<br>一致性（Consistency）: 所有节点上的数据，时刻保持一致
 <br>可用性（Availability）：每个请求都能够收到一个响应，无论响应成功或者失败
 <br>分区容错 （Partition-tolerance）：表示系统出现脑裂以后，可能导致某些server与集群中的其他机器失去联系
 <br>CP  /AP
@@ -289,7 +289,7 @@ leader节点主要负责把客户端的事务请求转化成一个事务提议�
 
 ### 17.数据存储
 <br>内存数据和磁盘数据
-<<br>br>zookeeper会定时把数据存储在磁盘上。
+<br><br>zookeeper会定时把数据存储在磁盘上。
 <br><br>DataDir = 存储的是数据的快照
 <br>快照： 存储某一个时刻全量的内存数据内容
 
