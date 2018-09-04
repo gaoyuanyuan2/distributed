@@ -22,7 +22,7 @@
 ### 2、Controller的使用
 <br>@ PathVariable 获取url中的数据
 <br>@ RequestParam  获取请求参数的值
-<br>@GetMapping 组合注解
+<br>@GetMapping 组合注解 
 ### 3、热部署
 ```xml
 <!--热部署-->
