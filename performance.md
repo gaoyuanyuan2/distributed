@@ -44,9 +44,23 @@ http://man7.org/linux/man-pages/man1/top.1.html
 <br><br>5.  能沟通解决问题就不用用技术
 
 ### 6、JVM
-1.  软件层面机器码的翻译
-2.  内存管理
-3.  永久代溢出，Meta Space 自动扩容
-4.  对象生命周期不一样所以分代
-5.  分配担保
-6.  引用计数法，可达性分析法（解决相互引用）
+<br>1.  软件层面机器码的翻译
+<br><br>2.  内存管理
+<br><br>3.  永久代溢出，Meta Space 自动扩容
+<br><br>4.  对象生命周期不一样所以分代
+<br><br>5.  分配担保
+<br><br>
+![JVM](https://github.com/gaoyuanyuan2/distributed/blob/master/img/27.png) 
+
+<br><br>
+![JMM](https://github.com/gaoyuanyuan2/distributed/blob/master/img/28.png) 
+<br><br>
+<br>1.什么样的对象需要被GC
+<br><br>1.  引用计数法
+<br><br>2.  可达性分析GCRoots （解决相互引用无法回收的问题）
+    <br>虚拟机栈中本地变量表引用的对象方法区中
+    <br>类静态变量引用的对象常量引用的对象
+    <br>本地方法栈中JNI引用的对象
+<br><br>3.  不可达是不是就一定会被回收
+    <br>finalize()
+
