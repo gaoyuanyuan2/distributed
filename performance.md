@@ -38,7 +38,7 @@ http://man7.org/linux/man-pages/man1/top.1.html
 ### 5、测试
 <br>1.  秒杀 js过滤99%、Nginx过滤99% 
 <br><br>2.  业务梳理比技术好
-<br><br>3.  %99 都是数据库问题
+<br><br>3.  99% 都是数据库问题
 <br><br>3.  AB局部更新，防压力
 <br><br>4.  push
 <br><br>5.  能沟通解决问题就不用用技术
