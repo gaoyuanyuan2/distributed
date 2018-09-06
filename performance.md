@@ -43,7 +43,7 @@ http://man7.org/linux/man-pages/man1/top.1.html
 <br><br>4.  push
 <br><br>5.  能沟通解决问题就不用用技术
 
-### 6、JVM
+### 6、JVM（JDK>JRE>JVM）
 <br>1.  软件层面机器码的翻译
 <br><br>2.  内存管理
 <br><br>3.  永久代溢出，Meta Space 自动扩容
@@ -73,7 +73,7 @@ http://man7.org/linux/man-pages/man1/top.1.html
 <br>并不是虚拟机运行时数据区的一部分，也不是Java虚拟机规范定义的内存区域,
 <br>但这部分内存也被频繁的使用。NIO引入一种基于通道（Channel）与缓冲区（Buffer）的I/O方式，
 <br>它可以使用Native函数库直接分配堆外内存，提高性能,避免了在Java堆和Native堆中来回复制数据。
-#### 程序计数器
+#### 程序计数器 （多线程切换）
 <br>是一块较小的内存空间，它可以看作是当前线程所执行的字节码的行号指示器。在虚拟机的概念模型里，
 字节码解释器工作时候是通过改变这个计数器的值来选取下一条需要执行的字节码指令、分支、循环、跳转、异常处理、
 线程恢复等基础功能都需要依赖这个计数器来完成。
@@ -91,4 +91,8 @@ http://man7.org/linux/man-pages/man1/top.1.html
     <br>本地方法栈中JNI引用的对象
 <br><br>3.  不可达是不是就一定会被回收
     <br>finalize()
+    
+<br><br>
+![回收算法](https://github.com/gaoyuanyuan2/distributed/blob/master/img/29.png) 
+<br><br>
 
