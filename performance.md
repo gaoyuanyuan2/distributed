@@ -48,7 +48,6 @@ http://man7.org/linux/man-pages/man1/top.1.html
 <br><br>2.  内存管理
 <br><br>3.  永久代溢出，Meta Space 自动扩容
 <br><br>4.  对象生命周期不一样所以分代
-<br><br>5.  分配担保
 
 #### 栈
 <br>1.栈描述的是方法执行的内存模型。每个方法被调用都会创建一一个栈帧(存储局部变量、操作数、方法出口等)
@@ -59,7 +58,7 @@ http://man7.org/linux/man-pages/man1/top.1.html
 #### 堆
 <br>堆的特点如下: 
 <br><br>1.堆用于存储创建好的对象和数组(数组也是对象)
-<br><br>2. JVM只有一个堆，被所有线程共享
+<br><br>2.JVM只有一个堆，被所有线程共享
 <br><br>3.堆是一个不连续的内存空间,分配灵活,速度慢!
 <br><br>GC管理的主要区域，基本采用分代收集算法。
 #### 方法区
@@ -95,4 +94,67 @@ http://man7.org/linux/man-pages/man1/top.1.html
 <br><br>
 ![回收算法](https://github.com/gaoyuanyuan2/distributed/blob/master/img/29.png) 
 <br><br>
+
+#### 参数说明
+<br>-Xms20M  starting
+<br><br>-Xmx     max
+<br><br>-Xmn     new
+
+<br><br>1. 对象分配eden
+<br>-XX:SurvivorRatio=8
+<br>8:1:1
+
+<br><br>TLAB  Thread Local Allaction Buffer
+
+<br><br>2.  对象很大
+	<br>-XX:PretenureSizeThreshold=3145728   3M
+<br><br>3.  长期存活的对象 
+	<br>-XX:MaxTenuringThreshold=15
+<br><br>4.  动态对象年龄判定
+	<br>相同年龄所有对象的大小总和 > Survivor空间的一半
+	
+<br><br>5.  分配担保
+	<br>Minor GC 之前检查 老年代最大可用连续空间是否>新生代所有对象总空间
+
+<br><br>Minor GC  
+<br><br>Major GC
+<br><br>Full  GC
+	
+#### 什么样的对象需要回收？
+#### 引用
+	<br>强  Object object = new Object();
+	<br>软  
+	<br>弱  
+	<br>虚  
+	
+#### 回收
+	<br>1.  方法论
+		<br>标记-清除算法
+		<br>复制回收算法
+		<br>标记-整理算法
+	<br><br>2.  垃圾收集器
+		<br>STW  Stop The World
+		<br>Serial
+		<br>ParNew 
+			<br>-XX:ParallelGCThreads
+		<br><br>Parallel Scavenge （全局）
+			<br>吞吐量 = 运行用户代码时间 / （运行用户代码时间  + 垃圾收集时间）
+			<br>-XX:MaxGCPauseMillis=n
+			<br>-XX:GCTimeRatio=n
+			<br>-XX:UseAdaptiveSizePolicy   GC  Ergonomics
+		<br><br>Serial Old
+			<br>CMS备用预案  Concurrent Mode Failusre时使用
+			<br>标记-整理算法
+		<br><br>Parallel Old
+			<br>标记-整理算法
+		<br><br>CMS
+			<br>标记-清除算法
+			<br>减少回收停顿时间
+			<br>碎片 -XX:CMSInitiationgOccupancyFraction  
+			<br>Concurrent Mode Failure 启用Serial Old
+			
+			<br><br>-XX:+UseCMSCompactAtFullCollection
+			<br>-XX:CMSFullGCsBeforeCompaction 执行多少次不压缩FullGC后 来一次带压缩的 0 表示每次都压
+			<br>-XX:+UseConcMarkSweep
+		<br><br>G1
 
