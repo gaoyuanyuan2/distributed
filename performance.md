@@ -121,40 +121,40 @@ http://man7.org/linux/man-pages/man1/top.1.html
 <br><br>Full  GC
 	
 #### 什么样的对象需要回收？
+
 #### 引用
-	<br>强  Object object = new Object();
-	<br>软  
-	<br>弱  
-	<br>虚  
+<br>强  Object object = new Object();
+<br>软  
+<br>弱  
+<br>虚  
 	
 #### 回收
-	<br>1.  方法论
-		<br>标记-清除算法
-		<br>复制回收算法
-		<br>标记-整理算法
-	<br><br>2.  垃圾收集器
-		<br>STW  Stop The World
-		<br>Serial
-		<br>ParNew 
-			<br>-XX:ParallelGCThreads
-		<br><br>Parallel Scavenge （全局）
-			<br>吞吐量 = 运行用户代码时间 / （运行用户代码时间  + 垃圾收集时间）
-			<br>-XX:MaxGCPauseMillis=n
-			<br>-XX:GCTimeRatio=n
-			<br>-XX:UseAdaptiveSizePolicy   GC  Ergonomics
-		<br><br>Serial Old
-			<br>CMS备用预案  Concurrent Mode Failusre时使用
-			<br>标记-整理算法
-		<br><br>Parallel Old
-			<br>标记-整理算法
-		<br><br>CMS
-			<br>标记-清除算法
-			<br>减少回收停顿时间
-			<br>碎片 -XX:CMSInitiationgOccupancyFraction  
-			<br>Concurrent Mode Failure 启用Serial Old
-			
-			<br><br>-XX:+UseCMSCompactAtFullCollection
-			<br>-XX:CMSFullGCsBeforeCompaction 执行多少次不压缩FullGC后 来一次带压缩的 0 表示每次都压
-			<br>-XX:+UseConcMarkSweep
-		<br><br>G1
+<br>1.  方法论
+    <br>标记-清除算法
+    <br>复制回收算法
+    <br>标记-整理算法
+<br><br>2.  垃圾收集器
+    <br>STW  Stop The World
+    <br>Serial
+    <br>ParNew 
+        <br>-XX:ParallelGCThreads
+    <br><br>Parallel Scavenge （全局）
+        <br>吞吐量 = 运行用户代码时间 / （运行用户代码时间  + 垃圾收集时间）
+        <br>-XX:MaxGCPauseMillis=n
+        <br>-XX:GCTimeRatio=n
+        <br>-XX:UseAdaptiveSizePolicy   GC  Ergonomics
+    <br><br>Serial Old
+        <br>CMS备用预案  Concurrent Mode Failusre时使用
+        <br>标记-整理算法
+    <br><br>Parallel Old
+        <br>标记-整理算法
+    <br><br>CMS
+        <br>标记-清除算法
+        <br>减少回收停顿时间
+        <br>碎片 -XX:CMSInitiationgOccupancyFraction  
+        <br>Concurrent Mode Failure 启用Serial Old
+        <br><br>-XX:+UseCMSCompactAtFullCollection
+        <br>-XX:CMSFullGCsBeforeCompaction 执行多少次不压缩FullGC后 来一次带压缩的 0 表示每次都压
+        <br>-XX:+UseConcMarkSweep
+    <br><br>G1
 
