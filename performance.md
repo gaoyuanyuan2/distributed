@@ -96,15 +96,16 @@ http://man7.org/linux/man-pages/man1/top.1.html
 <br><br>
 
 #### 参数说明
-<br>-Xms20M  starting
-<br><br>-Xmx     max
-<br><br>-Xmn     new
+<br>-Xms20M  starting (堆的起始大小)
+<br><br>-Xmx     max  (堆的最大大小)
+<br><br>-Xmn     new  (堆的新生大小)
 
 <br><br>1. 对象分配eden
 <br>-XX:SurvivorRatio=8
 <br>8:1:1
 
 <br><br>TLAB  Thread Local Allaction Buffer
+(栈上分配，不存在并发，减少并发争夺内存，避免锁)
 
 <br><br>2.  对象很大
 	<br>-XX:PretenureSizeThreshold=3145728   3M
@@ -124,16 +125,16 @@ http://man7.org/linux/man-pages/man1/top.1.html
 
 #### 引用
 <br>强  Object object = new Object();
-<br>软  
+<br>软  (全局变量，优化缓存，value软引用（内存不够，下一次gc会被回收）)
 <br>弱  
-<br>虚  
+<br>虚  (引用会被通知)
 	
 #### 回收
 <br>1.  方法论
     <br>标记-清除算法
-    <br>复制回收算法
+    <br>复制回收算法（新生代）
     <br>标记-整理算法
-<br><br>2.  垃圾收集器
+<br><br>2.  垃圾收集器（对算法的实现）
     <br>STW  Stop The World
     <br>Serial
     <br>ParNew 
@@ -142,9 +143,9 @@ http://man7.org/linux/man-pages/man1/top.1.html
         <br>吞吐量 = 运行用户代码时间 / （运行用户代码时间  + 垃圾收集时间）
         <br>-XX:MaxGCPauseMillis=n
         <br>-XX:GCTimeRatio=n
-        <br>-XX:UseAdaptiveSizePolicy   GC  Ergonomics
+        <br>-XX:UseAdaptiveSizePolicy   GC  Ergonomics （old区长期高于某个比例，会触发能效gc）
     <br><br>Serial Old
-        <br>CMS备用预案  Concurrent Mode Failusre时使用
+        <br>CMS备用预案  Concurrent Mode Failusre时使用（full gc 一直回收不掉，走这个）
         <br>标记-整理算法
     <br><br>Parallel Old
         <br>标记-整理算法
@@ -157,4 +158,50 @@ http://man7.org/linux/man-pages/man1/top.1.html
         <br>-XX:CMSFullGCsBeforeCompaction 执行多少次不压缩FullGC后 来一次带压缩的 0 表示每次都压
         <br>-XX:+UseConcMarkSweep
     <br><br>G1
+<br><br>回收的时间节点
+	
+<br><br>如何查看当前的垃圾回收器
+	<br>-XX:+PrintFlagsFinal
+	<br>-XX:+PrintCommandLineFlags
+	<br>server client
+	<br>MBean
+	
+<br><br>GC日志
+	<br>1.输出日志
+	<br>-XX:+PrintGCTimeStamps 
+	<br>-XX:+PrintGCDetails 
+	<br>-Xloggc:/home/administrator/james/gc.log
+	<br>-XX:+PrintHeapAtGC
+	<br><br>2.日志文件控制
+	<br>-XX:-UseGCLogFileRotation
+	<br>-XX:GCLogFileSize=8K
+	<br><br>3.怎么看
+	
+<br><br>JDK自带的 监控工具
+<br>https://docs.oracle.com/javase/8/docs/technotes/tools/windows/toc.html
+	<br>jmap -heap pid 堆使用情况
+	<br>jstat  -gcutil pid 1000
+	<br>jstack  线程dump 
+	<br>jvisualvm
+	<br>jconsole
+	
+<br><br>MAT
+	<br>http://help.eclipse.org/oxygen/index.jsp?topic=/org.eclipse.mat.ui.help/welcome.html
+	<br>-XX:+HeapDumpOnOutOfMemoryError 
+	<br>-XX:HeapDumpPath=/home/administrator/james/error.hprof
 
+<br><br>怀疑：
+	<br><br>1.看GC日志  126719K->126719K(126720K)
+	<br><br>2.dump
+	<br><br>3.MAT
+		<br>1.占用Retained Heap
+		<br>2.看有没有GC Root指向
+	
+	
+<br><br>VM参数
+<br>http://www.oracle.com/technetwork/java/javase/tech/vmoptions-jsp-140102.html
+
+
+<br><br>安全点
+<br><br>GC优化	
+https://mp.weixin.qq.com/s/t1Cx1n6irN1RWG8HQyHU2w
