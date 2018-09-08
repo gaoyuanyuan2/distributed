@@ -50,11 +50,12 @@ http://man7.org/linux/man-pages/man1/top.1.html
 <br><br>4.  对象生命周期不一样所以分代
 
 #### 栈
-<br>1.栈描述的是方法执行的内存模型。每个方法被调用都会创建一一个栈帧(存储局部变量、操作数、方法出口等)
+<br>1.栈描述的是方法执行的内存模型。每个方法被调用都会创建一个栈帧(存储局部变量、操作数、方法出口等)
 <br><br>2.JVM为每个线程创建一个栈 ,用于存放该线程执行方法的信息(实际参数、局部变量等)
 <br><br>3.栈属于线程私有，不能实现线程间的共享!
 <br><br>4.栈的存储特性是“先进后出,后进先出”
 <br><br>5.栈是由系统自动分配,速度快!栈是一个连续的内存空间! 
+<br><br>  动态链接：方法调用。
 #### 堆
 <br>堆的特点如下: 
 <br><br>1.堆用于存储创建好的对象和数组(数组也是对象)
@@ -196,12 +197,23 @@ http://man7.org/linux/man-pages/man1/top.1.html
 	<br><br>3.MAT
 		<br>1.占用Retained Heap
 		<br>2.看有没有GC Root指向
-	
+	<br><br> deadlock BLOCKED
+<br><br> jps 查看进程号
+<br>kill 进程号	
 	
 <br><br>VM参数
 <br>http://www.oracle.com/technetwork/java/javase/tech/vmoptions-jsp-140102.html
 
 
 <br><br>安全点
-<br><br>GC优化	
+<br><br>GC优化	 
 https://mp.weixin.qq.com/s/t1Cx1n6irN1RWG8HQyHU2w
+
+<br><br>swap  https://blog.csdn.net/u010602357/article/details/54286346?tdsourcetag=s_pctim_aiomsg
+
+<br><br> MAT  http://www.eclipse.org/mat/
+
+<br><br>https://github.com/oldmanpushcart/greys-anatomy
+
+<br><br>https://note.youdao.com/share/?id=80df2676169cb223861869fb2a6017e5&type=note#/
+
