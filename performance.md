@@ -334,7 +334,8 @@ resp.setContentType("text/html ;charset=UTF-8");
 <br><br>4.  连接器里面的线程池是用的哪个线程池
     <br>注意`conf/server.xm1l`文件中的一段注释:
  ```xml
- <Connectpr executor="tomcatThreadPool" port="8080" protocol="HTTP/1.1" connectionTimeout=" 20000" redirectPort="8443"/>
+ <Connector executor="tomcatThreadPool" port="8080" protocol="HTTP/1.1" connectionTimeout=" 20000" 
+ redirectPort="8443"/>
 ```
 ```java
 
