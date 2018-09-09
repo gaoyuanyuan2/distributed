@@ -217,3 +217,118 @@ https://mp.weixin.qq.com/s/t1Cx1n6irN1RWG8HQyHU2w
 
 <br><br>https://note.youdao.com/share/?id=80df2676169cb223861869fb2a6017e5&type=note#/
 
+### 7、Tomcat
+<br>servlet jsp rest wbsocket 
+#### Tomcat架构
+<br>1.  目录结构:介绍Tomcat目录结构,如`config`、`webapps` 等目录的用途,和各种配置文件的使用场景,如`server.xml`  `context.xm1` 以及`catalina.policy` 等
+<br><br>2.  应用上下文:理解Web应用上下文与Servlet之间的关系,掌握上下文路径以及其他相关属性的使用场景连接器:了解阻塞式I/O以及非阻塞式I/O的配置方式,同时掌握请求连接的设置方法
+<br><br>3.  线程池:了解Tomcat线程池的配置方式以及理解它与Java标准实现的关系
+<br><br>4.  Java EE组件: JMX、 JDNI架构以及使用方法。
+
+#### 嵌入式Tomcat
+<br>1.  Maven插件:利用Maven Tomcat插件构建嵌入式Tomcat容器
+<br><br>2.  API编程:通过Tomcat API的角度,深入理解Tomcat运行机制以及组件之间的关系。
+<br><br>3.  Spring Boot :深入探究Spring Boot利用嵌入式Tomcat API如何实现自定义容器
+
+#### 架构图
+<br><br>![整体架构](https://github.com/gaoyuanyuan2/distributed/blob/master/img/30.png) 
+
+#### 目录结构
+
+<br>1.  conf目录
+
+<br><br>`catalina.policy` : Tomcat安全策略文件,控制JVM相关权限,具体可以参考`java.security.Permission`
+
+<br><br>`catalina.properties`: Tomcat Catalina行为控制配置文件,比如Common Classloader
+
+<br><br>`logging.properties`: Tomcat日志配置文件, JDK Logging
+
+<br><br>`server.xml`: Tomcat Server配置文件
+
+       <br> `GlobalNamingResource`:  全局JNDI资源
+
+<br><br>`context.xml`:  全局Context配置文件
+
+<br><br>`tomcat-users.xml` : Tomcat角色配置文件, = ( Realm文件实现方式)
+
+<br><br>`web.xml`  : Servlet标准的web.xml部署文件, Tomcat默认实现部分配置入内:
+
+      <br>`org.apache.catalina.servlets.DefaultServlet`
+
+      <br>`org.apache.jasper.servlet.JspServlet`
+
+<br><br>2.  lib目录
+
+     <br> Tomcat存放公用类库
+
+     <br> `ecj-*.jar` : Eclipse Java编译器
+
+      <br>`jasper.jar` : JSP编译器
+
+<br><br>3.  logs目录
+
+      <br>`localhost.${date}.log` :当Tomcat应用起不来的时候,多看该文件,比如:类冲突
+
+     <br> `NoClassDefFoundError`
+
+     <br>`ClassNotFoundException`
+     
+      <br>`catalina.${date}.log`: 控制台输出，`System.out` 外置
+<br><br>4.  webapps 
+<br><br>5.  work
+#### 部署
+<br>1.  放置在webapps目录
+<br>直接拖过去
+<br><br>2.  修改 `confi/server.xml`
+<br>添加Context元素:
+```xml
+<Context docBase=" ${webAppAbsolutePath}" path="/" reloadable="true" />
+<Context docBase=" ${webAppAbsolutePath}" path="/tomcat" reloadable="true" />
+```
+
+<br><br>熟悉配置元素可以参考`org.apache.catalina.core.StandardContext`  setter方法
+<br>`Container`
+<br>`Context`
+<br><br>该方式不支持动态部署,建议考虑在生产环境使用。
+
+<br><br>3.  独立 `context` xml配置文件
+<br>首先注意 `conf\Catalina\localhost`
+<br>独立context XML配置文件路径: `${TOMCAT_ HOME}/conf/Catalina/localhost+${ContextPath} .xml`
+<br>注意:该方式可以实现热部署、热加载，因此建议在开发环境使用。
+
+<br><br>热部署：`reloadable="true" ``
+```xml
+<Context docBase="E:/Downloads/tomcat/target/ tomcat-1.0- SNAPSHOT" reloadable="true" />
+```
+
+<br><br>4.  改appBase
+```xml
+<Host name="localhost" unpackWARs="true" appBase="webapps" autoDeploy="true ">
+```
+
+#### 连接器
+<br>参考文件: https://tomcat.apache.org/tomcat-7.0-doc/config/http.html
+<br><br>实现类:  `org.apache.catalina.connector.Connector`
+<br><br>
+![Connector Comparison](https://github.com/gaoyuanyuan2/distributed/blob/master/img/31.png) 
+<br><br>
+#### 编码
+<br>默认 ISO-8859-1
+<br><br>解决编码问题
+```xml
+<Connector port="8080"  protocol="HTTP/1.1" connectionTimeout="20000" redirectPort="8443" URIEncoding="UTF-8"/>
+```
+```java
+req. setCharacterEncoding("UTF-8");
+resp.setCharacterEncoding("UTF-8");
+resp.setContentType("text/html ;charset=UTF-8");
+```
+
+#### 问答互动
+<br>1.  如果配置path的话是以文件名为主还是以配置的为主
+<br> 独立context XML配置文件时,设置`path` 属性是无效的。
+<br><br>2.  根独立context XML配置文件路径
+<br>`${TOMCAT_ HOME }/conf/${Engine.name }/${HOST.name }/ROOT.xm1`
+<br><br>3.  如果实现热部署
+<br>调整`<context>` 元素中的属性`reloadable="true"`   
+
