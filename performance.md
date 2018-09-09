@@ -245,7 +245,7 @@ https://mp.weixin.qq.com/s/t1Cx1n6irN1RWG8HQyHU2w
 
 <br><br>`server.xml`: Tomcat Server配置文件
 
-       <br> `GlobalNamingResource`:  全局JNDI资源
+<br> `GlobalNamingResource`:  全局JNDI资源
 
 <br><br>`context.xml`:  全局Context配置文件
 
@@ -253,27 +253,27 @@ https://mp.weixin.qq.com/s/t1Cx1n6irN1RWG8HQyHU2w
 
 <br><br>`web.xml`  : Servlet标准的web.xml部署文件, Tomcat默认实现部分配置入内:
 
-      <br>`org.apache.catalina.servlets.DefaultServlet`
+<br>`org.apache.catalina.servlets.DefaultServlet`
 
-      <br>`org.apache.jasper.servlet.JspServlet`
+ <br>`org.apache.jasper.servlet.JspServlet`
 
 <br><br>2.  lib目录
 
-     <br> Tomcat存放公用类库
+<br> Tomcat存放公用类库
 
-     <br> `ecj-*.jar` : Eclipse Java编译器
+<br> `ecj-*.jar` : Eclipse Java编译器
 
-      <br>`jasper.jar` : JSP编译器
+<br>`jasper.jar` : JSP编译器
 
 <br><br>3.  logs目录
 
-      <br>`localhost.${date}.log` :当Tomcat应用起不来的时候,多看该文件,比如:类冲突
+<br>`localhost.${date}.log` :当Tomcat应用起不来的时候,多看该文件,比如:类冲突
 
-     <br> `NoClassDefFoundError`
+<br> `NoClassDefFoundError`
 
-     <br>`ClassNotFoundException`
+<br>`ClassNotFoundException`
      
-      <br>`catalina.${date}.log`: 控制台输出，`System.out` 外置
+<br>`catalina.${date}.log`: 控制台输出，`System.out` 外置
 <br><br>4.  webapps 
 <br><br>5.  work
 #### 部署
@@ -340,7 +340,7 @@ resp.setContentType("text/html ;charset=UTF-8");
 
 import  org.apache.catalina.Executor;
 
-      public interface Executor extends java.util.concurrent.Executor, Lifecycle{
+public interface Executor extends java.util.concurrent.Executor, Lifecycle{
 
       public String getName();
 
@@ -354,7 +354,7 @@ import  org.apache.catalina.Executor;
 <br><br>5.  INDI能不能稍微说下之前只是在数据源的时候用过,但是不是太理解
 ```xml
 <Context ...
-<Resource name= "mail/Session" auth="Container" type="javax.mail.Session" mail.smtp .host="localhost"/>
+    <Resource name= "mail/Session" auth="Container" type="javax.mail.Session" mail.smtp .host="localhost"/>
 </Context>
 ```
 ```java
