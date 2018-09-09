@@ -374,3 +374,47 @@ public interface Executor extends java.util.concurrent.Executor, Lifecycle{
     message.setSubject(request.getParameter("subject"));
 
 ```
+
+
+#### Web技术栈
+#### Servlet技术栈
+servlet 容器启动spring
+#### Web Flux ( Netty )
+#### BIO NIO
+NIQ并非一定能够提高性能,比如请求数据量较大, NIO性能比BIQ还要差
+NIQ多工，读、写,同步的
+数量多效率高，数据量高反而效率低
+#### Tomcat Maven插件
+#### Tomcat API接口
+#### Spring Boot嵌入式Tomcat 
+
+#### Web自动动装
+1.  API角度分析
+Servlet3.0 + API实现  `ServletContainerInitializer`
+
+2.  容器角度分析
+传统的Web应用,将webapp部署到Servlet容器中。
+嵌入式Web应用,灵活部署,任意指定位置(或者通过复杂的条件判断)
+Tomcat 7是Servlet 3.0的实现，`ServletContainerInitializer`
+Tomcat 8是Servlet 3.1的实现， NIO `HttpServletRequest` 、`HttpServletResponse`
+
+#### jar启动
+`java -jar` 或者`jar` 读取`.jar`
+参考JDKAPI : `java.util.jar.Manifest`
+
+META-INF /MANIFEST.MF , 其中属性Main-Class 就是引导类所在。
+
+####  Tomcat Maven插件
+1.  Tomcat 7 Maven插件
+```xml
+<groupId>org.apache.tomcat.maven</groupId>
+<artifactId>tomcat7-maven-plugin</artifactId
+<version>2.1</version>
+```
+```properties
+Manifest-Version: 1.0
+Main-Class: org.apache.tomcat.maven.runner.Tomcat7RunnerCli
+```
+
+得出Tomcat 7可执行jar引导类是
+`org.apache.tomcat.maven.runner.Tomcat7RunnerCli`
