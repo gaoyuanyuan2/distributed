@@ -331,4 +331,45 @@ resp.setContentType("text/html ;charset=UTF-8");
 <br>`${TOMCAT_ HOME }/conf/${Engine.name }/${HOST.name }/ROOT.xm1`
 <br><br>3.  如果实现热部署
 <br>调整`<context>` 元素中的属性`reloadable="true"`   
+<br><br>4.  连接器里面的线程池是用的哪个线程池
+    <br>注意`conf/server.xm1l`文件中的一段注释:
+ ```xml
+ <Connectpr executor="tomcatThreadPool" port="8080" protocol="HTTP/1.1" connectionTimeout=" 20000" redirectPort="8443"/>
+```
+```java
 
+import  org.apache.catalina.Executor;
+
+      public interface Executor extends java.util.concurrent.Executor, Lifecycle{
+
+      public String getName();
+
+      void execute( Runnable command, long timeout, TimeUnit unit);
+}
+```
+<br>标准实现: `org.apache.catalina.org.StandardThreadExecutor`将连接处理交付给Java标准线程池:
+<br>`org.apache.tomcat.util.threads.ThreadPoolExecutor`
+<br><br>后面版本用队列，生产者，消费者。
+
+<br><br>5.  INDI能不能稍微说下之前只是在数据源的时候用过,但是不是太理解
+```xml
+<Context ...
+<Resource name= "mail/Session" auth="Container" type="javax.mail.Session" mail.smtp .host="localhost"/>
+</Context>
+```
+```java
+    Context  initCtx =  new InitialContext();
+    
+    Context envCtx =  (Context)initCtx.lookup("java:comp/env");
+    Session  session = (Session) envCtx.lookup( mail/Session");
+    
+    Message message = new MimeMessage(session) ;
+    
+    message.setFrom( newInternetAddress ( request. getParameter("from" )));
+    InternetAddress to[] = new InternetAddress [1];
+    
+    to[0] = new InternetAddress(request.getParameter("to"));
+    message.setRecipients(Message RecipientType.To, to);
+    message.setSubject(request.getParameter("subject"));
+
+```
