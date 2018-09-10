@@ -504,7 +504,7 @@ S<br>ervlet或者Filter 在一个容器中 ,是一般情况在一个Web App中�
 </dependency>
 ```
 <br><br>JSP ->翻译.jsp或者.jspx文件成.java ->编译.class
-<br><br>总结, `conf/web.xml`  作为Servlet应用的默认`web.xml` ,实际_上,应用程序存在两份`web.xm1` ,其中包括应用的`web.xml`,最终将两者合并。
+<br><br>总结, `conf/web.xml`  作为Servlet应用的默认`web.xml` ,实际上,应用程序存在两份`web.xm1` ,其中包括应用的`web.xml`,最终将两者合并。
 <br><br>JspServlet如果development参数为true ,它会自定检查文件是否修改,如果修改重新翻译,再编译(加载和执行)。言外之意, JspServlet开发模式可能会导致内存溢出。卸载Class不及时所知道Perm区域不够。
 #### 程序调优
 #### JVM参数调优
