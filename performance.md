@@ -378,34 +378,34 @@ public interface Executor extends java.util.concurrent.Executor, Lifecycle{
 
 #### Web技术栈
 #### Servlet技术栈
-servlet 容器启动spring
+<br>servlet 容器启动spring
 #### Web Flux ( Netty )
 #### BIO NIO
-NIQ并非一定能够提高性能,比如请求数据量较大, NIO性能比BIQ还要差
-NIQ多工，读、写,同步的
-数量多效率高，数据量高反而效率低
+<br>NIQ并非一定能够提高性能,比如请求数据量较大, NIO性能比BIQ还要差
+<br>NIQ多工，读、写,同步的
+<br>数量多效率高，数据量高反而效率低
 #### Tomcat Maven插件
 #### Tomcat API接口
 #### Spring Boot嵌入式Tomcat 
 
 #### Web自动动装
-1.  API角度分析
-Servlet3.0 + API实现  `ServletContainerInitializer`
+<br>1.  API角度分析
+<br>Servlet3.0 + API实现  `ServletContainerInitializer`
 
-2.  容器角度分析
-传统的Web应用,将webapp部署到Servlet容器中。
-嵌入式Web应用,灵活部署,任意指定位置(或者通过复杂的条件判断)
-Tomcat 7是Servlet 3.0的实现，`ServletContainerInitializer`
-Tomcat 8是Servlet 3.1的实现， NIO `HttpServletRequest` 、`HttpServletResponse`
+<br><br>2.  容器角度分析
+<br>传统的Web应用,将webapp部署到Servlet容器中。
+<br>嵌入式Web应用,灵活部署,任意指定位置(或者通过复杂的条件判断)
+<br>Tomcat 7是Servlet 3.0的实现，`ServletContainerInitializer`
+<br>Tomcat 8是Servlet 3.1的实现， NIO `HttpServletRequest` 、`HttpServletResponse`
 
 #### jar启动
-`java -jar` 或者`jar` 读取`.jar`
-参考JDKAPI : `java.util.jar.Manifest`
+<br>`java -jar` 或者`jar` 读取`.jar`
+<br>参考JDKAPI : `java.util.jar.Manifest`
 
-META-INF /MANIFEST.MF , 其中属性Main-Class 就是引导类所在。
+<br><br>META-INF /MANIFEST.MF , 其中属性Main-Class 就是引导类所在。
 
 ####  Tomcat Maven插件
-1.  Tomcat 7 Maven插件
+<br>1.  Tomcat 7 Maven插件
 ```xml
 <groupId>org.apache.tomcat.maven</groupId>
 <artifactId>tomcat7-maven-plugin</artifactId
@@ -418,3 +418,94 @@ Main-Class: org.apache.tomcat.maven.runner.Tomcat7RunnerCli
 
 得出Tomcat 7可执行jar引导类是
 `org.apache.tomcat.maven.runner.Tomcat7RunnerCli`
+
+#### Tomcat API接口
+#### Embedded
+#### TomcatService
+#### Engine
+#### Host
+#### ConnectorContext
+<br>1.  创建Tomcat实例
+<br>`org.apache.catalina.startup.Tomcat`
+<br>Maven坐标: `org. apache. tomcat . embed : tomcat-embed-core:7.0.37`
+<br><br>2.  设置Host对象
+```java
+Host  host  =  tomcat.getHost() ;
+host.setName("localhost");
+host.setAppBase("webapps");|
+```
+<br><br>3.  设置Classpath
+<br>Classpath读取资源:配置、类文件
+<br>conf/web. xm1作为配置文件,并且放置Classpath目录下(绝对路径)
+<br><br>4.  设置DemoServlet
+```java
+//添加DemoServlet到Tomcat容器
+Wrapper wrapper = tomcat.addServlet(contextPath, "DemoServlet", newDemoServlet());
+wrapper.addMapping("/demo");
+```
+#### Spring Boot 嵌入式 Tomcat
+#### EmbeddedServletContainerCustomizer
+#### ConfigurableEmbeddedServletContainer
+#### EmbeddedServletContainer
+#### TomcatContextCustomizerTomcatConnectorCustomizer
+
+#### Tomcat配置调优
+<br>1.  减少配置优化
+<br><br>场景一:假设当前应REST应用(微服务)
+<br><br>分析:它不需要静态资源, Tomcat容器静态和动态
+<br>静态处理:`DefaultServlet`
+<br>优化方案:通过移除`conf/web.xm1`中`org.apache.catalina.servlets.DefaultServlet`
+<br>动态: `JspServlet`
+<br>优化方案:通过移除`conf/web.xm1`中`org.apache.jasper.servlet.JspServlet`
+<br>`DispatcherServlet` : Spring Web MVC应用Servlet 
+<br>`jspServlet` :编译并且执行lsp页面
+<br>`DefaultServlet` : Tomcat处理静态资源的Servlet
+<br><br>2.  移除welcome-file-list
+```xml
+<welcome-file-list>
+    <welcome-file>index.html</welcome-file>
+    <welcome-file> index.htm</welcome-file>
+    <welcome-file> index.jsp</welcome-file>
+</welcome-file-list>
+```
+<br><br>3.  移除Session设置
+<br>如果程序是REST JSON Content-Type或者MIME Type : application/json。移除Session设置
+<br>对于微服务/REST应用,不需要Session ,因为不需要状态。Spring Security QAuth 2.0、JWT
+<br>Session通过jsessionld进行用户跟踪, HTTP无状态,需要一一个ID与当前用户会话联系。Spring Session HttpSession jessionld作为Redis ,实现多个机器登录,用户会话不丢失。
+<br>存储方法: Cookie、URL 重写、  SSL。
+<br><br>4.  移除Valve 
+<br>Valve 类似于Filter
+<br>移除AccessLogValve, 可以通过Nginx的Access Log替代，Valve |实现都需要消耗Java应用的计算时间。
+
+<br><br>场景二:需要JSP的情况
+
+<br><br>分析: JspServlet无法，了解JspServlet处理原理
+<br><br>Servlet周期:
+<br>实例化: Servlet和Filter实现类必须包含默认构造器。反射的方式进行实例化。
+<br>初始化: Servlet容器调用Servlet或Filter init()方法
+<br>销毁: Servlet容器关闭时, Servlet或者Filter destroy()方法被调用
+S<br>ervlet或者Filter 在一个容器中 ,是一般情况在一个Web App中是一个单例 ,不排除应用定义多个。
+<br>JspServlet相关的优化ServletConfig 
+<br><br>参数:
+<br><br>需要编译
+<br>compiler
+<br>modificationTestInterval
+<br><br>不需要编译
+<br>development 设置false
+<br>development = false , 那么,这些JSP要如何编译。
+<br><br>优化方法:
+<br>Ant Task执行JSP编译
+<br>Maven插件: `org.codehaus.mojo:jspc-maven-plugin`
+```xml
+<dependency>
+    <groupId>org.apache.sling</ groupId>
+    <artifactId>jspc-maven-plugin</artifactId>
+    <version>2.1.0</version>
+</dependency>
+```
+<br><br>JSP ->翻译.jsp或者.jspx文件成.java ->编译.class
+<br><br>总结, `conf/web.xml`  作为Servlet应用的默认`web.xml` ,实际_上,应用程序存在两份`web.xm1` ,其中包括应用的`web.xml`,最终将两者合并。
+<br><br>JspServlet如果development参数为true ,它会自定检查文件是否修改,如果修改重新翻译,再编译(加载和执行)。言外之意, JspServlet开发模式可能会导致内存溢出。卸载Class不及时所知道Perm区域不够。
+#### 程序调优
+#### JVM参数调优
+
