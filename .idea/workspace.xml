@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="1a69c435-9430-420c-b841-ddb13cb8216f" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/img/28.png" afterPath="$PROJECT_DIR$/img/28.png" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -18,9 +17,24 @@
         <entry file="file://$PROJECT_DIR$/performance.md">
           <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
             <state split_layout="FIRST">
-              <first_editor relative-caret-position="557">
-                <caret line="154" column="48" lean-forward="false" selection-start-line="154" selection-start-column="48" selection-end-line="154" selection-end-column="48" />
+              <first_editor relative-caret-position="581">
+                <caret line="158" column="14" lean-forward="false" selection-start-line="158" selection-start-column="14" selection-end-line="158" selection-end-column="14" />
                 <folding />
+              </first_editor>
+              <second_editor />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="redis.md" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/redis.md">
+          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+            <state split_layout="FIRST">
+              <first_editor relative-caret-position="7636">
+                <caret line="332" column="8" lean-forward="false" selection-start-line="332" selection-start-column="8" selection-end-line="332" selection-end-column="8" />
+                <folding>
+                  <marker date="1535972363391" expanded="true" signature="7798:7834" ph="delete from lock... " />
+                </folding>
               </first_editor>
               <second_editor />
             </state>
@@ -31,7 +45,7 @@
         <entry file="file://$PROJECT_DIR$/dubbo.md">
           <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
             <state split_layout="SPLIT">
-              <first_editor relative-caret-position="-69">
+              <first_editor relative-caret-position="690">
                 <caret line="30" column="49" lean-forward="false" selection-start-line="30" selection-start-column="49" selection-end-line="30" selection-end-column="49" />
                 <folding />
               </first_editor>
@@ -101,9 +115,9 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="105" />
-    <option name="y" value="599" />
-    <option name="width" value="1487" />
+    <option name="x" value="482" />
+    <option name="y" value="279" />
+    <option name="width" value="1911" />
     <option name="height" value="1407" />
   </component>
   <component name="ProjectLevelVcsManager">
@@ -124,10 +138,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="AndroidView" />
       <pane id="Scratches" />
       <pane id="PackagesPane" />
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -139,6 +151,8 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
+      <pane id="AndroidView" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -282,14 +296,8 @@
       <workItem from="1536055121966" duration="654000" />
       <workItem from="1536111518537" duration="4303000" />
       <workItem from="1536227685696" duration="1812000" />
-      <workItem from="1536283562125" duration="2732000" />
-    </task>
-    <task id="LOCAL-00012" summary="mq">
-      <created>1535351075386</created>
-      <option name="number" value="00012" />
-      <option name="presentableId" value="LOCAL-00012" />
-      <option name="project" value="LOCAL" />
-      <updated>1535351075386</updated>
+      <workItem from="1536283562125" duration="4233000" />
+      <workItem from="1536541931202" duration="653000" />
     </task>
     <task id="LOCAL-00013" summary="mq">
       <created>1535351416141</created>
@@ -627,11 +635,18 @@
       <option name="project" value="LOCAL" />
       <updated>1536286469811</updated>
     </task>
-    <option name="localTasksCounter" value="61" />
+    <task id="LOCAL-00061" summary="性能优化-JVM">
+      <created>1536286621377</created>
+      <option name="number" value="00061" />
+      <option name="presentableId" value="LOCAL-00061" />
+      <option name="project" value="LOCAL" />
+      <updated>1536286621377</updated>
+    </task>
+    <option name="localTasksCounter" value="62" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="87042000" />
+    <option name="totallyTimeSpent" value="89196000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="2576" height="1416" extended-state="6" />
@@ -648,7 +663,7 @@
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2027027" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.20429252" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -676,7 +691,6 @@
     <MESSAGE value="ZK" />
     <MESSAGE value="请求头" />
     <MESSAGE value="kafka" />
-    <MESSAGE value="." />
     <MESSAGE value="springcloud" />
     <MESSAGE value="架构" />
     <MESSAGE value="Redis" />
@@ -691,7 +705,9 @@
     <MESSAGE value="springboot" />
     <MESSAGE value="zookeeper" />
     <MESSAGE value="JVM" />
-    <option name="LAST_COMMIT_MESSAGE" value="JVM" />
+    <MESSAGE value="性能优化-JVM" />
+    <MESSAGE value="." />
+    <option name="LAST_COMMIT_MESSAGE" value="." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -1098,16 +1114,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/redis.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="FIRST">
-          <first_editor relative-caret-position="7636">
-            <caret line="332" column="8" lean-forward="false" selection-start-line="332" selection-start-column="8" selection-end-line="332" selection-end-column="8" />
-          </first_editor>
-          <second_editor />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/table.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
@@ -1141,19 +1147,8 @@
     <entry file="file://$PROJECT_DIR$/dubbo.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
-          <first_editor relative-caret-position="-69">
+          <first_editor relative-caret-position="690">
             <caret line="30" column="49" lean-forward="false" selection-start-line="30" selection-start-column="49" selection-end-line="30" selection-end-column="49" />
-            <folding />
-          </first_editor>
-          <second_editor />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/performance.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="FIRST">
-          <first_editor relative-caret-position="557">
-            <caret line="154" column="48" lean-forward="false" selection-start-line="154" selection-start-column="48" selection-end-line="154" selection-end-column="48" />
             <folding />
           </first_editor>
           <second_editor />
@@ -1163,6 +1158,30 @@
     <entry file="file://$PROJECT_DIR$/img/28.png">
       <provider selected="true" editor-type-id="images">
         <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/redis.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="FIRST">
+          <first_editor relative-caret-position="7636">
+            <caret line="332" column="8" lean-forward="false" selection-start-line="332" selection-start-column="8" selection-end-line="332" selection-end-column="8" />
+            <folding>
+              <marker date="1535972363391" expanded="true" signature="7798:7834" ph="delete from lock... " />
+            </folding>
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/performance.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="FIRST">
+          <first_editor relative-caret-position="581">
+            <caret line="158" column="14" lean-forward="false" selection-start-line="158" selection-start-column="14" selection-end-line="158" selection-end-column="14" />
+            <folding />
+          </first_editor>
+          <second_editor />
+        </state>
       </provider>
     </entry>
   </component>
