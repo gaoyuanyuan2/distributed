@@ -408,7 +408,7 @@ public interface Executor extends java.util.concurrent.Executor, Lifecycle{
 <br>1.  Tomcat 7 Maven插件
 ```xml
 <groupId>org.apache.tomcat.maven</groupId>
-<artifactId>tomcat7-maven-plugin</artifactId
+<artifactId>tomcat7-maven-plugin</artifactId>
 <version>2.1</version>
 ```
 ```properties
