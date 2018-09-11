@@ -296,7 +296,7 @@ https://mp.weixin.qq.com/s/t1Cx1n6irN1RWG8HQyHU2w
 <br>独立context XML配置文件路径: `${TOMCAT_ HOME}/conf/Catalina/localhost+${ContextPath} .xml`
 <br>注意:该方式可以实现热部署、热加载，因此建议在开发环境使用。
 
-<br><br>热部署：`reloadable="true" ``
+<br><br>热部署：`reloadable="true" `
 ```xml
 <Context docBase="E:/Downloads/tomcat/target/ tomcat-1.0- SNAPSHOT" reloadable="true" />
 ```
@@ -506,6 +506,119 @@ S<br>ervlet或者Filter 在一个容器中 ,是一般情况在一个Web App中�
 <br><br>JSP ->翻译.jsp或者.jspx文件成.java ->编译.class
 <br><br>总结, `conf/web.xml`  作为Servlet应用的默认`web.xml` ,实际上,应用程序存在两份`web.xm1` ,其中包括应用的`web.xml`,最终将两者合并。
 <br><br>JspServlet如果development参数为true ,它会自定检查文件是否修改,如果修改重新翻译,再编译(加载和执行)。言外之意, JspServlet开发模式可能会导致内存溢出。卸载Class不及时所知道Perm区域不够。
+
+<br><br>JspServlet如果development参数为true ,它会自定检查文件是否修改,如果修改重新翻译,再编译(加载和执行)。言外之意, JspServlet开发模式可能会导致内存溢出。卸载Class不及时会导致Perm区域不够。
+<br>ParentClassLoader -> 1.class 2.class 3.class
+<br>ChildClassLoader -> 4.class , 5.class
+<br>ChildClassloaderload    1-5.class
+<br>1.class需要卸载,需要将ParentClassLoader设置为null ,当Classloader被GC后, 1-3 class全部会被卸载。
+<br>1.class它是文件,文件被JVM加载, 二进制> Verify->解析
+
+#### 修改连接池数量
+<br>通过server.xml
+```xml
+ <Connector executor="tomcatThreadPool"
+               port="8080" protocol="HTTP/1.1"
+               connectionTimeout="20000"
+               redirectPort="8443" />
+<Executor name="tomcatThreadPool" namePrefix="catalina-exec-"
+                       maxThreads="150" minSpareThreads="4"/>
+```
+
+<br>通过程序来理解，`Executor`实际的Tomcat 接口:
+<br>`org.apache.catalina.Executor`
+<br>扩展:J.U.C标准接口`java.util.concurrent.Executor`
+<br>实现: `org.apache.catalina.core.StandardThreadExecutor`
+<br>线程数量
+```java
+     /**
+     * max number of threads
+     */
+    protected int maxThreads = 200;
+
+    /**
+     * min number of threads
+     */
+    protected int minSpareThreads = 25;
+    
+    public void setMaxThreads(int maxThreads) {
+        this.maxThreads = maxThreads;
+        if (executor != null) {
+            executor.setMaximumPoolSize(maxThreads);
+        }
+    }
+    
+    public void setMinSpareThreads(int minSpareThreads) {
+        this.minSpareThreads = minSpareThreads;
+        if (executor != null) {
+            executor.setCorePoolSize(minSpareThreads);
+        }
+    }
+```
+<br>线程池:
+<br>`org.apache.tomcat.util.threads.ThreadPoolExecutor` (`java.util.concurrent.ThreadPoolExecutor`)
+
+<br><br>总结: Tomcat 10连接器使用的线程池实际标准的Java线程池的扩展,最大线程数量和最小线程数量实际上分别是MaximumPoolSize和CorePoolSize. 
+
+#### 通过JMX
+<br>观察StandardThreadExecutor是否存在调整线程池数量的API
+<br><br>评估一些参考:
+<br><br>1.正确率
+<br><br>2. Load ( CPU-> JVM GC )
+<br><br>3. TPS/QPS(越大越好)
+<br><br>4. CPU密集型(加密/解密、算法)
+<br><br>5. 1/O密集型,网络、文件读写等
+
+
+#### 问题:到底设置多少的线程数量才是最优?
+
+<br><br>首先,评估整体的情况量,假设100W QPS ,有机器数量100台,每台支撑1w QPS。
+
+<br><br>第二,进行压力测试，需要一些测试样本, JMeter来实现,假设一次请求需要RT 10ms，1秒可以同时完成100个请求。10000/ 100= 100线程。
+
+<br>确保, Load太高。减少Full GC, GC取决于JVM堆的大小。  执行一次操作需要5MB内存，50GB。
+
+<br>20 GB内存,必然执行GC。要不调优程序,最好对象存储外化,比如Redis ,同时又需要评估Redis网络开销。又要评估网卡的接受能力。
+
+<br><br>第三,常规性压测,由于业务变更,会导致底层性能变化。
+
+
+<br><br>默认算法
+```jshelllanguage
+java -jar -server -XX:-PrintGCDetails -Xloggc: ./1g/gc.1og -XX: +HeapDumpOnOutOfMemoryError -Xms1g -Xmx1g -XX:MaxGCPauseMillis=250 -Djava.awt.headless=true stress-test-demo-0.0.1-SNAPSHOT.jar
+```
+
+<br><br>G1算法
+```jshelllanguage
+java -jar -server -XX:-PrintGCDetails -Xloggc: ./1g/g1-gc.1og -
+XX:+He apDumpopoutOfMemoryError -Xms1g -Xmx1g -XX:+UseG1GC -XX: +UseNUMA -
+XX:MaxGCPauseMillis=250 -Djava . awt . headless=true stress-test-demo-e .0.1-SNAPSHOT.jar
+```
+
+<br>-server 主要提高吞吐量,在有限的资源,实现最大化利用
+<br>-client 主要提高响应时间,主要是提高用户
+
+<br><br>SpringBoot
+
+<br>`application. properties`
+
+```properties
+
+# <Executor name="tomcatThreadPool" namePrefix="catalina-exec-"maxThreads="9" minSpareThreads="9"/>
+
+#线程池大小
+server.tomcat.maxThreads = 99
+
+server.tomcat.minSpareThreads = 9
+
+#取消Tomcat AccessLogValve
+
+server.tomcat.accesslog.enabled = false
+
+#取消JspServlet
+server.jspServlet.registered=false
+```
+
 #### 程序调优
 #### JVM参数调优
 
