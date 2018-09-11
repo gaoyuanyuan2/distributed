@@ -279,7 +279,7 @@ https://mp.weixin.qq.com/s/t1Cx1n6irN1RWG8HQyHU2w
 #### 部署
 <br>1.  放置在webapps目录
 <br>直接拖过去
-<br><br>2.  修改 `confi/server.xml`
+<br><br>2.  修改 `conf/server.xml`
 <br>添加Context元素:
 ```xml
 <Context docBase=" ${webAppAbsolutePath}" path="/" reloadable="true" />
@@ -293,12 +293,12 @@ https://mp.weixin.qq.com/s/t1Cx1n6irN1RWG8HQyHU2w
 
 <br><br>3.  独立 `context` xml配置文件
 <br>首先注意 `conf\Catalina\localhost`
-<br>独立context XML配置文件路径: `${TOMCAT_ HOME}/conf/Catalina/localhost+${ContextPath} .xml`
+<br>独立context XML配置文件路径: `${TOMCAT_ HOME}/conf/Catalina/localhost+${ContextPath}.xml`
 <br>注意:该方式可以实现热部署、热加载，因此建议在开发环境使用。
 
 <br><br>热部署：`reloadable="true" `
 ```xml
-<Context docBase="E:/Downloads/tomcat/target/ tomcat-1.0- SNAPSHOT" reloadable="true" />
+<Context docBase="E:/Downloads/tomcat/target/tomcat-1.0-SNAPSHOT" reloadable="true" />
 ```
 
 <br><br>4.  改appBase
@@ -319,7 +319,7 @@ https://mp.weixin.qq.com/s/t1Cx1n6irN1RWG8HQyHU2w
 <Connector port="8080"  protocol="HTTP/1.1" connectionTimeout="20000" redirectPort="8443" URIEncoding="UTF-8"/>
 ```
 ```java
-req. setCharacterEncoding("UTF-8");
+req.setCharacterEncoding("UTF-8");
 resp.setCharacterEncoding("UTF-8");
 resp.setContentType("text/html ;charset=UTF-8");
 ```
@@ -585,7 +585,8 @@ S<br>ervlet或者Filter 在一个容器中 ,是一般情况在一个Web App中�
 
 <br><br>默认算法
 ```jshelllanguage
-java -jar -server -XX:-PrintGCDetails -Xloggc: ./1g/gc.1og -XX: +HeapDumpOnOutOfMemoryError -Xms1g -Xmx1g -XX:MaxGCPauseMillis=250 -Djava.awt.headless=true stress-test-demo-0.0.1-SNAPSHOT.jar
+java -jar -server -XX:-PrintGCDetails -Xloggc: ./1g/gc.1og -XX: +HeapDumpOnOutOfMemoryError 
+-Xms1g -Xmx1g -XX:MaxGCPauseMillis=250 -Djava.awt.headless=true stress-test-demo-0.0.1-SNAPSHOT.jar
 ```
 
 <br><br>G1算法
@@ -604,7 +605,7 @@ XX:MaxGCPauseMillis=250 -Djava . awt . headless=true stress-test-demo-e .0.1-SNA
 
 ```properties
 
-# <Executor name="tomcatThreadPool" namePrefix="catalina-exec-"maxThreads="9" minSpareThreads="9"/>
+#<Executor name="tomcatThreadPool" namePrefix="catalina-exec-"maxThreads="9" minSpareThreads="9"/>
 
 #线程池大小
 server.tomcat.maxThreads = 99
