@@ -668,6 +668,7 @@ server.jspServlet.registered=false
 <br><br>
 ![](https://github.com/gaoyuanyuan2/distributed/blob/master/img/38.png) 
 <br><br>
+<br>B+ Tree 自增id做索引效率更高
 <br><br>3. 锁
 <br>行锁
 <br><br>
@@ -678,6 +679,19 @@ server.jspServlet.registered=false
 ![](https://github.com/gaoyuanyuan2/distributed/blob/master/img/41.png) 
 <br><br>
 ![](https://github.com/gaoyuanyuan2/distributed/blob/master/img/42.png) 
+<br><br>
+<br><br>无索引自动升级为表锁
+<br><br>死锁
+```sql
+-- 释放锁
+unlock tables 
+-- 写锁
+lock table user write
+-- 间隙锁(范围锁)
+update user set name = 'xxx' where id > 1 and id < 4 
+```
+<br><br>
+![](https://github.com/gaoyuanyuan2/distributed/blob/master/img/46.png) 
 <br><br>
 <br><br>4. 优化
 <br><br>
