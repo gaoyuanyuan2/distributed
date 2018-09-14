@@ -669,6 +669,14 @@ server.jspServlet.registered=false
 ![](https://github.com/gaoyuanyuan2/distributed/blob/master/img/38.png) 
 <br><br>
 <br>B+ Tree 自增id做索引效率更高
+<br><br>索引有序，排序效率高
+<br><br>查看缓存 
+```sql
+show variables like '%sort%'
+```
+<br><br>group by 基于排序（选排序再分组）
+<br><br>distinct 基于group by
+
 <br><br>3. 锁
 <br>行锁
 <br><br>
