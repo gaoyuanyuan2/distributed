@@ -31,6 +31,8 @@ http://man7.org/linux/man-pages/man1/top.1.html
 ### 3、IO
 <br>iostat 1
 <br>iostat -dx 1
+<br>%util io cup占用多少百分比做io操作
+<br><br>http://www.man7.org/linux/man-pages/man1/iostat.1.html
 
 ### 4、NetWork
 <br>nicstat 查看网卡
@@ -185,7 +187,7 @@ http://man7.org/linux/man-pages/man1/top.1.html
 	<br>jstack  线程dump 
 	<br>jvisualvm
 	<br>jconsole
-	
+	<br>gc.log
 <br><br>MAT
 	<br>http://help.eclipse.org/oxygen/index.jsp?topic=/org.eclipse.mat.ui.help/welcome.html
 	<br>-XX:+HeapDumpOnOutOfMemoryError 
