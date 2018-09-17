@@ -462,6 +462,7 @@ wrapper.addMapping("/demo");
 <br>`DispatcherServlet` : Spring Web MVC应用Servlet 
 <br>`jspServlet` :编译并且执行lsp页面
 <br>`DefaultServlet` : Tomcat处理静态资源的Servlet
+<br>Last-Modified:如果服务器端的资源没有变化，则自动返回 HTTP 304 （Not Changed.）状态码，内容为空，这样就节省了传输数据量
 <br><br>2.  移除welcome-file-list
 ```xml
 <welcome-file-list>
