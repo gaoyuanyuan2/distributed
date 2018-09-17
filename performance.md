@@ -200,7 +200,14 @@ http://man7.org/linux/man-pages/man1/top.1.html
 	<br><br> deadlock BLOCKED
 <br><br> jps 查看进程号
 <br>kill 进程号	
-	
+
+<br><br>
+![JVM](https://github.com/gaoyuanyuan2/distributed/blob/master/img/47.jpg) 
+
+<br><br>
+![JMM](https://github.com/gaoyuanyuan2/distributed/blob/master/img/48.jpg) 
+<br><br>
+
 <br><br>VM参数
 <br>http://www.oracle.com/technetwork/java/javase/tech/vmoptions-jsp-140102.html
 

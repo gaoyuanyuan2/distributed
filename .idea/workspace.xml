@@ -1,21 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="1a69c435-9430-420c-b841-ddb13cb8216f" name="Default" comment="tomcat">
-      <change beforePath="" afterPath="$PROJECT_DIR$/img/32.png" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/img/33.png" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/img/34.png" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/img/35.png" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/img/36.png" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/img/37.png" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/img/38.png" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/img/39.png" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/img/40.png" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/img/41.png" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/img/42.png" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/img/43.png" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/img/44.png" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/img/45.png" />
+    <list default="true" id="1a69c435-9430-420c-b841-ddb13cb8216f" name="Default" comment="">
+      <change beforePath="" afterPath="$PROJECT_DIR$/img/47.jpg" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/img/48.jpg" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change beforePath="$PROJECT_DIR$/performance.md" afterPath="$PROJECT_DIR$/performance.md" />
     </list>
@@ -32,20 +20,28 @@
         <entry file="file://$PROJECT_DIR$/performance.md">
           <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
             <state split_layout="FIRST">
-              <first_editor relative-caret-position="795">
-                <caret line="744" column="72" lean-forward="true" selection-start-line="744" selection-start-column="72" selection-end-line="744" selection-end-column="72" />
+              <first_editor relative-caret-position="392">
+                <caret line="206" column="8" lean-forward="true" selection-start-line="206" selection-start-column="8" selection-end-line="206" selection-end-column="8" />
                 <folding>
-                  <marker date="1536825571649" expanded="true" signature="8767:8790" ph="..." />
-                  <marker date="1536825571649" expanded="true" signature="12245:12398" ph="..." />
-                  <marker date="1536825571649" expanded="true" signature="13406:13537" ph="..." />
-                  <marker date="1536825571649" expanded="true" signature="14273:14398" ph="..." />
-                  <marker date="1536825571649" expanded="true" signature="14461:14522" ph="..." />
-                  <marker date="1536825571649" expanded="true" signature="14728:14768" ph="/.../" />
-                  <marker date="1536825571649" expanded="true" signature="21651:21707" ph="select nick_... user" />
+                  <marker date="1537168251201" expanded="true" signature="8947:8970" ph="..." />
+                  <marker date="1537168251201" expanded="true" signature="12425:12578" ph="..." />
+                  <marker date="1537168251201" expanded="true" signature="13586:13717" ph="..." />
+                  <marker date="1537168251201" expanded="true" signature="14453:14578" ph="..." />
+                  <marker date="1537168251201" expanded="true" signature="14641:14702" ph="..." />
+                  <marker date="1537168251201" expanded="true" signature="14908:14948" ph="/.../" />
+                  <marker date="1537168251201" expanded="true" signature="18924:18976" ph="update user... " />
+                  <marker date="1537168251201" expanded="true" signature="22235:22291" ph="select nick_... user" />
                 </folding>
               </first_editor>
               <second_editor />
             </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="46.png" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/img/46.png">
+          <provider selected="true" editor-type-id="images">
+            <state />
           </provider>
         </entry>
       </file>
@@ -68,8 +64,8 @@
         <entry file="file://$PROJECT_DIR$/dubbo.md">
           <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
             <state split_layout="SPLIT">
-              <first_editor relative-caret-position="312">
-                <caret line="38" column="51" lean-forward="true" selection-start-line="38" selection-start-column="51" selection-end-line="38" selection-end-column="51" />
+              <first_editor relative-caret-position="874">
+                <caret line="38" column="51" lean-forward="false" selection-start-line="38" selection-start-column="51" selection-end-line="38" selection-end-column="51" />
                 <folding />
               </first_editor>
               <second_editor />
@@ -121,6 +117,7 @@
       <find>尋致</find>
       <find>熔断</find>
       <find>分布式锁</find>
+      <find>看GC日志</find>
     </findStrings>
     <replaceStrings>
       <replace>务</replace>
@@ -168,10 +165,10 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="360" />
-    <option name="y" value="731" />
-    <option name="width" value="1847" />
-    <option name="height" value="1000" />
+    <option name="x" value="482" />
+    <option name="y" value="279" />
+    <option name="width" value="1911" />
+    <option name="height" value="1407" />
   </component>
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="2" id="Add" />
@@ -198,28 +195,18 @@
               <item name="distributed" type="b2602c69:ProjectViewProjectNode" />
               <item name="distributed" type="462c0819:PsiDirectoryNode" />
             </path>
-            <path>
-              <item name="distributed" type="b2602c69:ProjectViewProjectNode" />
-              <item name="distributed" type="462c0819:PsiDirectoryNode" />
-              <item name=".idea" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="distributed" type="b2602c69:ProjectViewProjectNode" />
-              <item name="distributed" type="462c0819:PsiDirectoryNode" />
-              <item name="img" type="462c0819:PsiDirectoryNode" />
-            </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="PackagesPane" />
       <pane id="AndroidView" />
       <pane id="Scratches" />
-      <pane id="PackagesPane" />
       <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="last_opened_file_path" value="D:/workspace/car-exchange" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="SearchEverywhereHistoryKey" value="&#9;FILE&#9;file://D:/study/distributed/README.md" />
@@ -362,35 +349,12 @@
       <workItem from="1536283562125" duration="2732000" />
       <workItem from="1536628701770" duration="599000" />
       <workItem from="1536630978922" duration="9252000" />
-      <workItem from="1536810579758" duration="6844000" />
-    </task>
-    <task id="LOCAL-00025" summary="netty">
-      <created>1535455839757</created>
-      <option name="number" value="00025" />
-      <option name="presentableId" value="LOCAL-00025" />
-      <option name="project" value="LOCAL" />
-      <updated>1535455839757</updated>
-    </task>
-    <task id="LOCAL-00026" summary="kafka">
-      <created>1535519549313</created>
-      <option name="number" value="00026" />
-      <option name="presentableId" value="LOCAL-00026" />
-      <option name="project" value="LOCAL" />
-      <updated>1535519549313</updated>
-    </task>
-    <task id="LOCAL-00027" summary="kafka">
-      <created>1535538888676</created>
-      <option name="number" value="00027" />
-      <option name="presentableId" value="LOCAL-00027" />
-      <option name="project" value="LOCAL" />
-      <updated>1535538888676</updated>
-    </task>
-    <task id="LOCAL-00028" summary=".">
-      <created>1535539339033</created>
-      <option name="number" value="00028" />
-      <option name="presentableId" value="LOCAL-00028" />
-      <option name="project" value="LOCAL" />
-      <updated>1535539339033</updated>
+      <workItem from="1536810579758" duration="7187000" />
+      <workItem from="1536827009847" duration="793000" />
+      <workItem from="1536828999156" duration="22000" />
+      <workItem from="1536829031896" duration="612000" />
+      <workItem from="1536890636288" duration="794000" />
+      <workItem from="1537168176238" duration="277000" />
     </task>
     <task id="LOCAL-00029" summary=".">
       <created>1535540790783</created>
@@ -707,11 +671,39 @@
       <option name="project" value="LOCAL" />
       <updated>1536663073172</updated>
     </task>
-    <option name="localTasksCounter" value="74" />
+    <task id="LOCAL-00074" summary="MySQL优化">
+      <created>1536825663967</created>
+      <option name="number" value="00074" />
+      <option name="presentableId" value="LOCAL-00074" />
+      <option name="project" value="LOCAL" />
+      <updated>1536825663967</updated>
+    </task>
+    <task id="LOCAL-00075" summary="MySQL优化">
+      <created>1536827399377</created>
+      <option name="number" value="00075" />
+      <option name="presentableId" value="LOCAL-00075" />
+      <option name="project" value="LOCAL" />
+      <updated>1536827399377</updated>
+    </task>
+    <task id="LOCAL-00076" summary="MySQL优化">
+      <created>1536829044880</created>
+      <option name="number" value="00076" />
+      <option name="presentableId" value="LOCAL-00076" />
+      <option name="project" value="LOCAL" />
+      <updated>1536829044880</updated>
+    </task>
+    <task id="LOCAL-00077" summary="MySQL优化">
+      <created>1536891396396</created>
+      <option name="number" value="00077" />
+      <option name="presentableId" value="LOCAL-00077" />
+      <option name="project" value="LOCAL" />
+      <updated>1536891396397</updated>
+    </task>
+    <option name="localTasksCounter" value="78" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="122922000" />
+    <option name="totallyTimeSpent" value="125763000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="2576" height="1416" extended-state="6" />
@@ -723,25 +715,25 @@
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.15402658" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.15937997" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.16534181" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -773,23 +765,14 @@
     <MESSAGE value="JVM" />
     <MESSAGE value="http" />
     <MESSAGE value="tomcat" />
-    <option name="LAST_COMMIT_MESSAGE" value="tomcat" />
+    <MESSAGE value="MySQL优化" />
+    <option name="LAST_COMMIT_MESSAGE" value="MySQL优化" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/README.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SPLIT">
-          <first_editor relative-caret-position="314">
-            <caret line="120" column="0" lean-forward="true" selection-start-line="120" selection-start-column="0" selection-end-line="120" selection-end-column="0" />
-          </first_editor>
-          <second_editor />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/README.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
@@ -1232,27 +1215,33 @@
     <entry file="file://$PROJECT_DIR$/dubbo.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
-          <first_editor relative-caret-position="312">
-            <caret line="38" column="51" lean-forward="true" selection-start-line="38" selection-start-column="51" selection-end-line="38" selection-end-column="51" />
+          <first_editor relative-caret-position="874">
+            <caret line="38" column="51" lean-forward="false" selection-start-line="38" selection-start-column="51" selection-end-line="38" selection-end-column="51" />
             <folding />
           </first_editor>
           <second_editor />
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/img/46.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/performance.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="FIRST">
-          <first_editor relative-caret-position="795">
-            <caret line="744" column="72" lean-forward="true" selection-start-line="744" selection-start-column="72" selection-end-line="744" selection-end-column="72" />
+          <first_editor relative-caret-position="392">
+            <caret line="206" column="8" lean-forward="true" selection-start-line="206" selection-start-column="8" selection-end-line="206" selection-end-column="8" />
             <folding>
-              <marker date="1536825571649" expanded="true" signature="8767:8790" ph="..." />
-              <marker date="1536825571649" expanded="true" signature="12245:12398" ph="..." />
-              <marker date="1536825571649" expanded="true" signature="13406:13537" ph="..." />
-              <marker date="1536825571649" expanded="true" signature="14273:14398" ph="..." />
-              <marker date="1536825571649" expanded="true" signature="14461:14522" ph="..." />
-              <marker date="1536825571649" expanded="true" signature="14728:14768" ph="/.../" />
-              <marker date="1536825571649" expanded="true" signature="21651:21707" ph="select nick_... user" />
+              <marker date="1537168251201" expanded="true" signature="8947:8970" ph="..." />
+              <marker date="1537168251201" expanded="true" signature="12425:12578" ph="..." />
+              <marker date="1537168251201" expanded="true" signature="13586:13717" ph="..." />
+              <marker date="1537168251201" expanded="true" signature="14453:14578" ph="..." />
+              <marker date="1537168251201" expanded="true" signature="14641:14702" ph="..." />
+              <marker date="1537168251201" expanded="true" signature="14908:14948" ph="/.../" />
+              <marker date="1537168251201" expanded="true" signature="18924:18976" ph="update user... " />
+              <marker date="1537168251201" expanded="true" signature="22235:22291" ph="select nick_... user" />
             </folding>
           </first_editor>
           <second_editor />
