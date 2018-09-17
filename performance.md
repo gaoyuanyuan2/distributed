@@ -756,12 +756,12 @@ unique_subquery ，index_ subquery , range , index_ merge , index , ALL
 <br>Range checked for each record (index map: N):通过MySQL 官方手册的描述，当MySQL Query Opt imizer没有发现好的可以使用的索引的时候，如果发现如果来自前面的表的列值已知，可能部分索引可以使用。对前面的表的每个行组合，MySQL 检查是否可以使
 <br>用range或index_ merge访问方法来索取行。
 <br>Select tables optimized away:当我们使用某些聚合函数来访问存在索引的某个字段的时候，MySQL Query Optimizer会通过索引而直接一次定位到所需的数据行完成整个查询。当然，前提是在Query中不能有GROUP BY操作。如使用MIN()或者MAX ()的时候;
-<br>Using filesort: 当我们的Query 中包含ORDER BY操作，而且无法利用索引完成排序操作的时候，MySQL Query 0pt imizer不得不选择相应的排序算法来实现。
+<br>Using file sort: 当我们的Query 中包含ORDER BY操作，而且无法利用索引完成排序操作的时候，MySQL Query 0pt imizer不得不选择相应的排序算法来实现。
 <br>Using index:所需要的数据只需要在Index即可全部获得而不需要再到表中取数据;
 <br>Using index for group-by: 数据访问和Using index - *样，所需数据只需要读取索引即可，而当Query 中使用了GROUP BY或者DISTINCT 子句的时候，如果分组字段也在索引中，Extra 中的信息就会是Using index for group-by;
 <br>Using temporary:  当MySQL 在某些操作中必须使用临时表的时候，在Extra信息中就会出现Using temporary 。主要常见于GROUP BY和ORDER BY等操作中。
 <br>Using where:如果我们不是读取表的所有数据，或者不是仅仅通过索引就可以获取所有需要的数据，则会出现Using where 信息;
-<br>Using where with pushed condit ion:  这是一个仅仅在NDBCluster 存储引擎中才会出现的信息，而且还需要通过打开Condition Pushdown优化功能才可能会被使用。控制参数为encine condition nuishdown 。
+<br>Using where with pushed condition:  这是一个仅仅在NDBCluster 存储引擎中才会出现的信息，而且还需要通过打开Condition Pushdown优化功能才可能会被使用。控制参数为encine condition nuishdown 。
 <br><br>5.  Profiling (有个概念)
 ```sql
 set profiling=1;
