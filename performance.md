@@ -720,23 +720,23 @@ update user set name = 'xxx' where id > 1 and id < 4
 #### 我们先看一下在MySQL Explain功能中给我们展示的各种信息的解释
 <br>1. ID: Query 0ptimizer所选定的执行计划中查询的序列号;
 <br><br>2. Select_type: 所使用的查询类型，主要有以下这几种查询类型
-<br><br>DEPENDENT SUBQUERY: 子查询中内层的第-一个 SELECT，依赖于外部查询的结果集;
+<br><br>DEPENDENT SUBQUERY: 子查询中内层的第一个 SELECT，依赖于外部查询的结果集;
 <br><br>DEPENDENT UNION:子查询中的UNION，且为UNION中从第二个SELECT开始的后面所有
 <br><br>SELECT，同样依赖于外部查询的结果集;
 <br><br>PRIMARY:子查询中的最外层查询，注意并不是主键查询;SIMPLE:除子查询或者UNION之外的其他查询;
-<br><br>SUBQUERY:子查询内层查询的第-一个SELECT，结果不依赖于外部查询结果集;UNCACHEABLE SUBQUERY:结果集无法缓存的子查询;
-<br><br>UNION: UNION 语句中第二个SELECT开始的后面所有SELECT，第- 一个SELECT为PRIMARYUNION RESULT: UNION 中的合并结果;
+<br><br>SUBQUERY:子查询内层查询的第一个SELECT，结果不依赖于外部查询结果集;UNCACHEABLE SUBQUERY:结果集无法缓存的子查询;
+<br><br>UNION: UNION 语句中第二个SELECT开始的后面所有SELECT，第一个SELECT为PRIMARYUNION RESULT: UNION 中的合并结果;
 <br><br>3. Table: 显示这-步所访问的数据库中的表的名称:
 <br><br>4. Type:告诉我们对表所使用的访问方式，主要包含如下集中类型:<
 <br>all: 全表扫描
-<br>const:读常量，且最多只会有一-条记录匹配，由于是常量，所以实际上只需要读- -次;
+<br>const:读常量，且最多只会有一-条记录匹配，由于是常量，所以实际上只需要读一次;
 <br>eq_ ref: 最多只会有一条匹配结果，一般是通过主键或者唯- ~键索引来访问;O fulltext:
 <br>index:全索引扫描;
 <br>index_merge:查询中同时使用两个(或更多)索引，然后对索引结果进行merge之后再读取表数据:
 <br>index_subquery:子查询中的返回结果字段组合是一个索引(或索引组合)，但不是一个主键或者唯一索引:
 <br>rang:索引范围扫描;
 <br>ref: Join 语句中被驱动表索引引用查询:
-<br>ref_or_null:与ref的唯-区别就是在使用索引引用查询之外再增加-一个 空值的查询
+<br>ref_or_null:与ref的唯-区别就是在使用索引引用查询之外再增加一个空值的查询
 <br>system:系统表，表中只有一行数据:
 <br>unique_subquery: 子查询中的返回结果字段组合是主键或者唯-约東;
 <br><br>依次从好到差: system , const , eq_ ref , ref , fulltext, ref_ or_ null ,
@@ -748,7 +748,7 @@ unique_subquery ，index_ subquery , range , index_ merge , index , ALL
 <br><br>7.  Ref:列出是通过常量(const) ，还是某个表的某个字段(如果是join)来过滤(通过key)的;
 <br><br>8.  Rows: MySQL Query Optimizer通过系统收集到的统计信息估算出来的结果集记录条数;
 <br><br>9.  Extra:  查询中每一一步实现的额外细节信息，主要可能会是以下内容: 
-<br>Distinct:查找distinct值，所以当mysql找到了第-条匹配的结果后，将停止该值的查询而转为后面其他值的查询;
+<br>Distinct:查找distinct值，所以当mysql找到了第一条匹配的结果后，将停止该值的查询而转为后面其他值的查询;
 <br>Full scan on NULL key: 子查询中的一种优化方式， 主要在遇到无法通过索引访问null值的使用使用;
 <br>Impossible WHERE noticed after reading const tables: MySQL Query Optimizer通过收集到的统计信息判断出不可能存在结果;
 <br>No tables: Query 语句中使用FROM DUAL 或者不包含任何FROM 子句;
