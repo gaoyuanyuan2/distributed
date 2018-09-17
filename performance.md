@@ -726,11 +726,11 @@ update user set name = 'xxx' where id > 1 and id < 4
 <br><br>PRIMARY:子查询中的最外层查询，注意并不是主键查询;SIMPLE:除子查询或者UNION之外的其他查询;
 <br><br>SUBQUERY:子查询内层查询的第一个SELECT，结果不依赖于外部查询结果集;UNCACHEABLE SUBQUERY:结果集无法缓存的子查询;
 <br><br>UNION: UNION 语句中第二个SELECT开始的后面所有SELECT，第一个SELECT为PRIMARYUNION RESULT: UNION 中的合并结果;
-<br><br>3. Table: 显示这-步所访问的数据库中的表的名称:
+<br><br>3. Table: 显示这一步所访问的数据库中的表的名称:
 <br><br>4. Type:告诉我们对表所使用的访问方式，主要包含如下集中类型:<
 <br>all: 全表扫描
-<br>const:读常量，且最多只会有一-条记录匹配，由于是常量，所以实际上只需要读一次;
-<br>eq_ ref: 最多只会有一条匹配结果，一般是通过主键或者唯- ~键索引来访问;O fulltext:
+<br>const:读常量，且最多只会有一条记录匹配，由于是常量，所以实际上只需要读一次;
+<br>eq_ ref: 最多只会有一条匹配结果，一般是通过主键或者唯一  键索引来访问;O fulltext:
 <br>index:全索引扫描;
 <br>index_merge:查询中同时使用两个(或更多)索引，然后对索引结果进行merge之后再读取表数据:
 <br>index_subquery:子查询中的返回结果字段组合是一个索引(或索引组合)，但不是一个主键或者唯一索引:
