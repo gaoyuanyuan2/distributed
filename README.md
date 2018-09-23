@@ -31,7 +31,7 @@ DoS攻击是指故意的攻击网络协议实现的缺陷或直接通过野蛮�
 ### 2、NIO（同步非阻塞）主动问，AIO（异步非阻塞） 被动通知。
  滑动窗口协议（缓冲区）：传输的每个部分被分配唯一的连续序列号，接收方使用数字并以正确的顺序放置接收到的数据包，丢弃重复的数据包并识别丢失的数据。
 ### 3、Multicase（组播）
-基于TCP
+基于TCP  
 <br>叫一群“美女”，会有一组女生回头。
 ## 三、分布式通信-序列化
 ### 1、简介
@@ -50,7 +50,7 @@ java序列化：数据大，效率低，不能跨语言。
 JSON/Hessian(2)/xml/protobuf/kryo/MsgPack/FST/thrift/protostuff/Avro
 ## 四、HTTP
 ### 1、基于TCP的可靠协议
-、无状态（cookie+session 保持状态）、多次请求
+无状态（cookie+session 保持状态）、多次请求
 ### 2、服务端和客户端、资源、媒体类型、URI（资源名）和URL。
 <br>schema:http/https/ftp 、host:web服务器的ip地址或者域名、
 path:资源访问路径、query-string：查询次数
