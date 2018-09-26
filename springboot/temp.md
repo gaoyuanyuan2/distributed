@@ -169,7 +169,7 @@ Spring SPl
 
 Spring Cloud事件/监听器
 BootstrapApplicationListener
-负责加载bootstrap . properties或者bootstrap . yml
+负责加载bootstrap.properties或者bootstrap.yml
 
 
 
