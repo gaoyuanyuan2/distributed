@@ -22,7 +22,7 @@ ConfigurableApplicationContext context = builder.run();
 `ConfigFileApplicationListener`第十一优先
 <br><br>1.负责加载`bootstrap.properties` 或者 `bootstrap.yaml`
 <br><br>2.负责初始化`Bootstrap ApplicationContext ID = "bootstrap"`
-<br><br>pring Cloud事件/监听器
+<br><br>Spring Cloud事件/监听器
 <br>BootstrapApplicationListener
 <br>Spring Cloud "/META-INF/spring.factories": 
 ```properties
