@@ -1,5 +1,4 @@
 ## Spring Cloud
-
 #### Spring Cloud Config Client
 <br>技术回顾:回顾提及的Environment.以及Spring Boot配置相关的事件和监听器,
 <br><br>如`ApplicationEnvironmentPreparedEvent`和`ConfigFileApplicationListener`，
@@ -7,9 +6,6 @@
 覆盖远程配置属性、自定义Bootstrap配置以及自定义Bootstrap配置属性源
 <br><br>Environment端点:介绍/env端点的使用场景,并且解读其源码,了解其中奥秘
 <br><br>安全:介绍客户端配置安全相关议题
-
-#### 主要议题
-#### Spring技术体系
 #### Spring / SpringBoot事件机制
 ##### BootstrapApplicationListener
 <br>1.负责加载`bootstrap.properties` 或者`bootstrap.yml`
@@ -46,7 +42,6 @@ org.springframework.cloud.context.restart.RestartListener
 `@BootstrapConfiguration`
 <br><br>自定义Bootstrap配置属性源
 <br>PropertySourceLocator
-
 #### Bootstrap配置属性
 #### 理解Environment端点
 <br>Env端点:`EnvironmentEndpoint`
@@ -98,23 +93,23 @@ List<PropertySource<?>> propertySourceList = new CopyOnWriteArrayList<PropertySo
 <br><br>5. 怎样防止Order一样
 <br>答: Spring Boot和Spring Cloud里面没有办法，在Spring Security 通过异常实现的。
 #### Spring Cloud Config Server
-<br><br>基本使用:介绍`@EnableConfigserver`、`Environment` 仓储、秘钥管理等基本使用方法
+<br>基本使用:介绍`@EnableConfigserver`、`Environment` 仓储、秘钥管理等基本使用方法
 <br><br>分布式配置官方实现:介绍Spring官方标准分布式配置实现方式: Git实现和文件系统实现
 <br><br>动态配置属性Bean :介绍`@RefreshScope`基本用法和使用场景,丢且说明其中的局限性。
 <br><br>健康指标:介绍Spring Boot标准端口( `/health` )以及健康指标( Health Indicator)。
 <br><br>分布式配置自定义实现:基于配置管理容器Zookeeper ,自定义实现分布式配置能力。
 <br><br>健康指标自定义实现:实现分布式配置的健康指标自定义实现
 #### Spring Cloud Netflix Eureka
-<br><br>前微服务时代:介绍前微服务时代，服务发现和注册在SOA甚至是更早的时代的技术实现和实施方法,如WebService中的UDDI、REST 中的HEATOAS
+<br>前微服务时代:介绍前微服务时代，服务发现和注册在SOA甚至是更早的时代的技术实现和实施方法,如WebService中的UDDI、REST 中的HEATOAS
 <br><br>高可用架构:简介高可用架构的基本原则,计算方法和系统设计
 <br><br>Eureka客户端:介绍Spring Cloud Discovery结合Netflix Eureka客户端的基本使用方法，包括服务发现激活、Eureka客户端注册配置以及API使用等
 <br><br>Eureka服务器:介绍Eureka服务器作为服务注册中心的搭建方法,以及内建Dashboard基本运维手段
 #### Spring Cloud Netfix Ribbon
-<br><br>简介负载均衡客户端和服务端的相关理论,包括调度算法:如先来先服务、轮训、多级队列等。基本特性:非对称负载、健康检查、优先级队列等
+<br>简介负载均衡客户端和服务端的相关理论,包括调度算法:如先来先服务、轮训、多级队列等。基本特性:非对称负载、健康检查、优先级队列等
 <br><br>技术回顾:回顾Spring Framework HTTP组件RestTemplate的使用方法,结台ClientHttpRequestInterceptor实现简单负载均衡客户端
 <br><br>整合Netlix Ribbon :作为Spring Cloud客户端负载均衡实现, Netflix Ribbon提供了丰富的组件,包括负载均衡器、负载均衡规则、PING 策略等,根据前章所积累的经验,实现客户端负载均衡
 ####  Spring Cloud Hystrix
-<br><br>核心理念:介绍服务短路的名词由来、目的,以及相关的类似慨念。随后讲述其中设计哲学、触发条件、处理手段以及客户端和服务端实现方法
+<br>核心理念:介绍服务短路的名词由来、目的,以及相关的类似慨念。随后讲述其中设计哲学、触发条件、处理手段以及客户端和服务端实现方法
 <br><br>Spring Cloud Hystrix :作为服务端服务短路实现,介绍Spring Cloud Hytrix常用限流的功能,同时,说明健康指标以及数据指标在生产环境下的现实意义
 <br><br>生产准备特性:介绍聚台数据指标Turbine、Turbine Stream ,以及整台Hystrix Dashboard
 
