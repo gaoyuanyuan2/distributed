@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="1a69c435-9430-420c-b841-ddb13cb8216f" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/README.md" afterPath="$PROJECT_DIR$/README.md" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -53,17 +52,19 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Spring Boot REST.md" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Spring Boot REST.md" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/springboot/Spring Boot REST.md">
           <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
             <state split_layout="SPLIT">
-              <first_editor relative-caret-position="-276">
-                <caret line="36" column="70" lean-forward="true" selection-start-line="36" selection-start-column="70" selection-end-line="36" selection-end-column="70" />
+              <first_editor relative-caret-position="828">
+                <caret line="36" column="70" lean-forward="false" selection-start-line="36" selection-start-column="70" selection-end-line="36" selection-end-column="70" />
                 <folding>
                   <marker date="1537326136443" expanded="true" signature="2098:2130" ph="{&quot;id&quot;: 7...}" />
                   <marker date="1537326136443" expanded="true" signature="2472:2504" ph="{&quot;id&quot;: 7...}" />
                   <marker date="1537326136443" expanded="true" signature="2718:2794" ph="{...}" />
                   <marker date="1537326136443" expanded="true" signature="3616:3743" ph="{...}" />
+                  <marker date="1537326136443" expanded="false" signature="3805:3816" ph=" { " />
+                  <marker date="1537326136443" expanded="false" signature="3860:3866" ph=" }" />
                   <marker date="1537326136443" expanded="true" signature="3871:3997" ph="/**...*/" />
                   <marker date="1537326136443" expanded="true" signature="4173:4720" ph="{...}" />
                   <marker date="1537326136443" expanded="true" signature="4882:5252" ph="{...}" />
@@ -74,11 +75,24 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="temp.md" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/springboot/temp.md">
+          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+            <state split_layout="SPLIT">
+              <first_editor relative-caret-position="1021">
+                <caret line="171" column="36" lean-forward="false" selection-start-line="171" selection-start-column="36" selection-end-line="171" selection-end-column="36" />
+                <folding />
+              </first_editor>
+              <second_editor />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="README.md" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/README.md">
           <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
             <state split_layout="SPLIT">
-              <first_editor relative-caret-position="605">
+              <first_editor relative-caret-position="759">
                 <caret line="33" column="7" lean-forward="false" selection-start-line="33" selection-start-column="7" selection-end-line="33" selection-end-column="7" />
                 <folding />
               </first_editor>
@@ -104,21 +118,6 @@
         <entry file="file://$PROJECT_DIR$/img/46.png">
           <provider selected="true" editor-type-id="images">
             <state />
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="redis.md" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/redis.md">
-          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-            <state split_layout="FIRST">
-              <first_editor relative-caret-position="7636">
-                <caret line="332" column="8" lean-forward="false" selection-start-line="332" selection-start-column="8" selection-end-line="332" selection-end-column="8" />
-                <folding>
-                  <marker date="1535972363391" expanded="true" signature="7798:7834" ph="delete from lock... " />
-                </folding>
-              </first_editor>
-              <second_editor />
-            </state>
           </provider>
         </entry>
       </file>
@@ -220,6 +219,7 @@
         <option value="$PROJECT_DIR$/performance.md" />
         <option value="$PROJECT_DIR$/README.md" />
         <option value="$PROJECT_DIR$/springboot/Spring Boot REST.md" />
+        <option value="$PROJECT_DIR$/springboot/temp.md" />
       </list>
     </option>
   </component>
@@ -230,10 +230,10 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="360" />
-    <option name="y" value="731" />
-    <option name="width" value="1847" />
-    <option name="height" value="1000" />
+    <option name="x" value="482" />
+    <option name="y" value="279" />
+    <option name="width" value="1911" />
+    <option name="height" value="1407" />
   </component>
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="2" id="Add" />
@@ -253,7 +253,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -270,9 +269,10 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scratches" />
+      <pane id="Scope" />
       <pane id="PackagesPane" />
       <pane id="AndroidView" />
-      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -429,35 +429,10 @@
       <workItem from="1537232752570" duration="19000" />
       <workItem from="1537242833560" duration="7916000" />
       <workItem from="1537318682352" duration="595000" />
-      <workItem from="1537326024442" duration="852000" />
-    </task>
-    <task id="LOCAL-00036" summary="Redis">
-      <created>1535620612403</created>
-      <option name="number" value="00036" />
-      <option name="presentableId" value="LOCAL-00036" />
-      <option name="project" value="LOCAL" />
-      <updated>1535620612403</updated>
-    </task>
-    <task id="LOCAL-00037" summary="MongoDB">
-      <created>1535627147999</created>
-      <option name="number" value="00037" />
-      <option name="presentableId" value="LOCAL-00037" />
-      <option name="project" value="LOCAL" />
-      <updated>1535627147999</updated>
-    </task>
-    <task id="LOCAL-00038" summary="MongoDB">
-      <created>1535627196517</created>
-      <option name="number" value="00038" />
-      <option name="presentableId" value="LOCAL-00038" />
-      <option name="project" value="LOCAL" />
-      <updated>1535627196517</updated>
-    </task>
-    <task id="LOCAL-00039" summary="redis">
-      <created>1535712882297</created>
-      <option name="number" value="00039" />
-      <option name="presentableId" value="LOCAL-00039" />
-      <option name="project" value="LOCAL" />
-      <updated>1535712882297</updated>
+      <workItem from="1537326024442" duration="929000" />
+      <workItem from="1537856726093" duration="1629000" />
+      <workItem from="1537946450705" duration="3629000" />
+      <workItem from="1538013439771" duration="33000" />
     </task>
     <task id="LOCAL-00040" summary="redis">
       <created>1535712971681</created>
@@ -774,11 +749,39 @@
       <option name="project" value="LOCAL" />
       <updated>1537326152468</updated>
     </task>
-    <option name="localTasksCounter" value="85" />
+    <task id="LOCAL-00085" summary="readme">
+      <created>1537337916176</created>
+      <option name="number" value="00085" />
+      <option name="presentableId" value="LOCAL-00085" />
+      <option name="project" value="LOCAL" />
+      <updated>1537337916176</updated>
+    </task>
+    <task id="LOCAL-00086" summary="temp">
+      <created>1537872454784</created>
+      <option name="number" value="00086" />
+      <option name="presentableId" value="LOCAL-00086" />
+      <option name="project" value="LOCAL" />
+      <updated>1537872454785</updated>
+    </task>
+    <task id="LOCAL-00087" summary="temp">
+      <created>1537955622020</created>
+      <option name="number" value="00087" />
+      <option name="presentableId" value="LOCAL-00087" />
+      <option name="project" value="LOCAL" />
+      <updated>1537955622021</updated>
+    </task>
+    <task id="LOCAL-00088" summary="temp">
+      <created>1537955666560</created>
+      <option name="number" value="00088" />
+      <option name="presentableId" value="LOCAL-00088" />
+      <option name="project" value="LOCAL" />
+      <updated>1537955666560</updated>
+    </task>
+    <option name="localTasksCounter" value="89" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="138440000" />
+    <option name="totallyTimeSpent" value="143808000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="2576" height="1416" extended-state="6" />
@@ -795,7 +798,7 @@
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.121224165" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1236089" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -830,7 +833,6 @@
     <MESSAGE value="MongoDB" />
     <MESSAGE value="性能优化" />
     <MESSAGE value="dubbo" />
-    <MESSAGE value="readme" />
     <MESSAGE value="docker" />
     <MESSAGE value="mq" />
     <MESSAGE value="netty" />
@@ -842,23 +844,15 @@
     <MESSAGE value="MySQL优化" />
     <MESSAGE value="JVM" />
     <MESSAGE value="spring" />
-    <option name="LAST_COMMIT_MESSAGE" value="spring" />
+    <MESSAGE value="readme" />
+    <MESSAGE value="temp" />
+    <option name="LAST_COMMIT_MESSAGE" value="temp" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/zookeeper.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SPLIT">
-          <first_editor relative-caret-position="3381">
-            <caret line="147" column="6" lean-forward="false" selection-start-line="147" selection-start-column="6" selection-end-line="147" selection-end-column="6" />
-          </first_editor>
-          <second_editor />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/README.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
@@ -1197,9 +1191,6 @@
         <state split_layout="FIRST">
           <first_editor relative-caret-position="7636">
             <caret line="332" column="8" lean-forward="false" selection-start-line="332" selection-start-column="8" selection-end-line="332" selection-end-column="8" />
-            <folding>
-              <marker date="1535972363391" expanded="true" signature="7798:7834" ph="delete from lock... " />
-            </folding>
           </first_editor>
           <second_editor />
         </state>
@@ -1275,7 +1266,7 @@
     <entry file="file://$PROJECT_DIR$/README.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
-          <first_editor relative-caret-position="605">
+          <first_editor relative-caret-position="759">
             <caret line="33" column="7" lean-forward="false" selection-start-line="33" selection-start-column="7" selection-end-line="33" selection-end-column="7" />
             <folding />
           </first_editor>
@@ -1306,17 +1297,30 @@
     <entry file="file://$PROJECT_DIR$/springboot/Spring Boot REST.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
-          <first_editor relative-caret-position="-276">
-            <caret line="36" column="70" lean-forward="true" selection-start-line="36" selection-start-column="70" selection-end-line="36" selection-end-column="70" />
+          <first_editor relative-caret-position="828">
+            <caret line="36" column="70" lean-forward="false" selection-start-line="36" selection-start-column="70" selection-end-line="36" selection-end-column="70" />
             <folding>
               <marker date="1537326136443" expanded="true" signature="2098:2130" ph="{&quot;id&quot;: 7...}" />
               <marker date="1537326136443" expanded="true" signature="2472:2504" ph="{&quot;id&quot;: 7...}" />
               <marker date="1537326136443" expanded="true" signature="2718:2794" ph="{...}" />
               <marker date="1537326136443" expanded="true" signature="3616:3743" ph="{...}" />
+              <marker date="1537326136443" expanded="false" signature="3805:3816" ph=" { " />
+              <marker date="1537326136443" expanded="false" signature="3860:3866" ph=" }" />
               <marker date="1537326136443" expanded="true" signature="3871:3997" ph="/**...*/" />
               <marker date="1537326136443" expanded="true" signature="4173:4720" ph="{...}" />
               <marker date="1537326136443" expanded="true" signature="4882:5252" ph="{...}" />
             </folding>
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/springboot/temp.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="1021">
+            <caret line="171" column="36" lean-forward="false" selection-start-line="171" selection-start-column="36" selection-end-line="171" selection-end-column="36" />
+            <folding />
           </first_editor>
           <second_editor />
         </state>
