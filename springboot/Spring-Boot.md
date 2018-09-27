@@ -62,33 +62,35 @@
 <br>事件/监听器模式Spring核心接口一ApplicationEvent
 <br>ApplicationListener
 <br><br>Spring Cloud Config Client
-<br>`java.util .Observable`是一个发布者
+<br>`java.util.Observable`是一个发布者
 <br>`java.util.0bserver`是订阅者
-<br><br>发布者和订阅者:
-<br>发布者和订阅者:
-<br><br>1:N
-<br>N:M
+<br><br>发布者和订阅者:1:N
+<br>发布者和订阅者:N:M
 <br><br>事件/监听模式
 <br>`java.util.Eventobject` :
 <br><br>事件对象总是关联着事件源(source)
 <br>`java.util.EventListener` :  事件监听接口(标记)
 <br><br>Spring / Spring Boot事件机制
 <br>Spring Boot核心事件
-<br>一ApplicationEnvironmentPreparedEvent一ApplicationPreparedEvent一ApplicationStartingEvent一ApplicationReadyEvent一ApplicationFailedEvent
+<br>一ApplicationEnvironmentPreparedEvent
+<br>一ApplicationPreparedEvent
+<br>一ApplicationStartingEvent
+<br>一ApplicationReadyEvent
+<br>一ApplicationFailedEvent
 <br><br>Spring事件/监听
 <br>ApplicationEvent :应用事件
-<br>ApplicationListener|:应用监听器
+<br>ApplicationListener:应用监听器
 <br><br>Spring Boot事件/监听器
 <br>ConfigFileApplicationListener
-<br>管理配置文件，比如:  `application.properties` I以及`application.yml`
-<br><br>Java SPl: `java.util.ServiceLoader`
-<br>Spring SPl
+<br>管理配置文件，比如:  `application.properties`  以及`application.yml`
+<br><br>Java SPI: `java.util.ServiceLoader`
+<br>Spring SPI
 <br><br>如何控制顺序
 <br>实现Ordered 以及标记@Order
 <br>在Spring里面，数值越小，越优先
 <br><br>Spring Cloud事件/监听器
 <br>BootstrapApplicationListener
-<br>负责加载bootstrap.properties或者bootstrap.yml
+<br>负责加载`bootstrap.properties`或者`bootstrap.yml`
 #### 问题集合
 <br>1.  用reactive web，原来mvc的好多东西都不能用了?
 <br>答:不是，
@@ -100,12 +102,13 @@
 <br><br>4.  webFluxConfiguration 里面的映射路径和controller里面的路径有什么区别吗
 <br>答:基本上是没有区别的，注意，不重复定义，或者URL语义有重复!
 <br><br>5. webFlux不是跟mvc不能一起吗， 怎么一起启动了
-<br>答:  spring-boot-starter-webmvs和spring-boot-starter-webflux 可以放在同一个应用，可是webflux不会工作，默认使用webmvc, webflux不会被采用。其实webflux是兼容Annotation驱动，比如
+<br>答:  spring-boot-starter-webmvc和spring-boot-starter-webflux 可以放在同一个应用，可是webflux不会工作，默认使用webmvc, 
+webflux不会被采用。其实webflux是兼容Annotation驱动，比如
 ` @RequestMapping`
 <br><br>6. webFlux可以定义restFull吗
 <br>答:  可以的，支持的!
 <br><br>7. spring的老项目迁移到springboot,怎么弄
-<br>答:老的XML方式采用| @ImportResource导入!
+<br>答:老的XML方式采用 @ImportResource导入!
 <br><br>8.  嵌入式tomcat如何调优
 <br>答:第一种通过application.properties文件调整配置参数
 <br>第二种通过接口回调:
