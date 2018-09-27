@@ -35,11 +35,11 @@
 <br>JVM/Java assert断言
 <br><br>以上方式的缺点，耦合了业务逻辑，虽然可以通过HandlerInterceptor或者Filter做拦截，但是也是非常恶心的
 <br>还可以通过AOP的方式，也可以提升代码的可读性。
-<br>以上方法都有一个问题，不是统-一的标准。
-1. JSON校验如何办?
-答:尝试变成Bean的方式
-2.实际中很多参数都要校验那时候怎么写这样写会增加很多类
-答:  确实会增加部分工作量，大多数场景，不需要自定义，除非很特殊情况。Bean Validation的主要缺点，单元测试不方便
+<br>以上方法都有一个问题，不是统一的标准。
+<br><br>1. JSON校验如何办?
+<br>答:尝试变成Bean的方式
+<br><br>2.实际中很多参数都要校验那时候怎么写这样写会增加很多类
+<br>答:  确实会增加部分工作量，大多数场景，不需要自定义，除非很特殊情况。Bean Validation的主要缺点，单元测试不方便
 #### Spring Web Flux
 <br>如果采用Spring Web Flux，默认情况下，使用Netty WebServer (嵌入式)
 <br>从Spring Boot 1.4支持FailureAnalysisReporter实现
