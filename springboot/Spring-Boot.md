@@ -1,4 +1,5 @@
 #### Spring Boot初体验
+<br><br>![持久化存储](https://github.com/gaoyuanyuan2/distributed/blob/master/img/49.jpg) 
 <br>主要内容
 <br>Spring Boot技术栈:介绍Spring Boot完整的技术栈,比如Web应用、数据操作、消息、测试以及运维管理等
 <br>Spring Boot构建方式:介绍图形化以及命令行方式构建Spring Boot项目Spring Boot多模块应用:构建分层、多模块Spring Boot应用
