@@ -2,8 +2,8 @@
 #### Spring Cloud Config Client
 <br>技术回顾:回顾提及的Environment.以及Spring Boot配置相关的事件和监听器,
 <br><br>如`ApplicationEnvironmentPreparedEvent`和`ConfigFileApplicationListener`，
-<br><br>Bootstrap配置属性:解密Bootstrap配置属性与Spring Framework / Spring Boot配置架构的关系,介绍如何调整Bootstrap配置文件路径、
-覆盖远程配置属性、自定义Bootstrap配置以及自定义Bootstrap配置属性源
+<br><br>Bootstrap配置属性:解密Bootstrap配置属性与Spring Framework / Spring Boot配置架构的关系,介绍如何调整Bootstrap
+配置文件路径、覆盖远程配置属性、自定义Bootstrap配置以及自定义Bootstrap配置属性源
 <br><br>Environment端点:介绍/env端点的使用场景,并且解读其源码,了解其中奥秘
 <br><br>安全:介绍客户端配置安全相关议题
 #### Spring / SpringBoot事件机制
@@ -13,7 +13,7 @@
 ```java
 ConfigurableApplicationContext context = builder.run();
 ```
-<br><br>Bootstrap是一个根Spring上下文，parent = null
+<br>Bootstrap是一个根Spring上下文，parent = null
 <br><br>联想ClassLoader:
 <br>ExtClassLoader <- AppClassLoader <- System ClassLoader -> BootstrapClassloader(null)
 <br><br>加载的优先级高于 `ConfigFileApplicationListener`，所以`application.properties`文件即使定义也配置不到!
@@ -66,7 +66,7 @@ org.springframework.cloud.context.restart.RestartListener
 <br>其中比较常用的`PropertySource`实现:
 <br>`Java System#getProperties`实现:  名称"systemProperties",对应的内容`System.getProperties()`
 <br>`Java System#getenv`实现(环境变量) :  名称"systemEnvironment",对应的内容`System.getProperties()`
-<br>关于Spring Boot优先级顺序，可以参考: 考: https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/reference/htmlsingle/#boot-features-external-config
+<br>关于Spring Boot优先级顺序，可以参考: https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/reference/htmlsingle/#boot-features-external-config
 <br><br>实现自定义配置
 <br><br>1.实现`PropertySourceLocator`
 <br><br>2.暴露该实现作为一个Spring Bean
@@ -78,7 +78,7 @@ org.springframework.cloud.context.restart.RestartListener
 ```java
 List<PropertySource<?>> propertySourceList = new CopyOnWriteArrayList<PropertySource<?>>();
 ```
-<br><br>propertySourceList FIFO，它有顺序
+<br>propertySourceList FIFO，它有顺序
 <br>可以通过MutablePropertySources#addFirst提高到最优先，相当于调用:
 <br>List#set(8, PropertySource); 
 #### 问题互动
@@ -87,9 +87,9 @@ List<PropertySource<?>> propertySourceList = new CopyOnWriteArrayList<PropertySo
 <br><br>2.自定义的配置在平时使用的多吗一般是什么场景
 <br>答:  不多，一般用于中间件的开发
 <br><br>3. /env端点的使用场景是什么
-<br>答:用于排查问题，比如要分析@Value("${server . port}")里面占位符的具体值
+<br>答:用于排查问题，比如要分析@Value("${server.port}")里面占位符的具体值
 <br><br>4. Spring cloud会用这个实现一个整合起来的高可用么
-<br>答:  Spring Cloud整体达到一个月 标，  把Spring Cloud的技术全部整合到一个项月，比如负载均衡、短路、跟踪、服务调用等
+<br>答:  Spring Cloud整体达到一个目标， 把Spring Cloud的技术全部整合到一个项月，比如负载均衡、短路、跟踪、服务调用等
 <br><br>5. 怎样防止Order一样
 <br>答: Spring Boot和Spring Cloud里面没有办法，在Spring Security 通过异常实现的。
 #### Spring Cloud Config Server
@@ -99,6 +99,57 @@ List<PropertySource<?>> propertySourceList = new CopyOnWriteArrayList<PropertySo
 <br><br>健康指标:介绍Spring Boot标准端口( `/health` )以及健康指标( Health Indicator)。
 <br><br>分布式配置自定义实现:基于配置管理容器Zookeeper ,自定义实现分布式配置能力。
 <br><br>健康指标自定义实现:实现分布式配置的健康指标自定义实现
+
+##### 介绍Environment仓储
+<br>介绍Environment仓储概念
+<br>{application}: 配置使用客户端应用名称
+<br>{profile}:  客户端`spring.profiles.active`配置
+<br>{label}:  服务端配置文件版本标识
+<br>服务端配置
+```properties
+spring.cloud.config.server.git.uri
+spring.cloud.config.server.git
+```
+<br>客户端配置
+```properties
+spring.cloud.config.uri
+spring.cloud.config.name
+spring.cloud.config.profile
+spring.cloud.config.label
+```
+
+##### 健康指标
+<br>动态配置属性Bean
+<br>@RefreshScope
+<br>RefreshEndpoint
+<br>ContextRefresher
+<br><br>健康检查
+<br>/health
+<br>HealthEndpoint
+<br>HealthIndicator
+##### 问题互动
+<br>1.你们服务是基于啥原因采用的springboot的，这么多稳定性的问题?
+<br> Spring Boot业界比较稳定的微服务中间件，不过它使用是易学难精!
+<br><br>2.为什么要把配置项放到git上，为什么不放到具体服务的的程序里边; git在这里扮演什么样的角色;是不是和zookeeper一样
+<br> Git文件存储方式、分布式的管理系统，Spring Cloud官方实现基于Git, 它达到的理念和ZK一样。
+<br><br>3. 一个DB配置相关的bean用@RefreshScope修饰时，config service修改了db的配置,， 比如mysql的url,那么这个Bean会不会刷新?如果刷新了是不是获取新的连接的时候url就变了?
+<br>如果发生了配置变更，我的解决方案是重启Spring Context。@RefreshScope 最佳实践用于配置Bean，比如:开关、阈值、文案等等
+<br><br>4.如果这样是不是动态刷新就没啥用了吧
+<br>不能一概而论，@RefreshScope 开关、阈值、文案等等场景使用比较多
+##### 其他内容
+<br>REST API = /users , /withdraw
+<br>HATEOAS= REST服务器发现的入口，类似UDDI (Universal Description Discoveryand Integration)  IHAL
+<br>/users
+<br>/withdraw
+<br><br>Netty基于NIO
+<br>NIO
+<br>Reactor同步非阻塞-多工处理
+<br>Reactive =
+<br>Reactor +
+<br>Asyn =
+<br>异步非阻塞-多工处理
+<br>Netty类似于Reactive
+<br>观察者模式的实现
 #### Spring Cloud Netflix Eureka
 <br>前微服务时代:介绍前微服务时代，服务发现和注册在SOA甚至是更早的时代的技术实现和实施方法,如WebService中的UDDI、REST 中的HEATOAS
 <br><br>高可用架构:简介高可用架构的基本原则,计算方法和系统设计
