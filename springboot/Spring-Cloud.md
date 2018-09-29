@@ -117,6 +117,14 @@ spring.cloud.config.name
 spring.cloud.config.profile
 spring.cloud.config.label
 ```
+Endpoints
+对于 Spring Boot Actuator application 可以使用一些额外的管理端点
+`/actuator/env ` to update the Environment and rebind `@ConfigurationProperties` and log levels.
+`/actuator/refresh` to re-load the boot strap context and refresh the `@RefreshScope` beans.
+`/actuator/restart` to close the ApplicationContext and restart it (disabled by default).
+`/actuator/pause` and `/actuator/resume` for calling the Lifecycle methods (stop() and start() on the ApplicationContext).
+If you disable the `/actuator/restart` endpoint then the `/actuator/pause `and `/actuator/resume` endpoints will also be 
+disabled since they are just a special case of `/actuator/restart`.
 
 ##### 健康指标
 <br>动态配置属性Bean
