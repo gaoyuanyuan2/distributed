@@ -99,7 +99,6 @@ List<PropertySource<?>> propertySourceList = new CopyOnWriteArrayList<PropertySo
 <br><br>健康指标:介绍Spring Boot标准端口( `/health` )以及健康指标( Health Indicator)。
 <br><br>分布式配置自定义实现:基于配置管理容器Zookeeper ,自定义实现分布式配置能力。
 <br><br>健康指标自定义实现:实现分布式配置的健康指标自定义实现
-
 ##### 介绍Environment仓储
 <br>介绍Environment仓储概念
 <br>{application}: 配置使用客户端应用名称
@@ -163,6 +162,85 @@ disabled since they are just a special case of `/actuator/restart`.
 <br><br>高可用架构:简介高可用架构的基本原则,计算方法和系统设计
 <br><br>Eureka客户端:介绍Spring Cloud Discovery结合Netflix Eureka客户端的基本使用方法，包括服务发现激活、Eureka客户端注册配置以及API使用等
 <br><br>Eureka服务器:介绍Eureka服务器作为服务注册中心的搭建方法,以及内建Dashboard基本运维手段
+##### 前微服务时代
+<br>前微服务时代分布式系统基本组成
+<br>服务提供方( Provider)
+<br>服务消费方( Consumer)
+<br>服务注册中心( Registry) 
+<br>服务路由( Router)
+<br>服务代理 ( Broker )
+<br>通讯协议( Protocol )
+<br><br>通信协议
+<br>Dubbo: Hession、Client (Java、C++)
+<br><br>Java Serialization (二进制)，跨语言不变，一-般通过
+<br>二进制的性能是非常好(字节流，免去字符流(字符编码) ,机器友好、对人不友好)
+<br><br>免去了字符解释，
+<br>序列化:  把编程语言数据结构转换成字节流、反序列化:字节流转换成编程语言的数据结构(原生类型的组合)
+<br><br>URI:统--资源定位符
+<br>URI用于网络资源定位的描述Universal Resource ldentifier
+<br>URL: Universal Resource Locator
+<br>网络是通讯方式
+<br>资源是需要消费媒介
+<br>定位是路由
+<br><br>Proxy:一般性代理，路由
+<br>Nginx:反向代理
+<br>Broker:包括路由，并且管理，老的称谓( MOM )
+<br>Message Broker:消息路由、消息管理(消息是否可达)
+##### 高可用架构
+<br>基本原则
+<br>消除单点失败可靠性交迭故障探测
+<br>可用性比率计算
+<br>权重 每台服务器性能不一样
+<br><br>可用性比率计算
+<br>可用性比率:通过时间来计算(- -年或者- -月)
+<br>比如:-年99.99%
+<br>可用时间: 365* 24 * 3600 * 99.99%
+<br>不可用时间: 365* 24 * 3600* 0.01%= 3153.6秒<一个小时
+<br>不可以时问: 1个小时推算一年1 / 24/ 365= 0.01 %
+<br><br>可靠性
+<br>微服务里面的问题:
+<br>一次调用:
+<br>A->
+<br>99%-> 99%-> 99%= 97%
+<br>A->  B  -> C-> D
+<br>99%-> 99%-> 99% -> 99% = 96%
+<br><br>单台机器不可用比率:  1%
+<br>两台机器不可用比率: 1% * 1%
+<br>N机器不可用比率: 1%^ n
+<br><br>结论:增加机器可以提高可用性，增加服务调用会降低可靠性，同时降低了可用性
+##### Eureka客户端
+<br>传统技术
+<br>WebService
+<br>UDDI一REST
+<br>HATEOAS
+<br><br>Java
+<br>JMS JNDI
+<br><br>Spring Cloud-客户端
+<br>Netfilx Eureka Client
+##### Eureka服务器
+<br>Netfilx Eureka Server
+<br>激活: @EnableEurekaServer
+<br><br>Eureka服务器
+<br>Eureka服务器一般不需要自我注册， 也不需要注册其他服务器
+<br>Eureka自我注册的问题，服务器本身没有启动
+<br><br>常用设计方式
+<br>Fast Fail:快速失败
+<br>Fault-Tolerance :容错
+<br><br>通常经验，  Eureka服务器不需要开启自动注册， 也不需要检索服务
+<br>但是这两个设置并不是影响作为服务器的使用，不过建议关闭，为了减少不必要的异常堆栈，减少错误的干扰(比如:系统异常和业务异常)
+##### 问题互动
+<br><br>1.consul和Eureka是一样的吗
+<br>提供功能类似，consul 功能更强大，广播式服务发现/注册
+<br><br>2.重启eureka服务器，客户端应用要重启吗
+<br>不用，客户端在不停地上报信息，不过在Eureka服务器启动过程中，客户单大量报错
+<br><br>3.生产环境中，consumer是分别注册成多个服务，还是统一放在一 起注册成一个服务?权限应该如何处理?
+<br>consumer 是否要分为多个服务，  要情况，大多数情况是需要，根据应用职责划分。权限根据服务方法需要，比如有些敏感操作的话，可以更具不同用户做鉴权。
+<br><br>4.客户端上报的信息存储在哪里?内存中还是数据库中
+<br>都是在内存里面缓存着，EurekaClient 并不是所有的服务，需要的服务。比如: Eureka Server管理了200个应用，每个应用存在100个实例，总体管理20000个实例。客户端更具自己的需要的应用实例。
+<br><br>5. consumer调用Aprovider-a挂了，会自动切换Aprovider-b吗，保证请求可用吗
+<br>当provider-a挂，会自动切换，不过不一定及时。不及时，服务端可能存在脏数据，或者轮训更新时间未达。
+<br><br>6.一个业务中调用多个service时如何保证事务
+<br>需要分布式事务实现(JTA)，可是一般互联网项目，没有这种昂贵的操作。
 #### Spring Cloud Netfix Ribbon
 <br>简介负载均衡客户端和服务端的相关理论,包括调度算法:如先来先服务、轮训、多级队列等。基本特性:非对称负载、健康检查、优先级队列等
 <br><br>技术回顾:回顾Spring Framework HTTP组件RestTemplate的使用方法,结台ClientHttpRequestInterceptor实现简单负载均衡客户端
