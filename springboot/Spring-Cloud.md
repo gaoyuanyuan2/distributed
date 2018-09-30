@@ -171,11 +171,9 @@ disabled since they are just a special case of `/actuator/restart`.
 <br>服务代理 ( Broker )
 <br>通讯协议( Protocol )
 <br><br>通信协议
-<br>Dubbo: Hession、Client (Java、C++)
-<br><br>Java Serialization (二进制)，跨语言不变，一-般通过
-<br>二进制的性能是非常好(字节流，免去字符流(字符编码) ,机器友好、对人不友好)
-<br><br>免去了字符解释，
-<br>序列化:  把编程语言数据结构转换成字节流、反序列化:字节流转换成编程语言的数据结构(原生类型的组合)
+<br>Dubbo: Hession、Java Serialization (二进制)，跨语言不变，一般通过Client(Java、C++)
+<br>二进制的性能是非常好：字节流，免去字符流(字符编码) ，机器友好、对人不友好
+<br>序列化: 把编程语言数据结构转换成字节流、反序列化:字节流转换成编程语言的数据结构(原生类型的组合)
 <br><br>URI:统--资源定位符
 <br>URI用于网络资源定位的描述Universal Resource ldentifier
 <br>URL: Universal Resource Locator
@@ -187,22 +185,22 @@ disabled since they are just a special case of `/actuator/restart`.
 <br>Broker:包括路由，并且管理，老的称谓( MOM )
 <br>Message Broker:消息路由、消息管理(消息是否可达)
 ##### 高可用架构
-<br>基本原则
-<br>消除单点失败可靠性交迭故障探测
-<br>可用性比率计算
-<br>权重 每台服务器性能不一样
-<br><br>可用性比率计算
-<br>可用性比率:通过时间来计算(- -年或者- -月)
-<br>比如:-年99.99%
-<br>可用时间: 365* 24 * 3600 * 99.99%
-<br>不可用时间: 365* 24 * 3600* 0.01%= 3153.6秒<一个小时
-<br>不可以时问: 1个小时推算一年1 / 24/ 365= 0.01 %
-<br><br>可靠性
+<br>1. 基本原则
+<br>1) 消除单点失败
+<br>2) 可靠性交迭
+<br>3) 故障探测
+<br><br>2. 可用性比率计算
+<br>可用性比率:通过时间来计算(一年或者一月)
+<br>比如:一年99.99%
+<br>可用时间: 365 * 24 * 3600 * 99.99%
+<br>不可用时间: 365 * 24 * 3600 * 0.01% = 3153.6秒 < 一个小时
+<br>不可以时问: 1个小时推算一年 1 / 24 / 365 = 0.01 %
+<br><br>3. 可靠性比率计算
 <br>微服务里面的问题:
 <br>一次调用:
-<br>A->
+<br>A->  B  -> C
 <br>99%-> 99%-> 99%= 97%
-<br>A->  B  -> C-> D
+<br>A->  B  -> C -> D
 <br>99%-> 99%-> 99% -> 99% = 96%
 <br><br>单台机器不可用比率:  1%
 <br>两台机器不可用比率: 1% * 1%
@@ -226,10 +224,8 @@ disabled since they are just a special case of `/actuator/restart`.
 <br><br>常用设计方式
 <br>Fast Fail:快速失败
 <br>Fault-Tolerance :容错
-<br><br>通常经验，  Eureka服务器不需要开启自动注册， 也不需要检索服务
-<br>但是这两个设置并不是影响作为服务器的使用，不过建议关闭，为了减少不必要的异常堆栈，减少错误的干扰(比如:系统异常和业务异常)
 ##### 问题互动
-<br><br>1.consul和Eureka是一样的吗
+<br>1.consul和Eureka是一样的吗
 <br>提供功能类似，consul 功能更强大，广播式服务发现/注册
 <br><br>2.重启eureka服务器，客户端应用要重启吗
 <br>不用，客户端在不停地上报信息，不过在Eureka服务器启动过程中，客户单大量报错
@@ -245,6 +241,145 @@ disabled since they are just a special case of `/actuator/restart`.
 <br>简介负载均衡客户端和服务端的相关理论,包括调度算法:如先来先服务、轮训、多级队列等。基本特性:非对称负载、健康检查、优先级队列等
 <br><br>技术回顾:回顾Spring Framework HTTP组件RestTemplate的使用方法,结台ClientHttpRequestInterceptor实现简单负载均衡客户端
 <br><br>整合Netlix Ribbon :作为Spring Cloud客户端负载均衡实现, Netflix Ribbon提供了丰富的组件,包括负载均衡器、负载均衡规则、PING 策略等,根据前章所积累的经验,实现客户端负载均衡
+##### Eureka高可用
+<br><br>1.  Eureka客户端高可用
+<br>用域名方式最好，如果太多ip地址
+<br><br>1)  高可用注册中心集群
+<br>如果Eureka客户端应用配置多个Eureka注册服务器，那么默认情况只有第一台可用的服务器，存在注册信息。
+<br>如果第一台可用的Eureka服务器Down掉了，那么Eureka客户端应用将会选择下一.台可用的Eureka服务器。
+<br><br>配置源码( EurekaClientConfigBean )
+<br>配置项`eureka.client.serviceUrl`实际映射的字段为serviceUr1,  它是Map类型，Key 为自定义，默认值"defaultZone", value 是需要配置的Eureka注册服务器URL。
+```java
+private Map<String, String> serviceUrl = new HashMap();
+this.serviceUrl.put("defaultZone", "http://localhost:8761/eureka/");
+```
+<br>value可以是多值字段，通过"," 分割:
+```java
+ String serviceUrls = (String)this.serviceUrl.get(myZone);
+if (serviceUrls == null || serviceUrls.isEmpty()) {
+    serviceUrls = (String)this.serviceUrl.get("defaultZone");
+}
+
+if (!StringUtils.isEmpty(serviceUrls)) {
+    String[] serviceUrlsSplit = StringUtils.commaDelimitedListToStringArray(serviceUrls);
+... 
+}
+```
+<br><br>2)  获取注册信息时间间隔
+<br>Eureka客户端需要获取Eureka服务器注册信息，这个方便服务调用。
+<br>Eureka客户端:  EurekaClient ,关联应用集合:  Applications单个应用信息:  Application，关联多个应用实例单个应用实例:  `InstanceInfo` 
+<br><br>当Eureka客户端需要调用具体某个服务时，比如`user-service-consumer`  调用`user-service-provider`，`user-service-provider`实际对应对象是`Application`,关联了许多应用实例( `InstanceInfo` )。
+<br>如果应用`user-service-provider`的应用实例发生变化时，那么`user-service-consumer`是需要感知的。比如:  `user-service-provider`机器从10台降到了5台，那么，作为调用方的`user-service-consumer`需要知道这个变化情况。
+<br>可是这个变化过程，可能存在一定的延迟，可以通过调整注册信息时间间隔来减少错误。
+
+`EurekaClientConfigBean`
+```java
+private int registryFetchIntervalSeconds = 30;
+private int instanceInfoReplicationIntervalSeconds = 30;
+```
+<br>具体配置项
+```properties
+##调整注册信息的获取周期，默认值:30秒
+eureka.client.registryFetchIntervalSeconds = 10
+```
+<br><br>3)  实例信息复制时间间隔
+<br>具体就是客户端信息的上报到Eureka服务器时间。当Eureka客户端应用上报的频率越频繁，  那么Eureka服务器的应用状态管理一致性就越高。
+<br><br>具体配置项
+```properties
+##调整客户端应用状态信息上报的周期
+eureka.client.instanceInfoReplicationIntervalSeconds = 5
+```
+<br>Eureka的应用信息同步的方式:拉模式
+<br>Eureka的应用信息上报的方式:推模式
+<br><br>4)  实例id 
+<br>实例id
+<br>从Eureka Server Dashboard里面可以看到具体某个应用中的实例信息，
+<br>比如:
+```properties
+UP (2) -  192.168.1.103:user-service- provider:7075
+192.168.1.103 :user- service- provider: 7078
+
+```
+<br><br>其中，它们命名模式:
+`${hostname}:${spring.application.name}:${server.port}`
+```properties
+##Eureka应用实例的ID 
+eureka.instance.instanceId =consumer:${server.port}
+```
+<br><br>5)  实例端点映射
+`EurekaInstanceConfigBean`
+```java
+private String statusPageUrl;
+```
+<br>配置项
+```properties
+## Eureka 客户端应用实例状态URL
+eureka.instance.statusPageUrlPath = /health
+```
+<br>相互注册
+<br>--spring.profiles.active=peer1
+<br>Eureka Server1 里面的replicas信息:
+<br>registered-replicas     http://localhost:9091/eureka/
+<br>Eureka Server2 里面的replicas信息:
+<br>registered-replicas     http://localhost:9090/eureka/
+<br><br>通过
+<br>--spring.profiles.active=peer1和
+<br>--spring.profiles.active=peer2
+<br>分别激活Eureka Server1和Eureka Server2
+##### RestTemplate
+###### HTTP消息装换器: HttpMessageConverter
+<br>自义定实现
+<br>编码问题
+###### HTTP Client适配.工厂: ClientHttpRequestFactory
+<br>这个方面主要考虑大家的使用HttpClient偏好:
+<br>Spring实现
+<br>SimpleClientHttpRequestFactory
+<br>HttpClient
+<br>HttpComponentsClientHttpRequestFactory
+<br>OkHttp
+<br>OkHttp3ClientHttpRequestFactoryOkHttpClientHttpRequestFactory
+<br><br>自义定实现
+<br>切换序列化/反序列化协议
+<br>举例说明:切换HTTP通讯实现，提升性能
+```java
+RestTemplate restTemplate = new RestTemplate(new HttpComponentsClientHttpRequestFactory()); // HTTP Client
+```
+###### HTTP请求拦截器: ClientHttpRequestInterceptor
+加深RestTemplate拦截过程的理解
+##### 整合Netflix Ribbon
+<br>整合Netflix Ribbon
+<br>RestTemplate增加一个LoadBalancerInterceptor，调用Netflix 中的LoadBalancer实现，  根据Eureka客户端应用获取月标应用lP+Port信息，轮训的方式调用。
+<br>实际请求客户端
+<br>LoadBalancerClient
+<br>RibbonLoadBalancerClient
+<br><br>负载均衡上下文
+<br>LoadBalancerContext
+<br>RibbonLoadBalancerContext
+<br><br>核心规则接口
+<br>IRule 
+<br>随机规则: RandomRule
+<br>最可用规则:  BestAvailableRule
+<br>轮训规则: RoundRobinRule
+<br>重试实现: RetryRule
+<br>客户端配置: ClientConfigEnabledRoundRobinRule
+<br>可用性过滤规则: AvailabilityFilteringRule
+<br>RT权重规则: WeightedResponseTimeRule
+<br>规避区域规则:  ZoneAvoidanceRule
+##### 问题互动
+<br>1.为什么要用eureka?
+<br>目前业界比较稳定云计算的开发员中间件，虽然有一些不足，基本上可用
+<br><br>2. eureka主要功能为啥不能用浮动ip代替呢?
+<br>如果要使用浮动的IP，也是可以的，不过需要扩展
+<br><br>3. eureka可以替换为zookeeper和consul那么这几个使用有什么差异?
+<br>https://www.consul.io/intro/vs/zookeeper.html
+<br>https://www.consul.io/intro/vs/eureka.html
+<br><br>3.通讯不是指注册到defaultZone配置的那个么?
+<br>默认情况是往defaultZone注册
+<br><br>4.如果服务注册中心都挂了,服务还是能够运行吧?
+<br>服务调用还是可以运行，有可能数据会不及时、不一致
+<br><br>5. spring cloud日志收集有解决方案么?
+<br>一般用HBase、  或者TSDB、elk
+<br><br>https://github.com/OpenTSDB/opentsdb
 ####  Spring Cloud Hystrix
 <br>核心理念:介绍服务短路的名词由来、目的,以及相关的类似慨念。随后讲述其中设计哲学、触发条件、处理手段以及客户端和服务端实现方法
 <br><br>Spring Cloud Hystrix :作为服务端服务短路实现,介绍Spring Cloud Hytrix常用限流的功能,同时,说明健康指标以及数据指标在生产环境下的现实意义
