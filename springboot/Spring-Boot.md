@@ -5,7 +5,7 @@
 <br>Spring Boot构建方式:介绍图形化以及命令行方式构建Spring Boot项目Spring Boot多模块应用:构建分层、多模块Spring Boot应用
 <br>Spring Boot运行方式:分别介绍IDEA启动、命令行启动以Maven插件启动方式
 <br>Spring Boot简单应用:使用Spring Web MVC以及Spring Web Flux技术,编程简单应用。理解Spring Boot三大特性:自动装配、嵌入式容器、为生产准备的特性
-
+<br><br>三种嵌入式容器 实现通用接口 不同环境通过不同classpath读取不同的类 spring自动装配 的条件装配 如果有就加载 一直查找
 #### Spring Boot实际使用场景
 <br>在Spring Boot 2.0.0，如果应用采用Spring Web MVC作为Web服务，默认情况下， 使用嵌入式Tomcat。
 <br>如果采用Spring Web Flux，默认情况下，使用Netty WebServer (嵌入式)
