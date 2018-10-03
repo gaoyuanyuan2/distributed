@@ -162,6 +162,7 @@ disabled since they are just a special case of `/actuator/restart`.
 <br><br>高可用架构:简介高可用架构的基本原则,计算方法和系统设计
 <br><br>Eureka客户端:介绍Spring Cloud Discovery结合Netflix Eureka客户端的基本使用方法，包括服务发现激活、Eureka客户端注册配置以及API使用等
 <br><br>Eureka服务器:介绍Eureka服务器作为服务注册中心的搭建方法,以及内建Dashboard基本运维手段
+<br><br>规模大 强一致性 不适合Eureka
 ### 前微服务时代
 <br>前微服务时代分布式系统基本组成
 <br>服务提供方( Provider)
@@ -406,7 +407,7 @@ RestTemplate restTemplate = new RestTemplate(new HttpComponentsClientHttpRequest
 <br>@EnableCircuitBreaker激活:  @EnableHystrix + Spring Cloud功能
 <br>@EnableHystrix激活，没有一些Spring Cloud功能，如/hystrix.stream端点
 <br><br>Hystrix Endpoint( /hystrix.stream )
-### Spring Cloud Hystrix Dashboard
+### Spring Cloud Hystrix Dashboard(不成熟)
 <br>激活
 <br>@EnableHystrixDashboard
 ### 整合Netflix Turbine 
@@ -437,12 +438,70 @@ RestTemplate restTemplate = new RestTemplate(new HttpComponentsClientHttpRequest
 <br>启动类Main.java
 `@ImportResource( "abc . xm1")`
 <br><br>6.将实时数据缓存Redis,
-<br> Storm消费数据需要强持久性，Redis相对比DB逊色一-点。
+<br> Storm消费数据需要强持久性，Redis相对比DB逊色一点。
 <br><br>7. spring boot中用new SpringApplicationBuilder().sources(AppCofig.class)方式启动，是先加载Appconfig还是先加载配置文件
 <br> AppConfig是一-个配置@Configration Class， 那么配置文件是一个外部资源，其实不会相互影响。如果AppConfig增加了@PropertySource或者@PropertySources的话，会优先加载@PropertySource中的配置资源。
-
+## Spring Cloud Feign
+### Feign基本使用
+<br>申明式Web服务客户端: Feign
+<br>申明式:接口声明、Annotation 驱动
+<br>Web服务:HTTP的方式作为通讯协议
+<br>客户端:  用于服务调用的存根
+<br>Feign:  原生并不是Spring Web MVC的实现，基于AX-RS (Java REST规范)实现。Spring Cloud封装了Feign，
+<br>使其支持Spring Web MVC。RestTemplate ]、HttpMessageConverter
+<br><br>RestTemplate以及Spring Web MVC可以显示地自定义HttpMessageConverter 实现。
+<br><br>假设，有一个ava接口PersonService , Feign可以将其声明它是以HTTP方式调用的。
+<br><br>需要服务组件(SOA)
+<br>1.注册中心( Eureka Server) :服务发现和注册
+<br>2. Feign客户(服务消费)端:调用Feign 中明接口
+<br>3. Feign服务(服务提供)端:不一定强制实现Feign申明接口
+<br>4. Feign声明接口(契约) :定义一种Java强类型接口
+<br><br>需要服务组件(SOA) :
+<br>1.注册中心(Eureka Server) :服务发现和注册
+<br>a.应用名称: Spring-cloud-eureka-server.服务端口: 12345
+<br><br>2. Feign声明接口(契约) :定义一种Java强类型接口
+<br> person-api
+<br><br>3. Feign客户(服务消费)端:调用Feign 中明接口
+<br>应用名称: person-client
+<br>4. Feign服务(服务提供)端:不一定强制实现Feign中明接口
+<br>应用名称: person-service
+<br><br>Feign客户(服务消费)端、Feign 服务(服务提供)端以及Feign声明接口(契约)存放在同一个工程目录。
+<br><br>调用顺序
+<br>PostMan -> person-client -> person-service
+<br>person-api定义了@FeignClients(value="person-service"), person-service实际是一个服务器提供方的应用名称。
+<br>person-client和person-service两个应用注册到了Eureka Server
+<br>person-client可以感知person-service应用存在的，并且Spring Cloud帮助解析PersonService 中声明的应用名称: "person-service",
+<br>因此person-client在调用心PersonService、服务时，实际就路由到person-service的URL
+<br><br>整合Netflix Ribbon
+<br>官方参考文档: http://cloud.spring.io/spring-cloud-static/Dalston.SR4/single/spring-cloud.html#spring-cloud-ribbon
+<br><br>关闭Eureka注册
+<br>调整person-client
+### Hystrix整合
+`注意: Hystrix 可以是服务端实现，也可以是客户端实现，类似于AOP封装:正常逻辑、容错处理。`w
+### 问题互动
+<br>1.能跟dubbo- -样， 消费端像调用本地接口方法一-样调用服务端提供的服务么?还有就是远程调用方法参数对象不用实现序列化接口么?
+<br> FeignClient 类似Dubbo，不过需要增加以下@Annotation，和调用本地接口类似
+<br><br>2. Feign通过注释驱动弱化了调用Service细节，但是Feign的Api设定会暴露service地址，那还有实际使用价值么?
+<br>实际价值是存在的，Feign API暴露URI，比如: "/person/save"
+<br><br>3.整合ribbon不是一定要关闭注册中心吧?
+<br> Ribbon 对于Eureka是不强依赖，不过也不排除
+<br><br>4.生产环境上也都是feign的?
+<br>据我所知，不少的公司在用，需要Spring Cloud更多整合:Feign作为客户端
+<br>Ribbon作为负载均衡
+<br>Eureka作为注册中心
+<br>Zuul作为网管
+<br>Security作为安全OAuth 2认证
+<br><br>5. Ribbon直接配置在启动类上是作用所有的controller,那如果想作用在某个呢?
+<br> Ribbon 是控制全局的负载均衡，主要作用于客户端Feign，Controller 是调用Feign接口，可能让人感觉直接作用了Controller。
+<br><br>6.其实eureka也有ribbon中简单的负载均衡吧
+<br> Eureka 也要Ribbon的实现，可以参考com. netflix. ribbon:ribbon-eureka
+<br><br>7.如果服务提供方，没有接口，我客户端一般咋处理?要根据服务信息，自建feign接口?
+<br>当然可以，可是Feign的接口定义就是要求强制实现
+<br><br>8.无法连接注册中心的老服务，如何调用cloud服务
+<br>可以通过域名的配置Ribbon服务白名单
+<br><br>9. eureka有时监控不到宕机的服务正确的启动方式是什么
+<br>这可以调整的心跳检测的频率
 ## Spring Cloud Stream
-### Spring Cloud Stream
 ### Kafka绑定实现
 ### RabbitMQ 绑定实现
 
