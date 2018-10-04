@@ -531,30 +531,33 @@ RestTemplate restTemplate = new RestTemplate(new HttpComponentsClientHttpRequest
 <br>Java的进程所对应的线程main线程( group:  main)，main线程是所有子线程的父线程，main线程T1，T1又可以创建t1和t2
 ```java
 public abstract class RequestContextHolder {
-    private static final boolean jsfPresent = ClassUtils.isPresent("javax.faces.context.FacesContext", RequestContextHolder.class.getClassLoader());
-    private static final ThreadLocal<RequestAttributes> requestAttributesHolder = new NamedThreadLocal("Request attributes");
-    private static final ThreadLocal<RequestAttributes> inheritableRequestAttributesHolder = new NamedInheritableThreadLocal("Request context");
+    private static final boolean jsfPresent = 
+    ClassUtils.isPresent("javax.faces.context.FacesContext", RequestContextHolder.class.getClassLoader());
+    private static final ThreadLocal<RequestAttributes> requestAttributesHolder =
+     new NamedThreadLocal("Request attributes");
+    private static final ThreadLocal<RequestAttributes> inheritableRequestAttributesHolder =
+     new NamedInheritableThreadLocal("Request context");
     ...
 }
 ```
 <br><br>5. `ZuulServlet`经管理了`RequestContext`的生命周期了，为什么`ContextLifecycleFilter`还要在做一遍?
 <br>`ZuulServelt`最终也会清理掉`RequestContext`
 ```java
- finally {
+finally {
     RequestContext.getCurrentContext( ).unset( ) ;
 }
 ```
 <br>为什么 `ContextLifecycleFilter`也这么干?
 ```java
- finally {
+finally {
     RequestContext.getCurrentContext( ).unset( );
-    }
+}
 ```
 <br>不要忽略了`ZuulServletFilter`， 也有这个处理:
 ```java
- finally {
-<br>RequestContext.getCurrentContext().unset( );
-    }
+finally {
+    RequestContext.getCurrentContext().unset( );
+}
 ```
 <br>RequestContext是任何Servlet或者Filter都能处理，  那么为了防止不正确的关闭，那么 `ContextLifecycleFilter`
 <br>相当于兜底操作，就是防止ThreadLocal没有被remove掉。
