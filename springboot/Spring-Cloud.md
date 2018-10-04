@@ -503,7 +503,7 @@ RestTemplate restTemplate = new RestTemplate(new HttpComponentsClientHttpRequest
 <br>这可以调整的心跳检测的频率
 
 ## Spring Cloud Zuul
-###身份验证、压力测试、金丝雀测试、动态路由、服务迁移、减载、安全、静态响应处理、主动/主动交通管理。（处理静态文件不行）
+### 身份验证、压力测试、金丝雀测试、动态路由、服务迁移、减载、安全、静态响应处理、主动/主动交通管理。（处理静态文件不行）
 <br>Nginx + Lua
 <br>控制规则(A/B Test)
 ### 整合Ribbon
@@ -559,7 +559,7 @@ finally {
     RequestContext.getCurrentContext().unset( );
 }
 ```
-<br>RequestContext是任何Servlet或者Filter都能处理，  那么为了防止不正确的关闭，那么 `ContextLifecycleFilter`
+RequestContext是任何Servlet或者Filter都能处理，  那么为了防止不正确的关闭，那么 `ContextLifecycleFilter`
 <br>相当于兜底操作，就是防止ThreadLocal没有被remove掉。
 <br><br>6. ThreadLocal对应了一个Thread,那么是不是意味着者Thread处理完了，那么ThreadLocal也随之GC?
 <br>所有Servlet均采用线程池，因此，不清空的话，可能会出现意想不到的情况。除非，每次都异常!(这种情况也要依赖于线程池的实现)
