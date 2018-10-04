@@ -116,14 +116,14 @@ spring.cloud.config.name
 spring.cloud.config.profile
 spring.cloud.config.label
 ```
-Endpoints
-对于 Spring Boot Actuator application 可以使用一些额外的管理端点
-`/actuator/env ` to update the Environment and rebind `@ConfigurationProperties` and log levels.
-`/actuator/refresh` to re-load the boot strap context and refresh the `@RefreshScope` beans.
-`/actuator/restart` to close the ApplicationContext and restart it (disabled by default).
-`/actuator/pause` and `/actuator/resume` for calling the Lifecycle methods (stop() and start() on the ApplicationContext).
-If you disable the `/actuator/restart` endpoint then the `/actuator/pause `and `/actuator/resume` endpoints will also be 
-disabled since they are just a special case of `/actuator/restart`.
+<br><br>Endpoints
+<br>对于 Spring Boot Actuator application 可以使用一些额外的管理端点
+<br>`/actuator/env ` to update the Environment and rebind `@ConfigurationProperties` and log levels.
+<br>`/actuator/refresh` to re-load the boot strap context and refresh the `@RefreshScope` beans.
+<br>`/actuator/restart` to close the ApplicationContext and restart it (disabled by default).
+<br>`/actuator/pause` and `/actuator/resume` for calling the Lifecycle methods (stop() and start() on the ApplicationContext).
+<br>If you disable the `/actuator/restart` endpoint then the `/actuator/pause `and `/actuator/resume` endpoints will also be 
+<br>disabled since they are just a special case of `/actuator/restart`.
 
 ### 健康指标
 <br>动态配置属性Bean
@@ -175,7 +175,7 @@ disabled since they are just a special case of `/actuator/restart`.
 <br>Dubbo: Hession、Java Serialization (二进制)，跨语言不变，一般通过Client(Java、C++)
 <br>二进制的性能是非常好：字节流，免去字符流(字符编码) ，机器友好、对人不友好
 <br>序列化: 把编程语言数据结构转换成字节流、反序列化:字节流转换成编程语言的数据结构(原生类型的组合)
-<br><br>URI:统--资源定位符
+<br><br>URI:统一资源定位符
 <br>URI用于网络资源定位的描述Universal Resource ldentifier
 <br>URL: Universal Resource Locator
 <br>网络是通讯方式
@@ -439,7 +439,7 @@ RestTemplate restTemplate = new RestTemplate(new HttpComponentsClientHttpRequest
 `@ImportResource( "abc . xm1")`
 <br><br>6.将实时数据缓存Redis,
 <br> Storm消费数据需要强持久性，Redis相对比DB逊色一点。
-<br><br>7. spring boot中用new SpringApplicationBuilder().sources(AppCofig.class)方式启动，是先加载Appconfig还是先加载配置文件
+<br><br>7. spring boot中用new SpringApplicationBuilder().sources(AppCofig.class)方式启动，是先加载Appconfig还是先加载配置文件？
 <br> AppConfig是一-个配置@Configration Class， 那么配置文件是一个外部资源，其实不会相互影响。如果AppConfig增加了@PropertySource或者@PropertySources的话，会优先加载@PropertySource中的配置资源。
 ## Spring Cloud Feign
 ### Feign基本使用
@@ -448,7 +448,7 @@ RestTemplate restTemplate = new RestTemplate(new HttpComponentsClientHttpRequest
 <br>Web服务:HTTP的方式作为通讯协议
 <br>客户端:  用于服务调用的存根
 <br>Feign:  原生并不是Spring Web MVC的实现，基于AX-RS (Java REST规范)实现。Spring Cloud封装了Feign，
-<br>使其支持Spring Web MVC。RestTemplate ]、HttpMessageConverter
+<br>使其支持Spring Web MVC。RestTemplate 、HttpMessageConverter
 <br><br>RestTemplate以及Spring Web MVC可以显示地自定义HttpMessageConverter 实现。
 <br><br>假设，有一个ava接口PersonService , Feign可以将其声明它是以HTTP方式调用的。
 <br><br>需要服务组件(SOA)
@@ -458,12 +458,12 @@ RestTemplate restTemplate = new RestTemplate(new HttpComponentsClientHttpRequest
 <br>4. Feign声明接口(契约) :定义一种Java强类型接口
 <br><br>需要服务组件(SOA) :
 <br>1.注册中心(Eureka Server) :服务发现和注册
-<br>a.应用名称: Spring-cloud-eureka-server.服务端口: 12345
+<br>应用名称: Spring-cloud-eureka-server.服务端口: 12345
 <br><br>2. Feign声明接口(契约) :定义一种Java强类型接口
 <br> person-api
 <br><br>3. Feign客户(服务消费)端:调用Feign 中明接口
 <br>应用名称: person-client
-<br>4. Feign服务(服务提供)端:不一定强制实现Feign中明接口
+<br><br>4. Feign服务(服务提供)端:不一定强制实现Feign中明接口
 <br>应用名称: person-service
 <br><br>Feign客户(服务消费)端、Feign 服务(服务提供)端以及Feign声明接口(契约)存放在同一个工程目录。
 <br><br>调用顺序
@@ -477,9 +477,9 @@ RestTemplate restTemplate = new RestTemplate(new HttpComponentsClientHttpRequest
 <br><br>关闭Eureka注册
 <br>调整person-client
 ### Hystrix整合
-`注意: Hystrix 可以是服务端实现，也可以是客户端实现，类似于AOP封装:正常逻辑、容错处理。`w
+`注意: Hystrix 可以是服务端实现，也可以是客户端实现，类似于AOP封装:正常逻辑、容错处理。`
 ### 问题互动
-<br>1.能跟dubbo- -样， 消费端像调用本地接口方法一-样调用服务端提供的服务么?还有就是远程调用方法参数对象不用实现序列化接口么?
+<br>1.能跟dubbo一样， 消费端像调用本地接口方法一样调用服务端提供的服务么?还有就是远程调用方法参数对象不用实现序列化接口么?
 <br> FeignClient 类似Dubbo，不过需要增加以下@Annotation，和调用本地接口类似
 <br><br>2. Feign通过注释驱动弱化了调用Service细节，但是Feign的Api设定会暴露service地址，那还有实际使用价值么?
 <br>实际价值是存在的，Feign API暴露URI，比如: "/person/save"
@@ -494,13 +494,75 @@ RestTemplate restTemplate = new RestTemplate(new HttpComponentsClientHttpRequest
 <br><br>5. Ribbon直接配置在启动类上是作用所有的controller,那如果想作用在某个呢?
 <br> Ribbon 是控制全局的负载均衡，主要作用于客户端Feign，Controller 是调用Feign接口，可能让人感觉直接作用了Controller。
 <br><br>6.其实eureka也有ribbon中简单的负载均衡吧
-<br> Eureka 也要Ribbon的实现，可以参考com. netflix. ribbon:ribbon-eureka
+<br> Eureka 也要Ribbon的实现，可以参考`com.netflix.ribbon:ribbon-eureka`
 <br><br>7.如果服务提供方，没有接口，我客户端一般咋处理?要根据服务信息，自建feign接口?
 <br>当然可以，可是Feign的接口定义就是要求强制实现
 <br><br>8.无法连接注册中心的老服务，如何调用cloud服务
 <br>可以通过域名的配置Ribbon服务白名单
 <br><br>9. eureka有时监控不到宕机的服务正确的启动方式是什么
 <br>这可以调整的心跳检测的频率
+
+## Spring Cloud Zuul
+###身份验证、压力测试、金丝雀测试、动态路由、服务迁移、减载、安全、静态响应处理、主动/主动交通管理。（处理静态文件不行）
+<br>Nginx + Lua
+<br>控制规则(A/B Test)
+### 整合Ribbon
+### 整合Eureka
+### 整合Hystrix
+### 整合Feign
+### 整合Config Server
+<br>前面的例子展示Zuul、Hystrix 、 Eureka以及Ribbon能力，可是配置相对是固定，真实线上环境需要-一个动态路由，即需要动态配置。
+<br>git init
+<br>git add
+<br>git commit
+<br>zk比git好用
+### 问答
+<br>1.看下来过程是:通过url去匹配zuul中配置的serviceld然后没整合ribbon时， 直接去eureka中找服务实例去调用， 
+如果整合了ribbon时，直接从listofService中取得一个实例，然后调用返回，对不?
+<br>大致上可以这么理解，不过对应的listOfServicers不只是单个实例，而可能是一个集群，主要可以配置域名。
+<br><br>2.为什么要先调用client而不直接调用server,还是不太理解
+<br>这个只是一个演示程序，client 在正式使用场景中，并不是一简单的调用，它可能是一个聚合服务
+<br><br>3. zuul是不是更多的作为业务网关
+<br>是的，很多企业内部的服务通过Zuul做个服务网关
+<br><br>4.渡劫`RequestContex`t经存在`ThreadLocal`中了，为什么还要使用`ConcurrentHashMap`?
+<br>`ThreadLocal`只能管当前线程，不能管理子线程，子线程需要使用`InheritableThreadLocal`。  `ConcurrentHashMap`实现一下，
+如果上下文处于多线程线程的环境，比如传递到子线程。比如: T1在管理`RequestContext`,
+但是T1又创建了多个线程(t1、t2)，这个时候，把上下文传递到了子线程t1和t2.
+<br>Java的进程所对应的线程main线程( group:  main)，main线程是所有子线程的父线程，main线程T1，T1又可以创建t1和t2
+```java
+public abstract class RequestContextHolder {
+    private static final boolean jsfPresent = ClassUtils.isPresent("javax.faces.context.FacesContext", RequestContextHolder.class.getClassLoader());
+    private static final ThreadLocal<RequestAttributes> requestAttributesHolder = new NamedThreadLocal("Request attributes");
+    private static final ThreadLocal<RequestAttributes> inheritableRequestAttributesHolder = new NamedInheritableThreadLocal("Request context");
+    ...
+}
+```
+<br><br>5. `ZuulServlet`经管理了`RequestContext`的生命周期了，为什么`ContextLifecycleFilter`还要在做一遍?
+<br>`ZuulServelt`最终也会清理掉`RequestContext`
+```java
+ finally {
+    RequestContext.getCurrentContext( ).unset( ) ;
+}
+```
+<br>为什么 `ContextLifecycleFilter`也这么干?
+```java
+ finally {
+    RequestContext.getCurrentContext( ).unset( );
+    }
+```
+<br>不要忽略了`ZuulServletFilter`， 也有这个处理:
+```java
+ finally {
+<br>RequestContext.getCurrentContext().unset( );
+    }
+```
+<br>RequestContext是任何Servlet或者Filter都能处理，  那么为了防止不正确的关闭，那么 `ContextLifecycleFilter`
+<br>相当于兜底操作，就是防止ThreadLocal没有被remove掉。
+<br><br>6. ThreadLocal对应了一个Thread,那么是不是意味着者Thread处理完了，那么ThreadLocal也随之GC?
+<br>所有Servlet均采用线程池，因此，不清空的话，可能会出现意想不到的情况。除非，每次都异常!(这种情况也要依赖于线程池的实现)
+
+
+
 ## Spring Cloud Stream
 ### Kafka绑定实现
 ### RabbitMQ 绑定实现
