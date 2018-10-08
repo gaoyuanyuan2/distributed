@@ -28,7 +28,7 @@
 <br><br>2) 非事务性会话
 <br>在该模式下，消息何时被确认取决于创建会话时的应答模式
 <br><br>AUTO_ACKNOWLEDGE
-<br>当客户端成功从recive方法返回以后，或者[MessageListener.onMessage]方法成功返回以后，会话会自动确认该消息
+<br>当客户端成功从receive方法返回以后，或者[MessageListener.onMessage]方法成功返回以后，会话会自动确认该消息
 <br><br>CLIENT_ACKNOWLEDGE
 <br>客户端通过调用消息的textMessage.acknowledge();确认消息。
 <br>在这种模式中，如果一个消息消费者消费一共是10个消息，那么消费了5个消息，然后在第5个消息通过textMessage.acknowledge()，那么之前的所有消息都会被消确认
