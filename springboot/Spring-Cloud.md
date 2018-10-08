@@ -314,7 +314,8 @@ private String statusPageUrl;
 <br>配置项
 ```properties
 ## Eureka 客户端应用实例状态URL
-eureka.instance.statusPageUrlPath = /health
+eureka.instance.statusPageUrlPath = /info
+eureka.instance.healthCheckUrlPath = /health
 ```
 <br>相互注册
 <br>--spring.profiles.active=peer1
