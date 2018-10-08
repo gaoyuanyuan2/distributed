@@ -564,17 +564,75 @@ RequestContext是任何Servlet或者Filter都能处理，  那么为了防止不
 <br>相当于兜底操作，就是防止ThreadLocal没有被remove掉。
 <br><br>6. ThreadLocal对应了一个Thread,那么是不是意味着者Thread处理完了，那么ThreadLocal也随之GC?
 <br>所有Servlet均采用线程池，因此，不清空的话，可能会出现意想不到的情况。除非，每次都异常!(这种情况也要依赖于线程池的实现)
-
-
-
 ## Spring Cloud Stream
 ### Kafka绑定实现
-### RabbitMQ 绑定实现
-
-## Spring Cloud Bus
-### 面向消息服务器。Kafka实现
+<br>1.  用途
+<br>消息中间件
+<br>流式计算处理
+<br>日志
+<br><br>Spring Kafka
+<br>Spring Boot Kafka
+<br>Spring Cloud Stream
+<br>Spring Cloud Stream Kafka Binder
+<br><br>Publish/Source  Subscriber/Sink
+<br><br>同类产品比较
+<br>ActiveMQ: JMS (Java Message Service )  规范实现
+<br>RabbitMQ: AMQP ( Advanced Message Queue Protocol)规范实现
+<br>Kafka:并非某种规范实现，它灵活和性能相对是优势
+<br><br>设计模式
+<br>Spring社区对data( spring-data)操作，有一个基本的模式，Template 模式:
+<br>JDBC : JdbcTemplateRedis: RedisTemplate
+<br>Kafka : KafkaTemplate
+<br>JMS :  JmsTemplate
+<br>Rest:  RestTemplate
+<br>XXXTemplate定 实现xxxOperations
+<br><br>Spring Cloud Stream
+<br>基本概念
+<br>Source:  来源，近义词: Producer、 Publisher
+<br>Sink:  接收器，近义词:  Consumer、Subscriber
+<br>Processor:  对于上流而言是Sink,对于下流而言是Source
+<br><br>Reactive Streams :
+<br>Publisher
+<br>Subscriber
+<br>Processor
+<br><br>消息大致分为两个部分:
+<br>消息头(Headers)
+<br>消息体( Body/Payload )
 ### RabbitMQ 实现
-
+### 问答部分
+<br><br>1.  当使用Future时， 异步调用都可以使用get()方式强制执行吗?
+<br>是的，  get()等待当前线程执行完毕，并且获取返回接口
+<br><br>2.  `@KafkaListener`和KafkaConsumer 有啥区别
+<br>没有实质区别，主要是编程模式。
+<br>@KafkaListener采用注解驱动
+<br>KafkaConsumer采用接口编程
+<br><br>3.  消费者接受消息的地方在哪?
+<br>订阅并且处理后，就消失。
+<br><br>4.  在生产环境配置多个生产者和消费者只需要定义不同的group就可以了吗?
+<br>group是一种，要看是不是相同Topic
+<br><br>5.  为了不丢失数据，  消息队列的容错，和排错后的处理，如何实现的?
+<br>这个依赖于zookeeper
+<br><br>6.  异步接受除了打印还有什么办法处理消息吗
+<br>可以处理其他逻辑，比如存储数据库
+<br><br>7.  `@EnableBinding`有什么用?
+<br>`@EnableBinding`将Source、 Sink 以及Processor 提升成相应的代理
+<br><br>8.  `@Autowired` Source source
+<br>这种写法是默认用官方的实现?答:是官方的实现
+<br><br>9.  `@EnableBinder` ,  `@EnableZuulProxy`，`@EnableDiscoverClient`这 些注解都是通过特定BeanPostProcessor实现的吗?
+<br>不完全对，主要处理接口在@Import
+<br>ImportSelector实现类
+<br>ImportBeanDefinitionRegistrar实现类。`@Configuration` 标注类
+<br>BeanPostProcessor  实现类
+<br><br>10. 我对流式处理还是懵懵的到底啥是流式处理怎样才能称为流式处理一般应用在什么场景?
+<br>Stream 处理简单地说，异步处理，消息是一种处理方式。
+<br>提交中请，机器生成，对于高密度提交任务，多数场景采用异步处理，Stream. Event-Driven。举例说明:审核流程，鉴别黄图。
+<br><br>11. 如果是大量消息怎么快速消费用多线程吗?
+<br>确实是使用多线程，不过不一定奏效。依赖于处理具体内容，比如: 一个线程使用了25% CPU，四个线程就将CPU耗尽。因此，并发100个处理，实际上，还是4个线程在处理。1/O密集型、CPU密集型。
+<br><br>12. 如果是大量消息怎么快速消费用多线程吗
+<br>大多数是多线程，其实也单线程，流式非阻塞。
+<br><br>13. 购物车的价格计算可以使用流式计算来处理么?能说下思路么?有没有什么高性能的方式推荐?
+<br>当商品添加到购物车的时候，就可以开始计算了。
+## Spring Cloud Bus
 ## Spring Cloud Sleuth
 ### 分布式应用跟踪。ZisKin整合
 

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="1a69c435-9430-420c-b841-ddb13cb8216f" name="Default" comment="springcloud">
-      <change beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
+    <list default="true" id="1a69c435-9430-420c-b841-ddb13cb8216f" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change beforePath="$PROJECT_DIR$/springboot/Spring-Cloud.md" afterPath="$PROJECT_DIR$/springboot/Spring-Cloud.md" />
     </list>
     <ignored path="$PROJECT_DIR$/../springcloud-config/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -15,29 +15,14 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="Spring-Boot.md" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/springboot/Spring-Boot.md">
-          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-            <state split_layout="SPLIT">
-              <first_editor relative-caret-position="46">
-                <caret line="2" column="8" lean-forward="false" selection-start-line="2" selection-start-column="8" selection-end-line="2" selection-end-column="8" />
-                <folding>
-                  <marker date="1538969271281" expanded="true" signature="20:415" ph="&lt;br&gt;&lt;br&gt;![持久化存储](https...准备的特性" />
-                </folding>
-              </first_editor>
-              <second_editor />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Spring-Cloud.md" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Spring-Cloud.md" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/springboot/Spring-Cloud.md">
           <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
             <state split_layout="FIRST">
-              <first_editor relative-caret-position="204">
-                <caret line="313" column="3" lean-forward="true" selection-start-line="313" selection-start-column="3" selection-end-line="313" selection-end-column="3" />
+              <first_editor relative-caret-position="532">
+                <caret line="633" column="26" lean-forward="false" selection-start-line="633" selection-start-column="26" selection-end-line="633" selection-end-column="26" />
                 <folding>
-                  <marker date="1538969271321" expanded="true" signature="14823:14880" ph="..." />
+                  <marker date="1538995471366" expanded="true" signature="14823:14880" ph="..." />
                 </folding>
               </first_editor>
               <second_editor />
@@ -45,7 +30,23 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name=".gitignore" pinned="false" current-in-tab="true">
+      <file leaf-file-name="zookeeper.md" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/zookeeper.md">
+          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+            <state split_layout="SPLIT">
+              <first_editor relative-caret-position="414">
+                <caret line="54" column="37" lean-forward="false" selection-start-line="54" selection-start-column="37" selection-end-line="54" selection-end-column="37" />
+                <folding>
+                  <marker date="1538969833984" expanded="true" signature="5531:5657" ph="..." />
+                  <marker date="1538969833984" expanded="true" signature="5700:5814" ph="..." />
+                </folding>
+              </first_editor>
+              <second_editor />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name=".gitignore" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/.gitignore">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="552">
@@ -115,8 +116,8 @@
         <entry file="file://$PROJECT_DIR$/mq.md">
           <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
             <state split_layout="FIRST">
-              <first_editor relative-caret-position="1035">
-                <caret line="45" column="1" lean-forward="false" selection-start-line="45" selection-start-column="1" selection-end-line="45" selection-end-column="85" />
+              <first_editor relative-caret-position="274">
+                <caret line="30" column="11" lean-forward="false" selection-start-line="30" selection-start-column="11" selection-end-line="30" selection-end-column="11" />
                 <folding />
               </first_editor>
               <second_editor />
@@ -153,6 +154,7 @@
       <find>熔断</find>
       <find>分布式锁</find>
       <find>路径、</find>
+      <find>recive</find>
     </findStrings>
     <replaceStrings>
       <replace>务</replace>
@@ -182,19 +184,19 @@
         <option value="$PROJECT_DIR$/mongodb.md" />
         <option value="$PROJECT_DIR$/dubbo.md" />
         <option value="$PROJECT_DIR$/docker.md" />
-        <option value="$PROJECT_DIR$/mq.md" />
         <option value="$PROJECT_DIR$/netty.md" />
         <option value="$PROJECT_DIR$/redis.md" />
         <option value="$PROJECT_DIR$/springboot.md" />
-        <option value="$PROJECT_DIR$/zookeeper.md" />
         <option value="$PROJECT_DIR$/README.md" />
         <option value="$PROJECT_DIR$/performance.md" />
         <option value="$PROJECT_DIR$/springboot/Spring WebMVC.md" />
         <option value="$PROJECT_DIR$/springboot/temp.md" />
         <option value="$PROJECT_DIR$/springboot/Spring-Boot.md" />
         <option value="$PROJECT_DIR$/.idea/modules.xml" />
-        <option value="$PROJECT_DIR$/springboot/Spring-Cloud.md" />
         <option value="$PROJECT_DIR$/.gitignore" />
+        <option value="$PROJECT_DIR$/zookeeper.md" />
+        <option value="$PROJECT_DIR$/mq.md" />
+        <option value="$PROJECT_DIR$/springboot/Spring-Cloud.md" />
       </list>
     </option>
   </component>
@@ -239,6 +241,11 @@
               <item name="distributed" type="b2602c69:ProjectViewProjectNode" />
               <item name="distributed" type="462c0819:PsiDirectoryNode" />
               <item name=".idea" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="distributed" type="b2602c69:ProjectViewProjectNode" />
+              <item name="distributed" type="462c0819:PsiDirectoryNode" />
+              <item name="springboot" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -404,27 +411,6 @@
       <workItem from="1538273889539" duration="3371000" />
       <workItem from="1538277631947" duration="5832000" />
       <workItem from="1538969197752" duration="26000" />
-    </task>
-    <task id="LOCAL-00036" summary="Redis">
-      <created>1535620612403</created>
-      <option name="number" value="00036" />
-      <option name="presentableId" value="LOCAL-00036" />
-      <option name="project" value="LOCAL" />
-      <updated>1535620612403</updated>
-    </task>
-    <task id="LOCAL-00037" summary="MongoDB">
-      <created>1535627147999</created>
-      <option name="number" value="00037" />
-      <option name="presentableId" value="LOCAL-00037" />
-      <option name="project" value="LOCAL" />
-      <updated>1535627147999</updated>
-    </task>
-    <task id="LOCAL-00038" summary="MongoDB">
-      <created>1535627196517</created>
-      <option name="number" value="00038" />
-      <option name="presentableId" value="LOCAL-00038" />
-      <option name="project" value="LOCAL" />
-      <updated>1535627196517</updated>
     </task>
     <task id="LOCAL-00039" summary="redis">
       <created>1535712882297</created>
@@ -748,11 +734,32 @@
       <option name="project" value="LOCAL" />
       <updated>1538289943143</updated>
     </task>
-    <option name="localTasksCounter" value="85" />
+    <task id="LOCAL-00085" summary="springcloud">
+      <created>1538969362721</created>
+      <option name="number" value="00085" />
+      <option name="presentableId" value="LOCAL-00085" />
+      <option name="project" value="LOCAL" />
+      <updated>1538969362721</updated>
+    </task>
+    <task id="LOCAL-00086" summary="zookeeper">
+      <created>1538969863697</created>
+      <option name="number" value="00086" />
+      <option name="presentableId" value="LOCAL-00086" />
+      <option name="project" value="LOCAL" />
+      <updated>1538969863697</updated>
+    </task>
+    <task id="LOCAL-00087" summary="mq">
+      <created>1538973954238</created>
+      <option name="number" value="00087" />
+      <option name="presentableId" value="LOCAL-00087" />
+      <option name="project" value="LOCAL" />
+      <updated>1538973954238</updated>
+    </task>
+    <option name="localTasksCounter" value="88" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="171555000" />
+    <option name="totallyTimeSpent" value="178726000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="2576" height="1416" extended-state="6" />
@@ -805,10 +812,8 @@
     <MESSAGE value="dubbo" />
     <MESSAGE value="readme" />
     <MESSAGE value="docker" />
-    <MESSAGE value="mq" />
     <MESSAGE value="netty" />
     <MESSAGE value="redis" />
-    <MESSAGE value="zookeeper" />
     <MESSAGE value="JVM" />
     <MESSAGE value="http" />
     <MESSAGE value="tomcat" />
@@ -817,7 +822,9 @@
     <MESSAGE value="springboot" />
     <MESSAGE value="Eureka" />
     <MESSAGE value="springcloud" />
-    <option name="LAST_COMMIT_MESSAGE" value="springcloud" />
+    <MESSAGE value="zookeeper" />
+    <MESSAGE value="mq" />
+    <option name="LAST_COMMIT_MESSAGE" value="mq" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -1100,16 +1107,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/zookeeper.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SPLIT">
-          <first_editor relative-caret-position="2300">
-            <caret line="100" column="0" lean-forward="false" selection-start-line="100" selection-start-column="0" selection-end-line="100" selection-end-column="0" />
-          </first_editor>
-          <second_editor />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/performance.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="FIRST">
@@ -1204,19 +1201,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/springboot/Spring-Cloud.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="FIRST">
-          <first_editor relative-caret-position="204">
-            <caret line="313" column="3" lean-forward="true" selection-start-line="313" selection-start-column="3" selection-end-line="313" selection-end-column="3" />
-            <folding>
-              <marker date="1538969271321" expanded="true" signature="14823:14880" ph="..." />
-            </folding>
-          </first_editor>
-          <second_editor />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/dubbo.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
@@ -1239,17 +1223,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/mq.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="FIRST">
-          <first_editor relative-caret-position="1035">
-            <caret line="45" column="1" lean-forward="false" selection-start-line="45" selection-start-column="1" selection-end-line="45" selection-end-column="85" />
-            <folding />
-          </first_editor>
-          <second_editor />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/docker.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
@@ -1266,6 +1239,44 @@
         <state relative-caret-position="552">
           <caret line="24" column="12" lean-forward="false" selection-start-line="24" selection-start-column="12" selection-end-line="24" selection-end-column="12" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mq.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="FIRST">
+          <first_editor relative-caret-position="274">
+            <caret line="30" column="11" lean-forward="false" selection-start-line="30" selection-start-column="11" selection-end-line="30" selection-end-column="11" />
+            <folding />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/zookeeper.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="414">
+            <caret line="54" column="37" lean-forward="false" selection-start-line="54" selection-start-column="37" selection-end-line="54" selection-end-column="37" />
+            <folding>
+              <marker date="1538969833984" expanded="true" signature="5531:5657" ph="..." />
+              <marker date="1538969833984" expanded="true" signature="5700:5814" ph="..." />
+            </folding>
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/springboot/Spring-Cloud.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="FIRST">
+          <first_editor relative-caret-position="532">
+            <caret line="633" column="26" lean-forward="false" selection-start-line="633" selection-start-column="26" selection-end-line="633" selection-end-column="26" />
+            <folding>
+              <marker date="1538995471366" expanded="true" signature="14823:14880" ph="..." />
+            </folding>
+          </first_editor>
+          <second_editor />
         </state>
       </provider>
     </entry>
