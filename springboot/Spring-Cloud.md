@@ -640,7 +640,7 @@ RequestContext是任何Servlet或者Filter都能处理，  那么为了防止不
 <br>调整当前日志系统(slf4j) 的MDC
 <br>MDC : Mapped Diagnostic Context
 `spring-cloud-starter-sleuth`会自动装配一个名为TraceFilter组件，它公增加一些slf4j MDC
-跟踪 排查问题 性能考察
+<br>跟踪 排查问题 性能考察
 ### 分布式应用跟踪。ZisKin整合
 
 
