@@ -634,7 +634,10 @@ RequestContext是任何Servlet或者Filter都能处理，  那么为了防止不
 <br><br>13. 购物车的价格计算可以使用流式计算来处理么?能说下思路么?有没有什么高性能的方式推荐?
 <br>当商品添加到购物车的时候，就可以开始计算了。
 ## Spring Cloud Bus
-## Spring Cloud Sleuth
+## Spring Cloud Sleuth 实现了分布式跟踪解决方案
+<br>Span(跨度):工作的基本单位。例如，发送RPC是一个新的span，就像向RPC发送响应一样。span由一个惟一的64位ID标识，另一个64位ID标识，用于跟踪span所在的位置。span还有其他数据，比如描述、时间戳事件、键值注释(标记)
+<br><br>Trace(痕迹):形成树状结构的一系列跨度。例如，如果您运行分布式大数据存储，则可能会由PUT请求形成跟踪。
+、导致它们的span的ID和进程ID(通常是IP地址)。
 <br>日志发生的变化
 <br>当应用ClassPath下存在`org.springframework.cloud:spring-cloud-starter-sleuth`时候，日志会发生调整。
 <br>调整当前日志系统(slf4j) 的MDC
