@@ -412,6 +412,7 @@ RestTemplate restTemplate = new RestTemplate(new HttpComponentsClientHttpRequest
 <br>激活
 <br>@EnableHystrixDashboard
 ### 整合Netflix Turbine 
+<br>数据聚合
 ### 问题互动
 <br>1. ribbon是用来做什么的，只能负载均衡吗?
 <br>主要用于客户端负载均衡
@@ -634,6 +635,12 @@ RequestContext是任何Servlet或者Filter都能处理，  那么为了防止不
 <br>当商品添加到购物车的时候，就可以开始计算了。
 ## Spring Cloud Bus
 ## Spring Cloud Sleuth
+<br>日志发生的变化
+<br>当应用ClassPath下存在`org.springframework.cloud:spring-cloud-starter-sleuth`时候，日志会发生调整。
+<br>调整当前日志系统(slf4j) 的MDC
+<br>MDC : Mapped Diagnostic Context
+`spring-cloud-starter-sleuth`会自动装配一个名为TraceFilter组件，它公增加一些slf4j MDC
+跟踪 排查问题 性能考察
 ### 分布式应用跟踪。ZisKin整合
 
 
