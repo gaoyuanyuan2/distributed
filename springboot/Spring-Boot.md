@@ -21,12 +21,23 @@
 <br><br>重要概念
 <br>自动提交模式( Auto-commitmode )
 <br>事务隔离级别( Transaction isolation levels )
-<br>保护点( Savepoints )
-
-<br>@Transaction
-<br>代理执行- TransactionInterceptor
+<br>TRANSACTION_READ_UNCOMMITTED
+<br>TRANSACTION_READ_COMMITTED
+<br>TRANSACTION_REPEATABLE_READ
+<br>TRANSACTION_SERIALIZABLE
+<br><br>保护点( SavePoints)
+<br><br>从上至下,级别越高,性能越差
+<br>Spring Transaction实现重用了JDBC API :
+<br>Isolation -> TransactionDefinition
+<br>ISOLATION_READ_UNCOMMITTED = Connection.TRANSACTION_ READ_UNCOMMITTED
+<br>ISOLATION_READ_COMMITTED = Connection.TRANSACTION_ READ_COMMITTED
+<br>ISOLATION_REPEATABLE_READ = Connection.TRANSACTION_REPEATABLE_READ
+<br>ISOLATION_SERIALIZABLE = Connection.TRANSACTION_SERIALIZABLE
+<br><br>@Transaction
+<br>代理执行 TransactionInterceptor
 <br>可以控制rollback的异常粒度: rollbackFor() 以及noRollbackFor()
 <br>可以执行事务管理器: transactionManager()
+<br><br>通过API方式进行事务处理- PlatformTransactionManager
 #### 验证
 <br>主要内容
 <br>ean Validation ( JSR-303) : 介绍Java Bean验证、核心API、实现框架Hibernate Validator
