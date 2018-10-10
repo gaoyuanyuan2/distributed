@@ -1,5 +1,51 @@
 # Spring Cloud
-## Spring Cloud Config Client
+### 1、概述
+<br>1. 定义
+<br>就目前而言，对于微服务业界并没有一个统一的标准的定义(While there is no precise definition of this architectural style)
+<br><br>但通常而言，微服务架构是一 种架构模式或者说是一种架构风格，它提倡将单-应用程序划分成一组小的服务， 每个服务运行在其独立的自己的进程中，服务之间互相协调、
+互相配合,为用户提供最终价值。服务之间采用轻量级的通信机制互相沟通
+(通常是基于HTTP的RESTful API)。每个服务都围绕着具体业务进行构建，
+并且能够被独立地部署到生产环境、类生产环境等。另外，应尽量避免统一的、 集中式的服务管理机制，对具体的一个服务而言，应根据业务上下文，选择合适的语言、工具对其进行构建，
+可以有一个非常轻量级的集中式管理来协调这些服务， 可以使用不同的语言来编写服务，也可以使用不同的数据存储。
+微服务化的核心就是将传统的一站式应用，根据业务拆分成一个一个的服务，彻底地去耦合每一个微服务提供单个业务功能的服务，一个服务做一件事,
+从技术角度看就是一种小而独立的处理过程，类似进程概念，能够自行单独启动或销毁,  拥有自己独立的数据库。
+<br><br>简而言之，微服务架构风格是一种将单个应用程序作为一套`小型服务`开发的方法，每种应用程序都运行在自己的`进程`中，并与`轻量级`机制(通常是`HTTP资源API`)
+进行通信。这些服务是围绕业务功能构建的，可以通过全自动部署机制`独立部署`，这些服务的集中管理最少，可以用不同的编程语言编写如并使用不同的数据存储技术。
+<br><br>2. 优点
+<br>每个服务足够内聚，足够小，代码容易理解这样能聚焦一个指定的业务功能或业务需求开发简单、开发效率提高，一个服务可能就是专一的只干一件事。
+<br>微服务能够被小团队单独开发，这个小团队是2到5人的开发人员组成。
+<br>微服务是松耦合的，是有功能意义的服务，无论是在开发阶段或部署阶段都是独立的。微服务能使用不同的语言开发。
+<br>易于和第三方集成，微服务允许容易且灵活的方式集成自动部署，通过持续集成工具，如Jenkins, Hudson, bamboo微服务易于被一个开发人员理解， 修改和维护,这样小团队能够更关注自己的工作成果。无需通过合作才能体现价值。微服务允许你利用融合最新技术。
+<br>微服务只是业务逻辑的代码，不会和HTML,CSS或其他界面组件混合。
+<br>每个微服务都有自己的存储能力，可以有自己的数据库。也可以有统一数据库。
+<br><br>3. 缺点
+<br> 开发人员要处理分布式系统的复杂性
+<br> 多服务运维难度，随着服务的增加，运维的压力也在增大系统部署依赖服务间通信成本数据一致性系统集成测试性能监控.....
+<br><br>
+![对比](https://github.com/gaoyuanyuan2/distributed/blob/master/img/16.png) 
+<br><br>
+![对比](https://github.com/gaoyuanyuan2/distributed/blob/master/img/17.png) 
+<br><br>
+<br>4. SpringCloud和SpringBoot是什么关系
+<br>SpringCloud,基于SpringBoot提供了一套微服务解决方案，包括服务注册与发现，配置中心，全链路监控，服务网关，负载均衡，熔断器等组件，除了基于NetFlix的开源组件做高度抽象封装之外，还有一些选型中立的开源组件。
+<br>SpringCloud利用SpringBoot的开发便利性巧妙地简化了分布式系统基础设施的开发，SpringCloud为开发人员提供 了快速构建分布式系统的一些工具，包括配置管理、服务发现、断路器、路由、微代理、事件总线、全局锁、决策竞选、分布式会话等等,它们都可以用SpringBoot的开发风格做到-键启动和部署。
+<br><br>SpringBoot并没有重复制造轮子，它只是将目前各家公司开发的比较成熟、经得起实际考验的服务框架组合起来，通过
+<br>SpringBoot风格进行再封装屏蔽掉了复杂的配置和实现原理，最终给开发者留出了一套简单易懂、易部署和易维护的分布式系统开发工具包
+<br><br>SpringBoot专注于快速方便的开发单个个体微服务。
+SpringCloud是关注全局的微服务协调整理治理框架，它将SpringBoot开发的一 个个单体微服务整合并管理起来,
+为各个微服务之间提供，配置管理、服务发现、断路器、  路由、微代理、事件总线、全局锁、决策竞选、分布式会话等等集成服务
+<br><br>SpringBoot可以离开SpringCloud独立使用开发项目，但是SpringCloud离不开SpringBoot, 属于依赖的关系
+<br>SpringBoot专注于快速、方便的开发单个微服务个体，SpringCloud关注全局的服务治理框架。
+<br><br>5.最大区别: SpringCloud抛弃 了Dubbo的RPC通信，采用的是基于HTTP的REST方式。
+<br><br> 严格来说，这两种方式各有优劣。虽然从一定程度上来说，后者牺牲了服务调用的性能，但也避免了上面提到的原生RPC带来的问题。而且REST相比RPC更为灵活，服务提供方和调用方的依赖只依靠一纸契约, 
+不存在代码级别的强依赖，这在强调快速演化的微服务环境下，显得更加合适。
+<br><br>品牌机与组装机的区别
+<br><br>社区支持与更新力度
+<br><br>最为重要的是，DUBBO停止了5年左右的更新，虽然2017.7重启了。对于技术发展的新需求,需要由开发者自行拓展升级(比如当当网弄出了DubboX)，这对于很多想要采用微服务架构的中小软件组织，显然是不太合适的，中小公司没有这么强大的技术能力去修改Dubbo源码+周边的一整套解决方案,并不是每一个公司都有阿里的大牛 +真实的线上生产环境测试过。
+<br><br> Dubbo的定位始终是一款RPC框架，而Spring Cloud的目标是微服务架构下的一站式解决方案。
+<br><br>在面临微服务基础框架选型时Dubbo与Spring Cloud是只能二选一
+
+## Spring Cloud Config Client 集中化管理集群配置
 <br>技术回顾:回顾提及的Environment.以及Spring Boot配置相关的事件和监听器,
 <br><br>如`ApplicationEnvironmentPreparedEvent`和`ConfigFileApplicationListener`，
 <br><br>Bootstrap配置属性:解密Bootstrap配置属性与Spring Framework / Spring Boot配置架构的关系,介绍如何调整Bootstrap
@@ -49,11 +95,11 @@ org.springframework.cloud.context.restart.RestartListener
 <br>可以参考一下SpringFramework源码:
 `AbstractRefreshableWebApplicationContext`
 ```java
- protected void initPropertySources() {
-    ConfigurableEnvironment env = this.getEnvironment();
-    if (env instanceof ConfigurableWebEnvironment) {
-        ((ConfigurableWebEnvironment)env).initPropertySources(this.servletContext, this.servletConfig);
-    }
+protected void initPropertySources() {
+ConfigurableEnvironment env = this.getEnvironment();
+if (env instanceof ConfigurableWebEnvironment) {
+    ((ConfigurableWebEnvironment)env).initPropertySources(this.servletContext, this.servletConfig);
+}
 
 }
 ```
@@ -158,11 +204,13 @@ spring.cloud.config.label
 <br>Netty类似于Reactive
 <br>观察者模式的实现
 ## Spring Cloud Netflix Eureka
+![](https://github.com/gaoyuanyuan2/distributed/blob/master/img/19.png) 
 <br>前微服务时代:介绍前微服务时代，服务发现和注册在SOA甚至是更早的时代的技术实现和实施方法,如WebService中的UDDI、REST 中的HEATOAS
 <br><br>高可用架构:简介高可用架构的基本原则,计算方法和系统设计
 <br><br>Eureka客户端:介绍Spring Cloud Discovery结合Netflix Eureka客户端的基本使用方法，包括服务发现激活、Eureka客户端注册配置以及API使用等
 <br><br>Eureka服务器:介绍Eureka服务器作为服务注册中心的搭建方法,以及内建Dashboard基本运维手段
-<br><br>规模大 强一致性 不适合Eureka
+<br><br>规模大 强一致性 不适合Eureka 
+<br><br>使用轮询(round-robin)负载算法的负载均衡器
 ### 前微服务时代
 <br>前微服务时代分布式系统基本组成
 <br>服务提供方( Provider)
@@ -238,10 +286,23 @@ spring.cloud.config.label
 <br>当provider-a挂，会自动切换，不过不一定及时。不及时，服务端可能存在脏数据，或者轮训更新时间未达。
 <br><br>6.一个业务中调用多个service时如何保证事务
 <br>需要分布式事务实现(JTA)，可是一般互联网项目，没有这种昂贵的操作。
+<br><br>7. Zookeeper保证CP
+<br>当向注册中心查询服务列表时，我们可以容忍注册中心返回的是几分钟以前的注册信息，但不能接受服务直接down掉不可用。也就是说，服务注册功能对可用性的要求要高于一致性。 但是zk会出现这样-种情况，当master节点因为网络故障 与其他节点失去联系时，剩余节点会重新进行leader选举。问题在于,选举leader的时间太长，30 ~ 120s,且选举期间整个zk集群都是不可用的，这就导致在选举期间注册服务瘫痪。在云部署的环境下，因网络问题使得zk集群失去master节点是较大概率会发生的事，虽然服务能够最终恢复，但是漫长的选举时间导致的注册长期不可用是不能容忍的。
+<br><br>8. Eureka保证AP
+<br>Eureka看明白了这一点， 因此在设计时就优先保证可用性。`Eureka各个节点都是平等的`，几个节点挂掉不会影响正常节点的工作剩余的节点依然可以提供注册和查询服务。而Eureka的客户端在向某个Eureka注册或时如果发现连接失败，则会自动切换至其它节点，只要有一台Eureka还在， 就能保证注册服务可用(保证可用性),只不过查到的信息可能不是最新的(不保证强-致性)。 除此之外，Eureka还有一 种自我保护机制， 如果在15分钟内超过85%的节点都没有正常的心跳，那么Eureka就认为客户端与注册中心出现了网络故障，此时会出现以下几种情况:
+<br><br>1) Eureka不再从注册列表中移除因为长时间没收到心跳而应该过期的服务
+<br><br>2) Eureka仍然能够接受新服务的注册和查询请求，但是不会被同步到其它节点上(即保证当前节点依然可用
+<br><br>3) 当网络稳定时，当前实例新的注册信息会被同步到其它节点中
+<br><br>因此，Eureka可以很好的应对因网络故障导致部分节点失去联系的情况，而不会像zookeeper那样使整个注册服务瘫痪。
 ## Spring Cloud Netfix Ribbon
 <br>简介负载均衡客户端和服务端的相关理论,包括调度算法:如先来先服务、轮训、多级队列等。基本特性:非对称负载、健康检查、优先级队列等
 <br><br>技术回顾:回顾Spring Framework HTTP组件RestTemplate的使用方法,结台ClientHttpRequestInterceptor实现简单负载均衡客户端
 <br><br>整合Netlix Ribbon :作为Spring Cloud客户端负载均衡实现, Netflix Ribbon提供了丰富的组件,包括负载均衡器、负载均衡规则、PING 策略等,根据前章所积累的经验,实现客户端负载均衡
+<br><br> Ribbon 提供云端负载均衡，有多种负载均衡策略可供选择，可配合服务发现和断路器使用。
+![](https://github.com/gaoyuanyuan2/distributed/blob/master/img/24.png) 
+<br><br>Ribbon在工作时分成两步
+<br><br>第一步先选择EurekaServer ,它优先选择在同一个区域内负载较少的server.
+<br><br>第二步再根据用户指定的策略，在从server取到的服务注册列表中选择一个地址。其中Ribbon提供了多种策略:比如轮询、随机和根据响应时间加权。
 ### Eureka高可用
 <br><br>1.  Eureka客户端高可用
 <br>用域名方式最好，如果太多ip地址
@@ -256,13 +317,13 @@ this.serviceUrl.put("defaultZone", "http://localhost:8761/eureka/");
 ```
 <br>value可以是多值字段，通过"," 分割:
 ```java
- String serviceUrls = (String)this.serviceUrl.get(myZone);
+String serviceUrls = (String)this.serviceUrl.get(myZone);
 if (serviceUrls == null || serviceUrls.isEmpty()) {
-    serviceUrls = (String)this.serviceUrl.get("defaultZone");
+serviceUrls = (String)this.serviceUrl.get("defaultZone");
 }
 
 if (!StringUtils.isEmpty(serviceUrls)) {
-    String[] serviceUrlsSplit = StringUtils.commaDelimitedListToStringArray(serviceUrls);
+String[] serviceUrlsSplit = StringUtils.commaDelimitedListToStringArray(serviceUrls);
 ... 
 }
 ```
@@ -348,7 +409,7 @@ RestTemplate restTemplate = new RestTemplate(new HttpComponentsClientHttpRequest
 ```
 #### HTTP请求拦截器: ClientHttpRequestInterceptor
 加深RestTemplate拦截过程的理解
-## 整合Netflix Ribbon
+## 整合Netflix Ribbon 常见的负载均衡有软件Nginx, LVS, 硬件F5等。
 <br>整合Netflix Ribbon
 <br>RestTemplate增加一个LoadBalancerInterceptor，调用Netflix 中的LoadBalancer实现，  根据Eureka客户端应用获取月标应用lP+Port信息，轮训的方式调用。
 <br>实际请求客户端
@@ -360,13 +421,13 @@ RestTemplate restTemplate = new RestTemplate(new HttpComponentsClientHttpRequest
 <br><br>核心规则接口
 <br>IRule  尽量避免随机 无法把控
 <br>随机规则: RandomRule
-<br>最可用规则:  BestAvailableRule
+<br>最可用规则:  BestAvailableRule 会先过滤掉由于多次访问故障而处于断路器跳闸状态的服务，然后选择-个并发量最小的服务
 <br>轮训规则: RoundRobinRule
-<br>重试实现: RetryRule
+<br>重试实现: RetryRule 先按照RoundRobinRule的策略获取服务，如果获取服务失败则在指定时间内会进行重试，获取可用的服务
 <br>客户端配置: ClientConfigEnabledRoundRobinRule
-<br>可用性过滤规则: AvailabilityFilteringRule
-<br>RT权重规则: WeightedResponseTimeRule
-<br>规避区域规则:  ZoneAvoidanceRule
+<br>可用性过滤规则: AvailabilityFilteringRule 会先过滤掉由于多次访问故障而处于断路器跳闸状态的服务,还有并发的连接数量超过阈值的服务，然后对剩余的服务列表按照轮询策略进行访问
+<br>RT权重规则: WeightedResponseTimeRule 根据平均响应时间计算所有服务的权重，响应时间越快服务权重越大被选中的概率越高。刚启动时如果统计信息不足，则使用RoundRobinRule策略， 等统计信息足够， 会切换到WeightedResponseTimeRule
+<br>规避区域规则:  ZoneAvoidanceRule 默认规则，复合判断server所在区域的性能和server的可用性选择服务器
 ### 问题互动
 <br>1.为什么要用eureka?
 <br>目前业界比较稳定云计算的开发员中间件，虽然有一些不足，基本上可用
@@ -411,6 +472,9 @@ RestTemplate restTemplate = new RestTemplate(new HttpComponentsClientHttpRequest
 ### Spring Cloud Hystrix Dashboard(不成熟)
 <br>激活
 <br>@EnableHystrixDashboard
+<br><br>实心圆:共有两种含义。它通过颜色的变化代表了实例的健康程度，它的健康度从绿色<黄色<橙色<红色递减。
+<br>该实心圆除了颜色的变化之外，它的大小也会根据实例的请求流量发生变化，流量越大该实心圆就越大。所以通过该实心圆的展示
+就可以在大量的实例中快速的发现故障实例和高压力实例。
 ### 整合Netflix Turbine 
 <br>数据聚合
 ### 问题互动
@@ -433,7 +497,7 @@ RestTemplate restTemplate = new RestTemplate(new HttpComponentsClientHttpRequest
 <br>abc.xml:
 ```xml
 <bean id="person" class="com.gupao.domain.Person">
-    <property name= "name" value="${my.name}" />
+<property name= "name" value="${my.name}" />
 </bean>
 
 ```
@@ -443,7 +507,43 @@ RestTemplate restTemplate = new RestTemplate(new HttpComponentsClientHttpRequest
 <br> Storm消费数据需要强持久性，Redis相对比DB逊色一点。
 <br><br>7. spring boot中用new SpringApplicationBuilder().sources(AppCofig.class)方式启动，是先加载Appconfig还是先加载配置文件？
 <br> AppConfig是一-个配置@Configration Class， 那么配置文件是一个外部资源，其实不会相互影响。如果AppConfig增加了@PropertySource或者@PropertySources的话，会优先加载@PropertySource中的配置资源。
+<br><br>8.使用超时机制、服务降级
+<br>服务降级服务调用接口，如果发生错误或者超时，不让调用接口，调用本地fallback
+<br>服务雪崩产生服务堆积，导致其他服务接口无法。
+<br><br>9. 服务雪崩 雪崩效应，所有请求在处理一个服务，不能访问其他服务接口
+<br>多个微服务之向调用的吋候,假设微服务A调用微服务B和微服务C,微服务B和微服务C又调用其它的微服务,这就是所謂的`扇出` 。如果扇出的链路上某个微服务的调用响应时间过长或者不可用,对微服务A的调用就会占用越来越多的系统资源,进而引起系
+统崩溃,所渭的“雪崩效应”
+<br>对于高流量的座用来说,单一的后端依赖可能会导致所有服务器上的所有资源都在几秒钟内饱和.比失敗更糟糕的是,这些应用程序还可能导致服务之同的延迟増加,备份队列,线程和其他系统资源紧张,导致整个系统发生更的级联故障,
+这些都表示需要对故障和延时逃行隔离和管理,以便単个依赖关系的失败,不能取消整个应用程序或系统
+<br><br>10.如何解决服务雪崩效应
+<br>1) 超时机制--服务降级处理
+<br>2) 服务降级服务接口发生错误，不去调用接口，调用本地方法fallback
+<br>3) 熔断机制类似保险丝 熔断机制就是为解决服务高并发，一旦达到规定请求，熔断，报错。----服务降级
+<br>4) 隔离机制---每个服务接口隔离开;
+<br><br>5） 限流机制nginx使用网关
+<br><br>11. SpringCloud hystrix断路器pc远程调用，解决服务雪崩效
+<br>服务与服务之间报错信息。
+<br> hystrix断路器服务降级、熔断机制、隔离资源。
+<br><br>12. “断路器”本身是一种开关装置
+<br>1) 当某个服务单元发生故障之后，通过断路器的故障监控(类似熔断保险丝) ,向调用方返回一个符合预期的、可处理的备选响应(FallBack) ,
+而不是长时间的等待或者抛出调用方无法处理的异常，这样就保证了服务调用方的线程不会被长时间、
+不必要地占用，从而避免了故障在分布式系统中的蔓延，乃至雪崩。
+<br>2) 服务熔断:服务端。
+<br>一般是某个服务故障或者异常引起,类似现实世界中的“保险丝“，当某个异常条件被触发，直接熔断整个服务，而不是一直等到此服务超时。
+<br>熔断机制是应对雪崩效应的一种微服务链路保护机制。
+<br>当扇出链路的某个微服务不可用或者响应时间太长时，会进行服务的降级，进而熔断该节点微服务的调用，快速返回"错误”的响应信息。
+<br>当检测到该节点微服务调用响应正常后恢复调用链路。在SpringCloud框架里熔断机制通过Hystrix实现。Hystrix会监控微服务间调用的状况，当失败的调用到一定阈值，缺省是5秒内20次调用失败就会启动熔断机制。熔断机制的注解是@HystrixCommand.
+<br><br>7. 服务降级: 客户端
+<br>服务降级处理是在客户端实现完成的，与服务端没有关系。整体资源快不够了，忍痛将某些服务先关掉，待渡过难关，再开启回来。
+<br>所谓降级，一般是从整体负荷考虑。就是当某个服务熔断之后，服务器将不再被调用，
+此时客户端可以自己准备-一个本地的fallback回调，返回-一个缺省值。
+这样做，虽然服务水平下降，但好歹可用，比直接挂掉要强。
 ## Spring Cloud Feign
+### Feign能干什么
+<br>1.Feign旨在使编写Java Http客户端变得更容易。
+<br>前面在使用Ribbon+ RestTemplate时，利用RestTemplate对http请求的封装处理，形成了一套模版化的调用方法。但是在实际开发中，由于对服务依赖的调用可能不止一处，往往一个接口会被多处调用， 所以通常都会针对每个微服务自行封装一些客户端类来包装这些依赖服务的调用。所以，Feign在此基础上做了进一步封装， 由他来帮助我们定义和实现依赖服务接口的定义。在Feign的实现下，我们只需创建一个接口并使用注解的方式来配置它(以前是Dao接口. 上面标注Mapper注解，现在是一个微服务接口上面标注一 个Feign注解即可)， 即可完成对服务提供方的接口绑定，简化了使用Spring cloud Ribbon时， 自动封装服务调用客户端的开发量。
+<br><br>2. Feign集成了Ribbon
+<br>利用Ribbon维护了MicroServiceCloud-Dept的服务列表信息，并且通过轮询实现了客户端的负载均衡。而与Ribbon不同的是，通过feign只需要定义服务绑定接口且以声明式的方法，优雅而简单的实现了服务调用
 ### Feign基本使用
 <br>申明式Web服务客户端: Feign
 <br>申明式:接口声明、Annotation 驱动
@@ -505,7 +605,7 @@ RestTemplate restTemplate = new RestTemplate(new HttpComponentsClientHttpRequest
 <br>这可以调整的心跳检测的频率
 
 ## Spring Cloud Zuul
-### 身份验证、压力测试、金丝雀测试、动态路由、服务迁移、减载、安全、静态响应处理、主动/主动交通管理。（处理静态文件不行）
+### 身份验证、压力测试、金丝雀测试、动态路由、服务迁移、减载、安全、静态响应处理、主动/主动交通管理。（处理静态文件不行） 代理+路由+过滤 可以解决跨域问题
 <br>Nginx + Lua
 <br>控制规则(A/B Test)
 ### 整合Ribbon
@@ -533,32 +633,32 @@ RestTemplate restTemplate = new RestTemplate(new HttpComponentsClientHttpRequest
 <br>Java的进程所对应的线程main线程( group:  main)，main线程是所有子线程的父线程，main线程T1，T1又可以创建t1和t2
 ```java
 public abstract class RequestContextHolder {
-    private static final boolean jsfPresent = 
-    ClassUtils.isPresent("javax.faces.context.FacesContext", RequestContextHolder.class.getClassLoader());
-    private static final ThreadLocal<RequestAttributes> requestAttributesHolder =
-     new NamedThreadLocal("Request attributes");
-    private static final ThreadLocal<RequestAttributes> inheritableRequestAttributesHolder =
-     new NamedInheritableThreadLocal("Request context");
-    ...
+private static final boolean jsfPresent = 
+ClassUtils.isPresent("javax.faces.context.FacesContext", RequestContextHolder.class.getClassLoader());
+private static final ThreadLocal<RequestAttributes> requestAttributesHolder =
+ new NamedThreadLocal("Request attributes");
+private static final ThreadLocal<RequestAttributes> inheritableRequestAttributesHolder =
+ new NamedInheritableThreadLocal("Request context");
+...
 }
 ```
 <br><br>5. `ZuulServlet`经管理了`RequestContext`的生命周期了，为什么`ContextLifecycleFilter`还要在做一遍?
 <br>`ZuulServelt`最终也会清理掉`RequestContext`
 ```java
 finally {
-    RequestContext.getCurrentContext( ).unset( ) ;
+RequestContext.getCurrentContext( ).unset( ) ;
 }
 ```
 <br>为什么 `ContextLifecycleFilter`也这么干?
 ```java
 finally {
-    RequestContext.getCurrentContext( ).unset( );
+RequestContext.getCurrentContext( ).unset( );
 }
 ```
 <br>不要忽略了`ZuulServletFilter`， 也有这个处理:
 ```java
 finally {
-    RequestContext.getCurrentContext().unset( );
+RequestContext.getCurrentContext().unset( );
 }
 ```
 RequestContext是任何Servlet或者Filter都能处理，  那么为了防止不正确的关闭，那么 `ContextLifecycleFilter`
@@ -659,7 +759,7 @@ Cloud是将Spring Boot变成云应用，那么里面需要增强一些组件，�
 <br><br>5.  SpringCloud服务治理能和dubbo共存，或者替换成dubbo吗
 <br>这个问题在社区里面有人问题，月前暂时没有确定答复。
 <br><br>6.  想和mybatis-样，可以根据条件生成不同的sql?
- <br>Spring Data IPA不太好实现，满足90%的CRUD需求。
+<br>Spring Data IPA不太好实现，满足90%的CRUD需求。
 <br><br>7.  spring-data-jpa-reactive里面的实现为什么方法的返回值不能使用Page了?比如接口只能声明Flux<T> findAl(Pageable pageable)而不能使用Page<T> findAll
 <br>(Pageable pageable)或者Mono<Page<T>> findAll(Pageable pageable)
 Reactive是推模式，所以被动更新。Page 是Iterable接口，它是拉的模式，如果在reactive中返回Page，那么违反了设计的初衷。

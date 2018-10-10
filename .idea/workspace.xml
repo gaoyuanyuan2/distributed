@@ -3,7 +3,12 @@
   <component name="ChangeListManager">
     <list default="true" id="1a69c435-9430-420c-b841-ddb13cb8216f" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change beforePath="$PROJECT_DIR$/springboot/Spring Boot REST.md" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/springboot/Spring WebMVC.md" afterPath="" />
       <change beforePath="$PROJECT_DIR$/springboot/Spring-Boot.md" afterPath="$PROJECT_DIR$/springboot/Spring-Boot.md" />
+      <change beforePath="$PROJECT_DIR$/springboot/Spring-Cloud.md" afterPath="$PROJECT_DIR$/springboot/Spring-Cloud.md" />
+      <change beforePath="$PROJECT_DIR$/springboot/springboot.md" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/springboot/springcloud.md" afterPath="" />
     </list>
     <ignored path="$PROJECT_DIR$/../springcloud-config/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -15,14 +20,14 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="Spring-Cloud.md" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Spring-Cloud.md" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/springboot/Spring-Cloud.md">
           <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
             <state split_layout="FIRST">
-              <first_editor relative-caret-position="1823">
-                <caret line="680" column="4" lean-forward="false" selection-start-line="680" selection-start-column="4" selection-end-line="680" selection-end-column="4" />
+              <first_editor relative-caret-position="345">
+                <caret line="545" column="116" lean-forward="false" selection-start-line="545" selection-start-column="116" selection-end-line="545" selection-end-column="116" />
                 <folding>
-                  <marker date="1539141311109" expanded="true" signature="14832:14889" ph="..." />
+                  <marker date="1539145040810" expanded="true" signature="19190:19243" ph="..." />
                 </folding>
               </first_editor>
               <second_editor />
@@ -30,13 +35,24 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Spring-Boot.md" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Spring-Boot.md" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/springboot/Spring-Boot.md">
           <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
             <state split_layout="SPLIT">
-              <first_editor relative-caret-position="690">
-                <caret line="39" column="49" lean-forward="false" selection-start-line="39" selection-start-column="49" selection-end-line="39" selection-end-column="49" />
-                <folding />
+              <first_editor relative-caret-position="811">
+                <caret line="66" column="37" lean-forward="false" selection-start-line="66" selection-start-column="37" selection-end-line="66" selection-end-column="37" />
+                <folding>
+                  <marker date="1539143064560" expanded="true" signature="1334:1439" ph="..." />
+                  <marker date="1539143064560" expanded="true" signature="1490:1562" ph="..." />
+                  <marker date="1539143064560" expanded="true" signature="1760:1984" ph="..." />
+                  <marker date="1539143064560" expanded="true" signature="7994:8026" ph="{&quot;id&quot;: 7...}" />
+                  <marker date="1539143064560" expanded="true" signature="8368:8400" ph="{&quot;id&quot;: 7...}" />
+                  <marker date="1539143064560" expanded="true" signature="8614:8690" ph="{...}" />
+                  <marker date="1539143064560" expanded="true" signature="9512:9639" ph="{...}" />
+                  <marker date="1539143064560" expanded="true" signature="9767:9893" ph="/**...*/" />
+                  <marker date="1539143064560" expanded="true" signature="10069:10616" ph="{...}" />
+                  <marker date="1539143064560" expanded="true" signature="10778:11148" ph="{...}" />
+                </folding>
               </first_editor>
               <second_editor />
             </state>
@@ -74,16 +90,6 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="92">
               <caret line="4" column="116" lean-forward="false" selection-start-line="4" selection-start-column="116" selection-end-line="4" selection-end-column="116" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="vcs.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/.idea/vcs.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -158,6 +164,8 @@
       <find>分布式锁</find>
       <find>路径、</find>
       <find>recive</find>
+      <find>zuul</find>
+      <find>ribbon</find>
     </findStrings>
     <replaceStrings>
       <replace>务</replace>
@@ -192,13 +200,16 @@
         <option value="$PROJECT_DIR$/springboot.md" />
         <option value="$PROJECT_DIR$/README.md" />
         <option value="$PROJECT_DIR$/performance.md" />
-        <option value="$PROJECT_DIR$/springboot/Spring WebMVC.md" />
         <option value="$PROJECT_DIR$/springboot/temp.md" />
         <option value="$PROJECT_DIR$/.idea/modules.xml" />
         <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/zookeeper.md" />
         <option value="$PROJECT_DIR$/mq.md" />
+        <option value="$PROJECT_DIR$/springboot/Spring Boot REST.md" />
+        <option value="$PROJECT_DIR$/springboot/Spring WebMVC.md" />
         <option value="$PROJECT_DIR$/springboot/Spring-Boot.md" />
+        <option value="$PROJECT_DIR$/springboot/springboot.md" />
+        <option value="$PROJECT_DIR$/springboot/springcloud.md" />
         <option value="$PROJECT_DIR$/springboot/Spring-Cloud.md" />
       </list>
     </option>
@@ -415,14 +426,7 @@
       <workItem from="1538277631947" duration="5832000" />
       <workItem from="1538969197752" duration="26000" />
       <workItem from="1539067428163" duration="6278000" />
-      <workItem from="1539139480259" duration="2461000" />
-    </task>
-    <task id="LOCAL-00044" summary="dubbo">
-      <created>1535961440960</created>
-      <option name="number" value="00044" />
-      <option name="presentableId" value="LOCAL-00044" />
-      <option name="project" value="LOCAL" />
-      <updated>1535961440960</updated>
+      <workItem from="1539139480259" duration="6126000" />
     </task>
     <task id="LOCAL-00045" summary="dubbo">
       <created>1535961507980</created>
@@ -760,11 +764,18 @@
       <option name="project" value="LOCAL" />
       <updated>1539141341972</updated>
     </task>
-    <option name="localTasksCounter" value="93" />
+    <task id="LOCAL-00093" summary="spring boot">
+      <created>1539142571150</created>
+      <option name="number" value="00093" />
+      <option name="presentableId" value="LOCAL-00093" />
+      <option name="project" value="LOCAL" />
+      <updated>1539142571150</updated>
+    </task>
+    <option name="localTasksCounter" value="94" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="188323000" />
+    <option name="totallyTimeSpent" value="191988000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="2576" height="1416" extended-state="6" />
@@ -804,7 +815,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="分布式协调服务" />
     <MESSAGE value="ZK" />
     <MESSAGE value="请求头" />
     <MESSAGE value="kafka" />
@@ -829,23 +839,14 @@
     <MESSAGE value="zookeeper" />
     <MESSAGE value="mq" />
     <MESSAGE value="spring cloud" />
-    <option name="LAST_COMMIT_MESSAGE" value="spring cloud" />
+    <MESSAGE value="spring boot" />
+    <option name="LAST_COMMIT_MESSAGE" value="spring boot" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/README.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SPLIT">
-          <first_editor relative-caret-position="23">
-            <caret line="69" column="7" lean-forward="false" selection-start-line="69" selection-start-column="7" selection-end-line="69" selection-end-column="7" />
-          </first_editor>
-          <second_editor />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/.gitignore" />
     <entry file="file://$PROJECT_DIR$/README.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
@@ -1127,37 +1128,7 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/springboot/springboot.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SPLIT">
-          <first_editor relative-caret-position="0">
-            <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          </first_editor>
-          <second_editor />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/springboot/temp.md" />
-    <entry file="file://$PROJECT_DIR$/springboot/Spring WebMVC.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SPLIT">
-          <first_editor relative-caret-position="1587">
-            <caret line="69" column="30" lean-forward="false" selection-start-line="69" selection-start-column="30" selection-end-line="69" selection-end-column="30" />
-          </first_editor>
-          <second_editor />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/springboot/Spring Boot REST.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SPLIT">
-          <first_editor relative-caret-position="4232">
-            <caret line="186" column="0" lean-forward="false" selection-start-line="186" selection-start-column="0" selection-end-line="186" selection-end-column="4" />
-          </first_editor>
-          <second_editor />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/../springcloud-config/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -1248,14 +1219,34 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/springboot/Spring-Cloud.md">
+    <entry file="file://$PROJECT_DIR$/springboot/Spring Boot REST.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="FIRST">
-          <first_editor relative-caret-position="1823">
-            <caret line="680" column="4" lean-forward="false" selection-start-line="680" selection-start-column="4" selection-end-line="680" selection-end-column="4" />
-            <folding>
-              <marker date="1539141311109" expanded="true" signature="14832:14889" ph="..." />
-            </folding>
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="0">
+            <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+            <folding />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/springboot/Spring WebMVC.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="0">
+            <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+            <folding />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/springboot/springboot.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="92">
+            <caret line="4" column="0" lean-forward="false" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
+            <folding />
           </first_editor>
           <second_editor />
         </state>
@@ -1264,9 +1255,44 @@
     <entry file="file://$PROJECT_DIR$/springboot/Spring-Boot.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
-          <first_editor relative-caret-position="690">
-            <caret line="39" column="49" lean-forward="false" selection-start-line="39" selection-start-column="49" selection-end-line="39" selection-end-column="49" />
+          <first_editor relative-caret-position="811">
+            <caret line="66" column="37" lean-forward="false" selection-start-line="66" selection-start-column="37" selection-end-line="66" selection-end-column="37" />
+            <folding>
+              <marker date="1539143064560" expanded="true" signature="1334:1439" ph="..." />
+              <marker date="1539143064560" expanded="true" signature="1490:1562" ph="..." />
+              <marker date="1539143064560" expanded="true" signature="1760:1984" ph="..." />
+              <marker date="1539143064560" expanded="true" signature="7994:8026" ph="{&quot;id&quot;: 7...}" />
+              <marker date="1539143064560" expanded="true" signature="8368:8400" ph="{&quot;id&quot;: 7...}" />
+              <marker date="1539143064560" expanded="true" signature="8614:8690" ph="{...}" />
+              <marker date="1539143064560" expanded="true" signature="9512:9639" ph="{...}" />
+              <marker date="1539143064560" expanded="true" signature="9767:9893" ph="/**...*/" />
+              <marker date="1539143064560" expanded="true" signature="10069:10616" ph="{...}" />
+              <marker date="1539143064560" expanded="true" signature="10778:11148" ph="{...}" />
+            </folding>
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/springboot/springcloud.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="544">
+            <caret line="35" column="0" lean-forward="false" selection-start-line="35" selection-start-column="0" selection-end-line="40" selection-end-column="0" />
             <folding />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/springboot/Spring-Cloud.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="FIRST">
+          <first_editor relative-caret-position="345">
+            <caret line="545" column="116" lean-forward="false" selection-start-line="545" selection-start-column="116" selection-end-line="545" selection-end-column="116" />
+            <folding>
+              <marker date="1539145040810" expanded="true" signature="19190:19243" ph="..." />
+            </folding>
           </first_editor>
           <second_editor />
         </state>

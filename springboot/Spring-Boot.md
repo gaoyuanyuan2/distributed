@@ -9,6 +9,357 @@
 #### Spring Boot实际使用场景
 <br>在Spring Boot 2.0.0，如果应用采用Spring Web MVC作为Web服务，默认情况下， 使用嵌入式Tomcat。
 <br>如果采用Spring Web Flux，默认情况下，使用Netty WebServer (嵌入式)
+#### 特性
+<br>1. JAVA8
+<br><br>2. Web flux
+<br><br>1) 函数编程: Java 8 Lambda
+<br><br>2) 响应编程: Reactive Streams
+<br><br>3) 异步编程: Servlet 3.1或Asyc NIO(异步非阻塞提高吞吐量)
+<br><br>3 爬虫式编程
+<br><br>4. 函数式断点，rest暴露
+<br><br>5. SpringBoot的三种启动方式:
+<br><br>1) IDE启动
+<br><br>2) 项目文件下，执行mvn spring-boot:run命令
+<br><br>3) 项目文件下，执行mvn install，然后target目录下找到jar文件，执行java -jar jar文件
+<br><br>6. SpringBoot特点
+<br><br>1) 基于spring ,使开发者快速入门,门槛很低。(Spring全家桶)
+<br><br>2) SpringBoot可以创建独立运行的应用而不依赖于容器
+<br><br>3) 不需要打包成war包,可以放入tomcat中直接运行
+<br><br>4) 提供可视化的相关功能,方便监控,比如性能,应用的健康程度等
+<br><br>5) 简化配置,不用再看过多的xml
+<br><br>6) 为微服务SpringCloud铺路 , SpringBoot可以整合很多各式各样的
+<br><br>7) 框架来构建微服务,比如dubbo , thrift等等
+
+### 3、热部署
+```xml
+<!--热部署-->
+<!--  devtcdevtools可以实现页面热部署(即页面修改后会立即生效，
+这个可以直接在application. properties文件中配置spring  ymeleaf.cache-false来实现) -->
+<!--实现类文件热部署(类文件修改后不会立即生效)，实现对属性文件的热部署。-->
+<!--即devtools会监听classpath下的文件变动，并且会立即重启应用(发生在保存时机) ,
+注意:因为其采用的虚拟机机制，该项重启是很快的-->
+<!-- (1) base classloader (Base类加载器) ;加载不改变的Class. 例如:第三方提供的jar包。 -->
+<!--(2) restart classloader (Restart类加载器) :加载正在开发的Class.-->
+<!--为什么重启很快，因为重启的时候只是加载了在开发的Class,没有重新加载第三方的jar包。-->
+<dependency>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-devtools</artifactId>
+    <!-- optional=true,依赖不会传递，该项目依赖devtools;之后依赖boot项目的项目如果想要使用devtools,需要重新引入-->
+    <optional>true</optional>
+</dependency>
+```
+```properties
+#关闭缓存，即时刷新
+spring.thymeleaf.cache=true
+#热部署生效
+spring.devtools.restart.enabled=true
+#设置重启的目录，添加那个目录的文件需要restart
+spring.devtools.restart.additional-paths=src/main/java
+#排除那个目录的文件不需要restart
+#spring.devtools.restart.exclude=static/**, public/**
+#classpath目录下的WEB- INF文件夹内容修改不重启
+#spring.devtools.restart.exclude=WEB- INF/**
+```
+### 4、日志
+<br>1. SpringBoot :底层是Spring框架, Spring框架默认是用JCL 
+ <br>SpringBoot选用SLF4j和(日志门面)logback(日志实现) ;
+<br><br>2. 日志的级别
+<br>由低到高  trace<debug<info<warn<error
+
+### Spring Web MVC
+
+#### 主要内容
+<br>Spring Web MVC介绍:整体介绍Spring Web MVC框架设计思想、功能特性、以及插播式实现
+<br>Spring Web MVC实战:详细说明DispatcherServlet、@Controller 和@RequestMapping的基本原理、@RequestParam 、@RequestBody 和@ResponseBody使用方式、以及它们之间关系
+<br>映射处理:介绍DispatcherServlet与RequestMappingHandlerMapping之间的交互原理，HandlerInterceptor 的职责以及使用
+<br>异常处理:介绍DispatcherServlet中执行过程中,如何优雅并且高效地处理异常的逻辑,如归类处理以及提供友好的交互界面等Thymeleaf
+<br>视图技术:介绍新-代视图技术Thymeleaf ,包括其使用场景、实际应用以及技术优势
+<br>视图解析:介绍Spring Web MVC视图解析的过程和原理、以及内容协调视图处理器的使用场景
+<br>国际化:利用Locale技术,实现视图内容的国际化
+
+#### MVC
+<br>M : Model
+<br>V : View
+<br>C : Controller -> DispatcherServlet
+<br>Front Controller = DispatcherServlet
+<br>Application Controller = @Controller or Controller
+<br>ServletContextListener -> ContextLoaderListener -> Root WebApplicationContext
+<br>DispatcherServlet -> Servlet WebApplicationContext
+<br>Services => @Service
+<br>Repositories => @Repository
+												  
+####  请求映射
+<br>Servlet / 和 /*
+<br>ServletContext path = /servlet-demo
+<br>URI : /servlet-demo/IndexServlet
+<br>DispatcherServlet < FrameworkServlet < HttpServletBean < HttpServlet
+<br>自动装配 : org.springframework.boot.autoconfigure.web.servlet.DispatcherServletAutoConfiguration
+<br>ServletContext path = "" or "/"
+<br>Request URI = ServletContex path + @RequestMapping("")/ @GetMapping()
+<br>当前例子：
+<br>Request URI = "" + "" = "" -> RestDemoController#index()
+<br>Request URI : "" 或者 "/"
+<br>HandlerMapping ，寻找Request URI，匹配的 Handler ：
+	<br>Handler：处理的方法，当然这是一种实例
+	<br>整体流程：Request -> Handler -> 执行结果 -> 返回（REST） -> 普通的文本	
+	<br>请求处理映射：RequestMappingHandlerMapping -> @RequestMapping Handler Mapping	
+	<br>拦截器：HandlerInterceptor 可以理解 Handler 到底是什么
+			<br>处理顺序：preHandle(true) -> Handler: HandlerMethod 执行(Method#invoke) -> postHandle -> afterCompletion
+					  preHandle(false)
+<br><br>Spring Web MVC 的配置 Bean ：WebMvcProperties
+<br>Spring Boot 允许通过 application.properties 去定义一下配置，配置外部化
+<br>WebMvcProperties 配置前缀：spring.mvc
+<br>spring.mvc.servlet 
+
+#### 异常处理
+<br>1. 传统的Servlet web.xml 错误页面
+* 优点：统一处理，业界标准
+* 不足：灵活度不够，只能定义 web.xml文件里面
+<br><error-page> 处理逻辑：
+ * 处理状态码 <error-code>
+ * 处理异常类型 <exception-type>
+ * 处理服务：<location>
+<br><br>2. Spring Web MVC 异常处理
+ * @ExceptionHandler
+    * 优点：易于理解，尤其是全局异常处理
+    * 不足：很难完全掌握所有的异常类型
+ * @RestControllerAdvice = @ControllerAdvice + @ResponseBody
+ * @ControllerAdvice 专门拦截（AOP） @Controller
+<br><br>3.  Spring Boot 错误处理页面
+ * 实现 ErrorPageRegistrar
+    * 状态码：比较通用，不需要理解Spring WebMVC 异常体系
+    * 不足：页面处理的路径必须固定
+ * 注册 ErrorPage 对象
+ * 实现 ErrorPage 对象中的Path 路径Web服务
+
+#### 视图技术
+<br>View
+<br><br>1. render 方法
+<br>处理页面渲染的逻辑，例如：Velocity、JSP、Thymeleaf
+<br><br>2. ViewResolver
+<br>View Resolver = 页面 + 解析器 -> resolveViewName 寻找合适/对应 View 对象
+<br>RequestURI-> RequestMappingHandlerMapping ->
+<br>HandleMethod -> return "viewName" ->
+<br>完整的页面名称 = prefix + "viewName" + suffix 
+-> ViewResolver -> View -> render -> HTML
+<br>Spring Boot 解析完整的页面路径：
+<br>spring.view.prefix + HandlerMethod return + spring.view.suffix
+<br><br>3. ContentNegotiationViewResolver
+<br>用于处理多个ViewResolver：JSP、Velocity、Thymeleaf
+<br>当所有的ViewResover 配置完成时，他们的order 默认值一样，所以先来先服务（List）
+<br>当他们定义自己的order，通过order 来倒序排列
+<br><br>4.  Thymeleaf
+<br>自动装配类：ThymeleafAutoConfiguration
+<br>配置项前缀：spring.thymeleaf
+<br>模板寻找前缀：spring.thymeleaf.prefix
+<br>模板寻找后缀：spring.thymeleaf.suffix
+<br>代码示例：/thymeleaf/index.htm
+<br>prefix: /thymeleaf/
+<br>return value : index
+<br>suffix: .htm
+#### 国际化（i18n）
+<br>Locale
+`LocaleContextHolder`
+
+# Spring Boot REST
+## 基本概念	
+REST = RESTful = Representational State Transfer，is one way of providing interoperability between computer systems on the Internet.
+ 
+ [参考资源](https://en.wikipedia.org/wiki/Representational_state_transfer)    
+
+## 1、目标
+<br>1.  理解“资源操作”（Manipulation of resources through representations）
+<br>POST、GET、PUT、DELETE
+<br>幂等方法
+<br><br>2.  理解“自描述消息” （Self-descriptive messages）
+<br>Content-Type
+<br>MIME-Type
+<br><br>3.  扩展“自描述消息”
+<br>HttpMessageConvertor
+## 2、理解幂等
+<br>1.  PUT 幂等
+<br>初始状态：0
+<br>修改状态：1 * N
+<br>最终状态：1
+<br><br>2.  DELETE 幂等
+<br>初始状态：1
+<br>修改状态：0 * N
+<br>最终状态：0
+<br><br>3.  POST 非幂等
+<br>初始状态：1
+<br>修改状态：1 + 1 =2
+<br>N次修改： 1+ N = N+1
+<br>最终状态：N+1
+<br><br>幂等/非幂等 依赖于服务端实现，这种方式是一种契约
+
+## 3、自描述消息
+<br>1.  请求头
+
+`Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8`
+
+<br>第一优先顺序：`text/html` -> `application/xhtml+xml` -> `application/xml`
+<br>第二优先顺序：`image/webp` -> `image/apng`
+<br><br>2.  自描述消息处理器
+<br>所有的 HTTP 自描述消息处理器均在 messageConverters（类型：`HttpMessageConverter`)，这个集合会传递到 RequestMappingHandlerAdapter，最终控制写出。
+<br>messageConverters，其中包含很多自描述消息类型的处理，比如 JSON、XML、TEXT等等
+<br>以 application/json 为例，Spring Boot 中默认使用 Jackson2 序列化方式，其中媒体类型：application/json，它的处理类 MappingJackson2HttpMessageConverter，提供两类方法：
+<br><br>1) 读read* ：通过 HTTP 请求内容转化成对应的 Bean
+<br><br>2) 写write*： 通过 Bean 序列化成对应文本内容作为响应内容
+
+## 4、扩展自描述消息
+<br>1.  实现 AbstractHttpMessageConverter 抽象类
+<br><br>1)  supports 方法：是否支持当前POJO类型
+<br><br>2)  readInternal 方法：读取 HTTP 请求中的内容，并且转化成相应的POJO对象（通过 Properties 内容转化成 JSON）
+<br><br>3)  writeInternal 方法：将 POJO 的内容序列化成文本内容（Properties格式），最终输出到 HTTP 响应中（通过 JSON 内容转化成 Properties ）  
+<br><br>2.  HttpMessageConverter 执行逻辑：
+<br>读操作：尝试是否能读取，canRead 方法去尝试，如果返回 true 下一步执行 read
+<br>写操作：尝试是否能写入，canWrite 方法去尝试，如果返回 true 下一步执行 write
+<br><br>3. 编码
+<br><br>1.  Properties 格式（application/properties+person)
+<br>需要扩展
+```properties
+person.id = 1
+person.name = yan
+```
+<br><br>2. json -> properties
+<br>请求地址：`/person/json/to/properties`
+<br>请求头
+```properties
+Accept=application/properties+person
+Content-Type=application/json
+```
+<br>请求体
+```json
+{
+    "id":7,
+    "name":"yan"
+}
+```
+<br>响应体
+```properties
+#Written by web server
+#Tue Sep 18 15:35:00 CST 2018
+person.name=yan
+person.id=7
+```
+<br><br>3.properties -> json
+<br>请求地址：`/person/properties/to/json`
+<br>请求头
+```properties
+Content-Type=application/properties+person
+Accept=application/json
+```
+<br>请求体
+```properties
+person.name=yan
+person.id=7
+```
+<br>响应体
+```json
+{
+    "id":7,
+    "name":"yan"
+}
+```
+<br><br>3. java 代码
+<br><br>1)  配置
+```java
+@Configuration
+public class WebMvcConfig implements WebMvcConfigurer {
+
+    public void extendMessageConverters(
+            List<HttpMessageConverter<?>> converters) {
+
+        converters.add(new PropertiesPersonHttpMessageConverter());
+    }
+
+}
+```
+<br><br>2)  controller
+```java
+    @PostMapping(value = "/person/json/to/properties", produces = "application/properties+person")
+    public Person personJsonToProperties(@RequestBody Person person) {
+        // @RequestBody 的内容是 JSON
+        // 响应的内容是 Properties
+        return person;
+    }
+
+    @PostMapping(value = "/person/properties/to/json", consumes = "application/properties+person", produces = 
+            MediaType.APPLICATION_JSON_UTF8_VALUE)
+    public Person personPropertiesToJson(@RequestBody Person person) {
+        // @RequestBody 的内容是 Properties
+        // 响应的内容是 JSON
+        return person;
+    }
+```
+<br><br>3) 自定义HttpMessageConverter
+```java
+public class PropertiesPersonHttpMessageConverter extends AbstractHttpMessageConverter<Person> {
+
+    public PropertiesPersonHttpMessageConverter() {
+        super(MediaType.valueOf("application/properties+person"));
+        setDefaultCharset(Charset.forName("UTF-8"));
+    }
+
+    @Override
+    protected boolean supports(Class<?> clazz) {
+        return clazz.isAssignableFrom(Person.class);
+    }
+    /**
+     * 讲请求内容中 Properties 内容转化成 Person 对象
+     * @throws IOException
+     * @throws HttpMessageNotReadableException
+     */
+    @Override
+    protected Person readInternal(Class<? extends Person> clazz, HttpInputMessage inputMessage) throws IOException, 
+            HttpMessageNotReadableException {
+
+        /**
+         * person.id = 1
+         * person.name = yan
+         */
+        InputStream inputStream = inputMessage.getBody();
+        Properties properties = new Properties();
+        // 将请求中的内容转化成Properties
+        properties.load(new InputStreamReader(inputStream, getDefaultCharset()));
+        // 将properties 内容转化到 Person 对象字段中
+        Person person = new Person();
+        person.setId(Long.valueOf(properties.getProperty("person.id")));
+        person.setName(properties.getProperty("person.name"));
+        return person;
+    }
+
+    @Override
+    protected void writeInternal(Person person, HttpOutputMessage outputMessage) throws IOException, 
+            HttpMessageNotWritableException {
+        OutputStream outputStream = outputMessage.getBody();
+        Properties properties = new Properties();
+        properties.setProperty("person.id", String.valueOf(person.getId()));
+        properties.setProperty("person.name", person.getName());
+        properties.store(new OutputStreamWriter(outputStream, getDefaultCharset()), "Written by web server");
+    }
+}
+```
+## 5. 注意
+
+`@RequestMappng` 中的 consumes 对应 请求头 `Content-Type`
+
+`@RequestMappng` 中的 produces 对应 请求头 `Accept`
+
+## 6、思考
+<br>1.  当 Accept 请求头未被制定时，为什么还是 JSON 来处理？
+<br>查看源码：
+<br>DelegatingWebMvcConfiguration的父类WebMvcConfigurationSupport->addDefaultHttpMessageConverters方法，可以看出messageConverters插入顺序。
+从插入顺序可以看出Spring Boot 中默认使用 Jackson2 序列化方式，采用轮训的方式去逐一尝试是否可以 HttpMessageConverter<T>->canWrite(POJO) ,如果返回 true，说明可以序列化该
+ POJO 对象。
+<br><br>2.  优先级是默认的是可以修改吗？
+<br>是可以调整的，通过extendMessageConverters 方法调整
+<br>同一个WebMvcConfigurerAdapter中的configureMessageConverters方法先于extendMessageConverters方法执行
+<br>可以理解为是三种方式中最后执行的一种，不过这里可以通过add指定顺序来调整优先级，也可以使用remove/clear来删除converter
+<br>使用converters.add(xxx)会放在最低优先级（List的尾部）
+<br>使用converters.add(0,xxx)会放在最高优先级（List的头部）
+<br><br>3.  为什么第一次是JSON，后来怎加了 XML 依赖，又变成了 XML 内用输出
+<br>Spring Boot 应用默认没有增加XML 处理器（HttpMessageConverter）实现，所以最后采用轮训的方式去逐一尝试是否可以 canWrite(POJO) ,如果返回 true，说明可以序列化该 POJO 对象，那么 Jackson 2 恰好能处理，那么Jackson 输出了。
 
 #### 数据库JDBC
 <br>主要内容
