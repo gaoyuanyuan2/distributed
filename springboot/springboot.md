@@ -141,7 +141,8 @@ org.springframework.boot.autoconfigure.couchbase.CouchbaseAutoConfiguration,\
 | SpEL | 不支持 | 支持|
 | JSR303数据校验 | 支持| 不支持 |
 | 复杂类型封装 | 支持 | 不支持  |
-<br>配置文件yml还是properties他们都能获取到值；
+
+<br><br>配置文件yml还是properties他们都能获取到值；
 <br>如果说，我们只是在某个业务逻辑中需要获取一下配置文件中的某项值，使用`@Value`；
 <br>如果说，我们专门编写了一个javaBean来和配置文件进行映射，我们就直接使用`@ConfigurationProperties`；
 ## Spring Web MVC
