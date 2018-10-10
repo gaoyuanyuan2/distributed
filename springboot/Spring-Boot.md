@@ -19,8 +19,8 @@
 <br><br>4.  函数式断点，rest暴露
 <br><br>5.  SpringBoot的三种启动方式:
 <br><br>1) IDE启动
-<br><br>2) 项目文件下，执行mvn spring-boot:run命令
-<br><br>3) 项目文件下，执行mvn install，然后target目录下找到jar文件，执行java -jar jar文件
+<br><br>2) 项目文件下，执行`mvn spring-boot:run`命令
+<br><br>3) 项目文件下，执行`mvn install`，然后target目录下找到jar文件，执行`java -jar jar`文件
 <br><br>6.  SpringBoot特点
 <br><br>1) 基于spring ,使开发者快速入门,门槛很低。(Spring全家桶)
 <br><br>2) SpringBoot可以创建独立运行的应用而不依赖于容器
@@ -78,7 +78,7 @@ spring.devtools.restart.additional-paths=src/main/java
 <br>由低到高  trace<debug<info<warn<error
 ## 自动装配
 <br>`@SpringBootConfiguration:` SpringBoot的配置类;标注在某个类上,表示这是一个Spring Boot的配置类;
-<br>`@Configuration`: 配置类上来标注这个注解; 配置类----配置文件;配置类也是容器中的一个组件; @Component
+<br>`@Configuration`: 配置类上来标注这个注解; 配置类----配置文件;配置类也是容器中的一个组件; `@Component`
 <br>`@EnableAutoConfiguration` 开启自动配置功能;以前我们需要配置的东西, Spring Boot帮我们自动配置; `@EnableAutoConfiguration`告诉SpringBoot开启自动配置功能;这样自动配置才能生效;
 ```java
 @AutoConfigurationPackage
@@ -86,9 +86,9 @@ spring.devtools.restart.additional-paths=src/main/java
 public @interface EnableAutoConfiguration {...}
 ```
 `@AutoConfigurationPackage` :自动配置包
-<br>`@Import(AutoConfigurationPackages.Registrar.class)` : Spring的底层注解@Import ,给容器中导入一个组件;
-<br>导入的组件由AutoConfigurationPackages.Registrar.class ;
-<br>将主配置类( @SpringBootApplication标注的类)的所在包及下面所有子包里面的所有组件扫描到Spring容器;
+<br>`@Import(AutoConfigurationPackages.Registrar.class)` : Spring的底层注解`@Import` ,给容器中导入一个组件;
+<br>导入的组件由`AutoConfigurationPackages.Registrar.class` ;
+<br>将主配置类( `@SpringBootApplication`标注的类)的所在包及下面所有子包里面的所有组件扫描到Spring容器;
 <br>`@Import(EnableAutoConfigurationImportSelector.class)`:给容器中导入组件?
 <br>`EnableAutoConfigurationImportSelector` :导入哪些组件的选择器;
 <br>将所有需要导入的组件以全类名的方式返回;这些组件就会被添加到容器中;
@@ -147,7 +147,7 @@ org.springframework.boot.autoconfigure.couchbase.CouchbaseAutoConfiguration,\
 ## Spring Web MVC
 ### 主要内容
 <br>Spring Web MVC介绍:整体介绍Spring Web MVC框架设计思想、功能特性、以及插播式实现
-<br>Spring Web MVC实战:详细说明DispatcherServlet、@Controller 和@RequestMapping的基本原理、@RequestParam 、@RequestBody 和@ResponseBody使用方式、以及它们之间关系
+<br>Spring Web MVC实战:详细说明DispatcherServlet、`@Controller` 和`@RequestMapping`的基本原理、`@RequestParam` 、`@RequestBody` 和`@ResponseBody`使用方式、以及它们之间关系
 <br>映射处理:介绍DispatcherServlet与RequestMappingHandlerMapping之间的交互原理，HandlerInterceptor 的职责以及使用
 <br>异常处理:介绍DispatcherServlet中执行过程中,如何优雅并且高效地处理异常的逻辑,如归类处理以及提供友好的交互界面等Thymeleaf
 <br>视图技术:介绍新-代视图技术Thymeleaf ,包括其使用场景、实际应用以及技术优势
@@ -158,19 +158,19 @@ org.springframework.boot.autoconfigure.couchbase.CouchbaseAutoConfiguration,\
 <br>V : View
 <br>C : Controller -> DispatcherServlet
 <br>Front Controller = DispatcherServlet
-<br>Application Controller = @Controller or Controller
+<br>Application Controller = `@Controller` or Controller
 <br>ServletContextListener -> ContextLoaderListener -> Root WebApplicationContext
 <br>DispatcherServlet -> Servlet WebApplicationContext
-<br>Services => @Service
-<br>Repositories => @Repository											  
+<br>Services => `@Service`
+<br>Repositories => `@Repository`											  
 ###  请求映射
 <br>Servlet / 和 /*
 <br>ServletContext path = /servlet-demo
-<br>URI : /servlet-demo/IndexServlet
+<br>URI : `/servlet-demo/IndexServlet`
 <br>DispatcherServlet < FrameworkServlet < HttpServletBean < HttpServlet
-<br>自动装配 : org.springframework.boot.autoconfigure.web.servlet.DispatcherServletAutoConfiguration
+<br>自动装配 : `org.springframework.boot.autoconfigure.web.servlet.DispatcherServletAutoConfiguration`
 <br>ServletContext path = "" or "/"
-<br>Request URI = ServletContex path + @RequestMapping("")/ @GetMapping()
+<br>Request URI = ServletContext path + @RequestMapping("")/ @GetMapping()
 <br>当前例子：
 <br>Request URI = "" + "" = "" -> RestDemoController#index()
 <br>Request URI : "" 或者 "/"
@@ -219,7 +219,7 @@ org.springframework.boot.autoconfigure.couchbase.CouchbaseAutoConfiguration,\
 <br>spring.view.prefix + HandlerMethod return + spring.view.suffix
 <br><br>3. ContentNegotiationViewResolver
 <br>用于处理多个ViewResolver：JSP、Velocity、Thymeleaf
-<br>当所有的ViewResover 配置完成时，他们的order 默认值一样，所以先来先服务（List）
+<br>当所有的ViewResolver 配置完成时，他们的order 默认值一样，所以先来先服务（List）
 <br>当他们定义自己的order，通过order 来倒序排列
 <br><br>4.  Thymeleaf
 <br>自动装配类：ThymeleafAutoConfiguration
@@ -444,7 +444,7 @@ public class PropertiesPersonHttpMessageConverter extends AbstractHttpMessageCon
 <br>Spring Transaction实现重用了JDBC API :
 <br>Isolation -> TransactionDefinition
 <br>ISOLATION_READ_UNCOMMITTED = Connection.TRANSACTION_ READ_UNCOMMITTED
-<br>ISOLATION_READ_COMMITTED = Connection.TRANSACTION_ READ_COMMITTED
+<br>ISOLATION_READ_COMMITTED = Connection.TRANSACTION_READ_COMMITTED
 <br>ISOLATION_REPEATABLE_READ = Connection.TRANSACTION_REPEATABLE_READ
 <br>ISOLATION_SERIALIZABLE = Connection.TRANSACTION_SERIALIZABLE
 <br><br>@Transaction
@@ -532,8 +532,8 @@ webflux不会被采用。其实webflux是兼容Annotation驱动，比如
 ` @RequestMapping`
 <br><br>6. webFlux可以定义restFull吗
 <br>答:  可以的，支持的!
-<br><br>7. spring的老项目迁移到springboot,怎么弄
-<br>答:老的XML方式采用 @ImportResource导入!
+<br><br>7. spring的老项目迁移到SpringBoot,怎么弄
+<br>答:老的XML方式采用 `@ImportResource`导入!
 <br><br>8.  嵌入式tomcat如何调优
 <br>答:第一种通过application.properties文件调整配置参数
 <br>第二种通过接口回调:
