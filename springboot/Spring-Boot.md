@@ -488,7 +488,7 @@ public class PropertiesPersonHttpMessageConverter extends AbstractHttpMessageCon
 <br>ApplicationListener
 <br><br>Spring Cloud Config Client
 <br>`java.util.Observable`是一个发布者
-<br>`java.util.0bserver`是订阅者
+<br>`java.util.Observer`是订阅者
 <br><br>发布者和订阅者:1:N
 <br>发布者和订阅者:N:M
 <br><br>事件/监听模式
