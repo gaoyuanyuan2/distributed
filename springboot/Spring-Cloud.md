@@ -645,6 +645,40 @@ RequestContext是任何Servlet或者Filter都能处理，  那么为了防止不
 `spring-cloud-starter-sleuth`会自动装配一个名为TraceFilter组件，它公增加一些slf4j MDC
 <br>跟踪 排查问题 性能考察
 ### 分布式应用跟踪。ZisKin整合
+### 问答
+<br>1.  SpringBoot 和springCloud区别
+<br>Spring Framework,封装了大多数Java EE标准技术以及开源实现方法，提高生成力。不过Spring应用需要配置的相关组件，Spring Boot帮助简化了配置步骤，采用默认的配置能够快速的启动或者构建一个Java EE应用。Spring Boot单机应用，Spring
+Cloud是将Spring Boot变成云应用，那么里面需要增强一些组件，监控、限流、服务注册和发现等等。
+<br><br>2.  SpringData-jpa和JTA持久化框架区别
+<br>JIA 主要关注分布式事务，事务操作背后可能资源是数据库、消息、或者缓存等等。
+从数据库角度，JTA使用JPA作为存储，但是可以使用JDBC。JTA还能操作JMS。
+<br><br>3.  feign和ribbon区别?feign内部实现依靠的是ribbon的嘛?
+<br>Feign 作为声明式客户端调用，Ribbon 主要负责负载均衡。Feign 可以整合Ribbon,  但是不是强依赖。Spring Cloud对Feign增强，Feign 原始不支持SpringWebMVC,  而是支持标准JAX-RS(Rest标准)
+<br><br>4.  整合图，zuul换成nginx，nginx应该怎么配置才能使用sleuth,从网关开始监控?
+<br>nginx 需要增加HTTP.上报监控信息到zipkin Server
+<br><br>5.  SpringCloud服务治理能和dubbo共存，或者替换成dubbo吗
+<br>这个问题在社区里面有人问题，月前暂时没有确定答复。
+<br><br>6.  想和mybatis-样，可以根据条件生成不同的sql?
+ <br>Spring Data IPA不太好实现，满足90%的CRUD需求。
+<br><br>7.  spring-data-jpa-reactive里面的实现为什么方法的返回值不能使用Page了?比如接口只能声明Flux<T> findAl(Pageable pageable)而不能使用Page<T> findAll
+<br>(Pageable pageable)或者Mono<Page<T>> findAll(Pageable pageable)
+Reactive是推模式，所以被动更新。Page 是Iterable接口，它是拉的模式，如果在reactive中返回Page，那么违反了设计的初衷。
+<br><br>8.  spring boot和spring cloud,生成环境怎么部署比较好，是直接java运行还是放到tomcat中间件里统一启动?
+<br>直接通过java或者jar命令启动
+<br><br>9.  使用spring cloud这一套 框架，怎么进行API鉴权，认证成功的用户信息怎么保存，微服务的数据状态又怎么保存
+<br>Spring Security QAuth2验证，Spring Session管理用户状态，会话状态，不需要长期保存，在短时间内保存，  比如Spring Session + Redis (30分钟)。
+<br><br>10.  Spring Security为什么不能跨版本使用
+<br>Spring Security兼容不是特别好，一般建议统一版本。
+<br><br>11.  Shiro和Spring Security的区别?
+<br>Shiro是纯后端的安全校验和认证框架，SpringSecurity是前端+后端安全校验和认证框架。
+<br><br>12.  POJO可以和IPA解耦么，  annotation往往还得引入hb?除了xml配置。耦合得有点闹心啊?
+<br>所以应该把DTO对象和Entity解耦，不要继承也不要组合。
+<br><br>13.  说说你怎么区别spring ( 包括最近讲的)里大量注解的理解和使用?
+<br>作用域来区别，职责。
+<br>数据: JDBC、JPA、Cache、NoSQL、Message安全:认证和鉴别
+<br>监控:数据埋点、数据收集
+<br>Web:. Servlet、 Spring WebMVC、JAX-RS、 WebSocket、 WebServices
+<br>配置: System Properties、Properties、 YAML、启动参数、CSV、XML
 
 
 
