@@ -1,4 +1,4 @@
-#### Spring Boot初体验
+# Spring Boot
 <br><br>![持久化存储](https://github.com/gaoyuanyuan2/distributed/blob/master/img/49.jpg) 
 <br>主要内容
 <br>Spring Boot技术栈:介绍Spring Boot完整的技术栈,比如Web应用、数据操作、消息、测试以及运维管理等
@@ -6,22 +6,22 @@
 <br>Spring Boot运行方式:分别介绍IDEA启动、命令行启动以Maven插件启动方式
 <br>Spring Boot简单应用:使用Spring Web MVC以及Spring Web Flux技术,编程简单应用。理解Spring Boot三大特性:自动装配、嵌入式容器、为生产准备的特性
 <br><br>三种嵌入式容器 实现通用接口 不同环境通过不同classpath读取不同的类 spring自动装配 的条件装配 如果有就加载 一直查找
-#### Spring Boot实际使用场景
+## Spring Boot实际使用场景
 <br>在Spring Boot 2.0.0，如果应用采用Spring Web MVC作为Web服务，默认情况下， 使用嵌入式Tomcat。
 <br>如果采用Spring Web Flux，默认情况下，使用Netty WebServer (嵌入式)
-#### 特性
+## 特性
 <br>1. JAVA8
-<br><br>2. Web flux
+<br><br>2.  Web flux
 <br><br>1) 函数编程: Java 8 Lambda
 <br><br>2) 响应编程: Reactive Streams
 <br><br>3) 异步编程: Servlet 3.1或Asyc NIO(异步非阻塞提高吞吐量)
-<br><br>3 爬虫式编程
-<br><br>4. 函数式断点，rest暴露
-<br><br>5. SpringBoot的三种启动方式:
+<br><br>3.  爬虫式编程
+<br><br>4.  函数式断点，rest暴露
+<br><br>5.  SpringBoot的三种启动方式:
 <br><br>1) IDE启动
 <br><br>2) 项目文件下，执行mvn spring-boot:run命令
 <br><br>3) 项目文件下，执行mvn install，然后target目录下找到jar文件，执行java -jar jar文件
-<br><br>6. SpringBoot特点
+<br><br>6.  SpringBoot特点
 <br><br>1) 基于spring ,使开发者快速入门,门槛很低。(Spring全家桶)
 <br><br>2) SpringBoot可以创建独立运行的应用而不依赖于容器
 <br><br>3) 不需要打包成war包,可以放入tomcat中直接运行
@@ -29,18 +29,29 @@
 <br><br>5) 简化配置,不用再看过多的xml
 <br><br>6) 为微服务SpringCloud铺路 , SpringBoot可以整合很多各式各样的
 <br><br>7) 框架来构建微服务,比如dubbo , thrift等等
-
-### 3、热部署
+<br><br>8)快速创建独立运行的Spring项目以及与主流框架集成t使用嵌入式的Servlet容器,应用无需打成WAR包starters自动依赖与版本控制
+<br><br>9)大量的自动配置,简化开发,也可修改默认值
+<br><br>10)无需配置XML ,无代码生成,开箱即用准生产环境的运行时应用监控与云计算的天然集成
+<br><br>7.  SpringBoot 是对spring 的封装 要了解spring底层api
+## 打包
 ```xml
-<!--热部署-->
-<!--  devtcdevtools可以实现页面热部署(即页面修改后会立即生效，
-这个可以直接在application. properties文件中配置spring  ymeleaf.cache-false来实现) -->
-<!--实现类文件热部署(类文件修改后不会立即生效)，实现对属性文件的热部署。-->
-<!--即devtools会监听classpath下的文件变动，并且会立即重启应用(发生在保存时机) ,
-注意:因为其采用的虚拟机机制，该项重启是很快的-->
-<!-- (1) base classloader (Base类加载器) ;加载不改变的Class. 例如:第三方提供的jar包。 -->
-<!--(2) restart classloader (Restart类加载器) :加载正在开发的Class.-->
-<!--为什么重启很快，因为重启的时候只是加载了在开发的Class,没有重新加载第三方的jar包。-->
+<build>
+    <plugins>
+        <plugin>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-maven-plugin</artifactId>
+        </plugin>
+    </plugins>
+</build>
+```
+## 热部署
+<br><br>1.  devtools可以实现页面热部署(即页面修改后会立即生效，这个可以直接在application.properties文件中配置spring.thymeleaf.cache设为false来实现)
+<br><br>2.  实现类文件热部署(类文件修改后不会立即生效)，实现对属性文件的热部署。即devtools会监听classpath下的文件变动，并且会立即重启应用(发生在保存时机) ,
+`注意:因为其采用的虚拟机机制，该项重启是很快的`
+<br><br>1) base classloader (Base类加载器) ;加载不改变的Class. 例如:第三方提供的jar包。
+<br><br>2) restart classloader (Restart类加载器) :加载正在开发的Class
+<br><br>3.  为什么重启很快，因为重启的时候只是加载了在开发的Class,没有重新加载第三方的jar包
+```xml
 <dependency>
     <groupId>org.springframework.boot</groupId>
     <artifactId>spring-boot-devtools</artifactId>
@@ -60,15 +71,14 @@ spring.devtools.restart.additional-paths=src/main/java
 #classpath目录下的WEB- INF文件夹内容修改不重启
 #spring.devtools.restart.exclude=WEB- INF/**
 ```
-### 4、日志
+## 日志
 <br>1. SpringBoot :底层是Spring框架, Spring框架默认是用JCL 
  <br>SpringBoot选用SLF4j和(日志门面)logback(日志实现) ;
 <br><br>2. 日志的级别
 <br>由低到高  trace<debug<info<warn<error
 
-### Spring Web MVC
-
-#### 主要内容
+## Spring Web MVC
+### 主要内容
 <br>Spring Web MVC介绍:整体介绍Spring Web MVC框架设计思想、功能特性、以及插播式实现
 <br>Spring Web MVC实战:详细说明DispatcherServlet、@Controller 和@RequestMapping的基本原理、@RequestParam 、@RequestBody 和@ResponseBody使用方式、以及它们之间关系
 <br>映射处理:介绍DispatcherServlet与RequestMappingHandlerMapping之间的交互原理，HandlerInterceptor 的职责以及使用
@@ -76,8 +86,7 @@ spring.devtools.restart.additional-paths=src/main/java
 <br>视图技术:介绍新-代视图技术Thymeleaf ,包括其使用场景、实际应用以及技术优势
 <br>视图解析:介绍Spring Web MVC视图解析的过程和原理、以及内容协调视图处理器的使用场景
 <br>国际化:利用Locale技术,实现视图内容的国际化
-
-#### MVC
+### MVC
 <br>M : Model
 <br>V : View
 <br>C : Controller -> DispatcherServlet
@@ -86,9 +95,8 @@ spring.devtools.restart.additional-paths=src/main/java
 <br>ServletContextListener -> ContextLoaderListener -> Root WebApplicationContext
 <br>DispatcherServlet -> Servlet WebApplicationContext
 <br>Services => @Service
-<br>Repositories => @Repository
-												  
-####  请求映射
+<br>Repositories => @Repository											  
+###  请求映射
 <br>Servlet / 和 /*
 <br>ServletContext path = /servlet-demo
 <br>URI : /servlet-demo/IndexServlet
@@ -110,8 +118,7 @@ spring.devtools.restart.additional-paths=src/main/java
 <br>Spring Boot 允许通过 application.properties 去定义一下配置，配置外部化
 <br>WebMvcProperties 配置前缀：spring.mvc
 <br>spring.mvc.servlet 
-
-#### 异常处理
+### 异常处理
 <br>1. 传统的Servlet web.xml 错误页面
 * 优点：统一处理，业界标准
 * 不足：灵活度不够，只能定义 web.xml文件里面
@@ -131,8 +138,7 @@ spring.devtools.restart.additional-paths=src/main/java
     * 不足：页面处理的路径必须固定
  * 注册 ErrorPage 对象
  * 实现 ErrorPage 对象中的Path 路径Web服务
-
-#### 视图技术
+### 视图技术
 <br>View
 <br><br>1. render 方法
 <br>处理页面渲染的逻辑，例如：Velocity、JSP、Thymeleaf
@@ -157,17 +163,14 @@ spring.devtools.restart.additional-paths=src/main/java
 <br>prefix: /thymeleaf/
 <br>return value : index
 <br>suffix: .htm
-#### 国际化（i18n）
+### 国际化（i18n）
 <br>Locale
 `LocaleContextHolder`
-
-# Spring Boot REST
-## 基本概念	
+## Spring Boot REST
+### 基本概念	
 REST = RESTful = Representational State Transfer，is one way of providing interoperability between computer systems on the Internet.
- 
  [参考资源](https://en.wikipedia.org/wiki/Representational_state_transfer)    
-
-## 1、目标
+### 1、目标
 <br>1.  理解“资源操作”（Manipulation of resources through representations）
 <br>POST、GET、PUT、DELETE
 <br>幂等方法
@@ -176,7 +179,7 @@ REST = RESTful = Representational State Transfer，is one way of providing inter
 <br>MIME-Type
 <br><br>3.  扩展“自描述消息”
 <br>HttpMessageConvertor
-## 2、理解幂等
+### 2、理解幂等
 <br>1.  PUT 幂等
 <br>初始状态：0
 <br>修改状态：1 * N
@@ -191,12 +194,9 @@ REST = RESTful = Representational State Transfer，is one way of providing inter
 <br>N次修改： 1+ N = N+1
 <br>最终状态：N+1
 <br><br>幂等/非幂等 依赖于服务端实现，这种方式是一种契约
-
-## 3、自描述消息
+### 3、自描述消息
 <br>1.  请求头
-
 `Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8`
-
 <br>第一优先顺序：`text/html` -> `application/xhtml+xml` -> `application/xml`
 <br>第二优先顺序：`image/webp` -> `image/apng`
 <br><br>2.  自描述消息处理器
@@ -205,8 +205,7 @@ REST = RESTful = Representational State Transfer，is one way of providing inter
 <br>以 application/json 为例，Spring Boot 中默认使用 Jackson2 序列化方式，其中媒体类型：application/json，它的处理类 MappingJackson2HttpMessageConverter，提供两类方法：
 <br><br>1) 读read* ：通过 HTTP 请求内容转化成对应的 Bean
 <br><br>2) 写write*： 通过 Bean 序列化成对应文本内容作为响应内容
-
-## 4、扩展自描述消息
+### 4、扩展自描述消息
 <br>1.  实现 AbstractHttpMessageConverter 抽象类
 <br><br>1)  supports 方法：是否支持当前POJO类型
 <br><br>2)  readInternal 方法：读取 HTTP 请求中的内容，并且转化成相应的POJO对象（通过 Properties 内容转化成 JSON）
@@ -340,13 +339,11 @@ public class PropertiesPersonHttpMessageConverter extends AbstractHttpMessageCon
     }
 }
 ```
-## 5. 注意
-
+### 5. 注意
 `@RequestMappng` 中的 consumes 对应 请求头 `Content-Type`
 
 `@RequestMappng` 中的 produces 对应 请求头 `Accept`
-
-## 6、思考
+### 6、思考
 <br>1.  当 Accept 请求头未被制定时，为什么还是 JSON 来处理？
 <br>查看源码：
 <br>DelegatingWebMvcConfiguration的父类WebMvcConfigurationSupport->addDefaultHttpMessageConverters方法，可以看出messageConverters插入顺序。
@@ -360,8 +357,7 @@ public class PropertiesPersonHttpMessageConverter extends AbstractHttpMessageCon
 <br>使用converters.add(0,xxx)会放在最高优先级（List的头部）
 <br><br>3.  为什么第一次是JSON，后来怎加了 XML 依赖，又变成了 XML 内用输出
 <br>Spring Boot 应用默认没有增加XML 处理器（HttpMessageConverter）实现，所以最后采用轮训的方式去逐一尝试是否可以 canWrite(POJO) ,如果返回 true，说明可以序列化该 POJO 对象，那么 Jackson 2 恰好能处理，那么Jackson 输出了。
-
-#### 数据库JDBC
+## 数据库JDBC
 <br>主要内容
 <br>数据源( DataSource) : 分别介绍嵌入式数据源、通用型数据源以及分布式数据源务(Transaction) : 介绍事务原理,本地事务和分布式事务的使用场景
 <br>JDBC ( JSR-221) : 介绍JDBC核心接口,数据源、数据库连接、执行语句、事务 等核心API的使用方法
@@ -389,7 +385,7 @@ public class PropertiesPersonHttpMessageConverter extends AbstractHttpMessageCon
 <br>可以控制rollback的异常粒度: rollbackFor() 以及noRollbackFor()
 <br>可以执行事务管理器: transactionManager()
 <br><br>通过API方式进行事务处理- PlatformTransactionManager
-#### 验证
+## 验证
 <br>主要内容
 <br>ean Validation ( JSR-303) : 介绍Java Bean验证、核心API、实现框架Hibernate Validator
 <br>Apache commons-alidator :介绍最传统Apache通用验证器框架,如:长度、邮件等方式Spring Validator :介绍Spring内置验证器API、以及自定义实现
@@ -402,7 +398,7 @@ public class PropertiesPersonHttpMessageConverter extends AbstractHttpMessageCon
 <br>答:尝试变成Bean的方式
 <br><br>2.实际中很多参数都要校验那时候怎么写这样写会增加很多类
 <br>答:  确实会增加部分工作量，大多数场景，不需要自定义，除非很特殊情况。Bean Validation的主要缺点，单元测试不方便
-#### Spring Web Flux
+## Spring Web Flux
 <br>如果采用Spring Web Flux，默认情况下，使用Netty WebServer (嵌入式)
 <br>从Spring Boot 1.4支持FailureAnalysisReporter实现
 <br><br>WebFlux
@@ -410,7 +406,7 @@ public class PropertiesPersonHttpMessageConverter extends AbstractHttpMessageCon
 <br>Flux:  0-N Publisher (类似于ava中的List)
 <br>传统的Servlet采用`HttpServletRequest.HttpServletResponse`
 <br>WebFlux采用: ServerRequest、 ServerResponse (不再限制于Servlet容器，可以选择自定义实现，  比如Netty Web Server )
-#### 事件 
+## 事件 
 <br>Java9里面API称之为Flow(流)
 <br>Publisher -> publish(1)
 <br>Subscription 
@@ -453,7 +449,7 @@ public class PropertiesPersonHttpMessageConverter extends AbstractHttpMessageCon
 <br><br>Spring Cloud事件/监听器
 <br>BootstrapApplicationListener
 <br>负责加载`bootstrap.properties`或者`bootstrap.yml`
-#### 问题集合
+### 问题集合
 <br>1.  用reactive web，原来mvc的好多东西都不能用了?
 <br>答:不是，
 <br>Reactive Web还是能够兼容Spring.WebMVC
