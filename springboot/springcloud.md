@@ -589,7 +589,7 @@ RestTemplate restTemplate = new RestTemplate(new HttpComponentsClientHttpRequest
 <br> Ribbon 对于Eureka是不强依赖，不过也不排除
 <br><br>4.生产环境上也都是feign的?
 <br>据我所知，不少的公司在用，需要Spring Cloud更多整合:Feign作为客户端
-<br>Ribbon作为负载均衡
+<br>Ribbon作为负载均衡 Ribbon默认是轮询
 <br>Eureka作为注册中心
 <br>Zuul作为网管
 <br>Security作为安全OAuth 2认证
