@@ -73,10 +73,77 @@ spring.devtools.restart.additional-paths=src/main/java
 ```
 ## 日志
 <br>1. SpringBoot :底层是Spring框架, Spring框架默认是用JCL 
- <br>SpringBoot选用SLF4j和(日志门面)logback(日志实现) ;
+<br>SpringBoot选用SLF4j和(日志门面)logback(日志实现) ;
 <br><br>2. 日志的级别
 <br>由低到高  trace<debug<info<warn<error
+## 自动装配
+<br>`@SpringBootConfiguration:` SpringBoot的配置类;标注在某个类上,表示这是一个Spring Boot的配置类;
+<br>`@Configuration`: 配置类上来标注这个注解; 配置类----配置文件;配置类也是容器中的一个组件; @Component
+<br>`@EnableAutoConfiguration` 开启自动配置功能;以前我们需要配置的东西, Spring Boot帮我们自动配置; `@EnableAutoConfiguration`告诉SpringBoot开启自动配置功能;这样自动配置才能生效;
+```java
+@AutoConfigurationPackage
+@Import(AutoConfigurationImportSelector.class)
+public @interface EnableAutoConfiguration {...}
+```
+`@AutoConfigurationPackage` :自动配置包
+<br>`@Import(AutoConfigurationPackages.Registrar.class)` : Spring的底层注解@Import ,给容器中导入一个组件;
+<br>导入的组件由AutoConfigurationPackages.Registrar.class ;
+<br>将主配置类( @SpringBootApplication标注的类)的所在包及下面所有子包里面的所有组件扫描到Spring容器;
+<br>`@Import(EnableAutoConfigurationImportSelector.class)`:给容器中导入组件?
+<br>`EnableAutoConfigurationImportSelector` :导入哪些组件的选择器;
+<br>将所有需要导入的组件以全类名的方式返回;这些组件就会被添加到容器中;
+<br>会给容器中导入非常多的自动配置类(`xxxAutoConfiguration`) ; 就是给容器中导入这个场景需要的所有组件,并配置好这些组件;
+```java
+public abstract class SpringFactoriesLoader {
+	/**
+	 * The location to look for factories.
+	 * <p>Can be present in multiple JAR files.
+	 */
+	public static final String FACTORIES_RESOURCE_LOCATION = "META-INF/spring.factories";
+	...
+}
+```
+```properties
+# Auto Configure
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+org.springframework.boot.autoconfigure.admin.SpringApplicationAdminJmxAutoConfiguration,\
+org.springframework.boot.autoconfigure.aop.AopAutoConfiguration,\
+org.springframework.boot.autoconfigure.amqp.RabbitAutoConfiguration,\
+org.springframework.boot.autoconfigure.batch.BatchAutoConfiguration,\
+org.springframework.boot.autoconfigure.cache.CacheAutoConfiguration,\
+org.springframework.boot.autoconfigure.cassandra.CassandraAutoConfiguration,\
+org.springframework.boot.autoconfigure.cloud.CloudAutoConfiguration,\
+org.springframework.boot.autoconfigure.context.ConfigurationPropertiesAutoConfiguration,\
+org.springframework.boot.autoconfigure.context.MessageSourceAutoConfiguration,\
+org.springframework.boot.autoconfigure.context.PropertyPlaceholderAutoConfiguration,\
+org.springframework.boot.autoconfigure.couchbase.CouchbaseAutoConfiguration,\
+```
+<br>有了自动配置类,免去了我们手动编写配置注入功能组件等的工作;
+<br>`SpringFactoriesLoader.loadFactoryNames(EnableAutoConfiguration.class,classloader)` ;
+<br>Spring Boot在启动的时候从类路径下的`ETA-INF/spring.factories`中获取`EnableAutoConfiguration`指定的值，将这些值作为自动配置类导，入到容器中，自动配置类就生效，帮我们进行自动配置工作;
+<br>以前我们需要自己配置的东西，自动配置类都帮我们;
+<br>J2EE的整体整合解决方案和自动配置都在`spring-boot-autoconfigure-x.x.x.RELEASE.jar` ;
+## 配置
+<br>导入配置文件处理器，配置文件进行绑定就会有提示
+```xml
+<dependency>
+	<groupId>org.springframework.boot</groupId>
+	<artifactId>spring-boot-configuration-processor</artifactId>
+	<optional>true</optional>
+</dependency>
+```
+`@Value`获取值和`@ConfigurationProperties`获取值比较
 
+|            | @ConfigurationProperties | @Value |
+| ---------- | ------------------------ | ------ |
+| 功能         | 批量注入配置文件中的属性             | 一个个指定  |
+| 松散绑定（松散语法） | 支持                       | 不支持    |
+| SpEL       | 不支持                      | 支持     |
+| JSR303数据校验 | 支持                       | 不支持    |
+| 复杂类型封装     | 支持                       | 不支持    |
+<br>配置文件yml还是properties他们都能获取到值；
+<br>如果说，我们只是在某个业务逻辑中需要获取一下配置文件中的某项值，使用`@Value`；
+<br>如果说，我们专门编写了一个javaBean来和配置文件进行映射，我们就直接使用`@ConfigurationProperties`；
 ## Spring Web MVC
 ### 主要内容
 <br>Spring Web MVC介绍:整体介绍Spring Web MVC框架设计思想、功能特性、以及插播式实现
