@@ -45,7 +45,7 @@
 </build>
 ```
 ## 热部署
-<br><br>1.  devtools可以实现页面热部署(即页面修改后会立即生效，这个可以直接在application.properties文件中配置spring.thymeleaf.cache设为false来实现)
+<br>1.  devtools可以实现页面热部署(即页面修改后会立即生效，这个可以直接在application.properties文件中配置`spring.thymeleaf.cache`设为false来实现)
 <br><br>2.  实现类文件热部署(类文件修改后不会立即生效)，实现对属性文件的热部署。即devtools会监听classpath下的文件变动，并且会立即重启应用(发生在保存时机) ,
 `注意:因为其采用的虚拟机机制，该项重启是很快的`
 <br><br>1) base classloader (Base类加载器) ;加载不改变的Class. 例如:第三方提供的jar包。
@@ -136,11 +136,11 @@ org.springframework.boot.autoconfigure.couchbase.CouchbaseAutoConfiguration,\
 
 |            | @ConfigurationProperties | @Value |
 | ---------- | ------------------------ | ------ |
-| 功能         | 批量注入配置文件中的属性             | 一个个指定  |
-| 松散绑定（松散语法） | 支持                       | 不支持    |
-| SpEL       | 不支持                      | 支持     |
-| JSR303数据校验 | 支持                       | 不支持    |
-| 复杂类型封装     | 支持                       | 不支持    |
+| 功能 | 批量注入配置文件中的属性 | 一个个指定  |
+| 松散绑定（松散语法）| 支持 | 不支持|
+| SpEL | 不支持 | 支持|
+| JSR303数据校验 | 支持| 不支持 |
+| 复杂类型封装 | 支持 | 不支持  |
 <br>配置文件yml还是properties他们都能获取到值；
 <br>如果说，我们只是在某个业务逻辑中需要获取一下配置文件中的某项值，使用`@Value`；
 <br>如果说，我们专门编写了一个javaBean来和配置文件进行映射，我们就直接使用`@ConfigurationProperties`；
