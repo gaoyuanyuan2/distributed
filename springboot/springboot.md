@@ -123,6 +123,58 @@ org.springframework.boot.autoconfigure.couchbase.CouchbaseAutoConfiguration,\
 <br>Spring Boot在启动的时候从类路径下的`ETA-INF/spring.factories`中获取`EnableAutoConfiguration`指定的值，将这些值作为自动配置类导，入到容器中，自动配置类就生效，帮我们进行自动配置工作;
 <br>以前我们需要自己配置的东西，自动配置类都帮我们;
 <br>J2EE的整体整合解决方案和自动配置都在`spring-boot-autoconfigure-x.x.x.RELEASE.jar` ;
+<br>`xxxxProperties`:封装配置文件中相关属性；
+
+`@Conditional`派生注解（Spring注解版原生的`@Conditional`作用）
+作用：必须是@Conditional指定的条件成立，才给容器中添加组件，配置配里面的所有内容才生效；
+
+| @Conditional扩展注解                | 作用（判断是否满足当前指定条件）               |
+| ------------------------------- | ------------------------------ |
+| @ConditionalOnJava              | 系统的java版本是否符合要求                |
+| @ConditionalOnBean              | 容器中存在指定Bean；                   |
+| @ConditionalOnMissingBean       | 容器中不存在指定Bean；                  |
+| @ConditionalOnExpression        | 满足SpEL表达式指定                    |
+| @ConditionalOnClass             | 系统中有指定的类                       |
+| @ConditionalOnMissingClass      | 系统中没有指定的类                      |
+| @ConditionalOnSingleCandidate   | 容器中只有一个指定的Bean，或者这个Bean是首选Bean |
+| @ConditionalOnProperty          | 系统中指定的属性是否有指定的值                |
+| @ConditionalOnResource          | 类路径下是否存在指定资源文件                 |
+| @ConditionalOnWebApplication    | 当前是web环境                       |
+| @ConditionalOnNotWebApplication | 当前不是web环境                      |
+| @ConditionalOnJndi              | JNDI存在指定项                      |
+
+```java
+@Configuration   //表示这是一个配置类，以前编写的配置文件一样，也可以给容器中添加组件
+@EnableConfigurationProperties(HttpEncodingProperties.class)  //启动指定类的ConfigurationProperties功能；将配置文件中对应的值和HttpEncodingProperties绑定起来；并把HttpEncodingProperties加入到ioc容器中
+@ConditionalOnWebApplication //Spring底层@Conditional注解（Spring注解版），根据不同的条件，如果满足指定的条件，整个配置类里面的配置就会生效；    判断当前应用是否是web应用，如果是，当前配置类生效
+@ConditionalOnClass(CharacterEncodingFilter.class)  //判断当前项目有没有这个类CharacterEncodingFilter；SpringMVC中进行乱码解决的过滤器；
+@ConditionalOnProperty(prefix = "spring.http.encoding", value = "enabled", matchIfMissing = true)  //判断配置文件中是否存在某个配置  spring.http.encoding.enabled；如果不存在，判断也是成立的
+//即使我们配置文件中不配置spring.http.encoding.enabled=true，也是默认生效的；
+public class HttpEncodingAutoConfiguration {
+  
+  	//他已经和SpringBoot的配置文件映射了
+  	private final HttpEncodingProperties properties;
+  
+   //只有一个有参构造器的情况下，参数的值就会从容器中拿
+  	public HttpEncodingAutoConfiguration(HttpEncodingProperties properties) {
+		this.properties = properties;
+	}
+  
+    @Bean   //给容器中添加一个组件，这个组件的某些值需要从properties中获取
+	@ConditionalOnMissingBean(CharacterEncodingFilter.class) //判断容器没有这个组件？
+	public CharacterEncodingFilter characterEncodingFilter() {
+		CharacterEncodingFilter filter = new OrderedCharacterEncodingFilter();
+		filter.setEncoding(this.properties.getCharset().name());
+		filter.setForceRequestEncoding(this.properties.shouldForce(Type.REQUEST));
+		filter.setForceResponseEncoding(this.properties.shouldForce(Type.RESPONSE));
+		return filter;
+	}
+```
+```java
+@ConfigurationProperties(prefix = "spring.http.encoding")  //从配置文件中获取指定的值和bean的属性进行绑定
+public class HttpEncodingProperties {
+   public static final Charset DEFAULT_CHARSET = Charset.forName("UTF-8");
+```
 ## 配置
 <br>导入配置文件处理器，配置文件进行绑定就会有提示
 ```xml
