@@ -1,7 +1,13 @@
 ## 一、分布式架构概述
 ![](https://github.com/gaoyuanyuan2/distributed/blob/master/img/25.jpg) 
-### 1、分布式
-一个业务拆分成多个子系统，部署在不同的服务器上（相互调用）。
+### 大数据：数据分析 用户行为 兴趣爱好 活动运营用户画像
+### 1、分布式 （任务分解、节点通信）
+<br>一个业务拆分成多个子系统，部署在不同的服务器上（相互调用）。
+<br><br>去IOE
+<br>IBM小型机 、 Oracle Rac、 EMC存储设备
+<br>PC            mysql    maria db   
+<br><br>2013年5月17号，最后一台IMB小型机下线
+<br>单机计算机的架构->分布式计算机架构
 ### 2、集群
 <br>同一个业务，部署在多个服务器上。高可用。
 ### 3、大型网站
@@ -12,10 +18,11 @@
 ### 6、缓存、限流、降级、分库、表拆分（500w~1000w）
 ### 7、解决session跨域
  cookie 存sessionid，服务端Tomcat用ConcuurentMap存储
-<br> session sticky
-<br> session replication 
+<br> session sticky （请求落在同一个服务器上）
+<br> session replication  （复制）
 <br> session 集中存储 db、缓存服务器
-<br> cookie （主流） access token（userid/token/timestamp）
+<br> cookie （主流）保存在客户端  access token（userid/token/timestamp）加密，拦截器解析token， 判断有效期，用户是否存在
+<br>好处：无状态，无需存储在服务端。
 <br> soa 架构和微服务架构
 ## 二、分布式通信协议
 ### 1、网络协议：TCP/IP 和UDP/IP
