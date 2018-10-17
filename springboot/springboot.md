@@ -971,8 +971,6 @@ public class HelloService {
 ```
 
 ```java
-package com.atguigu.starter;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnWebApplication;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
