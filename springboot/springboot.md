@@ -622,7 +622,7 @@ webflux不会被采用。其实webflux是兼容Annotation驱动，比如
 
 启动流程：
 
-## ** 创建SpringApplication对象**
+## 创建SpringApplication对象
 
 ```java
 initialize(sources);
