@@ -600,7 +600,7 @@ webflux不会被采用。其实webflux是兼容Annotation驱动，比如
 自己编写嵌入式Servlet容器的创建工厂`EmbeddedServletContainerFactory`) ;
 外置的Servlet容器:外面安装Tomcat--应用war包的方式打包
 
-# 七、启动配置原理
+#  启动配置原理
 
 几个重要的事件回调机制
 
@@ -622,7 +622,7 @@ webflux不会被采用。其实webflux是兼容Annotation驱动，比如
 
 启动流程：
 
-## **1、创建SpringApplication对象**
+## ** 创建SpringApplication对象**
 
 ```java
 initialize(sources);
@@ -647,7 +647,7 @@ private void initialize(Object[] sources) {
 
 ![](images/搜狗截图20180306145855.png)
 
-## 2、运行run方法
+##  运行run方法
 
 ```java
 public ConfigurableApplicationContext run(String... args) {
@@ -707,7 +707,7 @@ public ConfigurableApplicationContext run(String... args) {
 }
 ```
 
-## 3、事件监听机制
+##  事件监听机制
 
 配置在META-INF/spring.factories
 
@@ -806,7 +806,7 @@ public class HelloCommandLineRunner implements CommandLineRunner {
 
 
 
-# 八、自定义starter
+#  自定义starter
 
 starter：
 
@@ -830,7 +830,7 @@ org.springframework.boot.autoconfigure.admin.SpringApplicationAdminJmxAutoConfig
 org.springframework.boot.autoconfigure.aop.AopAutoConfiguration,\
 ```
 
-​	3、模式：
+3、模式：
 
 启动器只用来做依赖导入；
 
