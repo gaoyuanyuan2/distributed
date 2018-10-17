@@ -714,7 +714,8 @@ public ConfigurableApplicationContext run(String... args) {
 **ApplicationContextInitializer**
 
 ```java
-public class HelloApplicationContextInitializer implements ApplicationContextInitializer<ConfigurableApplicationContext> {
+public class HelloApplicationContextInitializer implements 
+ApplicationContextInitializer<ConfigurableApplicationContext> {
     @Override
     public void initialize(ConfigurableApplicationContext applicationContext) {
         System.out.println("ApplicationContextInitializer...initialize..."+applicationContext);
