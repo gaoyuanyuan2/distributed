@@ -137,25 +137,35 @@ path:资源访问路径、query-string：查询次数
 <br>空行
 <br>主体 optional request body
 <br><br> response
-<br><br>ETag：  客户端请求一个页面（A）。 服务器返回页面A，并在给A加上一个ETag。 
-客户端展现该页面，并将页面连同ETag一起缓存。 客户再次请求页面A，并将上次请求时服务器返回的ETag一起传递给服务器。 服务器检查该ETag，并判断出该页面自上次客户端请求之后还未被修改，
-直接返回响应304（未修改——Not Modified）和一个空的响应体。
-<br><br>http/version-number status code message
+<br>http/version-number status code message
 <br>header-name:value
 <br>空行
 <br>body
-<br>状态码
-<br><br>200 OK 客戸端靖求成功
+<br><br>状态码
+<br>200 OK 客戸端靖求成功
 <br>400 Bad Request 客戸端靖求有語法錯謨,不能岐服各器所理解
 <br>401 Unauthorized 请求未经授权,和www-Authenticate一起使用
 <br>403 Forbidden 服多器收到請求,但是拒绝提供服务
 <br>404 Not Found 请求资源不存在 eg url错误
 <br>500 Internal Server Error服各器发生不可预期的错误
 <br>503 Server Unavailable 服各器当前不能处理客戸端的靖求,一段吋同后可能恢夏正常
-<br><br>缓存：静态资源
-
+<br><br>缓存：静态资源 是否缓存、缓存时间等
+<br>ETag：  客户端请求一个页面（A）。 服务器返回页面A，并在给A加上一个ETag。 
+客户端展现该页面，并将页面连同ETag一起缓存。 客户再次请求页面A，并将上次请求时服务器返回的ETag一起传递给服务器。 服务器检查该ETag，并判断出该页面自上次客户端请求之后还未被修改，
+直接返回响应304（未修改——Not Modified）和一个空的响应体。
+<br><br>HTTP协议的特点
+<br>1.	无状态
+<br>cookie+session
+<br>2.	多次请求
+<br>3.	基于TCP协议
 ### 5、HTTPS
-<br>1.SSL/TLS 加密socket
+<br>服务端发送公钥，公钥被掉包：服务器发送公钥X，公钥X被恶意拦截，第三者发送Y公钥到客户端，客户端通过错误的公钥Y加密发送到服务器，又被第三者拦截，解密Y，
+用X加密发送到服务端。
+![](img/55.png) 
+![](img/54.png) 
+<br> 本地维护了一个受信任的公钥，服务端自己配置数字证书，数字证书传到浏览器会跟客户端算法进行比较，确认服务器端传给客户端的数字证书
+编号是不是客户端所对应的证书的编号。编号相同则请求受信。
+<br><br>1.SSL/TLS 加密socket
 <br> ISOC在SSL的基础上发布了升级版本TLS1.2
 <br>公钥与私钥的作用是：用公钥加密的内容只能用私钥解密，用私钥加密的内容只能用公钥解密
 <br>当A->B资料时，A会使用B的公钥加密，这样才能确保只有B能解开，否则普罗大众都能解开加密的讯息
