@@ -1,4 +1,4 @@
-## dubbo
+## dubbo（默认协议Hessian(2)）
 ### 1、负载均衡
 <br>在集群负载均衡时，Dubbo提供了多种均衡策略，缺省为random随机调用。可以自行扩展负载均衡策略
 <br><br>1.  Random LoadBalance
