@@ -199,7 +199,11 @@ path:资源访问路径、query-string：查询次数
 <br>OPTIONS请求查询服务器的性能,或者査洵与资源相关的选项和
 <br> / 表示资源层级关系、?过滤资源、使用-或者_让URI的可读性更好
 <br>统一接口 GET POST PUT DELETE PATCH HEAD/DELETE
-<br>类型 ：accept Content-Type 描述格式
+<br><br>类型 ：accept Content-Type 描述格式
+<br>资源表述
+<br>MIME 类型（）
+<br>accept: text/xml   html文件
+<br>Content-Type告诉客户端资源的表述形式
 <br>资源链接
 <br>状态转移，服务器不保存客户端状态。
 ### 7.get与post区別
