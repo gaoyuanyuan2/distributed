@@ -2,8 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1a69c435-9430-420c-b841-ddb13cb8216f" name="Default" comment="">
+      <change beforePath="" afterPath="$PROJECT_DIR$/img/50.png" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/img/51.png" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/springboot/springboot.md" afterPath="$PROJECT_DIR$/springboot/springboot.md" />
+      <change beforePath="$PROJECT_DIR$/README.md" afterPath="$PROJECT_DIR$/README.md" />
     </list>
     <ignored path="$PROJECT_DIR$/../springcloud-config/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -19,7 +21,7 @@
         <entry file="file://$PROJECT_DIR$/zookeeper.md">
           <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
             <state split_layout="SPLIT">
-              <first_editor relative-caret-position="535">
+              <first_editor relative-caret-position="5543">
                 <caret line="241" column="43" lean-forward="false" selection-start-line="230" selection-start-column="2" selection-end-line="241" selection-end-column="43" />
                 <folding>
                   <marker date="1539499990000" expanded="true" signature="5531:5657" ph="..." />
@@ -31,12 +33,12 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="springboot.md" pinned="false" current-in-tab="true">
+      <file leaf-file-name="springboot.md" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/springboot/springboot.md">
           <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
             <state split_layout="SPLIT">
-              <first_editor relative-caret-position="360">
-                <caret line="998" column="0" lean-forward="true" selection-start-line="998" selection-start-column="0" selection-end-line="998" selection-end-column="0" />
+              <first_editor relative-caret-position="442">
+                <caret line="998" column="0" lean-forward="false" selection-start-line="998" selection-start-column="0" selection-end-line="998" selection-end-column="0" />
                 <folding>
                   <marker date="1539765862000" expanded="true" signature="1538:1729" ph="..." />
                   <marker date="1539765862000" expanded="true" signature="1552:1720" ph="..." />
@@ -100,11 +102,26 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="README.md" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/README.md">
+          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+            <state split_layout="SPLIT">
+              <first_editor relative-caret-position="276">
+                <caret line="42" column="10" lean-forward="false" selection-start-line="42" selection-start-column="10" selection-end-line="42" selection-end-column="10" />
+                <folding>
+                  <marker date="1540107620000" expanded="true" signature="1462:1467" ph="基于TCP&#10;&lt;br&gt;叫一群“美女”，会有一组女生回头。" />
+                </folding>
+              </first_editor>
+              <second_editor />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="springcloud.md" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/springboot/springcloud.md">
           <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
             <state split_layout="FIRST">
-              <first_editor relative-caret-position="-5">
+              <first_editor relative-caret-position="7038">
                 <caret line="306" column="52" lean-forward="false" selection-start-line="306" selection-start-column="52" selection-end-line="306" selection-end-column="52" />
                 <folding>
                   <marker date="1539764860000" expanded="true" signature="19309:19362" ph="..." />
@@ -180,9 +197,9 @@
         <option value="$PROJECT_DIR$/springboot/Spring WebMVC.md" />
         <option value="$PROJECT_DIR$/springboot/Spring-Cloud.md" />
         <option value="$PROJECT_DIR$/springboot/Spring-Boot.md" />
-        <option value="$PROJECT_DIR$/README.md" />
         <option value="$PROJECT_DIR$/springboot/springcloud.md" />
         <option value="$PROJECT_DIR$/springboot/springboot.md" />
+        <option value="$PROJECT_DIR$/README.md" />
       </list>
     </option>
   </component>
@@ -192,9 +209,9 @@
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-14" />
-    <option name="y" value="63" />
+  <component name="ProjectFrameBounds">
+    <option name="x" value="3" />
+    <option name="y" value="179" />
     <option name="width" value="1911" />
     <option name="height" value="1102" />
   </component>
@@ -216,10 +233,9 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="AndroidView" />
       <pane id="PackagesPane" />
+      <pane id="AndroidView" />
       <pane id="Scratches" />
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -230,16 +246,22 @@
             <path>
               <item name="distributed" type="b2602c69:ProjectViewProjectNode" />
               <item name="distributed" type="462c0819:PsiDirectoryNode" />
+              <item name="img" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="distributed" type="b2602c69:ProjectViewProjectNode" />
+              <item name="distributed" type="462c0819:PsiDirectoryNode" />
               <item name="springboot" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../notes" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../netty-study" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="SearchEverywhereHistoryKey" value="&#9;FILE&#9;file://D:/study/distributed/README.md" />
@@ -247,10 +269,10 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\study\idea\distributed\img" />
       <recent name="D:\study\idea\distributed\images" />
       <recent name="D:\study\distributed\img" />
       <recent name="D:\study\distributed\springboot" />
-      <recent name="D:\study\idea\distributed\img" />
       <recent name="D:\study\distributed" />
     </key>
   </component>
@@ -397,14 +419,8 @@
       <workItem from="1539139480259" duration="11468000" />
       <workItem from="1539164985855" duration="1828000" />
       <workItem from="1539672938940" duration="1221000" />
-      <workItem from="1539761817832" duration="3793000" />
-    </task>
-    <task id="LOCAL-00060" summary="JVM">
-      <created>1536286469811</created>
-      <option name="number" value="00060" />
-      <option name="presentableId" value="LOCAL-00060" />
-      <option name="project" value="LOCAL" />
-      <updated>1536286469811</updated>
+      <workItem from="1539761817832" duration="4992000" />
+      <workItem from="1540093339854" duration="4125000" />
     </task>
     <task id="LOCAL-00061" summary="JVM">
       <created>1536392056474</created>
@@ -742,14 +758,21 @@
       <option name="project" value="LOCAL" />
       <updated>1539764870935</updated>
     </task>
-    <option name="localTasksCounter" value="109" />
+    <task id="LOCAL-00109" summary="spring boot">
+      <created>1539766414323</created>
+      <option name="number" value="00109" />
+      <option name="presentableId" value="LOCAL-00109" />
+      <option name="project" value="LOCAL" />
+      <updated>1539766414323</updated>
+    </task>
+    <option name="localTasksCounter" value="110" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="205786000" />
+    <option name="totallyTimeSpent" value="211110000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-9" y="-9" width="1938" height="1048" extended-state="6" />
+    <frame x="3" y="179" width="1911" height="1102" extended-state="0" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -758,19 +781,19 @@
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.26638025" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2668187" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.20439914" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.20740338" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -786,7 +809,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="请求头" />
     <MESSAGE value="kafka" />
     <MESSAGE value="." />
     <MESSAGE value="架构" />
@@ -811,7 +833,8 @@
     <MESSAGE value="spring cloud" />
     <MESSAGE value="readme" />
     <MESSAGE value="spring boot" />
-    <option name="LAST_COMMIT_MESSAGE" value="spring boot" />
+    <MESSAGE value="TCP" />
+    <option name="LAST_COMMIT_MESSAGE" value="TCP" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -1238,37 +1261,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/README.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SPLIT">
-          <first_editor relative-caret-position="575">
-            <caret line="25" column="17" lean-forward="false" selection-start-line="25" selection-start-column="17" selection-end-line="25" selection-end-column="17" />
-            <folding>
-              <marker date="1539501972000" expanded="true" signature="1204:1209" ph="基于TCP&#10;&lt;br&gt;叫一群“美女”，会有一组女生回头。" />
-            </folding>
-          </first_editor>
-          <second_editor />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/zookeeper.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SPLIT">
-          <first_editor relative-caret-position="535">
-            <caret line="241" column="43" lean-forward="false" selection-start-line="230" selection-start-column="2" selection-end-line="241" selection-end-column="43" />
-            <folding>
-              <marker date="1539499990000" expanded="true" signature="5531:5657" ph="..." />
-              <marker date="1539499990000" expanded="true" signature="5700:5814" ph="..." />
-            </folding>
-          </first_editor>
-          <second_editor />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/springboot/springcloud.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="FIRST">
-          <first_editor relative-caret-position="-5">
+          <first_editor relative-caret-position="7038">
             <caret line="306" column="52" lean-forward="false" selection-start-line="306" selection-start-column="52" selection-end-line="306" selection-end-column="52" />
             <folding>
               <marker date="1539764860000" expanded="true" signature="19309:19362" ph="..." />
@@ -1281,8 +1277,8 @@
     <entry file="file://$PROJECT_DIR$/springboot/springboot.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
-          <first_editor relative-caret-position="360">
-            <caret line="998" column="0" lean-forward="true" selection-start-line="998" selection-start-column="0" selection-end-line="998" selection-end-column="0" />
+          <first_editor relative-caret-position="442">
+            <caret line="998" column="0" lean-forward="false" selection-start-line="998" selection-start-column="0" selection-end-line="998" selection-end-column="0" />
             <folding>
               <marker date="1539765862000" expanded="true" signature="1538:1729" ph="..." />
               <marker date="1539765862000" expanded="true" signature="1552:1720" ph="..." />
@@ -1339,6 +1335,33 @@
               <marker date="1539765862000" expanded="true" signature="32278:32613" ph="..." />
               <marker date="1539765862000" expanded="true" signature="32615:32723" ph="@{...}" />
               <marker date="1539765862000" expanded="true" signature="32870:33005" ph="{...}" />
+            </folding>
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/zookeeper.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="5543">
+            <caret line="241" column="43" lean-forward="false" selection-start-line="230" selection-start-column="2" selection-end-line="241" selection-end-column="43" />
+            <folding>
+              <marker date="1539499990000" expanded="true" signature="5531:5657" ph="..." />
+              <marker date="1539499990000" expanded="true" signature="5700:5814" ph="..." />
+            </folding>
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="276">
+            <caret line="42" column="10" lean-forward="false" selection-start-line="42" selection-start-column="10" selection-end-line="42" selection-end-column="10" />
+            <folding>
+              <marker date="1540107620000" expanded="true" signature="1462:1467" ph="基于TCP&#10;&lt;br&gt;叫一群“美女”，会有一组女生回头。" />
             </folding>
           </first_editor>
           <second_editor />
