@@ -234,20 +234,55 @@ path:资源访问路径、query-string：查询次数
 传输协议 TCP/UDP
 <br>Message protocol 消息管理
 <br>代理 RPC proxy
-### 3、RMI
+![](img/57.png) 
+### 3、RMI(有代码示例)
 使用JRMP（远程信息交换协议），JRMP是专门为java定制的通信协议，java分布式解决方案。
 <br>不能重试、bio效率低、不跨平台、java原生序列化效率低、注册中心会挂没办法负载。
 <br>Java序列化的两个目的：网络传输、对象持久化。
-### 4、webservice
-1.跨语言调用
-<br>2.WSDL 定义语言，.wsdl的文件类型、一个webservice对应唯一一个wsdl文档、调用关系链
-<br>3.SOAP 简单对象访问协议，http+xml 
-<br>4.SEI webservice 的终端接口，发布出去的接口
-<br>5.复杂类型会丢失、大量数据效率低
-<br>6.Axis、Axis2
-<br>CXF Celtic+Xfire ，spring整合
-<br>Xfire 高性能
-<br>SpringMVC新的webservice
+### 4、WebService 复杂类型丢失
+<br>RPC 包含的要素
+<br>webservice
+<br>协议层：tcp/ip
+<br>应用层： http协议
+<br>SOAP： http+xml 
+<br><br>分布式通信框架-webservice分析
+<br><br>什么是webservice
+<br>webservice也可以叫xml web service webservice, 轻量级的独立的通讯技术
+<br>1.	基于web的服务：服务端提供的服务接口让客户端访问
+<br>2.	跨平台、跨语言的整合方案
+<br><br>为什么要使用webservice
+<br>跨语言调用的解决方案
+<br><br>什么时候要去使用webservice
+<br>电商平台，订单的物流状态。 
+<br> .net实现的webservice服务接口
+<br><br>webservice中的一些概念
+<br><br>WSDL(web service definition language  webservice 定义语言)
+<br><br>webservice服务需要通过wsdl文件来说明自己有什么服务可以对外调用。并且有哪些方法、方法里面有哪些参数
+<br>wsdl基于XML（可扩展标记语言）去定义的
+<br>1.	 对应一个.wsdl的文件类型
+<br>2.	 定义了webservice的服务器端和客户端应用进行交互的传递数据和响应数据格式和方式
+<br>3.	 一个webservice对应唯一一个wsdl文档
+<br><br>SOAP（simple object access protocal简单对象访问协议）
+<br><br>http+xml
+<br>webservice通过http协议发送和接收请求时， 发送的内容（请求报文）和接收的内容（响应报文）都是采用xml格式进行封装
+<br>这些特定的HTTP消息头和XML内容格式就是SOAP协议
+<br>1.	一种简单、基于HTTP和XML的协议
+<br>2.	soap消息：请求和响应消息
+<br>3.	http+xml报文
+<br><br>SEI（webservice endpoint interface webservice的终端接口）
+<br>webservice服务端用来处理请求的接口，也就是发布出去的接口。
+<br><br>Axis/Axis2
+<br>apache开源的webservice工具
+<br>CXF
+<br>Celtix+Xfire 。 用的很广泛，因为集成到了spring
+<br>Xfire
+<br>高性能的Webservice
+<br>HTTP+JSON (新的webservice)
+<br>HTTP+XML
+![](img/58.png) 
+![](img/59.png) 
+<br><br>RMI、 http协议/https、webservice、 TCP协议、UDP协议、 
+socket编程、bio /nio模型、分布式架构、集群、架构演进过程
 ## 六、会话层-DID原则
 <br>Design:按照10倍体量设计
 <br><br>Implement:按照3倍体量实现
