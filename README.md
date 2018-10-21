@@ -1,5 +1,5 @@
 ## 一、分布式架构概述
-![](https://github.com/gaoyuanyuan2/distributed/blob/master/img/25.jpg) 
+![](/img/25.jpg) 
 ### 大数据：数据分析 用户行为 兴趣爱好 活动运营用户画像
 ### 1、分布式 （任务分解、节点通信）
 <br>一个业务拆分成多个子系统，部署在不同的服务器上（相互调用）。
@@ -39,12 +39,9 @@ DoS攻击是指故意的攻击网络协议实现的缺陷或直接通过野蛮�
 ### 2、NIO（同步非阻塞，点餐后干其他事情，干完之后问别人餐好了没有）主动问，AIO（异步非阻塞）（餐好了就通知） 被动通知
 BIO 大于发送缓冲区就会阻塞
 
-![](https://github.com/gaoyuanyuan2/distributed/blob/master/img/50.png) 
-
+![](img/50.png) 
 <br>NIO底层存在一个I/O调度线程 不断扫描Socket缓冲区，发现缓冲区为空，主动通知
-
 ![](img/51.png) 
-
 <br> TCP Socket 滑动窗口协议（缓冲区）：报文可靠性，流量控制，和限流有点类似，传输的每个部分被分配唯一的连续序列号，
  接收方使用数字并以正确的顺序放置接收到的数据包（窗口：多个同时收到，全部接收向右滑动），
  丢弃重复的数据包并识别丢失的数据。
@@ -75,7 +72,7 @@ path:资源访问路径、query-string：查询次数
 ###  3、方法 GET/PUT/POST/HEAD/DELETE
 ### 4、报文
 <br><br>
-![请求头](https://github.com/gaoyuanyuan2/distributed/blob/master/img/2.png) 
+![请求头](/img/2.png) 
 <br><br>
 #### HTTP Request Header 请求头
 

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="1a69c435-9430-420c-b841-ddb13cb8216f" name="Default" comment="TCP">
+    <list default="true" id="1a69c435-9430-420c-b841-ddb13cb8216f" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change beforePath="$PROJECT_DIR$/README.md" afterPath="$PROJECT_DIR$/README.md" />
     </list>
@@ -104,10 +104,10 @@
         <entry file="file://$PROJECT_DIR$/README.md">
           <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
             <state split_layout="SPLIT">
-              <first_editor relative-caret-position="276">
-                <caret line="45" column="4" lean-forward="false" selection-start-line="45" selection-start-column="4" selection-end-line="45" selection-end-column="4" />
+              <first_editor relative-caret-position="322">
+                <caret line="80" column="53" lean-forward="true" selection-start-line="80" selection-start-column="53" selection-end-line="80" selection-end-column="53" />
                 <folding>
-                  <marker date="1540108136000" expanded="true" signature="1521:1526" ph="基于TCP&#10;&lt;br&gt;叫一群“美女”，会有一组女生回头。" />
+                  <marker date="1540108242000" expanded="true" signature="1407:1412" ph="基于TCP&#10;&lt;br&gt;叫一群“美女”，会有一组女生回头。" />
                 </folding>
               </first_editor>
               <second_editor />
@@ -153,6 +153,7 @@
       <find>嵌入式</find>
       <find>数据库</find>
       <find>ribbon</find>
+      <find>https://github.com/gaoyuanyuan2/distributed/blob/master</find>
     </findStrings>
     <replaceStrings>
       <replace>务</replace>
@@ -413,14 +414,7 @@
       <workItem from="1539164985855" duration="1828000" />
       <workItem from="1539672938940" duration="1221000" />
       <workItem from="1539761817832" duration="4992000" />
-      <workItem from="1540093339854" duration="4608000" />
-    </task>
-    <task id="LOCAL-00065" summary="tomcat">
-      <created>1536489358710</created>
-      <option name="number" value="00065" />
-      <option name="presentableId" value="LOCAL-00065" />
-      <option name="project" value="LOCAL" />
-      <updated>1536489358710</updated>
+      <workItem from="1540093339854" duration="4695000" />
     </task>
     <task id="LOCAL-00066" summary="tomcat">
       <created>1536489542453</created>
@@ -758,11 +752,18 @@
       <option name="project" value="LOCAL" />
       <updated>1540108078447</updated>
     </task>
-    <option name="localTasksCounter" value="114" />
+    <task id="LOCAL-00114" summary="TCP">
+      <created>1540108158680</created>
+      <option name="number" value="00114" />
+      <option name="presentableId" value="LOCAL-00114" />
+      <option name="project" value="LOCAL" />
+      <updated>1540108158680</updated>
+    </task>
+    <option name="localTasksCounter" value="115" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="211593000" />
+    <option name="totallyTimeSpent" value="211680000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-9" y="-9" width="1938" height="1048" extended-state="6" />
@@ -1351,10 +1352,10 @@
     <entry file="file://$PROJECT_DIR$/README.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
-          <first_editor relative-caret-position="276">
-            <caret line="45" column="4" lean-forward="false" selection-start-line="45" selection-start-column="4" selection-end-line="45" selection-end-column="4" />
+          <first_editor relative-caret-position="322">
+            <caret line="80" column="53" lean-forward="true" selection-start-line="80" selection-start-column="53" selection-end-line="80" selection-end-column="53" />
             <folding>
-              <marker date="1540108136000" expanded="true" signature="1521:1526" ph="基于TCP&#10;&lt;br&gt;叫一群“美女”，会有一组女生回头。" />
+              <marker date="1540108242000" expanded="true" signature="1407:1412" ph="基于TCP&#10;&lt;br&gt;叫一群“美女”，会有一组女生回头。" />
             </folding>
           </first_editor>
           <second_editor />
