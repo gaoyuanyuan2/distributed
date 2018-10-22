@@ -19,11 +19,11 @@
         <entry file="file://$PROJECT_DIR$/zookeeper.md">
           <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
             <state split_layout="SPLIT">
-              <first_editor relative-caret-position="437">
-                <caret line="31" column="28" lean-forward="false" selection-start-line="31" selection-start-column="28" selection-end-line="31" selection-end-column="28" />
+              <first_editor relative-caret-position="230">
+                <caret line="34" column="51" lean-forward="true" selection-start-line="34" selection-start-column="51" selection-end-line="34" selection-end-column="51" />
                 <folding>
-                  <marker date="1540224780000" expanded="true" signature="5607:5733" ph="..." />
-                  <marker date="1540224780000" expanded="true" signature="5776:5890" ph="..." />
+                  <marker date="1540224904000" expanded="true" signature="5621:5747" ph="..." />
+                  <marker date="1540224904000" expanded="true" signature="5790:5904" ph="..." />
                 </folding>
               </first_editor>
               <second_editor />
@@ -450,14 +450,7 @@
       <workItem from="1539672938940" duration="1221000" />
       <workItem from="1539761817832" duration="4992000" />
       <workItem from="1540093339854" duration="19157000" />
-      <workItem from="1540224058275" duration="731000" />
-    </task>
-    <task id="LOCAL-00078" summary="springcloud">
-      <created>1538038299384</created>
-      <option name="number" value="00078" />
-      <option name="presentableId" value="LOCAL-00078" />
-      <option name="project" value="LOCAL" />
-      <updated>1538038299384</updated>
+      <workItem from="1540224058275" duration="1166000" />
     </task>
     <task id="LOCAL-00079" summary="springboot">
       <created>1538047628974</created>
@@ -795,11 +788,18 @@
       <option name="project" value="LOCAL" />
       <updated>1540138180491</updated>
     </task>
-    <option name="localTasksCounter" value="127" />
+    <task id="LOCAL-00127" summary="zk">
+      <created>1540224803704</created>
+      <option name="number" value="00127" />
+      <option name="presentableId" value="LOCAL-00127" />
+      <option name="project" value="LOCAL" />
+      <updated>1540224803705</updated>
+    </task>
+    <option name="localTasksCounter" value="128" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="226873000" />
+    <option name="totallyTimeSpent" value="227308000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-9" y="-9" width="1938" height="1048" extended-state="6" />
@@ -816,7 +816,7 @@
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.16148068" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.16148068" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -839,7 +839,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Redis" />
     <MESSAGE value="MongoDB" />
     <MESSAGE value="性能优化" />
     <MESSAGE value="docker" />
@@ -864,7 +863,8 @@
     <MESSAGE value="http" />
     <MESSAGE value="https" />
     <MESSAGE value="webservice" />
-    <option name="LAST_COMMIT_MESSAGE" value="webservice" />
+    <MESSAGE value="zk" />
+    <option name="LAST_COMMIT_MESSAGE" value="zk" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -1381,11 +1381,11 @@
     <entry file="file://$PROJECT_DIR$/zookeeper.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
-          <first_editor relative-caret-position="437">
-            <caret line="31" column="28" lean-forward="false" selection-start-line="31" selection-start-column="28" selection-end-line="31" selection-end-column="28" />
+          <first_editor relative-caret-position="230">
+            <caret line="34" column="51" lean-forward="true" selection-start-line="34" selection-start-column="51" selection-end-line="34" selection-end-column="51" />
             <folding>
-              <marker date="1540224780000" expanded="true" signature="5607:5733" ph="..." />
-              <marker date="1540224780000" expanded="true" signature="5776:5890" ph="..." />
+              <marker date="1540224904000" expanded="true" signature="5621:5747" ph="..." />
+              <marker date="1540224904000" expanded="true" signature="5790:5904" ph="..." />
             </folding>
           </first_editor>
           <second_editor />

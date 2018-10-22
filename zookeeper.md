@@ -29,10 +29,10 @@
 80%的用户可用
 <br>soft-state：在基于client-server模式的系统中，server端是否有状态，决定了系统是否具备良好的水平扩展、负载均衡、故障恢复等特性。
 <br>Server端承诺会维护client端状态数据，这个状态仅仅维持一小段时间, 这段时间以后，server端就会丢弃这个状态，恢复正常状态。
-（比如：订单退款中（临时成功，软状态，一小段时间不同步）->退款成功 异步过程）。
+（比如：订单退款中（临时成功，软状态，一小段时间不同步）->退款成功 异步过程 mq可以处理）。
 <br>Eventually consistent：数据的最终一致性。（中间某个点不一致）
 ### 5、初步认识zookeeper
-<br>zookeeper是一个开源的分布式协调服务，是由雅虎创建的，基于googlechubby。
+<br>zookeeper是一个开源的分布式协调服务，是由雅虎创建的，基于google chubby（分布式锁）。
 <br><br>1.zookeeper是什么
 <br>分布式数据一致性的解决方案
 <br><br>2.zookeeper能做什么
