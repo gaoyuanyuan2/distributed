@@ -18,20 +18,21 @@
 <br>1.CAP
 <br>一致性（Consistency）: 所有节点上的数据，时刻保持一致
 <br>可用性（Availability）：每个请求都能够收到一个响应，无论响应成功或者失败
-<br>分区容错 （Partition-tolerance）：表示系统出现脑裂以后，可能导致某些server与集群中的其他机器失去联系
+<br>分区容错 （Partition-tolerance）：表示系统出现脑裂以后，可能导致某些server与集群中的其他机器失去联系(网络问题一定存在)
 <br>CP  /AP
 <br>CAP理论仅适用于原子读写的Nosql场景，不适用于数据库系统
 <br><br>2.BASE
 <br>基于CAP理论，CAP理论并不适用于数据库事务（因为更新一些错误的数据而导致数据出现紊乱，无论什么样的数据库高可用方案都是
 徒劳），虽然XA事务可以保证数据库在分布式系统下的ACID特性，但是会带来性能方面的影响；
 <br>eBay尝试了一种完全不同的套路，放宽了对事务ACID的要求。提出了BASE理论
-Basically available ： 数据库采用分片模式， 把100W的用户数据分布在5个实例上。如果破坏了其中一个实例，仍然可以保证
+<br>Basically available ： 数据库采用分片模式， 把100W的用户数据分布在5个实例上。如果破坏了其中一个实例，仍然可以保证
 80%的用户可用
-soft-state：在基于client-server模式的系统中，server端是否有状态，决定了系统是否具备良好的水平扩展、负载均衡、故障恢复等特性。
-Server端承诺会维护client端状态数据，这个状态仅仅维持一小段时间, 这段时间以后，server端就会丢弃这个状态，恢复正常状态
-<br>Eventually consistent：数据的最终一致性
+<br>soft-state：在基于client-server模式的系统中，server端是否有状态，决定了系统是否具备良好的水平扩展、负载均衡、故障恢复等特性。
+<br>Server端承诺会维护client端状态数据，这个状态仅仅维持一小段时间, 这段时间以后，server端就会丢弃这个状态，恢复正常状态。
+（比如：订单退款中（临时成功，软状态，一小段时间不同步）->退款成功 异步过程 mq可以处理）。
+<br>Eventually consistent：数据的最终一致性。（中间某个点不一致）
 ### 5、初步认识zookeeper
-<br>zookeeper是一个开源的分布式协调服务，是由雅虎创建的，基于googlechubby。
+<br>zookeeper是一个开源的分布式协调服务，是由雅虎创建的，基于google chubby（分布式锁）。
 <br><br>1.zookeeper是什么
 <br>分布式数据一致性的解决方案
 <br><br>2.zookeeper能做什么

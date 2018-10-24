@@ -1,7 +1,13 @@
 ## 一、分布式架构概述
-![](https://github.com/gaoyuanyuan2/distributed/blob/master/img/25.jpg) 
-### 1、分布式
-一个业务拆分成多个子系统，部署在不同的服务器上（相互调用）。
+![](/img/25.jpg) 
+### 大数据：数据分析 用户行为 兴趣爱好 活动运营用户画像
+### 1、分布式 （任务分解、节点通信）
+<br>一个业务拆分成多个子系统，部署在不同的服务器上（相互调用）。
+<br><br>去IOE
+<br>IBM小型机 、 Oracle Rac、 EMC存储设备
+<br>PC            mysql    maria db   
+<br><br>2013年5月17号，最后一台IMB小型机下线
+<br>单机计算机的架构->分布式计算机架构
 ### 2、集群
 <br>同一个业务，部署在多个服务器上。高可用。
 ### 3、大型网站
@@ -12,26 +18,40 @@
 ### 6、缓存、限流、降级、分库、表拆分（500w~1000w）
 ### 7、解决session跨域
  cookie 存sessionid，服务端Tomcat用ConcuurentMap存储
-<br> session sticky
-<br> session replication 
+<br> session sticky （请求落在同一个服务器上）
+<br> session replication  （复制）
 <br> session 集中存储 db、缓存服务器
-<br> cookie （主流） access token（userid/token/timestamp）
+<br> cookie （主流）保存在客户端  access token（userid/token/timestamp）加密，拦截器解析token， 判断有效期，用户是否存在
+<br>好处：无状态，无需存储在服务端。
 <br> soa 架构和微服务架构
 ## 二、分布式通信协议
 ### 1、网络协议：TCP/IP 和UDP/IP
  TCP五层:物理层（物理介质）、数据链路层（硬件接口）、网络层（IP ICMP/IGMP）、传输层（TCP/UDP）、应用层（应用程序）
+<br>OSI模型七层 5 + 表达层 应用层
 <br><br> 3次握手协议（确认）。
 <br>你爱我吗？我爱你，我知道了。
-<br>伪造IP发送http请求，不给回复，导致连接队列栈满，
+<br>伪造IP发送http请求，不给回复，半连接，导致连接队列栈满，
 DoS攻击是指故意的攻击网络协议实现的缺陷或直接通过野蛮手段残忍地耗尽被攻击对象的资源。
 <br><br> 4次挥手协议。
-<br>你爱我吗？我收到了。我爱你。我收到了。
-<br><br> 单工，半双工 对讲 ，全双工（TCP）吵架
+<br>客户端发起请求？服务端确认。服务端发起完成请求。客户端确认。
+<br><br> 单工 一个方向（发微信），半双工 对讲（不能打断） ，全双工（TCP） 双向 （吵架）
 <br><br> UDP 不可靠，不建立连接，视频，性能好。
-### 2、NIO（同步非阻塞）主动问，AIO（异步非阻塞） 被动通知。
- 滑动窗口协议（缓冲区）：传输的每个部分被分配唯一的连续序列号，接收方使用数字并以正确的顺序放置接收到的数据包，丢弃重复的数据包并识别丢失的数据。
-### 3、Multicase（组播）
-基于TCP  
+### 2、NIO（同步非阻塞，点餐后干其他事情，干完之后问别人餐好了没有）主动问，AIO（异步非阻塞）（餐好了就通知） 被动通知
+BIO 大于发送缓冲区就会阻塞
+
+![](img/50.png) 
+<br>NIO底层存在一个I/O调度线程 不断扫描Socket缓冲区，发现缓冲区为空，主动通知
+![](img/51.png) 
+<br> TCP Socket 滑动窗口协议（缓冲区）：报文可靠性，流量控制，和限流有点类似，传输的每个部分被分配唯一的连续序列号，
+ 接收方使用数字并以正确的顺序放置接收到的数据包（窗口：多个同时收到，全部接收向右滑动），
+ 丢弃重复的数据包并识别丢失的数据。
+ ![](/img/52.png) 
+ ![](/img/53.png) 
+### 3、Multicase（组播）dubbo会用到此协议
+<br>单播 点对点
+<br>广播
+<br>组播
+<br><br>基于TCP  
 <br>叫一群“美女”，会有一组女生回头。
 ## 三、分布式通信-序列化
 ### 1、简介
@@ -41,11 +61,43 @@ java序列化：数据大，效率低，不能跨语言。
 <br><br>序列化不保存静态变量的状态。Transient 不参与序列化。父类没实现序列化接口，子类实现了，父类属性不生效。
 同一个对象存储两次不会叠加，只是引用，如果属性有改变，会对改变的值存储。
 <br><br>XML编码 易懂，跨语言。
-<br><br>HTTP RESTful 跨语言，无状态，数据大。
+<br><br>HTTP RESTFul 跨语言，无状态，数据大。 JSON(空间大、性能低)
 <br><br>MessagePack 开源序列化框架
 <br><br>Protocol Buffers:压缩字节数小、序列化快、缓存机制。
 <br><br>序列化实现深克隆
 <br>浅克隆：复制对象，不复制对象引用。
+<br>Dubbo kryo
+<br><br>恰当的序列化协议不仅可以提高系统的通用性、强壮型、安全性、优化性能。同时还能让系统更加易于调试和扩展
+<br><br>serialVersionUID的作用
+<br>文件流中的class和classpath中的class，也就是修改过后的class，不兼容了，处于安全机制考虑，程序抛出了错误，并且拒绝载入。
+从错误结果来看，如果没有为指定的class配置serialVersionUID，那么java编译器会自动给这个class进行一个摘要算法，
+类似于指纹算法，只要这个文件有任何改动，得到的UID就会截然不同的，可以保证在这么多类中，这个编号是唯一的。所以，
+由于没有显指定 serialVersionUID，编译器又为我们生成了一个UID，当然和前面保存在文件中的那个不会一样了，
+于是就出现了2个序列化版本号不一致的错误。因此，只要我们自己指定了serialVersionUID，就可以在序列化后，去添加一个字段，
+或者方法，而不会影响到后期的还原，还原后的对象照样可以使用，而且还多了方法或者属性可以用。
+<br><br>Transient关键字
+<br>transient关键字表示指定属性不参与序列化
+<br>父子类问题
+<br>如果父类没有实现序列化，而子类实现列序列化。那么父类中的成员没办法做序列化操作
+序列化的存储规则
+<br>对同一个对象进行多次写入，打印出的第一次存储结果和第二次存储结果，只多了5个字节的引用关系。
+并不会导致文件累加
+<br><br>序列化实现深度克隆
+<br><br>浅拷贝（浅复制、浅克隆）：被复制对象的所有变量都含有与原来的对象相同的值，而所有的对其他对象的引用仍然指向原来的对象。
+　　<br>换言之，浅拷贝仅仅复制所拷贝的对象，而不复制它所引用的对象。
+<br><br>深拷贝（深复制、深克隆）：被复制对象的所有变量都含有与原来的对象相同的值，除去那些引用其他对象的变量。
+　　那些引用其他对象的变量将指向被复制过的新对象，而不再是原有的那些被引用的对象。
+　　换言之，深拷贝把要复制的对象所引用的对象都复制了一遍
+<br><br>总结
+<br>1.	在java中，只要一个类实现了java.io.Serializable接口，那么它就可以被序列化
+<br>2.	通过ObjectOutputStream和ObjectInputStream对对象进行序列化合反序列化操作
+<br>3.	 对象是否允许被反序列化，不仅仅是取决于对象的代码是否一致，同时还有一个重要的因素（UID）
+<br>4.	 序列化不保存静态变量
+<br>5.	 要想父类对象也参与序列化操作，那么必须要让父类也实现Serializable接口
+<br>6.	 Transient关键字，主要是控制变量是否能够被序列化。如果没有被序列化的成员变量反序列化后，会被设置成初始值，比如String -> null
+<br>7.	 通过序列化操作实现深度克隆
+<br><br>主流的序列化技术有哪些
+<br>JSON/Hessian(2) /xml/protobuf/kryo/MsgPack/FST/thrift/protostuff/Avro
 ### 2、主流
 JSON/Hessian(2)/xml/protobuf/kryo/MsgPack/FST/thrift/protostuff/Avro
 ## 四、HTTP
@@ -57,12 +109,12 @@ path:资源访问路径、query-string：查询次数
 ###  3、方法 GET/PUT/POST/HEAD/DELETE
 ### 4、报文
 <br><br>
-![请求头](https://github.com/gaoyuanyuan2/distributed/blob/master/img/2.png) 
+![请求头](/img/2.png) 
 <br><br>
 #### HTTP Request Header 请求头
 
 |Header|解释|示例|
-|:--:|:--:|:--:|
+|:----------------:|:--------------------------------------------------:|:----------------:|
 |Accept|指定客户端能够接收的内容类型|Accept: text/plain, text/html|
 |Accept-Charset|	浏览器可以接受的字符编码集。|	Accept-Charset: iso-8859-5|
 |Accept-Encoding|	指定浏览器可以支持的web服务器返回内容压缩编码类型。|	Accept-Encoding: compress, gzip|
@@ -85,25 +137,36 @@ path:资源访问路径、query-string：查询次数
 <br>空行
 <br>主体 optional request body
 <br><br> response
-<br><br>ETag：  客户端请求一个页面（A）。 服务器返回页面A，并在给A加上一个ETag。 
-客户端展现该页面，并将页面连同ETag一起缓存。 客户再次请求页面A，并将上次请求时服务器返回的ETag一起传递给服务器。 服务器检查该ETag，并判断出该页面自上次客户端请求之后还未被修改，
-直接返回响应304（未修改——Not Modified）和一个空的响应体。
-<br><br>http/version-number status code message
+<br>http/version-number status code message
 <br>header-name:value
 <br>空行
 <br>body
-<br>状态码
-<br><br>200 OK 客戸端靖求成功
+<br><br>状态码
+<br>200 OK 客戸端靖求成功
 <br>400 Bad Request 客戸端靖求有語法錯謨,不能岐服各器所理解
 <br>401 Unauthorized 请求未经授权,和www-Authenticate一起使用
 <br>403 Forbidden 服多器收到請求,但是拒绝提供服务
 <br>404 Not Found 请求资源不存在 eg url错误
 <br>500 Internal Server Error服各器发生不可预期的错误
 <br>503 Server Unavailable 服各器当前不能处理客戸端的靖求,一段吋同后可能恢夏正常
-<br><br>缓存：静态资源
-
+<br><br>缓存：静态资源 是否缓存、缓存时间等
+<br>ETag：  客户端请求一个页面（A）。 服务器返回页面A，并在给A加上一个ETag。 
+客户端展现该页面，并将页面连同ETag一起缓存。 客户再次请求页面A，并将上次请求时服务器返回的ETag一起传递给服务器。 服务器检查该ETag，并判断出该页面自上次客户端请求之后还未被修改，
+直接返回响应304（未修改——Not Modified）和一个空的响应体。
+<br><br>HTTP协议的特点
+<br>1.	无状态
+<br>cookie+session
+<br>2.	多次请求
+<br>3.	基于TCP协议
 ### 5、HTTPS
-<br>1.SSL/TLS 加密socket
+<br>服务端发送公钥，公钥被掉包：服务器发送公钥X，公钥X被恶意拦截，第三者发送Y公钥到客户端，客户端通过错误的公钥Y加密发送到服务器，又被第三者拦截，解密Y，
+用X加密发送到服务端。
+![](img/55.png) 
+![](img/54.png) 
+<br> 本地维护了一个受信任的公钥，服务端自己配置数字证书，数字证书传到浏览器会跟客户端算法进行比较，确认服务器端传给客户端的数字证书
+编号是不是客户端所对应的证书的编号。编号相同则请求受信。
+<br><br>数字证书原因、公私钥、对接加密、非对称加密、随机数
+<br><br>1.SSL/TLS 加密socket
 <br> ISOC在SSL的基础上发布了升级版本TLS1.2
 <br>公钥与私钥的作用是：用公钥加密的内容只能用私钥解密，用私钥加密的内容只能用公钥解密
 <br>当A->B资料时，A会使用B的公钥加密，这样才能确保只有B能解开，否则普罗大众都能解开加密的讯息
@@ -121,6 +184,25 @@ path:资源访问路径、query-string：查询次数
 通过证书内的公钥对这个随机数加密，发送给服务端、
 <br>5)（随机数1+2+3）通过对称加密得到一个秘钥（会话秘钥）。
 <br>6)通过会话秘钥对内容进行对称加密传输（对称加密效率高）。
+<br><br>随机数：保证每次建立连接的会话的key是唯一的。客户端公钥加解密，服务端私钥加解密。所有会话通过会话秘钥传输。
+<br><br>少了秘钥传输过程，会话秘钥无法破解。没证书没办法建立socket连接，所以获取会话秘钥也没用。
+![](img/56.png) 
+<br>1.	客户端发起一个https请求
+<br>a)	客户端支持的加密方式
+<br>b)	客户端生成的随机数（第一个随机数）
+<br>2.	服务端收到请求后，拿到随机数，返回
+<br>a)	证书（颁发机构（CA）、证书内容本身的数字签名（使用第三方机构的私钥加密）、证书持有者的公钥、证书签名用到的hash算法）
+<br>b)	生成一个随机数，返回给客户端（第二个随机数）
+<br>3.	客户端拿到证书以后做验证
+<br>a)	根据颁发机构找到本地的跟证书
+<br>b)	根据CA得到根证书的公钥，通过公钥对数字签名解密，得到证书的内容摘要 A
+<br>c)	用证书提供的算法对证书内容进行摘要，得到摘要 B
+<br>d)	通过A和B的对比，也就是验证数字签名
+<br>4.	验证通过以后，生成一个随机数（第三个随机数），通过证书内的公钥对这个随机数加密，发送给服务器端
+<br>5.	（随机数1+2+3）通过对称加密得到一个密钥。（会话密钥）
+<br>6.	通过会话密钥对内容进行对称加密传输
+<br> 摘要不能解密，所以叫摘要
+<br><br>USB双向校验
 ### 6、RESTful
 <br>资源、URI唯一标识、统一接口处理资源请求（POST/GET/PUT/DELETE/HEAD）、无状态（客户端保存cookie）
 <br>GET靖求 荻取Request-URI所标识的资源
@@ -132,7 +214,11 @@ path:资源访问路径、query-string：查询次数
 <br>OPTIONS请求查询服务器的性能,或者査洵与资源相关的选项和
 <br> / 表示资源层级关系、?过滤资源、使用-或者_让URI的可读性更好
 <br>统一接口 GET POST PUT DELETE PATCH HEAD/DELETE
-<br>类型 ：accept Content-Type 描述格式
+<br><br>类型 ：accept Content-Type 描述格式
+<br>资源表述
+<br>MIME 类型（）
+<br>accept: text/xml   html文件
+<br>Content-Type告诉客户端资源的表述形式
 <br>资源链接
 <br>状态转移，服务器不保存客户端状态。
 ### 7.get与post区別
@@ -148,20 +234,55 @@ path:资源访问路径、query-string：查询次数
 传输协议 TCP/UDP
 <br>Message protocol 消息管理
 <br>代理 RPC proxy
-### 3、RMI
+![](img/57.png) 
+### 3、RMI(有代码示例)
 使用JRMP（远程信息交换协议），JRMP是专门为java定制的通信协议，java分布式解决方案。
 <br>不能重试、bio效率低、不跨平台、java原生序列化效率低、注册中心会挂没办法负载。
 <br>Java序列化的两个目的：网络传输、对象持久化。
-### 4、webservice
-1.跨语言调用
-<br>2.WSDL 定义语言，.wsdl的文件类型、一个webservice对应唯一一个wsdl文档、调用关系链
-<br>3.SOAP 简单对象访问协议，http+xml 
-<br>4.SEI webservice 的终端接口，发布出去的接口
-<br>5.复杂类型会丢失、大量数据效率低
-<br>6.Axis、Axis2
-<br>CXF Celtic+Xfire ，spring整合
-<br>Xfire 高性能
-<br>SpringMVC新的webservice
+### 4、WebService 复杂类型丢失
+<br>RPC 包含的要素
+<br>webservice
+<br>协议层：tcp/ip
+<br>应用层： http协议
+<br>SOAP： http+xml 
+<br><br>分布式通信框架-webservice分析
+<br><br>什么是webservice
+<br>webservice也可以叫xml web service webservice, 轻量级的独立的通讯技术
+<br>1.	基于web的服务：服务端提供的服务接口让客户端访问
+<br>2.	跨平台、跨语言的整合方案
+<br><br>为什么要使用webservice
+<br>跨语言调用的解决方案
+<br><br>什么时候要去使用webservice
+<br>电商平台，订单的物流状态。 
+<br> .net实现的webservice服务接口
+<br><br>webservice中的一些概念
+<br><br>WSDL(web service definition language  webservice 定义语言)
+<br><br>webservice服务需要通过wsdl文件来说明自己有什么服务可以对外调用。并且有哪些方法、方法里面有哪些参数
+<br>wsdl基于XML（可扩展标记语言）去定义的
+<br>1.	 对应一个.wsdl的文件类型
+<br>2.	 定义了webservice的服务器端和客户端应用进行交互的传递数据和响应数据格式和方式
+<br>3.	 一个webservice对应唯一一个wsdl文档
+<br><br>SOAP（simple object access protocal简单对象访问协议）
+<br><br>http+xml
+<br>webservice通过http协议发送和接收请求时， 发送的内容（请求报文）和接收的内容（响应报文）都是采用xml格式进行封装
+<br>这些特定的HTTP消息头和XML内容格式就是SOAP协议
+<br>1.	一种简单、基于HTTP和XML的协议
+<br>2.	soap消息：请求和响应消息
+<br>3.	http+xml报文
+<br><br>SEI（webservice endpoint interface webservice的终端接口）
+<br>webservice服务端用来处理请求的接口，也就是发布出去的接口。
+<br><br>Axis/Axis2
+<br>apache开源的webservice工具
+<br>CXF
+<br>Celtix+Xfire 。 用的很广泛，因为集成到了spring
+<br>Xfire
+<br>高性能的Webservice
+<br>HTTP+JSON (新的webservice)
+<br>HTTP+XML
+![](img/58.png) 
+![](img/59.png) 
+<br><br>RMI、 http协议/https、webservice、 TCP协议、UDP协议、 
+socket编程、bio /nio模型、分布式架构、集群、架构演进过程
 ## 六、会话层-DID原则
 <br>Design:按照10倍体量设计
 <br><br>Implement:按照3倍体量实现
