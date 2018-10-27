@@ -14,14 +14,14 @@
 <br>去热点：数据存储要均衡。分块：类似redis hash槽
 # MongoDB的数据结构与关系型数据库数据结构对比
 |关系型数据库术语/概念|MongoDB术语/概念|  解释/说明|
-|:--:|:--:|:--:|
+|:------------:|:--:|:--:|
 |Database|  Database | 数据库|
 |Table | Collection  |数据库表/集合|
 |  row| Document | 数据记录行/文档|
 |Column | Field  |数据列/数据字段|
 |Index  |Index  |素引|
-|Table joins | |表关联/MongoDB不支持|
-|Primary Key  |Object ID  |主键MongoDB自动将，_id设置为主键|
+|Table joins| |表关联/MongoDB不支持|
+|Primary Key|Object ID  |主键MongoDB自动将，_id设置为主键|
 
 |类型 | 典型代表|  特点|
 |:--:|:--:|:--:|
