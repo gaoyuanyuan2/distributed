@@ -1,4 +1,4 @@
-## 一、分布式架构概述
+##  分布式架构概述
 ![](/img/25.jpg) 
 ### 大数据：数据分析 用户行为 兴趣爱好 活动运营用户画像
 ### 1、分布式 （任务分解、节点通信）
@@ -24,7 +24,7 @@
 <br> cookie （主流）保存在客户端  access token（userid/token/timestamp）加密，拦截器解析token， 判断有效期，用户是否存在
 <br>好处：无状态，无需存储在服务端。
 <br> soa 架构和微服务架构
-## 二、分布式通信协议
+##  分布式通信协议
 ### 1、网络协议：TCP/IP 和UDP/IP
  TCP五层:物理层（物理介质）、数据链路层（硬件接口）、网络层（IP ICMP/IGMP）、传输层（TCP/UDP）、应用层（应用程序）
 <br>OSI模型七层 5 + 表达层 应用层
@@ -53,7 +53,7 @@ BIO 大于发送缓冲区就会阻塞
 <br>组播
 <br><br>基于TCP  
 <br>叫一群“美女”，会有一组女生回头。
-## 三、分布式通信-序列化
+##  分布式通信-序列化
 ### 1、简介
 java序列化：数据大，效率低，不能跨语言。
 <br><br>通用性、安全性、优化性能。
@@ -100,7 +100,7 @@ java序列化：数据大，效率低，不能跨语言。
 <br>JSON/Hessian(2) /xml/protobuf/kryo/MsgPack/FST/thrift/protostuff/Avro
 ### 2、主流
 JSON/Hessian(2)/xml/protobuf/kryo/MsgPack/FST/thrift/protostuff/Avro
-## 四、HTTP
+##  HTTP
 ### 1、基于TCP的可靠协议
 无状态（cookie+session 保持状态）、多次请求
 ### 2、服务端和客户端、资源、媒体类型、URI（资源名）和URL。
@@ -227,7 +227,7 @@ path:资源访问路径、query-string：查询次数
 <br>3.get方式提交表单会在http数据包中的第一行出现,而post在空一行的 body中出现。
 ### 8.http请求流程
 <br>点击网址后，应用层的DNS协议会将网址解析为IP地址；在应用层，浏览器会给web服务器发送一个HTTP请求；在传输层，（上层的传输数据流分段）HTTP数据包会嵌入在TCP报文段中；在网络层中，TCP报文段再嵌入IP数据包中；在网络接口层，IP数据包嵌入到数据帧（以太网数据包）中在网络上传送；数据包经过多个网关的转发到达百度服务器，请求对应端口的服务；请求处理完成之后，服务器发回一个HTTP响应；浏览器以同样的过程读取到HTTP响应的内容（HTTP响应数据包），然后浏览器对接收到的HTML页面进行解析，把网页显示出来呈现给用户。
-## 五、RMI
+##  RMI
 ### 1、RPC :远程方法调用（规范）基于socket。（rmi、webservice、http）
 1.Dubbo、Thrif、RMI、WebService、Hessain
 ### 2、RPC包含的要素
@@ -283,11 +283,31 @@ path:资源访问路径、query-string：查询次数
 ![](img/59.png) 
 <br><br>RMI、 http协议/https、webservice、 TCP协议、UDP协议、 
 socket编程、bio /nio模型、分布式架构、集群、架构演进过程
-## 六、会话层-DID原则
+## 常见架构
+<br>1 MVC
+<br><br>2  RPC架构
+<br>RPC(Remote Procedure Call):远程过程调用。他一种通过网络从远程计算机程序上请求服务，而不需要了解底层网络技术的协议。
+<br>代表技术: Thrift、 Hessian 等等
+<br><br>3  SOA架构
+<br>SOA(Service oriented Architecture):面向服务架构
+<br>ESB(Enterparise Servce Bus):企业服务总线，服务中介。主要是提供了一个服务于服务之间的交互。
+<br>ESB包含的功能如:负载均衡，流量控制，加密处理，服务的监控，异常处理，监控告急等等。
+<br>代表技术: Mule、 WSO2
+<br><br>4  微服务架构
+<br>微服务就是-一个轻量级的服务治理方案。代表技术: SpringCloud、 dubbo 等等
+##  微服务设计原则
+<br>1. AKF拆分原则
+<br>Y轴(功能)一 关注应用中功能划分，基于不同的业务拆分区 
+<br>X轴(水平扩展)一关注水平扩展，也就是”加机器解决问题”
+<br>Z轴(数据分区) 一关注服务和数据的优先级划分，如按地域划分
+<br><br>2. 前后端分离原则
+<br><br>3. 无状态服务
+<br><br>4.  RestFul的通信风格
+##  会话层-DID原则
 <br>Design:按照10倍体量设计
 <br><br>Implement:按照3倍体量实现
 <br><br>Deploy:按照1.5倍部署
-## 七、架构师
+##  架构师
 <br>架构能力规范、预见性、执行力、技术选型，引领团队的发展具备一定的运维能力(服务上的基本的部署工作可以独立完成)知己知彼、百战不殆。
 
 
