@@ -2,8 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1a69c435-9430-420c-b841-ddb13cb8216f" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/img/62.png" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/img/63.png" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change beforePath="$PROJECT_DIR$/mongodb.md" afterPath="$PROJECT_DIR$/mongodb.md" />
     </list>
@@ -141,7 +139,7 @@
           <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
             <state split_layout="FIRST">
               <first_editor relative-caret-position="692">
-                <caret line="77" column="76" lean-forward="false" selection-start-line="77" selection-start-column="76" selection-end-line="77" selection-end-column="76" />
+                <caret line="77" column="11" lean-forward="false" selection-start-line="77" selection-start-column="11" selection-end-line="77" selection-end-column="11" />
                 <folding />
               </first_editor>
               <second_editor />
@@ -462,13 +460,6 @@
       <workItem from="1539761817832" duration="4992000" />
       <workItem from="1540093339854" duration="19157000" />
       <workItem from="1540224058275" duration="1166000" />
-    </task>
-    <task id="LOCAL-00079" summary="springboot">
-      <created>1538047628974</created>
-      <option name="number" value="00079" />
-      <option name="presentableId" value="LOCAL-00079" />
-      <option name="project" value="LOCAL" />
-      <updated>1538047628974</updated>
     </task>
     <task id="LOCAL-00080" summary="springboot">
       <created>1538048042872</created>
@@ -806,11 +797,18 @@
       <option name="project" value="LOCAL" />
       <updated>1540224803705</updated>
     </task>
-    <option name="localTasksCounter" value="128" />
+    <task id="LOCAL-00128" summary="mongo">
+      <created>1540784441800</created>
+      <option name="number" value="00128" />
+      <option name="presentableId" value="LOCAL-00128" />
+      <option name="project" value="LOCAL" />
+      <updated>1540784441800</updated>
+    </task>
+    <option name="localTasksCounter" value="129" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="231287000" />
+    <option name="totallyTimeSpent" value="231374000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="2576" height="1416" extended-state="6" />
@@ -870,7 +868,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="MongoDB" />
     <MESSAGE value="性能优化" />
     <MESSAGE value="docker" />
     <MESSAGE value="netty" />
@@ -895,7 +892,8 @@
     <MESSAGE value="https" />
     <MESSAGE value="webservice" />
     <MESSAGE value="zk" />
-    <option name="LAST_COMMIT_MESSAGE" value="zk" />
+    <MESSAGE value="mongo" />
+    <option name="LAST_COMMIT_MESSAGE" value="mongo" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -1388,7 +1386,7 @@
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="FIRST">
           <first_editor relative-caret-position="692">
-            <caret line="77" column="76" lean-forward="false" selection-start-line="77" selection-start-column="76" selection-end-line="77" selection-end-column="76" />
+            <caret line="77" column="11" lean-forward="false" selection-start-line="77" selection-start-column="11" selection-end-line="77" selection-end-column="11" />
             <folding />
           </first_editor>
           <second_editor />
