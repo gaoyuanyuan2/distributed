@@ -284,16 +284,16 @@ path:资源访问路径、query-string：查询次数
 <br><br>RMI、 http协议/https、webservice、 TCP协议、UDP协议、 
 socket编程、bio /nio模型、分布式架构、集群、架构演进过程
 ## 常见架构
-<br>1 MVC
-<br><br>2  RPC架构
+<br>1.  MVC
+<br><br>2.  RPC架构
 <br>RPC(Remote Procedure Call):远程过程调用。他一种通过网络从远程计算机程序上请求服务，而不需要了解底层网络技术的协议。
 <br>代表技术: Thrift、 Hessian 等等
-<br><br>3  SOA架构
+<br><br>3.  SOA架构
 <br>SOA(Service oriented Architecture):面向服务架构
 <br>ESB(Enterparise Servce Bus):企业服务总线，服务中介。主要是提供了一个服务于服务之间的交互。
 <br>ESB包含的功能如:负载均衡，流量控制，加密处理，服务的监控，异常处理，监控告急等等。
 <br>代表技术: Mule、 WSO2
-<br><br>4  微服务架构
+<br><br>4.  微服务架构
 <br>微服务就是-一个轻量级的服务治理方案。代表技术: SpringCloud、 dubbo 等等
 ##  微服务设计原则
 <br>1. AKF拆分原则
