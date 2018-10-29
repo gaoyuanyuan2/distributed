@@ -43,7 +43,7 @@ JMSProvider会缓存每个生产者当前生产的所有消息，直到commit或
 <br>client端和broker端的通讯协议
 <br>TCP、UDP 、NIO、SSL、Http（s）、vm
 #### 5. ActiveMQ持久化存储
- <br><br>![持久化存储](https://github.com/gaoyuanyuan2/distributed/blob/master/img/6.png) 
+ <br><br>![持久化存储](img/6.png) 
 #### 6. 丢失的消息
 <br>一些consumer连接到broker1、消费broker2上的消息。消息先被broker1从broker2消费掉，然后转发给这些consumers。假设，
 转发消息的时候broker1重启了，这些consumers发现brokers1连接失败，通过failover连接到broker2.
@@ -60,7 +60,7 @@ JMSProvider会缓存每个生产者当前生产的所有消息，直到commit或
 <br>1) 责任链模式
 ### 2、RabbitMQ
 <br><br>
-![](https://github.com/gaoyuanyuan2/distributed/blob/master/img/14.png)
+![](img/14.png)
 <br><br>1. 概念
 <br><br>1) Message 是不具名的，它由消息头和消息体组成。消息体是不透明的，页消息头则由一系列的可选属性组
 包括routing-key。(路由键、priority (相对于其他消息的优先权)、delivery-mode (指出该消意可能需要持久性存储)等。
@@ -108,7 +108,7 @@ durable 持久化
 <br>4)  消息的ACK确认机制默认是打开的。
 <br><br>3. ACK机制的开发注意事项
 <br>如果忘记了ACK,那么后果很严重。当Consumer退出时，Message会一直重新分发。然后Rabbi tMQ会占用越来越多的内存，由于RabbitMQ会长时间运行，因此这个“内存泄漏”是致命的。
-![](https://github.com/gaoyuanyuan2/distributed/blob/master/img/15.png)
+![](img/15.png)
 ### 3、Kafka
 #### 1. zookeeper上注册的节点信息
 <br>cluster, controller, controller_epoch, brokers, zookeeper, admin, isr_change_notification, consumers, latest_producer_id_block, config
@@ -118,7 +118,7 @@ durable 持久化
 <br>Topic是用于存储消息的逻辑概念，可以看作一个消息集合。每个topic可以有多个生产者向其推送消息，也可以有任意多个消费者消费其中的消息
 <br>每个topic可以划分多个分区（每个Topic至少有一个分区），同一topic下的不同分区包含的消息是不同的。每个消息在被添加到分区时，都会被分配一个offset（称之为偏移量），它是消息在此分区中的唯一编号，kafka通过offset保证消息在分区内的顺序，offset的顺序不跨分区，即kafka只保证在同一个分区内的消息是有序的；
 <br><br>
-![](https://github.com/gaoyuanyuan2/distributed/blob/master/img/10.png) 
+![](img/10.png) 
 <br><br>Partition是以文件的形式存储在文件系统中，存储在kafka-log目录下，命名规则是：<topic_name>-<partition_id>
 #### 4. kafka的高吞吐量的因素
 <br>1)	顺序写的方式存储数据 ；
@@ -133,9 +133,9 @@ batch.size每批次发送的数据大小
 <br><br> d. 操作系统将数据从socket缓冲区复制到网卡缓冲区，以便将数据经网络发出
 <br><br>通过“零拷贝”技术可以去掉这些没必要的数据复制操作，同时也会减少上下文切换次数
 <br><br>
-![](https://github.com/gaoyuanyuan2/distributed/blob/master/img/11.png)
+![](img/11.png)
 <br><br>
-![](https://github.com/gaoyuanyuan2/distributed/blob/master/img/9.png)
+![](img/9.png)
 #### 5. 日志保留策略
 <br>无论消费者是否已经消费了消息，kafka都会一直保存这些消息，但并不会像数据库那样长期保存。为了避免磁盘被占满，kafka会配置响应的保留策略（retentionpolicy），以实现周期性地删除陈旧的消息
 <br><br>1) kafka有两种“保留策略”：
@@ -144,7 +144,7 @@ batch.size每批次发送的数据大小
 <br><br>2) 日志压缩策略
 <br><br>在很多场景中，消息的key与value的值之间的对应关系是不断变化的，就像数据库中的数据会不断被修改一样，消费者只关心key对应的最新的value。我们可以开启日志压缩功能，kafka定期将相同key的消息进行合并，只保留最新的value值
 <br><br>
-![](https://github.com/gaoyuanyuan2/distributed/blob/master/img/12.png)
+![](img/12.png)
 #### 6. 消息可靠性机制
 <br>1). 消息发送可靠性
 <br><br>生产者发送消息到broker，有三种确认方式（request.required.acks）
@@ -193,7 +193,7 @@ batch.size每批次发送的数据大小
 <br>segment file组成：由2大部分组成，分别为index file和data file，此2个文件一一对应，成对出现，后缀".index"和“.log”分别表示为segment索引文件、数据文件.
 <br>segment文件命名规则：partion全局的第一个segment从0开始，后续每个segment文件名为上一个segment文件最后一条消息的offset值。数值最大为64位long大小，19位数字字符长度，没有数字用0填充
 <br><br>
-![](https://github.com/gaoyuanyuan2/distributed/blob/master/img/13.png)
+![](img/13.png)
 <br><br>
 2) 查找方式
 <br>以上图为例，读取offset=170418的消息，首先查找segment文件，其中00000000000000000000.index为最开始的文件，第二个文件为00000000000000170410.index（起始偏移为170410+1=170411），而第三个文件为00000000000000239430.index（起始偏移为239430+1=239431），所以这个offset=170418就落到了第二个文件之中。其他后续文件可以依次类推，以其实偏移量命名并排列这些文件，然后根据二分查找法就可以快速定位到具体文件位置。其次根据00000000000000170410.index文件中的[8,1325]定位到00000000000000170410.log文件中的1325的位置进行读取。
@@ -245,7 +245,7 @@ batch.size每批次发送的数据大小
 <br>c1 [1,4,7]
 <br>c2 [2,5,8]
 ### 4、对比
-![对比](https://github.com/gaoyuanyuan2/notes/blob/master/img/3.png) 
+![对比](img/3.png) 
 <br><br>Netty：实时性好，互联（会话）。
 <br>Mq：复杂服务总线。
 <br>RabbitMQ：底层通信是netty
