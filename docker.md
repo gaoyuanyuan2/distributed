@@ -1,5 +1,5 @@
-## Docker
-### 1、Docker 是什么
+# Docker
+## Docker 是什么
 <br>1. Docker是一个开源的应用容器引擎,基于Go语言并遵从Apache2.0协议开源。Docker可以让开发者打包他们的应用以及依赖包到一个轻量级、可移植的容器中,然后发布到任何流行的Linux机器上,也可以实现虚拟化。
 <br>容器是完全使用沙箱机制,相互之间不会有任何接口，更重要的是容器性能开销极低。
  <br>Docker支持将软件编译成一个镜像 ;然后在镜像中各种软件做好配置,将镜像发布出去,其他使用者可以直接使用这个镜像。运行中的这个镜像称为容器，容器启动是
@@ -11,7 +11,15 @@
 <br><br>4) docker主机(Host) :一个物理或者虚拟的机器用于执行Docker守护进程和容器。
 <br><br>5) docker仓库(Registry) : Docker仓库用来保存镜像,可以理解为代码控制中的代码仓库。
 <br><br>6) DockerHub(tts://hub.docker.com)提供了庞大的镜像集合供使用。
-### 2、常用命令
+## 优点:
+<br>资源利用率高
+<br>高效性
+<br>易于扩展、伸缩
+<br> Go to Product快速
+<br>一致性
+<br>可封装性
+<br>隔离性
+## 常用命令
 <br>1. 安装docker
 <br>yum install docker 
 <br><br>2. 开启启动
@@ -32,7 +40,7 @@
 <br><br>7) 端口映射  -p 6379:6379  -p:主机端口(映射到)容器内部的端口
 <br>eg:docker run -d -p 6379:6379 -name myredis docker.io/redis
 <br><br>8)  容器日志docker logs container name/container id
-### 3、常见软件安装
+## 常见软件安装
 <br>1. elasticsearch
 <br>docker pull registry.docker-cn.com/library/elasticsearch
 <br>运行，默认加载2G内存，所以要设置内存大小9200 端口 9300分布式端口
