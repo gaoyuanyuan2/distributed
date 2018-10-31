@@ -558,6 +558,16 @@ public class PropertiesPersonHttpMessageConverter extends AbstractHttpMessageCon
 <br>一ApplicationStartingEvent
 <br>一ApplicationReadyEvent
 <br>一ApplicationFailedEvent
+<br><br>可以通过`SpringApplication.addListeners(…​)`或`SpringApplicationBuilder.listeners(…​)` 方法注册它们 。
+如果希望自动注册这些侦听器而不管应用程序的创建方式如何，可以将`META-INF/spring.factories`
+文件添加到项目中并使用`org.springframework.context.ApplicationListener` 键引用侦听器。
+`org.springframework.context.ApplicationListener = com.example.project.MyListener`
+<br><br>应用程序运行时，应按以下顺序发送应用程序事件：
+`ApplicationStartingEvent`在运行开始时发送，但在除了监听器和初始化程序的注册之外的任何处理之前发送。
+`ApplicationEnvironmentPreparedEvent`当被发送`Environment`到在上下文已知被使用，但是在创建上下文之前。
+`ApplicationPreparedEvent`被发送刷新开始之前，但经过bean定义已经被加载。
+`ApplicationReadyEvent`在刷新之后发送一个并且已经处理了任何相关的回调以指示应用程序已准备好服务请求。
+`ApplicationFailedEvent`如果在启动时异常发送
 <br><br>Spring事件/监听
 <br>ApplicationEvent :应用事件
 <br>ApplicationListener:应用监听器
