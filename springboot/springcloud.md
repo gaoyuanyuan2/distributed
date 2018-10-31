@@ -568,9 +568,13 @@ RestTemplate restTemplate = new RestTemplate(new HttpComponentsClientHttpRequest
 <br><br>7. 服务降级: 客户端
 <br>服务降级处理是在客户端实现完成的，与服务端没有关系。整体资源快不够了，忍痛将某些服务先关掉，待渡过难关，再开启回来。
 <br>所谓降级，一般是从整体负荷考虑。就是当某个服务熔断之后，服务器将不再被调用，
-此时客户端可以自己准备-一个本地的fallback回调，返回-一个缺省值。
+此时客户端可以自己准备-一个本地的fallback回调，返回一个缺省值。
 这样做，虽然服务水平下降，但好歹可用，比直接挂掉要强。
 ## Spring Cloud Feign
+## 官方解释
+Feign是一个声明性的Web服务客户端。它使编写Web服务客户端变得更容易。要使用Feign，请创建一个界面并对其进行注释。它具有可插入的注释支持
+，包括Feign注释和JAX-RS注释。Feign还支持可插拔编码器和解码器。Spring Cloud增加了对Spring MVC注释的支持，并使用了HttpMessageConverters Spring Web中默认使用的注释。
+Spring Cloud集成了Ribbon和Eureka，可在使用Feign时提供负载均衡的http客户端。
 ### Feign能干什么
 <br>1.Feign旨在使编写Java Http客户端变得更容易。
 <br>前面在使用Ribbon+ RestTemplate时，利用RestTemplate对http请求的封装处理，形成了一套模版化的调用方法。但是在实际开发中，由于对服务依赖的调用可能不止一处，往往一个接口会被多处调用， 所以通常都会针对每个微服务自行封装一些客户端类来包装这些依赖服务的调用。所以，Feign在此基础上做了进一步封装， 由他来帮助我们定义和实现依赖服务接口的定义。在Feign的实现下，我们只需创建一个接口并使用注解的方式来配置它(以前是Dao接口. 上面标注Mapper注解，现在是一个微服务接口上面标注一 个Feign注解即可)， 即可完成对服务提供方的接口绑定，简化了使用Spring cloud Ribbon时， 自动封装服务调用客户端的开发量。
