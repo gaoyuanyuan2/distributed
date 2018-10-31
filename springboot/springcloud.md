@@ -324,8 +324,13 @@ spring.cloud.config.label
 <br>1. 因为同时保留”好数据"与"坏数据"总比丢掉任何数据要更好，当网络故障恢复后，这个Eureka节点会退出”自我保护模式"。
 <br>2. Eureka还有客户端缓存功能(也就是微服务的缓存功能)。即便Eureka集群中所有节点都宕机失效，微服务的Provider和Consumer都能正常通信。
 <br>3. 微服务的负载均衡策略会自动剔除死亡的微服务节点。
+<br><br>11. 为什么注册服务这么慢？
+<br>作为实例还涉及到注册表（通过客户端serviceUrl）的定期心跳，默认持续时间为30秒。在实例，服务器和客户端在其本地缓存中都具有相同的元数据之前，
+客户端无法发现服务（因此可能需要3次心跳）。您可以通过设置更改期间`eureka.instance.leaseRenewalIntervalInSeconds` 。
+将其设置为小于30的值可加快使客户端连接到其他服务的过程。在生产中，最好坚持使用默认值，因为服务器中的内部计算会对租赁续订期做出假设。
 ## Spring Cloud Netfix Ribbon
-<br>简介负载均衡客户端和服务端的相关理论,包括调度算法:如先来先服务、轮训、多级队列等。基本特性:非对称负载、健康检查、优先级队列等
+<br>Ribbon是一个客户端负载均衡器，可以让您对HTTP和TCP客户端的行为进行大量控制。Feign已经使用了Ribbon。如果您不想使用Eureka，Ribbon和Feign也可以使用。
+<br><br>简介负载均衡客户端和服务端的相关理论,包括调度算法:如先来先服务、轮训、多级队列等。基本特性:非对称负载、健康检查、优先级队列等
 <br><br>技术回顾:回顾Spring Framework HTTP组件RestTemplate的使用方法,结台ClientHttpRequestInterceptor实现简单负载均衡客户端
 <br><br>整合Netlix Ribbon :作为Spring Cloud客户端负载均衡实现, Netflix Ribbon提供了丰富的组件,包括负载均衡器、负载均衡规则、PING 策略等,根据前章所积累的经验,实现客户端负载均衡
 <br><br> Ribbon 提供云端负载均衡，有多种负载均衡策略可供选择，可配合服务发现和断路器使用。
