@@ -562,7 +562,7 @@ public class PropertiesPersonHttpMessageConverter extends AbstractHttpMessageCon
 如果希望自动注册这些侦听器而不管应用程序的创建方式如何，可以将`META-INF/spring.factories`
 文件添加到项目中并使用`org.springframework.context.ApplicationListener` 键引用侦听器。
 `org.springframework.context.ApplicationListener = com.example.project.MyListener`
-<br><br>应用程序运行时，应按以下顺序发送应用程序事件：
+<br><br>应用程序运行时，应按以下顺序发送应用程序事件：（Spring Boot使用事件来处理各种任务）
 `ApplicationStartingEvent`在运行开始时发送，但在除了监听器和初始化程序的注册之外的任何处理之前发送。
 `ApplicationEnvironmentPreparedEvent`当被发送`Environment`到在上下文已知被使用，但是在创建上下文之前。
 `ApplicationPreparedEvent`被发送刷新开始之前，但经过bean定义已经被加载。
