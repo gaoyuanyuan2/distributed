@@ -6,6 +6,8 @@
 <br>Spring Boot运行方式:分别介绍IDEA启动、命令行启动以Maven插件启动方式
 <br>Spring Boot简单应用:使用Spring Web MVC以及Spring Web Flux技术,编程简单应用。理解Spring Boot三大特性:自动装配、嵌入式容器、为生产准备的特性
 <br><br>三种嵌入式容器 实现通用接口 不同环境通过不同classpath读取不同的类 spring自动装配 的条件装配 如果有就加载 一直查找
+## 更多SpringBoot整合示例
+https://github.com/spring-projects/spring-boot/tree/master/spring-boot-samples
 ## Spring Boot实际使用场景
 <br>在Spring Boot 2.0.0，如果应用采用Spring Web MVC作为Web服务，默认情况下， 使用嵌入式Tomcat。
 <br>如果采用Spring Web Flux，默认情况下，使用Netty WebServer (嵌入式)
@@ -994,7 +996,10 @@ public class HelloServiceAutoConfiguration {
 }
 
 ```
+## Spring Boot Admin
+[官方文档](http://codecentric.github.io/spring-boot-admin/current/#set-up-admin-server)
+<br><br>应用程序向我们的Spring Boot Admin Client注册（通过HTTP）或使用SpringCloud（例如Eureka，Consul）发现。UI只是Spring Boot 
+Actuator端点上的AngularJs应用程序
+<br><br>Spring Boot管理服务器可以使用Spring Clouds DiscoveryClient来发现应用程序。优点是客户不必包括spring-boot-admin-starter-client。
+您只需要向DiscoveryClient管理服务器添加一个实现 其他一切都由AutoConfiguration完成
 
-# 更多SpringBoot整合示例
-
-https://github.com/spring-projects/spring-boot/tree/master/spring-boot-samples
