@@ -143,12 +143,12 @@ path:资源访问路径、query-string：查询次数
 <br>body
 <br><br>状态码
 <br>200 OK 客戸端靖求成功
-<br>400 Bad Request 客戸端靖求有語法錯謨,不能岐服各器所理解
+<br>400 Bad Request 客戸端请求错误
 <br>401 Unauthorized 请求未经授权,和www-Authenticate一起使用
-<br>403 Forbidden 服多器收到請求,但是拒绝提供服务
+<br>403 Forbidden 服多器收到请求,但是拒绝提供服务
 <br>404 Not Found 请求资源不存在 eg url错误
 <br>500 Internal Server Error服各器发生不可预期的错误
-<br>503 Server Unavailable 服各器当前不能处理客戸端的靖求,一段吋同后可能恢夏正常
+<br>503 Server Unavailable 服各器当前不能处理客戸端的请求,一段吋同后可能恢复正常
 <br><br>缓存：静态资源 是否缓存、缓存时间等
 <br>ETag：  客户端请求一个页面（A）。 服务器返回页面A，并在给A加上一个ETag。 
 客户端展现该页面，并将页面连同ETag一起缓存。 客户再次请求页面A，并将上次请求时服务器返回的ETag一起传递给服务器。 服务器检查该ETag，并判断出该页面自上次客户端请求之后还未被修改，
