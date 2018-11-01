@@ -332,7 +332,7 @@ spring.cloud.config.label
 <br>Ribbon是一个客户端负载均衡器，可以让您对HTTP和TCP客户端的行为进行大量控制。Feign已经使用了Ribbon。如果您不想使用Eureka，Ribbon和Feign也可以使用。
 <br><br>简介负载均衡客户端和服务端的相关理论,包括调度算法:如先来先服务、轮训、多级队列等。基本特性:非对称负载、健康检查、优先级队列等
 <br><br>技术回顾:回顾Spring Framework HTTP组件RestTemplate的使用方法,结台ClientHttpRequestInterceptor实现简单负载均衡客户端
-<br><br>整合Netlix Ribbon :作为Spring Cloud客户端负载均衡实现, Netflix Ribbon提供了丰富的组件,包括负载均衡器、负载均衡规则、PING 策略等,根据前章所积累的经验,实现客户端负载均衡
+<br><br>整合Netfix Ribbon :作为Spring Cloud客户端负载均衡实现, Netflix Ribbon提供了丰富的组件,包括负载均衡器、负载均衡规则、PING 策略等,根据前章所积累的经验,实现客户端负载均衡
 <br><br> Ribbon 提供云端负载均衡，有多种负载均衡策略可供选择，可配合服务发现和断路器使用。
 ![](https://github.com/gaoyuanyuan2/distributed/blob/master/img/24.png) 
 <br><br>Ribbon在工作时分成两步
