@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="1a69c435-9430-420c-b841-ddb13cb8216f" name="Default" comment="Eureka">
+    <list default="true" id="1a69c435-9430-420c-b841-ddb13cb8216f" name="Default" comment="redis">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change beforePath="$PROJECT_DIR$/redis.md" afterPath="$PROJECT_DIR$/redis.md" />
     </list>
@@ -157,7 +157,7 @@
         <entry file="file://$PROJECT_DIR$/README.md">
           <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
             <state split_layout="SPLIT">
-              <first_editor relative-caret-position="1060">
+              <first_editor relative-caret-position="3565">
                 <caret line="155" column="17" lean-forward="false" selection-start-line="155" selection-start-column="17" selection-end-line="155" selection-end-column="17" />
                 <folding />
               </first_editor>
@@ -170,10 +170,11 @@
         <entry file="file://$PROJECT_DIR$/redis.md">
           <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
             <state split_layout="FIRST">
-              <first_editor relative-caret-position="646">
-                <caret line="409" column="0" lean-forward="true" selection-start-line="409" selection-start-column="0" selection-end-line="409" selection-end-column="0" />
+              <first_editor relative-caret-position="18">
+                <caret line="799" column="12" lean-forward="false" selection-start-line="799" selection-start-column="12" selection-end-line="799" selection-end-column="12" />
                 <folding>
-                  <marker date="1541151835982" expanded="true" signature="7863:7899" ph="delete from lock... " />
+                  <marker date="1541419169804" expanded="true" signature="7994:8028" ph="delete from lock... " />
+                  <marker date="1541419169804" expanded="true" signature="7994:8030" ph="delete from lock... " />
                 </folding>
               </first_editor>
               <second_editor />
@@ -198,10 +199,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>临时节点</find>
-      <find>序列化</find>
-      <find>努</find>
-      <find>凋用</find>
       <find>統</find>
       <find>対</find>
       <find>資源</find>
@@ -224,6 +221,14 @@
       <find>ApplicationEnvironmentPreparedEvent</find>
       <find>2p</find>
       <find>阶段</find>
+      <find>策略</find>
+      <find>-段</find>
+      <find>-个</find>
+      <find>-一</find>
+      <find>-次</find>
+      <find>载人</find>
+      <find>读人</find>
+      <find>写人</find>
     </findStrings>
     <replaceStrings>
       <replace>务</replace>
@@ -234,6 +239,9 @@
       <replace>这</replace>
       <replace>导致</replace>
       <replace />
+      <replace>载入</replace>
+      <replace>读入</replace>
+      <replace>写入</replace>
     </replaceStrings>
   </component>
   <component name="Git.Settings">
@@ -302,7 +310,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scratches" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -319,9 +327,9 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
-      <pane id="AndroidView" />
+      <pane id="Scratches" />
       <pane id="PackagesPane" />
+      <pane id="AndroidView" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -490,140 +498,8 @@
       <workItem from="1540950399051" duration="5870000" />
       <workItem from="1541035324395" duration="2641000" />
       <workItem from="1541054774038" duration="8984000" />
-      <workItem from="1541139198610" duration="5051000" />
-    </task>
-    <task id="LOCAL-00105" summary="spring boot">
-      <created>1539764107662</created>
-      <option name="number" value="00105" />
-      <option name="presentableId" value="LOCAL-00105" />
-      <option name="project" value="LOCAL" />
-      <updated>1539764107662</updated>
-    </task>
-    <task id="LOCAL-00106" summary="spring boot">
-      <created>1539764195837</created>
-      <option name="number" value="00106" />
-      <option name="presentableId" value="LOCAL-00106" />
-      <option name="project" value="LOCAL" />
-      <updated>1539764195837</updated>
-    </task>
-    <task id="LOCAL-00107" summary="spring boot">
-      <created>1539764824674</created>
-      <option name="number" value="00107" />
-      <option name="presentableId" value="LOCAL-00107" />
-      <option name="project" value="LOCAL" />
-      <updated>1539764824674</updated>
-    </task>
-    <task id="LOCAL-00108" summary="spring boot">
-      <created>1539764870935</created>
-      <option name="number" value="00108" />
-      <option name="presentableId" value="LOCAL-00108" />
-      <option name="project" value="LOCAL" />
-      <updated>1539764870935</updated>
-    </task>
-    <task id="LOCAL-00109" summary="spring boot">
-      <created>1539766414323</created>
-      <option name="number" value="00109" />
-      <option name="presentableId" value="LOCAL-00109" />
-      <option name="project" value="LOCAL" />
-      <updated>1539766414323</updated>
-    </task>
-    <task id="LOCAL-00110" summary="TCP">
-      <created>1540107671678</created>
-      <option name="number" value="00110" />
-      <option name="presentableId" value="LOCAL-00110" />
-      <option name="project" value="LOCAL" />
-      <updated>1540107671679</updated>
-    </task>
-    <task id="LOCAL-00111" summary="TCP">
-      <created>1540107768823</created>
-      <option name="number" value="00111" />
-      <option name="presentableId" value="LOCAL-00111" />
-      <option name="project" value="LOCAL" />
-      <updated>1540107768824</updated>
-    </task>
-    <task id="LOCAL-00112" summary="TCP">
-      <created>1540107995585</created>
-      <option name="number" value="00112" />
-      <option name="presentableId" value="LOCAL-00112" />
-      <option name="project" value="LOCAL" />
-      <updated>1540107995585</updated>
-    </task>
-    <task id="LOCAL-00113" summary="TCP">
-      <created>1540108078447</created>
-      <option name="number" value="00113" />
-      <option name="presentableId" value="LOCAL-00113" />
-      <option name="project" value="LOCAL" />
-      <updated>1540108078447</updated>
-    </task>
-    <task id="LOCAL-00114" summary="TCP">
-      <created>1540108158680</created>
-      <option name="number" value="00114" />
-      <option name="presentableId" value="LOCAL-00114" />
-      <option name="project" value="LOCAL" />
-      <updated>1540108158680</updated>
-    </task>
-    <task id="LOCAL-00115" summary="TCP">
-      <created>1540108247392</created>
-      <option name="number" value="00115" />
-      <option name="presentableId" value="LOCAL-00115" />
-      <option name="project" value="LOCAL" />
-      <updated>1540108247392</updated>
-    </task>
-    <task id="LOCAL-00116" summary="TCP">
-      <created>1540111660382</created>
-      <option name="number" value="00116" />
-      <option name="presentableId" value="LOCAL-00116" />
-      <option name="project" value="LOCAL" />
-      <updated>1540111660382</updated>
-    </task>
-    <task id="LOCAL-00117" summary="dubbo">
-      <created>1540113295889</created>
-      <option name="number" value="00117" />
-      <option name="presentableId" value="LOCAL-00117" />
-      <option name="project" value="LOCAL" />
-      <updated>1540113295889</updated>
-    </task>
-    <task id="LOCAL-00118" summary="序列化">
-      <created>1540118568516</created>
-      <option name="number" value="00118" />
-      <option name="presentableId" value="LOCAL-00118" />
-      <option name="project" value="LOCAL" />
-      <updated>1540118568516</updated>
-    </task>
-    <task id="LOCAL-00119" summary="序列化">
-      <created>1540118650080</created>
-      <option name="number" value="00119" />
-      <option name="presentableId" value="LOCAL-00119" />
-      <option name="project" value="LOCAL" />
-      <updated>1540118650080</updated>
-    </task>
-    <task id="LOCAL-00120" summary="序列化">
-      <created>1540120898814</created>
-      <option name="number" value="00120" />
-      <option name="presentableId" value="LOCAL-00120" />
-      <option name="project" value="LOCAL" />
-      <updated>1540120898815</updated>
-    </task>
-    <task id="LOCAL-00121" summary="http">
-      <created>1540132098670</created>
-      <option name="number" value="00121" />
-      <option name="presentableId" value="LOCAL-00121" />
-      <option name="project" value="LOCAL" />
-      <updated>1540132098670</updated>
-    </task>
-    <task id="LOCAL-00122" summary="https">
-      <created>1540133644912</created>
-      <option name="number" value="00122" />
-      <option name="presentableId" value="LOCAL-00122" />
-      <option name="project" value="LOCAL" />
-      <updated>1540133644912</updated>
-    </task>
-    <task id="LOCAL-00123" summary="https">
-      <created>1540134559587</created>
-      <option name="number" value="00123" />
-      <option name="presentableId" value="LOCAL-00123" />
-      <option name="project" value="LOCAL" />
-      <updated>1540134559587</updated>
+      <workItem from="1541139198610" duration="5089000" />
+      <workItem from="1541380541930" duration="19733000" />
     </task>
     <task id="LOCAL-00124" summary="https">
       <created>1540134826385</created>
@@ -835,42 +711,175 @@
       <option name="project" value="LOCAL" />
       <updated>1541071480391</updated>
     </task>
-    <option name="localTasksCounter" value="154" />
+    <task id="LOCAL-00154" summary="redis">
+      <created>1541153905469</created>
+      <option name="number" value="00154" />
+      <option name="presentableId" value="LOCAL-00154" />
+      <option name="project" value="LOCAL" />
+      <updated>1541153905469</updated>
+    </task>
+    <task id="LOCAL-00155" summary="redis">
+      <created>1541381311899</created>
+      <option name="number" value="00155" />
+      <option name="presentableId" value="LOCAL-00155" />
+      <option name="project" value="LOCAL" />
+      <updated>1541381311899</updated>
+    </task>
+    <task id="LOCAL-00156" summary="redis">
+      <created>1541393409405</created>
+      <option name="number" value="00156" />
+      <option name="presentableId" value="LOCAL-00156" />
+      <option name="project" value="LOCAL" />
+      <updated>1541393409405</updated>
+    </task>
+    <task id="LOCAL-00157" summary="RDB、AOF">
+      <created>1541403001354</created>
+      <option name="number" value="00157" />
+      <option name="presentableId" value="LOCAL-00157" />
+      <option name="project" value="LOCAL" />
+      <updated>1541403001354</updated>
+    </task>
+    <task id="LOCAL-00158" summary="客户端、服务端">
+      <created>1541406059421</created>
+      <option name="number" value="00158" />
+      <option name="presentableId" value="LOCAL-00158" />
+      <option name="project" value="LOCAL" />
+      <updated>1541406059421</updated>
+    </task>
+    <task id="LOCAL-00159" summary="redis">
+      <created>1541411120009</created>
+      <option name="number" value="00159" />
+      <option name="presentableId" value="LOCAL-00159" />
+      <option name="project" value="LOCAL" />
+      <updated>1541411120009</updated>
+    </task>
+    <task id="LOCAL-00160" summary="redis">
+      <created>1541412135151</created>
+      <option name="number" value="00160" />
+      <option name="presentableId" value="LOCAL-00160" />
+      <option name="project" value="LOCAL" />
+      <updated>1541412135151</updated>
+    </task>
+    <task id="LOCAL-00161" summary="redis">
+      <created>1541413877306</created>
+      <option name="number" value="00161" />
+      <option name="presentableId" value="LOCAL-00161" />
+      <option name="project" value="LOCAL" />
+      <updated>1541413877306</updated>
+    </task>
+    <task id="LOCAL-00162" summary="redis">
+      <created>1541414125624</created>
+      <option name="number" value="00162" />
+      <option name="presentableId" value="LOCAL-00162" />
+      <option name="project" value="LOCAL" />
+      <updated>1541414125624</updated>
+    </task>
+    <task id="LOCAL-00163" summary="redis">
+      <created>1541414392303</created>
+      <option name="number" value="00163" />
+      <option name="presentableId" value="LOCAL-00163" />
+      <option name="project" value="LOCAL" />
+      <updated>1541414392303</updated>
+    </task>
+    <task id="LOCAL-00164" summary="redis">
+      <created>1541414441219</created>
+      <option name="number" value="00164" />
+      <option name="presentableId" value="LOCAL-00164" />
+      <option name="project" value="LOCAL" />
+      <updated>1541414441219</updated>
+    </task>
+    <task id="LOCAL-00165" summary="redis">
+      <created>1541414477081</created>
+      <option name="number" value="00165" />
+      <option name="presentableId" value="LOCAL-00165" />
+      <option name="project" value="LOCAL" />
+      <updated>1541414477081</updated>
+    </task>
+    <task id="LOCAL-00166" summary="redis">
+      <created>1541414544796</created>
+      <option name="number" value="00166" />
+      <option name="presentableId" value="LOCAL-00166" />
+      <option name="project" value="LOCAL" />
+      <updated>1541414544796</updated>
+    </task>
+    <task id="LOCAL-00167" summary="redis">
+      <created>1541414581011</created>
+      <option name="number" value="00167" />
+      <option name="presentableId" value="LOCAL-00167" />
+      <option name="project" value="LOCAL" />
+      <updated>1541414581011</updated>
+    </task>
+    <task id="LOCAL-00168" summary="redis">
+      <created>1541414618005</created>
+      <option name="number" value="00168" />
+      <option name="presentableId" value="LOCAL-00168" />
+      <option name="project" value="LOCAL" />
+      <updated>1541414618005</updated>
+    </task>
+    <task id="LOCAL-00169" summary="redis">
+      <created>1541416669396</created>
+      <option name="number" value="00169" />
+      <option name="presentableId" value="LOCAL-00169" />
+      <option name="project" value="LOCAL" />
+      <updated>1541416669396</updated>
+    </task>
+    <task id="LOCAL-00170" summary="redis">
+      <created>1541416929236</created>
+      <option name="number" value="00170" />
+      <option name="presentableId" value="LOCAL-00170" />
+      <option name="project" value="LOCAL" />
+      <updated>1541416929236</updated>
+    </task>
+    <task id="LOCAL-00171" summary="redis">
+      <created>1541417105103</created>
+      <option name="number" value="00171" />
+      <option name="presentableId" value="LOCAL-00171" />
+      <option name="project" value="LOCAL" />
+      <updated>1541417105103</updated>
+    </task>
+    <task id="LOCAL-00172" summary="redis">
+      <created>1541419007573</created>
+      <option name="number" value="00172" />
+      <option name="presentableId" value="LOCAL-00172" />
+      <option name="project" value="LOCAL" />
+      <updated>1541419007573</updated>
+    </task>
+    <option name="localTasksCounter" value="173" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="269934000" />
+    <option name="totallyTimeSpent" value="289705000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="2576" height="1416" extended-state="6" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32994527" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.28850666" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.28850666" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.16732909" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.16852146" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32994527" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -880,9 +889,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="spring" />
-    <MESSAGE value="readme" />
-    <MESSAGE value="TCP" />
     <MESSAGE value="dubbo" />
     <MESSAGE value="序列化" />
     <MESSAGE value="https" />
@@ -905,7 +911,10 @@
     <MESSAGE value="netty" />
     <MESSAGE value="spring cloud" />
     <MESSAGE value="Netty" />
-    <option name="LAST_COMMIT_MESSAGE" value="Netty" />
+    <MESSAGE value="RDB、AOF" />
+    <MESSAGE value="客户端、服务端" />
+    <MESSAGE value="redis" />
+    <option name="LAST_COMMIT_MESSAGE" value="redis" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -1365,7 +1374,7 @@
     <entry file="file://$PROJECT_DIR$/README.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
-          <first_editor relative-caret-position="1060">
+          <first_editor relative-caret-position="3565">
             <caret line="155" column="17" lean-forward="false" selection-start-line="155" selection-start-column="17" selection-end-line="155" selection-end-column="17" />
             <folding />
           </first_editor>
@@ -1376,10 +1385,11 @@
     <entry file="file://$PROJECT_DIR$/redis.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="FIRST">
-          <first_editor relative-caret-position="646">
-            <caret line="409" column="0" lean-forward="true" selection-start-line="409" selection-start-column="0" selection-end-line="409" selection-end-column="0" />
+          <first_editor relative-caret-position="18">
+            <caret line="799" column="12" lean-forward="false" selection-start-line="799" selection-start-column="12" selection-end-line="799" selection-end-column="12" />
             <folding>
-              <marker date="1541151835982" expanded="true" signature="7863:7899" ph="delete from lock... " />
+              <marker date="1541419169804" expanded="true" signature="7994:8028" ph="delete from lock... " />
+              <marker date="1541419169804" expanded="true" signature="7994:8030" ph="delete from lock... " />
             </folding>
           </first_editor>
           <second_editor />
