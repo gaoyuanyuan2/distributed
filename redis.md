@@ -10,7 +10,7 @@
 <br><br>6.  Redis正是我想要找的那种数据库一它内置了集合数据类型，并支持对集合执行交集、并集、差集等集合计算操作，其中的交集计算操作可以直接用于实现我想要的共同关注功能。
 ## 持久化
 <br>1. 	RDB持久化
-<br>RDB压缩的二进制文件用于保存和还原Redis服务器所有数据库中的所有键值对数据）。SAVE命令由服务器进程直接保存操作，所有该命令会阻塞服务器。BGSAVE
+<br>RDB压缩的二进制文件用于保存和还原Redis服务器所有数据库中的所有键值对数据）。SAVE命令由服务器进程直接保存操作，所有该命令会阻塞服务器。`BGSAVE`
 由子进程执行保存操作，所以该命令不会阻塞服务器。（间隔保存，会丢失数据）
 <br><br>2. 	AOF持久化
 <br>AOF日志文件通过保存所有修改数据库的命令请求来记录服务器的数据库状态。AOF重写文件体积变小。（每秒同步，每修改同步，不同步）文件大、效率较低。新文件会覆盖旧的文件（定时转移走）。 
@@ -25,37 +25,42 @@
 <br>save 900 1  当在900秒内被更改的key的数量大于1的时候，就执行快照
 <br>save 300 10
 <br>save 60 10000
-<br><br>2.	save或者bgsave
+<br><br>2.	save或者`bgsave`
 <br>save: 执行内存的数据同步到磁盘的操作，这个操作会阻塞客户端的请求
-<br>bgsave: 在后台异步执行快照操作，这个操作不会阻塞客户端的请求
-<br><br>3.	执行flushall的时候
+<br>`bgsave`: 在后台异步执行快照操作，这个操作不会阻塞客户端的请求
+<br><br>3.	执行`flushall`的时候
 <br>清除内存的所有数据，只要快照的规则不为空，也就是第一个规则存在。那么redis会执行快照
 <br><br>4.	执行复制的时候
 ### 快照的实现原理
 <br>1：redis使用fork函数复制一份当前进程的副本(子进程)
 <br><br>2：父进程继续接收并处理客户端发来的命令，而子进程开始将内存中的数据写入硬盘中的临时文件
 <br><br>3：当子进程写入完所有数据后会用该临时文件替换旧的RDB文件，至此，一次快照操作完成。  
-<br><br>注意：redis在进行快照的过程中不会修改RDB文件，只有快照结束后才会将旧的文件替换成新的，也就是说任何时候RDB文件都是完整的。 这就使得我们可以通过定时备份RDB文件来实现redis数据库的备份， RDB文件是经过压缩的二进制文件，占用的空间会小于内存中的数据，更加利于传输。
+<br><br>注意：redis在进行快照的过程中不会修改RDB文件，只有快照结束后才会将旧的文件替换成新的，也就是说任何时候RDB文件都是完整的。  这就使得我们可以通过定时备份RDB文件来实现redis数据库的备份， 
+RDB文件是经过压缩的二进制文件，占用的空间会小于内存中的数据，更加利于传输。
 #### RDB的优缺点
-<br>1.	使用RDB方式实现持久化，一旦Redis异常退出，就会丢失最后一次快照以后更改的所有数据。这个时候我们就需要根据具体的应用场景，通过组合设置自动快照条件的方式来将可能发生的数据损失控制在能够接受范围。如果数据相对来说比较重要，希望将损失降到最小，则可以使用AOF方式进行持久化
-<br><br>2.	RDB可以最大化Redis的性能：父进程在保存RDB文件时唯一要做的就是fork出一个子进程，然后这个子进程就会处理接下来的所有保存工作，父进程无序执行任何磁盘I/O操作。同时这个也是一个缺点，如果数据集比较大的时候，fork可以能比较耗时，造成服务器在一段时间内停止处理客户端的请求；
+<br>1.	使用RDB方式实现持久化，一旦Redis异常退出，就会丢失最后一次快照以后更改的所有数据。这个时候我们就需要根据具体的应用场景， 
+通过组合设置自动快照条件的方式来将可能发生的数据损失控制在能够接受范围。如果数据相对来说比较重要，希望将损失降到最小，则可以使用AOF方式进行持久化
+<br><br>2.	RDB可以最大化Redis的性能：父进程在保存RDB文件时唯一要做的就是fork出一个子进程，然后这个子进程就会处理接下来的所有保存工作， 
+父进程无序执行任何磁盘I/O操作。同时这个也是一个缺点，如果数据集比较大的时候，fork可以能比较耗时，造成服务器在一段时间内停止处理客户端的请求；
 ### 实践
-<br>修改redis.conf中的appendonly yes ; 重启后执行对数据的变更命令， 会在bin目录下生成对应的.aof文件， aof文件中会记录所有的操作命令
+<br>修改redis.conf中的`appendonly yes`; 重启后执行对数据的变更命令， 会在bin目录下生成对应的.aof文件， aof文件中会记录所有的操作命令
 <br>如下两个参数可以去对aof文件做优化
 <br>auto-aof-rewrite-percentage 100表示当前aof文件大小超过上一次aof文件大小的百分之多少的时候会进行重写。如果之前没有重写过，以启动时aof文件大小为准
 <br>auto-aof-rewrite-min-size 64mb限制允许重写最小aof文件大小，也就是文件大小小于64mb的时候，不需要进行优化
 ### AOF
 <br>AOF可以将Redis执行的每一条写命令追加到硬盘文件中，这一过程显然会降低Redis的性能，但大部分情况下这个影响是能够接受的，另外使用较快的硬盘可以提高AOF的性能
 ### 实践
-<br>默认情况下Redis没有开启AOF（appendonlyfile）方式的持久化，可以通过appendonly参数启用，在redis.conf中找到 appendonly yes
-<br>开启AOF持久化后每执行一条会更改Redis中的数据的命令后，Redis就会将该命令写入硬盘中的AOF文件。AOF文件的保存位置和RDB文件的位置相同，都是通过dir参数设置的，默认的文件名是apendonly.aof. 可以在redis.conf中的属性 appendfilename appendonlyh.aof修改
+<br>默认情况下Redis没有开启AOF（`appendonlyfile`）方式的持久化，可以通过`appendonly`参数启用，在redis.conf中找到 `appendonly yes`
+<br>开启AOF持久化后每执行一条会更改Redis中的数据的命令后，Redis就会将该命令写入硬盘中的AOF文件。AOF文件的保存位置和RDB文件的位置相同，都是通过dir参数设置的，默认的文件名是`apendonly.aof`. 可以在redis.conf中的属性 `appendfilename appendonlyh.aof`修改
 ### aof重写的原理
-<br>Redis 可以在 AOF 文件体积变得过大时，自动地在后台对 AOF 进行重写： 重写后的新 AOF 文件包含了恢复当前数据集所需的最小命令集合。 整个重写操作是绝对安全的，因为 Redis 在创建新 AOF 文件的过程中，会继续将命令追加到现有的 AOF 文件里面，即使重写过程中发生停机，现有的 AOF 文件也不会丢失。 而一旦新 AOF 文件创建完毕，Redis 就会从旧 AOF 文件切换到新 AOF 文件，并开始对新 AOF 文件进行追加操作。AOF 文件有序地保存了对数据库执行的所有写入操作， 这些写入操作以 Redis 协议的格式保存， 因此 AOF 文件的内容非常容易被人读懂， 对文件进行分析（parse）也很轻松
+<br>Redis 可以在 AOF 文件体积变得过大时，自动地在后台对 AOF 进行重写： 重写后的新 AOF 文件包含了恢复当前数据集所需的最小命令集合。 整个重写操作是绝对安全的，因为 Redis 在创建新 AOF 文件的过程中，
+ 会继续将命令追加到现有的 AOF 文件里面，即使重写过程中发生停机，现有的 AOF 文件也不会丢失。 而一旦新 AOF 文件创建完毕，Redis 就会从旧 AOF 文件切换到新 AOF 文件， 并开始对新 AOF 
+ 文件进行追加操作。AOF 文件有序地保存了对数据库执行的所有写入操作， 这些写入操作以 Redis 协议的格式保存， 因此 AOF 文件的内容非常容易被人读懂， 对文件进行分析（parse）也很轻松
 ###  同步磁盘数据
 <br>redis每次更改数据的时候， aof机制都会讲命令记录到aof文件，但是实际上由于操作系统的缓存机制，数据并没有实时写入到硬盘，而是进入硬盘缓存。再通过硬盘缓存机制去刷新到保存到文件
-<br>appendfsync always每次执行写入都会进行同步 ， 这个是最安全但是是效率比较低的方式
-<br>appendfsync everysec每一秒执行
-<br>appendfsync no不主动进行同步操作，由操作系统去执行，这个是最快但是最不安全的方式
+<br>`appendfsync always`每次执行写入都会进行同步 ， 这个是最安全但是是效率比较低的方式
+<br>`appendfsync everysec`每一秒执行
+<br>`appendfsync no`不主动进行同步操作，由操作系统去执行，这个是最快但是最不安全的方式
 ### aof文件损坏以后如何修复
 <br>服务器可能在程序正在对 AOF 文件进行写入时停机， 如果停机造成了 AOF 文件出错（corrupt）， 那么 Redis 在重启时会拒绝载入这个 AOF 文件， 从而确保数据的一致性不会被破坏。
 <br>当发生这种情况时， 可以用以下方法来修复出错的 AOF 文件：
@@ -64,10 +69,11 @@
 <br><br>redis-check-aof --fix
 <br>重启 Redis 服务器，等待服务器载入修复后的 AOF 文件，并进行数据恢复。
 ### RDB 和 AOF ,如何选择
-<br>一般来说,如果对数据的安全性要求非常高的话，应该同时使用两种持久化功能。如果可以承受数分钟以内的数据丢失，那么可以只使用 RDB 持久化。有很多用户都只使用 AOF 持久化， 但并不推荐这种方式： 因为定时生成 RDB 快照（snapshot）非常便于进行数据库备份， 并且 RDB 恢复数据集的速度也要比 AOF 恢复的速度要快 。
+<br>一般来说,如果对数据的安全性要求非常高的话，应该同时使用两种持久化功能。如果可以承受数分钟以内的数据丢失，那么可以只使用 RDB 持久化。 有很多用户都只使用 AOF 持久化， 但并不推荐这种方式： 因为定时生成 RDB 
+快照（snapshot）非常便于进行数据库备份， 并且 RDB 恢复数据集的速度也要比 AOF 恢复的速度要快 。
 <br>两种持久化策略可以同时使用，也可以使用其中一种。如果同时使用的话， 那么Redis重启时，会优先使用AOF文件来还原数据
 <br><br>密码设置
-<br>requirepass foobaredbind
+<br>`requirepass foobaredbind`
 
 ## 原理
 <br>1.	链表:实现Redis的各种功能,比如列表键、发布与订阅、满查询、监视器。
@@ -84,7 +90,7 @@
 <br><br>12.	客户端：Redis服务器是典型的一对多服务器程序：通过使用I/O多路复用技术实现文件事件处理器。
 
 ## 发布和订阅
-<br>由PUBLISH,SUBSCRIBE,PSUBSCRIBE命令组成。
+<br>由PUBLISH,SUBSCRIBE,`PSUBSCRIBE`命令组成。
 <br>发送到频道，订阅频道（PUBLISH <channel><message>）。
 <br><br>Redis实现消息队列原理
 <br>发布者和订阅者模式：发布者发送消息到队列，每个订阅者都能收到一样的消息。 
@@ -101,7 +107,7 @@
 
 ## redis的安装
 <br>1.	下载redis安装包 
-<br><br>2.	tar -zxvf 安装包
+<br><br>2.	`tar -zxvf` 安装包
 <br><br>3.	在redis目录下 执行 make
 <br><br>4.	可以通过make test测试编译状态
 <br><br>5.	make install [prefix=/path]完成安装
@@ -110,7 +116,7 @@
 <br>1.  启动停止redis
 <br>./redis-server ../redis.conf
 <br>./redis-cli shutdown
-<br>以后台进程的方式启动，修改redis.conf   daemonize =yes
+<br>以后台进程的方式启动，修改redis.conf   `daemonize = yes`
 <br><br>2.  连接到redis的命令
 <br>./redis-cli -h 127.0.0.1 -p 6379
 <br><br>3.  其他命令说明
@@ -125,8 +131,8 @@
 <br>默认支持16个数据库；可以理解为一个命名空间；跟关系型数据库不一样的点
 <br><br>1.	redis不支持自定义数据库名词
 <br><br>2.	每个数据库不能单独设置授权
-<br><br>3.	每个数据库之间并不是完全隔离的。 可以通过flushall命令清空redis实例面的所有数据库中的数据
-<br><br>通过 select dbid去选择不同的数据库命名空间 。 dbid的取值范围默认是0-15
+<br><br>3.	每个数据库之间并不是完全隔离的。 可以通过`flushall`命令清空redis实例面的所有数据库中的数据
+<br><br>通过 `select dbid`去选择不同的数据库命名空间 。 `dbid`的取值范围默认是0-15
 
 ## 使用入门
 <br>1.	获得一个符合匹配规则的键名列表
@@ -144,10 +150,10 @@
 <br>1.  字符类型
 <br>一个字符类型的key默认存储的最大容量是512M
 <br>赋值和取值
-<br>SETkey  value
-<br>GETkey
+<br>SET key  value
+<br>GET key
 <br>递增数字
-<br>incr key
+<br>`incr key`
 <br><br>错误的演示
 <br>int value= get key;
 <br>value =value +1;
@@ -156,23 +162,23 @@
 <br>对象类型:对象id:对象属性:对象子属性
 <br>建议对key进行分类，同步在wiki统一管理
 <br>短信重发机制
-<br><br>incryby key increment  递增指定的整数
-<br>decr key   原子递减
+<br><br>`incryby key increment`  递增指定的整数
+<br>`decr key `  原子递减
 <br>append key value 向指定的key追加字符串
-<br>strlenkey  获得key对应的value的长度
-<br>mgetkey key..同时获得多个key的value
-<br>mset key value  key value  key value …
-<br>setnx
+<br>`strlenkey`  获得key对应的value的长度
+<br>`mgetkey key ...` 同时获得多个key的value
+<br>`mset key value  key value  key value …`
+<br>`setnx`
 <br><br>2.  列表类型
 <br>list, 可以存储一个有序的字符串列表
-<br>LPUSH/RPUSH： 从左边或者右边push数据
-<br>LPUSH/RPUSH key value value …
+<br>`LPUSH/RPUSH`： 从左边或者右边push数据
+<br>`LPUSH/RPUSH key value value …`
 <br>｛17 20 19 18 16｝
-<br><br>llen num  获得列表的长度
-<br>lrangekey  start stop   ;  索引可以是负数， -1表示最右边的第一个元素
-<br>lrem key count value
-<br>lset key index value
-<br>LPOP/RPOP : 取数据
+<br><br>`llen num`  获得列表的长度
+<br>`lrangekey  start stop`   ;  索引可以是负数， -1表示最右边的第一个元素
+<br>`lrem key count value`
+<br>`lset key index value`
+<br>`LPOP/RPOP `: 取数据
 <br>应用场景：可以用来做分布式消息队列
 <br><br>3.  散列类型
 <br>hash key value不支持数据类型的嵌套
@@ -181,25 +187,25 @@
 <br>age  18
 <br>sex   男
 <br>name mic
-<br><br>hset key field value
-<br>hget key filed 
-<br><br>hmset key filed value [filed value …]一次性设置多个值
-<br>hmget key field field …一次性获得多个值
-<br>hgetall key获得hash的所有信息，包括key和value
-<br>hexists key field 判断字段是否存在。 存在返回1.不存在返回0
-<br>hincryby
-<br>hsetnx
-<br>hdel key field [field …]删除一个或者多个字段
+<br><br>`hset key field value`
+<br>`hget key filed `
+<br><br>`hmset key filed value ``[filed value …]`一次性设置多个值
+<br>`hmget key field field …`一次性获得多个值
+<br>`hgetall key`获得hash的所有信息，包括key和value
+<br>`hexists key field` 判断字段是否存在。 存在返回1.不存在返回0
+<br>`hincryby`
+<br>`hsetnx`
+<br>`hdel key field` `[field …]`删除一个或者多个字段
 <br><br>4.  集合类型
 <br>set跟list不一样的点。集合类型不能存在重复的数据。而且是无序的
-<br>saddkey member [member ...]增加数据； 如果value已经存在，则会忽略存在的值，并且返回成功加入的元素的数量
-<br>srem key member  删除元素
-<br>smemberskey获得所有数据
-<br><br>sdiffkey key …对多个集合执行差集运算
-<br>sunion对多个集合执行并集操作,同时存在在两个集合里的所有值
+<br>`saddkey member` `[member ...]`增加数据； 如果value已经存在，则会忽略存在的值，并且返回成功加入的元素的数量
+<br>`srem key member`  删除元素
+<br>`smemberskey`获得所有数据
+<br><br>`sdiffkey key …`对多个集合执行差集运算
+<br>`sunion`对多个集合执行并集操作,同时存在在两个集合里的所有值
 <br><br>5.  有序集合
-<br>zadd key score member
-<br><br>zrange key start stop [withscores] 去获得元素。 withscores是可以获得元素的分数
+<br>`zadd key score member`
+<br><br>`zrange key start stop` `[withscores]` 去获得元素。 `withscores`是可以获得元素的分数
 <br>如果两个元素的score是相同的话，那么根据(0<9<A<Z<a<z) 方式从小到大
 <br>网站访问的前10名。
 
@@ -225,12 +231,11 @@ lock(
 <br><br>获取锁的伪代码
 
 ```java
-
 try{
     exec  insert into lock(methodName,memo) values(‘method’,’desc’);
     return true;
 }Catch(DuplicateException e){
-return false;
+    return false;
 }
 
 ```
@@ -238,7 +243,7 @@ return false;
 <br><br>释放锁
 
 ```sql
-delete from lock where methodName=’’;
+delete from lock where methodName='';
 ```
 
 #### 存在的需要思考的问题
@@ -258,8 +263,11 @@ delete from lock where methodName=’’;
 <br>redis中有一个setNx命令，这个命令只有在key不存在的情况下为key设置值。所以可以利用这个特性来实现分布式锁的操作
 
 ## redis多路复用机制
-<br>linux的内核会把所有外部设备都看作一个文件来操作，对一个文件的读写操作会调用内核提供的系统命令，返回一个 file descriptor（文件描述符）。对于一个socket的读写也会有响应的描述符，称为socketfd(socket描述符)。而IO多路复用是指内核一旦发现进程指定的一个或者多个文件描述符IO条件准备好以后就通知该进程
-<br>IO多路复用又称为事件驱动，操作系统提供了一个功能，当某个socket可读或者可写的时候，它会给一个通知。当配合非阻塞socket使用时，只有当系统通知我哪个描述符可读了，我才去执行read操作，可以保证每次read都能读到有效数据。操作系统的功能通过select/pool/epoll/kqueue之类的系统调用函数来使用，这些函数可以同时监视多个描述符的读写就绪情况，这样多个描述符的I/O操作都能在一个线程内并发交替完成，这就叫I/O多路复用，这里的复用指的是同一个线程
+<br>linux的内核会把所有外部设备都看作一个文件来操作，对一个文件的读写操作会调用内核提供的系统命令，返回一个 file descriptor（文件描述符）。 对于一个socket的读写也会有响应的描述符，称为`socketfd`
+(socket描述符)。而IO多路复用是指内核一旦发现进程指定的一个或者多个文件描述符IO条件准备好以后就通知该进程
+<br>IO多路复用又称为事件驱动，操作系统提供了一个功能，当某个socket可读或者可写的时候，它会给一个通知。 
+当配合非阻塞socket使用时，只有当系统通知我哪个描述符可读了，我才去执行read操作，可以保证每次read都能读到有效数据。操作系统的功能通过`select/pool/epoll/kqueue` 
+之类的系统调用函数来使用，这些函数可以同时监视多个描述符的读写就绪情况，这样多个描述符的I/O操作都能在一个线程内并发交替完成，这就叫I/O多路复用，这里的复用指的是同一个线程
 <br>多路复用的优势在于用户可以在一个线程内同时处理多个socket的 io请求。达到同一个线程同时处理多个IO请求的目的。而在同步阻塞模型中，必须通过多线程的方式才能达到目的
 
 ## redis中使用lua脚本
@@ -279,12 +287,12 @@ delete from lock where methodName=’’;
 <br>集群中的节点通过发送和接收消息来进行通信，常见的消息包括MEET、PING、PONG、PUBLISH、FAIL。
  
 ### 配置过程
-<br>修改11.140和11.141的redis.conf文件，增加slaveof masterip masterport
-<br>slaveof192.168.11.138 6379
+<br>修改11.140和11.141的redis.conf文件，增加`slaveof masterip masterport`
+<br>`slaveof`192.168.11.138 6379
 ### 实现原理
 <br><br>1.	slave第一次或者重连到master上以后，会向master发送一个SYNC的命令
 <br><br>2.	master收到SYNC的时候，会做两件事
-<br><br>a)	执行bgsave（rdb的快照文件）
+<br><br>a)	执行`bgsave`（rdb的快照文件）
 <br><br>b)	master会把新收到的修改命令存入到缓冲区
 ### 缺点
 <br>没有办法对master进行动态选举
@@ -292,7 +300,7 @@ delete from lock where methodName=’’;
 <br><br>1.	基于rdb文件的复制（第一次连接或者重连的时候）
 <br><br>2.	无硬盘复制
 <br><br>3.	增量复制
-<br><br>PSYNC master run id. offset
+<br><br>`PSYNC` master run id. offset
 ### 哨兵机制
 <br>是Redis高可用性的解决方案。一般10s每次的频率向被监视的主服务器和从服务器发送INFO命令，当主服务器处于下线状态，或者Sentinel
 正在对主服务器进行故障转移操作是，发送频率会改成每秒一次。每个主节点一个从节点，故障从提主。自动。基数防脑裂。
@@ -316,11 +324,11 @@ delete from lock where methodName=’’;
 <br>删除节点
 <br>先将节点的数据移动到其他节点上，然后才能执行删除
 ### 市面上提供了集群方案
-<br>1.	redis shardding   而且jedis客户端就支持shardding操作SharddingJedis； 增加和减少节点的问题； pre shardding
+<br>1.	redis `shardding`   而且`jedis`客户端就支持`shardding`操作`SharddingJedis`； 增加和减少节点的问题； `pre shardding`
 <br>3台虚拟机 redis。但是我部署了9个节点 。每一台部署3个redis增加cpu的利用率
 <br>9台虚拟机单独拆分到9台服务器
-<br><br>2.	codis基于redis2.8.13分支开发了一个codis-server
-<br><br>3.	twemproxy  twitter提供的开源解决方案
+<br><br>2.	`codis`基于redis2.8.13分支开发了一个`codis-server`
+<br><br>3.	`twemproxy`  twitter提供的开源解决方案
 
 ## 缓存更新
 <br>redis缓存的更新（2pc 3pc 强一致，但是效率低）
@@ -365,7 +373,7 @@ buf数组的长度不一定就是字符数量加一，数组里面可以包含�
 使用空间。
 <br>eg. 如果进行修改之后，SDS的len将变成30MB,那么程序会分配1MB的未使用空间，SDS的buf数组的实际长度将为30MB + 1MB + 1byte。
 <br><br>2.  惰性空间释放
-<br>执行sdstrim之后的SDS并没有释放多出来的8字节空间，而是将这8字节空间作为未使用空间保留在了SDS里面，如果将来要对SDS进行增长操作的话，这些未使用空间就可能会派上用场
+<br>执行`sdstrim`之后的SDS并没有释放多出来的8字节空间，而是将这8字节空间作为未使用空间保留在了SDS里面，如果将来要对SDS进行增长操作的话，这些未使用空间就可能会派上用场
 
 ## 链表
 <br>链表提供了高效的节点重排能力，以及顺序性的节点访问方式，并且可以通过增删节点来灵活地调整链表的长度。
@@ -398,17 +406,17 @@ Redis的字典使用哈希表作为底层实现，一个哈希表里面可以有
 
 <br><br>哈希表的扩展与收缩
 <br>当以下条件中的任意-一个被满足时，程序会自动开始对哈希表执行扩展操作:
-<br><br>1)服务器目前没有在执行BGSAVE命令或者BGREWRITEAOF命令，并且哈希表的负载因子大于等于1。
-<br><br>2)服务器目前正在执行BGSAVE命令或者BGREWRITEAOF命令，并且哈希表的负载因子大于等于5。
+<br><br>1)服务器目前没有在执行`BGSAVE`命令或者`BGREWRITEAOF`命令，并且哈希表的负载因子大于等于1。
+<br><br>2)服务器目前正在执行`BGSAVE`命令或者`BGREWRITEAOF`命令，并且哈希表的负载因子大于等于5。
 
 ## 跳跃表
-<br><br> 跳跃表( skiplist)是一种有序数据结构，它通过在每个节点中维持多个指向其他节点的指针，从而达到快速访问节点的目的。
+<br><br> 跳跃表( `skiplist`)是一种有序数据结构，它通过在每个节点中维持多个指向其他节点的指针，从而达到快速访问节点的目的。
 <br><br> 跳跃表支持平均0(logN)、最坏0(M)复杂度的节点查找，还可以通过顺序性操作来批量处理节点。
 <br><br> 在大部分情况下，跳跃表的效率可以和平衡树相媲美，并且因为跳跃表的实现比平衡树要来得更为简单，所以有不少程序都使用跳跃表来代替平衡树。
 <br><br> Redis使用跳跃表作为有序集合键的底层实现之一，如果一个有序集合包含的元素数量比较多,又或者有序集合中元素的成员( member )是比较长的字符串时，Redis 就会使用跳跃表来作为有序集合键的底层实现。
 
 ## 整数集合
-<br>整数集合( intset)是集合键的底层实现之一，当一个集合只包含整数值元素,并且这个集合的元素数量不多时，Redis 就会使用整数集合作为集合键的底层实现。
+<br>整数集合( `intset`)是集合键的底层实现之一，当一个集合只包含整数值元素,并且这个集合的元素数量不多时，Redis 就会使用整数集合作为集合键的底层实现。
 <br>eg. 如果我们创建一一个 只包含五个元素的集合键，并且集合中的所有元素都是整数值，那么这个集合键的底层实现就会是整数集合
 
 <br><br>整数集合是集合键的底层实现之一。
@@ -416,7 +424,7 @@ Redis的字典使用哈希表作为底层实现，一个哈希表里面可以有
 <br>升级操作为整数集合带来了操作上的灵活性，并且尽可能地节约了内存。整数集合只支持升级操作，不支持降级操作。
 
 ## 压缩列表
-<br>压缩列表( ziplist )是列表键和哈希键的底层实现之一。当一个列表键只包含少量列表项，并且每个列表项要么就是小整数值，要么就是长度比较短的字符串，那么Redis就会使用压缩列表来做列表键的底层实现。
+<br>压缩列表( `ziplist` )是列表键和哈希键的底层实现之一。当一个列表键只包含少量列表项，并且每个列表项要么就是小整数值，要么就是长度比较短的字符串，那么Redis就会使用压缩列表来做列表键的底层实现。
 <br><br>压缩列表是一种为节约内存而开发的顺序型数据结构。压缩列表被用作列表键和哈希键的底层实现之一。
 <br>压缩列表可以包含多个节点，每个节点可以保存一个字节数组或者整数值。
 <br>添加新节点到压缩列表,  或者从压缩列表中删除节点，可能会引发连锁更新操作,但这种操作出现的几率并不高。
@@ -429,9 +437,11 @@ Redis的字典使用哈希表作为底层实现，一个哈希表里面可以有
 <br>最后，  Redis的对象带有访问时间记录信息，该信息可以用于计算数据库键的空转时长，在服务器启用了maxmemory功能的情况下，空转时长较大的那些键可能会优先被服务器删除。
 
 <br><br>而另一种命令只能对特定类型的键执行，比如说:
-<br><br>1.  SET、GET、APPEND、STRLEN等命令只能对字符串键执行;口HDEL、HSET、HGET、HLEN等命令只能对哈希键执行;
-<br><br>2.  RPUSH、LPOP、LINSERT、LLEN等命令只能对列表键执行;口SADD、SPOP、SINTER、SCARD等命令只能对集合键执行;
-<br><br>3.  ZADD、ZCARD、ZRANK、 ZSCORE等命令只能对有序集合键执行;
+<br><br>1.  SET、GET、APPEND、`STRLEN`等命令只能对字符串键执行;
+<br><br>2.  `HDEL`、`HSET`、`HGET`、`HLEN`等命令只能对哈希键执行;
+<br><br>3.  `RPUSH`、`LPOP`、`LINSERT`、`LLEN`等命令只能对列表键执行;
+<br><br>4.  `SADD`、`SPOP`、`SINTER`、`SCARD`等命令只能对集合键执行;
+<br><br>5.  `ZADD`、`ZCARD`、`ZRANK`、 `ZSCORE`等命令只能对有序集合键执行;
 
 <br><br>对象的引用计数信息会随着对象的使用状态而不断变化:
 <br><br>1.  在创建一个新对象时，引用计数的值会被初始化为1;
@@ -460,31 +470,31 @@ Redis的字典使用哈希表作为底层实现，一个哈希表里面可以有
 <br>当使用Redis命令对数据库进行读写时，服务器不仅会对键空间执行指定的读写操作,还会执行一些额外的维护操作，其中包括:
 <br><br>1.  在读取一个键之后(读操作和写操作都要对键进行读取),服务器会根据键是否存在来更新服务器的键空间命中( hit)次数或键空间不命中( miss)次数， 这两个值可以在INFO stats命令的keyspace_ hits 
 属性和keyspace_misses属性中查看。
-在读取一个键之后，服务器会更新键的LRU (最后一次使用)时间，这个值可以用于计算键的闲置时间,使用OBJECT idletime <key>命令可以查看键key的闲置时间。
+在读取一个键之后，服务器会更新键的LRU (最后一次使用)时间，这个值可以用于计算键的闲置时间,使用OBJECT `idletime` <key>命令可以查看键key的闲置时间。
 如果服务器在读取一个键时发现该键已经过期，那么服务器会先删除这个过期键，然后才执行余下的其他操作。
 <br><br>2.  如果有客户端使用WATCH命令监视了某个键，那么服务器在对被监视的键进行修改之后，会将这个键标记为脏(dirty),从而让事务程序注意到这个键已经被修改过。
-<br><br>3.  服务器每次修改一个键之后，都会对脏( dity )键计数器的值增1,这个计数器会触发服务器的持久化以及复制操作。
+<br><br>3.  服务器每次修改一个键之后，都会对脏( `dity` )键计数器的值增1,这个计数器会触发服务器的持久化以及复制操作。
 <br><br>4.  如果服务器开启了数据库通知功能，那么在对键进行修改之后，服务器将按配置发送相应的数据库通知，本章稍后讨论数据库通知功能的实现时会详细说明这一点。
-<br><br>SETEX命令可以在设置一个字符串键的同时为键设置过期时间，因为这个命令是一个类型限定的命令(只能用于字符串键),所以本章不会对这个命令进行介绍，但SETEX命令设置过期时间的原理和本章介绍的EXPIRE命令设置过期时间的原理是完全一样的。
-与EXPIRE命令和PEXPIRE命令类似，客户端可以通过EXPIREAT命令或PEXPIREAT命令,以秒或者毫秒精度给数据库中的某个键设置过期时间( expire time )。
+<br><br>`SETEX`命令可以在设置一个字符串键的同时为键设置过期时间，因为这个命令是一个类型限定的命令(只能用于字符串键),所以本章不会对这个命令进行介绍，但`SETEX`命令设置过期时间的原理和本章介绍的EXPIRE命令设置过期时间的原理是完全一样的。
+与EXPIRE命令和`PEXPIRE`命令类似，客户端可以通过`EXPIREAT`命令或`PEXPIREAT`命令,以秒或者毫秒精度给数据库中的某个键设置过期时间( expire time )。
 <br><br>设置过期时间
 <br>Redis有四个不同的命令可以用于设置键的生存时间(键可以存在多久)或过期时间(键什么时候会被删除):
-<br><br>1.  EXPIRE <key> <tl>命令用于将键key的生存时间设置为ttl秒。
-<br><br>2.  PEXPIRE <key> <ttl>命令用于将键key的生存时间设置为ttl毫秒。
-<br><br>3.  EXPIREAT <key> <timestamp> 命令用于将键key的过期时间设置为timestamp所指定的秒数时间戳。
-<br><br>4.  PEXPIREAT <key> <timestamp> 命令用于将键key的过期时间设置为timestamp所指定的毫秒数时间戳。
-<br><br>虽然有多种不同单位和不同形式的设置命令，但实际上EXPIRE、PEXPIRE、 
-EXPIREAT三个命令都是使用PEXPIREAT命令来实现的:无论客户端执行的是以上四个命令中的哪一个，经过转换之后，最终的执行效果都和执行PEXPIREAT命令一样。
-<br><br>PERSIST命令就是PEXPIREAT命令的反操作: PERSIST命令在过期字典中查找给定的键、并解除键和值(过期时间)在过期字典中的关联。
+<br><br>1.  `EXPIRE` <key> <tl>命令用于将键key的生存时间设置为ttl秒。
+<br><br>2.  `PEXPIRE` <key> <ttl>命令用于将键key的生存时间设置为ttl毫秒。
+<br><br>3.  `EXPIREAT` <key> <timestamp> 命令用于将键key的过期时间设置为timestamp所指定的秒数时间戳。
+<br><br>4.  `PEXPIREAT` <key> <timestamp> 命令用于将键key的过期时间设置为timestamp所指定的毫秒数时间戳。
+<br><br>虽然有多种不同单位和不同形式的设置命令，但实际上EXPIRE、`PEXPIRE`、 
+`EXPIREAT`三个命令都是使用`PEXPIREAT`命令来实现的:无论客户端执行的是以上四个命令中的哪一个，经过转换之后，最终的执行效果都和执行`PEXPIREAT`命令一样。
+<br><br>PERSIST命令就是`PEXPIREAT`命令的反操作: PERSIST命令在过期字典中查找给定的键、并解除键和值(过期时间)在过期字典中的关联。
 <br><br>计算并返回剩余生存时间
-<br>TTL命令以秒为单位返回键的剩余生存时间，而PTTL命令则以毫秒为单位返回键的剩余牛存时间。
+<br>TTL命令以秒为单位返回键的剩余生存时间，而`PTTL`命令则以毫秒为单位返回键的剩余牛存时间。
 <br><br>过期键的判定
 <br>通过过期字典，程序可以用以下步骤检查-个给定键是否过期:
 <br><br>1)检查给定键是否存在于过期字典:  如果存在，那么取得键的过期时间。
 <br><br>2)检查当前UNIX时间截是否大于键的过期时间:如果是的话，那么键已经过期;否则的话，键未过期。
-<br><br>实现过期键判定的另一种方法是使用TTL命令或者PTTL命令，  比如说，如果对某个键执行TTL命令，并且命令返回的值大于等于0，那么说明该键未过期。在实际中，Redis 检查键是否过期的方法和is_ expired 函数所描述的方法一致，因为直接访问字典比执行一个命令稍微快一些。
+<br><br>实现过期键判定的另一种方法是使用TTL命令或者`PTTL`命令，  比如说，如果对某个键执行TTL命令，并且命令返回的值大于等于0，那么说明该键未过期。在实际中，Redis 检查键是否过期的方法和is_expired 函数所描述的方法一致，因为直接访问字典比执行一个命令稍微快一些。
 
-<br><br>实现过期键判定的另一种方法是使用TTL命令或者PTTL命令，  比如说，如果对某个键执行TTL命令，并且命令返回的值大于等于0，那么说明该键未过期。在实际中，Redis 检查键是否过期的方法和is_ expired 函数所描述的方法一致，因为直接访问字典比执行一个命令稍微快一些。     
+<br><br>实现过期键判定的另一种方法是使用TTL命令或者`PTTL`命令，  比如说，如果对某个键执行TTL命令，并且命令返回的值大于等于0，那么说明该键未过期。在实际中，Redis 检查键是否过期的方法和is_expired 函数所描述的方法一致，因为直接访问字典比执行一个命令稍微快一些。     
 
 <br><br>键空间和用户所见的数据库是直接对应的: 
 <br>键空间的键也就是数据库的键，每个键都是一个字符串对象。
@@ -515,8 +525,8 @@ EXPIREAT三个命令都是使用PEXPIREAT命令来实现的:无论客户端执�
 因此，如果采用定期删除策略的话，服务器必须根据情况，合理地设置删除操作的执行时长和执行频率。 
  
 <br><br>AOF、 RDB和复制功能对过期键的处理
-<br>生成RDB文件在执行SAVE命令或者BGSAVE命令创建一个新的RDB文件时，程序会对数据库中的键进行检查，已过期的键不会被保存到新创建的RDB文件中。
-<br>eg，如果数据库中包含三个键k1、k2、k3，并且k2已经过期，那么当执行SAVE命令或者BGSAVE命令时，程序只会将k1和k3的数据保存到RDB文件中，而k2则会被忽略。
+<br>生成RDB文件在执行SAVE命令或者`BGSAVE`命令创建一个新的RDB文件时，程序会对数据库中的键进行检查，已过期的键不会被保存到新创建的RDB文件中。
+<br>eg，如果数据库中包含三个键k1、k2、k3，并且k2已经过期，那么当执行SAVE命令或者`BGSAVE`命令时，程序只会将k1和k3的数据保存到RDB文件中，而k2则会被忽略。
 <br>因此，数据库中包含过期键不会对生成新的RDB文件造成影响。
 <br>在启动Redis服务器时，如果服务器开启了RDB功能，那么服务器将对RDB文件进行载人:
 <br>如果服务器以主服务器模式运行，那么在载人RDB文件时，程序会对文件中保存的键进行检查，未过期的键会被载人到数据库中，而过期键则会被忽略，所以过期键对载人RDB文件的主服务器不会造成影响。
@@ -544,20 +554,20 @@ EXPIREAT三个命令都是使用PEXPIREAT命令来实现的:无论客户端执�
 <br><br>3.  从服务器只有在接到主服务器发来的DEL命令之后，才会删除过期键。
 
 <br><br>通过由主服务器来控制从服务器统一地删除过期键，可以保证主从服务器数据的一致性，也正是因为这个原因，当一个过期键仍然存在于主服务器的数据库时，这个过期键在从服务器里的复制品也会继续存在。
-<br>eg.  有一对主从服务器，它们的数据库中都保存着同样的三个键message. xxx和YYY,  其中message为过期键。
-<br><br>如果这时有客，户端向从服务器发送命令GET  message,那么从服务器将发现rmessage键已经过期，但从服务器并不会删除message键，  而是继续将message键的值返回给客户端，就好像message键并没有过期一样
+<br>eg.  有一对主从服务器，它们的数据库中都保存着同样的三个键message.xxx和YYY,  其中message为过期键。
+<br><br>如果这时有客，户端向从服务器发送命令GET  message,那么从服务器将发现`rmessage`键已经过期，但从服务器并不会删除message键，  而是继续将message键的值返回给客户端，就好像message键并没有过期一样
 <br>假设在此之后，有客户端向主服务器发送命令GET message,那么主服务器将发现键message已经过期:主服务器会删除message键，  向客户端返回空回复，并向从服务器发送DEL  message命令
 <br>从服务器在接收到主服务器发来的DEL  message命令之后，也会从数据库中删除message键，在这之后，主从服务器都不再保存过期键message了
 
 <br><br>重点
 <br><br>1.  Redis 服务器的所有数据车都保存在redisServer.db数组中，而数据库的数量则由redisServer.db num属性保存。
-<br><br>2.  客户端通过修改目标数据库指针，让它指向redisserver . db数组中的不同元素来切换不同的数据库。
+<br><br>2.  客户端通过修改目标数据库指针，让它指向`redisserver` . db数组中的不同元素来切换不同的数据库。
 <br><br>3.  数据库主要由dict和expires两个字典构成，其中dict字典负责保存键值对,而expires字典则负责保存键的过期时间。
 <br><br>4.  因为数据库由字典构成，所以对数据库的操作都是建立在字典操作之上的。
 <br><br>5.  数据库的键总是一个字符串对象，而值则可以是任意-种Redis对象类型，包括字符串对象、哈希表对象、集合对象、列表对象和有序集合对象，分别对应字符串键、哈希表键、集合键、列表键和有序集合键。
 <br><br>6.  expires字典的键指向数据库中的某个键，而值则记录了数据库键的过期时间，过期时间是一个以毫秒为单位的UNIX时间戳。
 <br><br>7.  Redis 使用惰性删除和定期删除两种策略来删除过期的键:惰性删除策略只在碰到过期键时才进行删除操作，定期删除策略则每隔-段时间主动查找并删除过期键。
-<br><br>8.  执行SAVE命令或者BGSAVE命令所产生的新RDB文件不会包含已经过期的键。0执行BGREWRITEAOF命令所产生的重写AOF文件不会包含已经过期的键。
+<br><br>8.  执行SAVE命令或者`BGSAVE`命令所产生的新RDB文件不会包含已经过期的键。0执行`BGREWRITEAOF`命令所产生的重写AOF文件不会包含已经过期的键。
 <br><br>9.  当一个过期键被删除之后， 服务器会追加一条DEL命令到现有AOF文件的末尾，显式地删除过期键。
 <br><br>10.  当主服务器刪除-一个过期键之后，它会向所有从服务器发送一条DEL命令，显式地删除过期键。
 <br><br>11.  从服务器即使发现过期键也不会自作主张地删除它，而是等待主节点发来DEL命令,这种统一中心化的过期键删除策略可以保证主从服务器数据的一致性。
@@ -567,11 +577,11 @@ EXPIREAT三个命令都是使用PEXPIREAT命令来实现的:无论客户端执�
 <br>另外值得一提的是， 因为AOF文件的更新频率通常比RDB文件的更新频率高，所以:口如果服务器开启了AOF持久化功能，那么服务器会优先使用AOF文件来还原数据库状态。
 只有在AOF持久化功能处于关闭状态时，服务器才会使用RDB文件来还原数据库状态。
 
-<br><br>dirty计数器和lastsave属性
-<br>除了saveparams数组之外，服务器状态还维持着-一个dirty计数器，以及一个lastsave属性:
-dirty 计数器记录距离.上一次成功执行 SAVE命令或者BGSAVE命令之后，服务器
+<br><br>dirty计数器和`lastsave`属性
+<br>除了`saveparams`数组之外，服务器状态还维持着-一个dirty计数器，以及一个`lastsave`属性:
+dirty 计数器记录距离.上一次成功执行 SAVE命令或者`BGSAVE`命令之后，服务器
 对数据库状态(服务器中的所有数据库)进行了多少次修改(包括写人、删除、更新等操作)。
-lastsave属性是一个UNIX时间戳，记录了服务器.上一次成功执行SAVE命令或者BGSAVE命令的时间。
+`lastsave`属性是一个UNIX时间戳，记录了服务器.上一次成功执行SAVE命令或者`BGSAVE`命令的时间。
 <br>当服务器成功执行一个数据库修改命令之后，程序就会对dirty计数器进行更新:命令修改了多少次数据库，dirty计数器的值就增加多少。
 
 <br><br>检查保存条件是否满足
@@ -581,18 +591,20 @@ lastsave属性是一个UNIX时间戳，记录了服务器.上一次成功执行S
 <br>因为RDB文件保存的是二进制数据，而不是C字符串，为了简便起见，我们用"REDIS"符号代表'R'、 'E'、'D'、'I'、  'S '五个字符，而不是带'\0'结尾符号的C字符串'R'、'E'、 'D'、 'I'、 'S'、 '\0'。 本章介绍的所有内容，  以及展示的所有RDB文件结构图都遵循这一規则。
 
 <br><br>重点
-<br><br>RDB文件用于保存和还原Redis服务器所有数据库中的所有键值对数据。口SAVE 命令由服务器进程直接执行保存操作，所以该命令会阻塞服务器。口BGSAVE令由子进程执行保存操作，所以该命令不会阻塞服务器。
-<br><br>服务器状态中会保存所有用save选项设置的保存条件，当任意-一个保存条件被满足时，服务器会自动执行BGSAVE命令。
-<br><br>RDB文件是一个经过压缩的二进制文件，由多个部分组成。
-<br><br>对于不同类型的键值对，RDB文件会使用不同的方式来保存它们。
+<br><br>1.  RDB文件用于保存和还原Redis服务器所有数据库中的所有键值对数据。口SAVE 命令由服务器进程直接执行保存操作，所以该命令会阻塞服务器。
+<br><br>2.  `BGSAVE`令由子进程执行保存操作，所以该命令不会阻塞服务器。
+<br><br>3.  服务器状态中会保存所有用save选项设置的保存条件，当任意-一个保存条件被满足时，服务器会自动执行`BGSAVE`命令。
+<br><br>4.  RDB文件是一个经过压缩的二进制文件，由多个部分组成。
+<br><br>5.  对于不同类型的键值对，RDB文件会使用不同的方式来保存它们。
 
 <br><br>AOF持久化的效率和安全性
-<br><br>服务器配置appendfsync选项的值直接决定AOF持久化功能的效率和安全性。当appendfsync的值为always时，服务器在每个事件循环都要将aof_buf 缓冲区中的所有内容写入到AOF文件,并且同步AOF文件,
-<br><br>所以always的效率是appendfsync选项三个值当中最慢的一个，但从安全性来说，always 也是最安全的，因为即使出现故障停机, AOF持久化也只会丢失一个事件循环中所产生的命令数据。
-<br><br>当appendfsync的值为everysec时，服务器在每个事件循环都要将aof_buf缓冲区中的所有内容写入到AOF文件，并且每隔一秒就要在子线程中对AOF文件进行一次同步。从效率上来讲，everysec 模式足够快，并且就算出现故障停机,数据库也只丢失一秒钟的命令数据。
-<br><br>当appendfsync的值为no时，服务器在每个事件循环都要将aof_ buf 缓冲区中的所有内容写入到AOF文件，至于何时对AOF文件进行同步，则由操作系统控制。 
+<br><br>服务器配置`appendfsync`选项的值直接决定AOF持久化功能的效率和安全性。当`appendfsync`的值为always时，服务器在每个事件循环都要将aof_buf 缓冲区中的所有内容写入到AOF文件,
+并且同步AOF文件,
+<br><br>所以always的效率是`appendfsync`选项三个值当中最慢的一个，但从安全性来说，always 也是最安全的，因为即使出现故障停机, AOF持久化也只会丢失一个事件循环中所产生的命令数据。
+<br><br>当`appendfsync`的值为`everysec`时，服务器在每个事件循环都要将aof_buf缓冲区中的所有内容写入到AOF文件，并且每隔一秒就要在子线程中对AOF文件进行一次同步。从效率上来讲，`everysec` 模式足够快，并且就算出现故障停机,数据库也只丢失一秒钟的命令数据。
+<br><br>当`appendfsync`的值为no时，服务器在每个事件循环都要将aof_ buf 缓冲区中的所有内容写入到AOF文件，至于何时对AOF文件进行同步，则由操作系统控制。 
 <br><br>因为处于no模式下的flushAppendOnlyFile调用无须执行同步操作，所以该模式下的AOF文件写入速度总是最快的， 
-不过因为这种模式会在系统缓存中积累一段时间的写入数据，所以该模式的单次同步时长通常是三种模式中时间最长的。从平摊操作的角度来看， no模式和everysec模式的效率类似，当出现故障停机时， 
+不过因为这种模式会在系统缓存中积累一段时间的写入数据，所以该模式的单次同步时长通常是三种模式中时间最长的。从平摊操作的角度来看， no模式和`everysec`模式的效率类似，当出现故障停机时， 
 使用no模式的服务哭将丢失上次同步AOF文件之后的所有写命今数据。
 <br><br>这也就是说，  在子进程执行AOF重写期间，服务器进程需要执行以下三个工作:
 <br><br>1.  执行客户端发来的命令。
@@ -610,10 +622,10 @@ lastsave属性是一个UNIX时间戳，记录了服务器.上一次成功执行S
 <br><br>重点
 <br><br>1.  AOF文件通过保存所有修改数据库的写命令请求来记录服务器的数据库状态。口AOF文件中的所有命令都以Redis命令请求协议的格式保存。
 <br><br>2.  命令请求会先保存到AOF缓冲区里面，之后再定期写入并同步到AOF文件。
-<br><br>3.  appendfsync 选项的不同值对AOF持久化功能的安全性以及Redis服务器的性能有很大的影响。
+<br><br>3.  `appendfsync` 选项的不同值对AOF持久化功能的安全性以及Redis服务器的性能有很大的影响。
 <br><br>4.  服务器只要载人并重新执行保存在AOF文件中的命令，就可以还原数据库本来的状态。口AOF重写可以产生一个新的AOF文件，这个新的AOF文件和原有的AOF文件所保存的数据库状态一样，但体积更小。
 <br><br>5.  AOF重写是-一个有歧义的名字，该功能是通过读取数据库中的键值对来实现的，程序无须对现有AOF文件进行任何读人、分析或者写人操作。
-<br><br>6.  在执行BGREWRITEAOF命令时，  Redis服务器会维护-个AOF重写缓冲区，该缓冲区会在子进程创建新AOF文件期间，记录服务器执行的所有写命令。 
+<br><br>6.  在执行`BGREWRITEAOF`命令时，  Redis服务器会维护-个AOF重写缓冲区，该缓冲区会在子进程创建新AOF文件期间，记录服务器执行的所有写命令。 
 <br><br>当子进程完成创建新AOF文件的工作之后，服务器会将重写缓冲区中的所有内容追加到新AOF文件的末尾， 使得新旧两个AOF文件所保存的数据库状态一致。 
 <br><br>最后，服务器用新的AOF文件替换旧的AOF文件，以此来完成AOF文件重写操作。
 
@@ -642,8 +654,8 @@ lastsave属性是一个UNIX时间戳，记录了服务器.上一次成功执行S
 <br><br>3.  timeProc: 时间事件处理器，-个函数。当时间事件到达时，服务器就会调用相应的处理器来处理事件。
 
 <br><br>一个时间事件是定时事件还是周期性事件取决于时间事件处理器的返回值:
-<br><br>1.  如果事件处理器返回ae.h/AE_ NOMORE,那么这个事件为定时事件:该事件在达到一次之后就会被删除，之后不再到达。
-<br><br>2.  如果事件处理器返回一个非AE_NOMORE的整数值，那么这个事件为周期性时间:
+<br><br>1.  如果事件处理器返回`ae.h/AE_NOMORE`,那么这个事件为定时事件:该事件在达到一次之后就会被删除，之后不再到达。
+<br><br>2.  如果事件处理器返回一个非`AE_NOMORE`的整数值，那么这个事件为周期性时间:
 
 <br><br>当一个时间事件到达之后，服务器会根据事件处理器返回的值，对时间事件的when属性进行更新，让这个事件在一段时间之后再次到达，并以这种方式一直更新并运行下去。比如说，如果一个时间事件的处理器返回整数值30,
 那么服务器应该对这个时间事件进行更新，让这个事件在30毫秒之后再次到达。
@@ -700,11 +712,11 @@ KILL命令的目标、空转时间超时、输出缓冲区的大小超出限制�
 <br><br>3.  接收到RDB文件的从服务器需要载入主服务器发来的RDB文件，并且在载入期间，从服务器会因为阻塞而没办法处理命令请求。
 <br><br>因为SYNC命令是一个如此耗费资源的操作，所以Redis有必要保证在真正有需要时才执行SYNC命令。
 
-<br><br>为了解决旧版复制功能在处理断线重复制情况时的低效问题，Redis从2.8版本开始，使用PSYNC命令代替SYNC命令来执行复制时的同步操作。
-<br>PSYNC命令具有完整重同步( full resynchronization)和部分重同步( partial resynchronization)两种模式:
+<br><br>为了解决旧版复制功能在处理断线重复制情况时的低效问题，Redis从2.8版本开始，使用`PSYNC`命令代替SYNC命令来执行复制时的同步操作。
+<br>`PSYNC`命令具有完整重同步( full resynchronization)和部分重同步( partial resynchronization)两种模式:
 <br><br>1.  其中完整重同步用于处理初次复制情况:完整重同步的执行步骤和SYNC命令的执行步骤基本-样，它们都是通过让主服务器创建并发送RDB文件，以及向从服务器发送保存在缓冲区里面的写命令来进行同步。
 <br><br>2.  而部分重同步则用于处理断线后重复制情况:当从服务器在断线后重新连接主服务器时，如果条件允许,主服务器可以将主从服务器连接断开期间执行的写命令发送给从服务器，从服务器只要接收并执行这些写命令，就可以将数据库更新至主服务器当前所处的状态。
-<br><br>PSYNC命令的部分重同步模式解决了旧版复制功能在处理断线后重复制时出现的低效
+<br><br>`PSYNC`命令的部分重同步模式解决了旧版复制功能在处理断线后重复制时出现的低效
 
 <br><br>通过对比主从服务器的复制偏移量，程序可以很容易地知道主从服务器是否处于一致状态:
 <br><br>1.  如果主从服务器处于一致状态，那么主从服务器两者的偏移量总是相同的。相反，如果主从服务器两者的偏移量并不相同，那么说明主从服务器并未处于一致状态。
@@ -736,13 +748,13 @@ KILL命令的目标、空转时间超时、输出缓冲区的大小超出限制�
 <br><br>8.  集群中的节点通过发送和接收消息来进行通信，常见的消息包括MEET、PING、PONG、PUBLISH、FAIL五种。
 
 ## 发布与订阅
-<br>Redis的发布与订阅功能由PUBLISH、SUBSCRIBE、 PSUBSCRIBE等命令组成。
+<br>Redis的发布与订阅功能由PUBLISH、SUBSCRIBE、 `PSUBSCRIBE`等命令组成。
 <br>通过执行SUBSCRIBE命令，客户端可以订阅一个或多个频道，从而成为这些频道的订阅者( subscriber):每当有其他客户端向被订阅的频道发送消息( message)时，频道的所有订阅者都会收到这条消息。
 
-<br><br>1.  服务器状态在pubsub_channels字典保存了所有频道的订阅关系: SUBSCRIBE 命令负责将客户端和被订阅的频道关联到这个字典里面，而UNSUBSCRIBE命令则负责解除客户端和被退订频道之间的关联。
-<br><br>2.  服务器状态在pubsub_ patterns链表保存了所有模式的订阅关系: PSUBSCRIBE命令负责将客户端和被订阅的模式记录到这个链表中，而PUNSUBSCRIBE命令则负责移除客户端和被退订模式在链表中的记录。
-<br><br>3.  PUBLISH命令通过访问pubsub_ channels 字典来向频道的所有订阅者发送消息，通过访问pubsub_ patterns链表来向所有匹配频道的模式的订阅者发送消息。
-<br><br>4.  0PUBSUB命令的三个子命令都是通过读取pubsub_channels字典和pubsub_patterns链表中的信息来实现的。
+<br><br>1.  服务器状态在`pubsub_channels`字典保存了所有频道的订阅关系: SUBSCRIBE 命令负责将客户端和被订阅的频道关联到这个字典里面，而UNSUBSCRIBE命令则负责解除客户端和被退订频道之间的关联。
+<br><br>2.  服务器状态在`pubsub_ patterns`链表保存了所有模式的订阅关系: `PSUBSCRIBE`命令负责将客户端和被订阅的模式记录到这个链表中，而`PUNSUBSCRIBE`命令则负责移除客户端和被退订模式在链表中的记录。
+<br><br>3.  PUBLISH命令通过访问`pubsub_channels` 字典来向频道的所有订阅者发送消息，通过访问`pubsub_patterns`链表来向所有匹配频道的模式的订阅者发送消息。
+<br><br>4.  `0PUBSUB`命令的三个子命令都是通过读取`pubsub_channels`字典和`pubsub_patterns`链表中的信息来实现的。
 
 ## 事务
 <br>Redis通过MULTI、EXEC、WATCH等命令来实现事务( transaction)功能。事务提供了一种将多个命令请求打包，然后一次性、
@@ -754,20 +766,20 @@ KILL命令的目标、空转时间超时、输出缓冲区的大小超出限制�
 <br><br>3.  事务在执行过程中不会被中断，当事务队列中的所有命令都被执行完毕之后，事务才会结束。
 <br><br>4.  带有WATCH命令的事务会将客户端和被监视的键在数据库的watched_keys字典中进行关联，当键被修改时,程序会将所有监视被修改键的客户端的REDIS_DIRTY_CAS 标志打开。
 <br><br>5.  只有在客户端的REDIS_DIRTY_CAS 标志未被打开时,服务器才会执行客户端提交的事务，否则的话，服务器将拒绝执行客户端提交的事务。
-<br><br>6.  Redis 的事务总是具有ACID中的原子性、一致性和隔离性，当服务器运行在AOF持久化模式下，并且appendfsync选项的值为always时，事务也具有耐久性。
+<br><br>6.  Redis 的事务总是具有ACID中的原子性、一致性和隔离性，当服务器运行在AOF持久化模式下，并且`appendfsync`选项的值为always时，事务也具有耐久性。
 
 ## Lua脚本
 <br>1.  Redis服务器在启动时，会对内嵌的Lua环境执行一系列修改操作，从而确保内嵌的Lua环境可以满足Redis在功能性、安全性等方面的需要。
-<br><br>2.  Redis服务器专门使用-一个伪客户端来执行Lua脚本中包含的Redis命令。
+<br><br>2.  Redis服务器专门使用一个伪客户端来执行Lua脚本中包含的Redis命令。
 <br><br>3.  Redis使用脚本字典来保存所有被EVAL命令执行过，或者被SCRIPT LOAD命令载入过的Lua脚本，这些脚本可以用于实现SCRIPT EXISTS命令，以及实现脚本复制功能。
 <br><br>4.  EVAL命令为客户端输人的脚本在Lua环境中定义一个函数，并通过调用这个函数来执行脚本。
-<br><br>5.  EVALSHA命令通过直接调用Lua环境中已定义的函数来执行脚本。
+<br><br>5.  `EVALSHA`命令通过直接调用Lua环境中已定义的函数来执行脚本。
 <br><br>6.  SCRIPT FLUSH命令会清空服务器lua_ scripts 字典中保存的脚本，并重置Lua环境。
 <br><br>7.  SCRIPT EXISTS命令接受一个或多个SHA1校验和为参数，并通过检查lua_scripts字典来确认校验和对应的脚本是否存在。
 <br><br>8.  SCRIPT LOAD命令接受-一个Lua脚本为参数，为该脚本在Lua环境中创建函数,并将脚本保存到lua_scripts 字典中。
-<br><br>9.  服务器在执行脚本之前，会为Lua环境设置一个超时处理钩子，当脚本出现超时运行情况时，客户端可以通过向服务器发送SCRIPT KILL命令来让钩子停止正在执行的脚本，或者发送SHUTDOWN nosave命令来让钩子关闭整个服务器。
+<br><br>9.  服务器在执行脚本之前，会为Lua环境设置一个超时处理钩子，当脚本出现超时运行情况时，客户端可以通过向服务器发送SCRIPT KILL命令来让钩子停止正在执行的脚本，或者发送`SHUTDOWN nosave`命令来让钩子关闭整个服务器。
 <br><br>10.  主服务器复制EVAL、SCRIPT FLUSH、SCRIPT LOAD三个命令的方法和复制普通Redis命令-一样，只要将相同的命令传播给从服务器就可以了。
-<br><br>11.  主服务器在复制EVALSHA命令时，必须确保所有从服务器都已经载人了EVALSHA命令指定的SHA1校验和所对应的Lua脚本，如果不能确保这一点的话，主服务器会将EVALSHA命令转换成等效的EVAL命令，并通过传播EVAL命令来获得相同的
+<br><br>11.  主服务器在复制`EVALSHA`命令时，必须确保所有从服务器都已经载人了`EVALSHA`命令指定的SHA1校验和所对应的Lua脚本，如果不能确保这一点的话，主服务器会将`EVALSHA`命令转换成等效的EVAL命令，并通过传播EVAL命令来获得相同的
 
 ## 排序
 <br>1.  SORT命令通过将被排序键包含的元素载人到数组里面，然后对数组进行排序来完成对键进行排序的工作。
@@ -782,20 +794,20 @@ KILL命令的目标、空转时间超时、输出缓冲区的大小超出限制�
 
 ## 二进制数组
 <br>1.  Redis使用SDS来保存位数组。
-<br><br>2.  SDS使用逆序来保存位数组，这种保存顺序简化了SETBIT命令的实现，使得SETBIT命令可以在不移动现有二进制位的情况下，对位数组进行空间扩展。
-<br><br>3.  BITCOUNT命令使用了查表算法和variable-precision SWAR算法来优化命令的执行效率。
-<br><br>4.  BITOP命令的所有操作都使用C语言内置的位操作来实现。
+<br><br>2.  SDS使用逆序来保存位数组，这种保存顺序简化了`SETBIT`命令的实现，使得`SETBIT`命令可以在不移动现有二进制位的情况下，对位数组进行空间扩展。
+<br><br>3.  BITCOUNT命令使用了查表算法和variable-precision `SWAR`算法来优化命令的执行效率。
+<br><br>4.  `BITOP`命令的所有操作都使用C语言内置的位操作来实现。
 
 ## 慢查询日志
 <br>1.  Redis 的慢查询日志功能用于记录执行时间超过指定时长的命令。
-<br><br>2.  Redis服务器将所有的慢查询8志保存在服务器状态的slowlog链表中，每个链表节点都包含一个 slowlogEntry结构，每个slowlogEntry结构代表一条慢查询日志。
-<br><br>3.  打印和删除慢查询日志可以通过遍历slowlog链表来完成。
-<br><br>4.  slowlog链表的长度就是服务器所保存慢查询日志的数量。
-<br><br>5.  新的慢查询日志会被添加到slowlog链表的表头，如果日志的数量超过slowlog-max-len选项的值，那么多出来的日志会被删除。
+<br><br>2.  Redis服务器将所有的慢查询日志保存在服务器状态的`slowlog`链表中，每个链表节点都包含一个 `slowlogEntry`结构，每个`slowlogEntry`结构代表一条慢查询日志。
+<br><br>3.  打印和删除慢查询日志可以通过遍历`slowlog`链表来完成。
+<br><br>4.  `slowlog`链表的长度就是服务器所保存慢查询日志的数量。
+<br><br>5.  新的慢查询日志会被添加到`slowlog`链表的表头，如果日志的数量超过`slowlog-max-len`选项的值，那么多出来的日志会被删除。
 
 ## 监视器
 <br>1.  客户端可以通过执行MONITOR命令，将客户端转换成监视器，接收并打印服务器处理的每个命令请求的相关信息。
-<br><br>2.  当一个客户端从普通客户端变为监视器时，该客户端的REDIS_ MONITOR 标识会被打开。
+<br><br>2.  当一个客户端从普通客户端变为监视器时，该客户端的REDIS_MONITOR 标识会被打开。
 <br><br>3.  服务器将所有监视器都记录在monitors链表中。
 <br><br>4.  每次处理命令请求时，服务器都会遍历monitors链表，将相关信息发送给监视器。
 
