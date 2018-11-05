@@ -348,7 +348,7 @@ delete from lock where methodName='';
 <br><br>4)二进制安全。
 <br><br>5)兼容部分C字符串函数。
 
-|C字符串和SDS之间的区别|
+**C字符串和SDS之间的区别**
 |C字符串|SDS|
 |:--:|:--:|
 |获取字符串长度的复杂度为O(M) |  获取字符串长度的复杂度为0(1) (SDS在len属性中记录了SDS本身的长度)|
