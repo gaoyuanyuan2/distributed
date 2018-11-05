@@ -348,7 +348,6 @@ delete from lock where methodName='';
 <br><br>4)二进制安全。
 <br><br>5)兼容部分C字符串函数。
 
-<br>
 |C字符串和SDS之间的区别|
 |C字符串|SDS|
 |:--:|:--:|
