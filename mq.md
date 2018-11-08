@@ -58,6 +58,7 @@ JMSProvider会缓存每个生产者当前生产的所有消息，直到commit或
 <br>挂载网络磁盘，将数据文件保存到指定磁盘上即可完成master/slave模式
 #### 8.源码 
 <br>1) 责任链模式
+
 ### 2、RabbitMQ
 <br><br>
 ![](img/14.png)
@@ -84,16 +85,19 @@ headers匹配AMQP消息的header而不是路由键，headers 交换器和direct�
 <br>虚拟主机是共享相同的身份认证和加密环境的独立服务器域。每个vhost本质上就是一一个 mini版的RabbitMQ服务器，拥有自己的队列、交换器、绑定和权限机制。
 <br><br>11) vhost 是AMQP概念的基础，必须在连接时指定，RabbitMQ默认的vhost是/。
 <br><br>12) Broker 表示消息队列服务器实体
-<br><br>2. Exchange Type有三种：fanout、direct、topic。
+
+<br>2. Exchange Type有三种：fanout、direct、topic。
 <br><br>1) fanout:把所有发送到该Exchange的消息投递到所有与它绑定的队列中。很像子网广播，每台子网内的主机都获得了一份复制的消息。fanout 类型转发消息是最快的。
 <br><br>2) direct:把消息投递到那些binding key与routing key完全匹配的队列中。它是完全匹配、单播的模式。
 durable 持久化
 <br><br>3) topic:将消息路由到binding key与routing key模式匹配的队列中。
-<br><br>3.  交换器和队列的关系
+
+<br>3.  交换器和队列的关系
 <br>交换器是通过路由键和队列绑定在一起的，如果消息拥有的路由键跟队列和交换器的路由键匹配，那么消息就会被路由到该绑定的队列中。
 也就是说，  消息到队列的过程中，消息首先会经过交换器，接下来交换器在通过路由键匹配分发消息到具体的队列中。
 路由键可以理解为匹配的规则。
-<br><br>4.  RabbitMQ为什么需要信道?为什么不是TCP直接通信?
+
+<br>4.  RabbitMQ为什么需要信道?为什么不是TCP直接通信?
 <br><br>1)  TCP的创建和销毁开销特别大。创建需要3次握手，  销毁需要4次分手。
 <br><br>2)  如果不用信道，  那应用程序就会以TCP链接Rabbit,高峰时每秒成千，上万条链接会造成资源巨大的浪费，而且操作系统每秒处理TCP链接数也是有限制的，必定造成性能瓶颈。
 <br><br>3)  信道的原理是一条线程一条通道，多条线程多条通道同用一条TCP链接。一-条TCP链接可以容纳无限的信道，即使每秒成千，上万的请求也不会成为性能的瓶颈。
@@ -108,7 +112,15 @@ durable 持久化
 <br>4)  消息的ACK确认机制默认是打开的。
 <br><br>3. ACK机制的开发注意事项
 <br>如果忘记了ACK,那么后果很严重。当Consumer退出时，Message会一直重新分发。然后Rabbi tMQ会占用越来越多的内存，由于RabbitMQ会长时间运行，因此这个“内存泄漏”是致命的。
+
+<br>5.  RabbitMQ具有以下优势：
+<br><br>可靠性：除了使用Erlang构建外，RabbitMQ还可以配置为持久化消息，以便在服务器崩溃时可以恢复所有消息。此外，生产者和消费者可以确认正确接收/传递消息。
+<br><br>定制路由： RabbitMQ支持通过交换使用的不同路由机制，它可以通过直接路由，选择性消息传递提供点对点通信，类似于JMS消息选择器，这样只有携带某个“路由密钥”的事件才能获得送到队列。
+<br><br>内置支持群集和高可用性： RabbitMQ的许多实例可以在单个群集下进行逻辑分组，以便在崩溃的情况下提供冗余并最终实现高可用性。
+<br><br>脚本和管理： RabbitMQ提供了一个基于Web的控制台，用于监视和管理。此外，它还提供了一个命令行界面，可通过脚本自动执行其管理。
+<br><br>多功能性：针对不同平台/技术的客户众多。
 ![](img/15.png)
+
 ### 3、Kafka
 #### 1. zookeeper上注册的节点信息
 <br>cluster, controller, controller_epoch, brokers, zookeeper, admin, isr_change_notification, consumers, latest_producer_id_block, config
