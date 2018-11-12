@@ -523,8 +523,7 @@ DDD是基于底层域模型设计软件。模型充当UbiquitousLanguage，以�
 ### W
 <br>SWeb服务：可以使用通过HTTP访问并在远程系统上执行的API以标准化方式通过Web访问的功能。
 
-
-
+[理解分布式系统的8个谬误](https://dzone.com/articles/understanding-the-8-fallacies-of-distributed-syste)
 
 
 
