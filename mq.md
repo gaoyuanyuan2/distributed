@@ -121,6 +121,7 @@ durable 持久化
 <br><br>多功能性：针对不同平台/技术的客户众多。
 ![](img/15.png)
 
+<br>使用RabbitMQ，您可以避免服务之间的直接HTTP调用，并消除核心微服务的紧密耦合。这将帮助您在更高级别扩展微服务，并在微服务之间添加故障转移机制。
 ### 3、Kafka
 #### 1. zookeeper上注册的节点信息
 <br>cluster, controller, controller_epoch, brokers, zookeeper, admin, isr_change_notification, consumers, latest_producer_id_block, config
