@@ -42,8 +42,8 @@
 <br><br>SpringBoot并没有重复制造轮子，它只是将目前各家公司开发的比较成熟、经得起实际考验的服务框架组合起来，通过
 <br>SpringBoot风格进行再封装屏蔽掉了复杂的配置和实现原理，最终给开发者留出了一套简单易懂、易部署和易维护的分布式系统开发工具包
 <br><br>SpringBoot专注于快速方便的开发单个个体微服务。
-SpringCloud是关注全局的微服务协调整理治理框架，它将SpringBoot开发的一 个个单体微服务整合并管理起来,
-为各个微服务之间提供，配置管理、服务发现、断路器、  路由、微代理、事件总线、全局锁、决策竞选、分布式会话等等集成服务
+SpringCloud是关注全局的微服务协调整理治理框架，它将SpringBoot开发的一个个单体微服务整合并管理起来,
+为各个微服务之间提供，配置管理、服务发现、断路器、 路由、微代理、事件总线、全局锁、决策竞选、分布式会话等等集成服务
 <br><br>SpringBoot可以离开SpringCloud独立使用开发项目，但是SpringCloud离不开SpringBoot, 属于依赖的关系
 <br>SpringBoot专注于快速、方便的开发单个微服务个体，SpringCloud关注全局的服务治理框架。
 <br><br>5.最大区别: SpringCloud抛弃 了Dubbo的RPC通信，采用的是基于HTTP的REST方式。
@@ -716,6 +716,12 @@ RequestContext是任何Servlet或者Filter都能处理，  那么为了防止不
 <br>相当于兜底操作，就是防止ThreadLocal没有被remove掉。
 <br><br>6. ThreadLocal对应了一个Thread,那么是不是意味着者Thread处理完了，那么ThreadLocal也随之GC?
 <br>所有Servlet均采用线程池，因此，不清空的话，可能会出现意想不到的情况。除非，每次都异常!(这种情况也要依赖于线程池的实现)
+
+### 动态路由
+<br>动态路由需要达到可持久化配置，动态刷新的效果。如架构图所示，不仅要能满足从spring的配置文件properties加载路由信息，
+还需要从数据库加载我们的配置。另外一点是，路由信息在容器启动时就已经加载进入了内存，我们希望配置完成后，实施发布，动态刷新内存中的路由信息，达到不停机维护路由信息的效果。
+
+[动态路由](https://dzone.com/articles/persistent-and-fault-tolerant-dynamic-routes-using)
 ## Spring Cloud Stream
 ### Kafka绑定实现
 <br>1.  用途
