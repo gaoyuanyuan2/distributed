@@ -1,6 +1,8 @@
 ## 性能优化
 #### QPS: 每秒钟处理完请求的次数
 #### TPS：每秒钟处理完的事务次数
+[Java内存和CPU监视工具和技术](https://dzone.com/articles/java-memory-and-cpu-monitoring-tools-and-technique)
+[内存泄漏](https://dzone.com/articles/how-memory-leaks-happen-in-java-apps)
 ### 1、CPU
 <br>1.  top  查看进程
 <br>按1 可以看cpu信息
