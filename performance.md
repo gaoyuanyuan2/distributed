@@ -19,6 +19,7 @@ http://man7.org/linux/man-pages/man1/top.1.html
 <br>jstack 38983 > a.txt （线程tack）
 <br>printf "%x \n " 12455线程号转16进制  查询线程号即可
 <br>grep -A 5 12af a.txt
+<br>简写：jstack 38983 | grep '12af' -C5 --color
 
 <br><br>4.  vmstat
 <br>vmstat 1 每秒看cpu
