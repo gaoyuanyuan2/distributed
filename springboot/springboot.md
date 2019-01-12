@@ -6,6 +6,8 @@
 <br>Spring Boot运行方式:分别介绍IDEA启动、命令行启动以Maven插件启动方式
 <br>Spring Boot简单应用:使用Spring Web MVC以及Spring Web Flux技术,编程简单应用。理解Spring Boot三大特性:自动装配、嵌入式容器、为生产准备的特性
 <br><br>三种嵌入式容器 实现通用接口 不同环境通过不同classpath读取不同的类 spring自动装配 的条件装配 如果有就加载 一直查找
+## 更多SpringBoot整合示例
+https://github.com/spring-projects/spring-boot/tree/master/spring-boot-samples
 ## Spring Boot实际使用场景
 <br>在Spring Boot 2.0.0，如果应用采用Spring Web MVC作为Web服务，默认情况下， 使用嵌入式Tomcat。
 <br>如果采用Spring Web Flux，默认情况下，使用Netty WebServer (嵌入式)
@@ -556,6 +558,16 @@ public class PropertiesPersonHttpMessageConverter extends AbstractHttpMessageCon
 <br>一ApplicationStartingEvent
 <br>一ApplicationReadyEvent
 <br>一ApplicationFailedEvent
+<br><br>可以通过`SpringApplication.addListeners(…​)`或`SpringApplicationBuilder.listeners(…​)` 方法注册它们 。
+如果希望自动注册这些侦听器而不管应用程序的创建方式如何，可以将`META-INF/spring.factories`
+文件添加到项目中并使用`org.springframework.context.ApplicationListener` 键引用侦听器。
+`org.springframework.context.ApplicationListener = com.example.project.MyListener`
+<br><br>应用程序运行时，应按以下顺序发送应用程序事件：（Spring Boot使用事件来处理各种任务）
+`ApplicationStartingEvent`在运行开始时发送，但在除了监听器和初始化程序的注册之外的任何处理之前发送。
+`ApplicationEnvironmentPreparedEvent`当被发送`Environment`到在上下文已知被使用，但是在创建上下文之前。
+`ApplicationPreparedEvent`被发送刷新开始之前，但经过bean定义已经被加载。
+`ApplicationReadyEvent`在刷新之后发送一个并且已经处理了任何相关的回调以指示应用程序已准备好服务请求。
+`ApplicationFailedEvent`如果在启动时异常发送
 <br><br>Spring事件/监听
 <br>ApplicationEvent :应用事件
 <br>ApplicationListener:应用监听器
@@ -994,7 +1006,10 @@ public class HelloServiceAutoConfiguration {
 }
 
 ```
+## Spring Boot Admin
+[官方文档](http://codecentric.github.io/spring-boot-admin/current/#set-up-admin-server)
+<br><br>应用程序向我们的Spring Boot Admin Client注册（通过HTTP）或使用SpringCloud（例如Eureka，Consul）发现。UI只是Spring Boot 
+Actuator端点上的AngularJs应用程序
+<br><br>Spring Boot管理服务器可以使用Spring Clouds DiscoveryClient来发现应用程序。优点是客户不必包括spring-boot-admin-starter-client。
+您只需要向DiscoveryClient管理服务器添加一个实现 其他一切都由AutoConfiguration完成
 
-# 更多SpringBoot整合示例
-
-https://github.com/spring-projects/spring-boot/tree/master/spring-boot-samples

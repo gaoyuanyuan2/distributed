@@ -1,5 +1,6 @@
 ## MQ
 #### 异步消息、解耦、流量削峰
+使用MQ，可以避免服务之间的直接HTTP调用，并消除核心微服务的紧密耦合。这将帮助您在更高级别扩展微服务，并在微服务之间添加故障转移机制。
 ### 1、ActiveMQ
 #### 1. 什么是MOM
 <br>面向消息的中间件，使用消息传送提供者来协调消息传输操作。 MOM需要提供API和管理工具。 客户端调用api。 把消息发送到消息传送提供者指定的目的地
@@ -43,7 +44,7 @@ JMSProvider会缓存每个生产者当前生产的所有消息，直到commit或
 <br>client端和broker端的通讯协议
 <br>TCP、UDP 、NIO、SSL、Http（s）、vm
 #### 5. ActiveMQ持久化存储
- <br><br>![持久化存储](https://github.com/gaoyuanyuan2/distributed/blob/master/img/6.png) 
+ <br><br>![持久化存储](img/6.png) 
 #### 6. 丢失的消息
 <br>一些consumer连接到broker1、消费broker2上的消息。消息先被broker1从broker2消费掉，然后转发给这些consumers。假设，
 转发消息的时候broker1重启了，这些consumers发现brokers1连接失败，通过failover连接到broker2.
@@ -58,9 +59,10 @@ JMSProvider会缓存每个生产者当前生产的所有消息，直到commit或
 <br>挂载网络磁盘，将数据文件保存到指定磁盘上即可完成master/slave模式
 #### 8.源码 
 <br>1) 责任链模式
+
 ### 2、RabbitMQ
 <br><br>
-![](https://github.com/gaoyuanyuan2/distributed/blob/master/img/14.png)
+![](img/14.png)
 <br><br>1. 概念
 <br><br>1) Message 是不具名的，它由消息头和消息体组成。消息体是不透明的，页消息头则由一系列的可选属性组
 包括routing-key。(路由键、priority (相对于其他消息的优先权)、delivery-mode (指出该消意可能需要持久性存储)等。
@@ -73,19 +75,54 @@ headers匹配AMQP消息的header而不是路由键，headers 交换器和direct�
 <br><br>5) Binding 绑定，用于消息队列和交换器之间的关联，一个绑定就是基于路由键将交换器和消息队列连接起来的路由规则，所以可以将交换器理解成一个
 有绑定构成的路由表。
 <br>Exchange和Queue的绑定可以是多对多的关系。
-<br><br>6) Connection 网络连接，比如一个TCP连接。
-<br><br>7) Channel 信道 双向数据流通道
-<br><br>8) Consumer消息的消费者，表示一个从消息队列中取得消息的客户端应用程序。
-<br><br>9) Virtual Host 虚拟主机，表示一批交换器、消息队列和相关对象。
+<br><br>6) Routing-key
+<br>路由键。  RabbitMQ决定消息该投递到哪个队列的规则。队列通过路由键绑定到交换器。
+<br>消息发送到MQ服务器时，消息将拥有一个路由键，即便是空的，RabbitMQ也会将其和绑定使用的路由键进行匹配。
+<br>如果相匹配，消息将会投递到该队列。如果不匹配，消息将会进入黑洞。
+<br><br>7) Connection 网络连接，比如一个TCP连接。
+<br><br>8) Channel 信道 双向数据流通道
+<br><br>9) Consumer消息的消费者，表示一个从消息队列中取得消息的客户端应用程序。
+<br><br>10) Virtual Host 虚拟主机，表示一批交换器、消息队列和相关对象。
 <br>虚拟主机是共享相同的身份认证和加密环境的独立服务器域。每个vhost本质上就是一一个 mini版的RabbitMQ服务器，拥有自己的队列、交换器、绑定和权限机制。
-<br><br>10) vhost 是AMQP概念的基础，必须在连接时指定，RabbitMQ默认的vhost是/。
-<br><br>11) Broker 表示消息队列服务器实体
-<br><br>2. Exchange Type有三种：fanout、direct、topic。
+<br><br>11) vhost 是AMQP概念的基础，必须在连接时指定，RabbitMQ默认的vhost是/。
+<br><br>12) Broker 表示消息队列服务器实体
+
+<br>2. Exchange Type有三种：fanout、direct、topic。
 <br><br>1) fanout:把所有发送到该Exchange的消息投递到所有与它绑定的队列中。很像子网广播，每台子网内的主机都获得了一份复制的消息。fanout 类型转发消息是最快的。
 <br><br>2) direct:把消息投递到那些binding key与routing key完全匹配的队列中。它是完全匹配、单播的模式。
 durable 持久化
 <br><br>3) topic:将消息路由到binding key与routing key模式匹配的队列中。
-![](https://github.com/gaoyuanyuan2/distributed/blob/master/img/15.png)
+
+<br>3.  交换器和队列的关系
+<br>交换器是通过路由键和队列绑定在一起的，如果消息拥有的路由键跟队列和交换器的路由键匹配，那么消息就会被路由到该绑定的队列中。
+也就是说，  消息到队列的过程中，消息首先会经过交换器，接下来交换器在通过路由键匹配分发消息到具体的队列中。
+路由键可以理解为匹配的规则。
+
+<br>4.  RabbitMQ为什么需要信道?为什么不是TCP直接通信?
+<br><br>1)  TCP的创建和销毁开销特别大。创建需要3次握手，  销毁需要4次分手。
+<br><br>2)  如果不用信道，  那应用程序就会以TCP链接Rabbit,高峰时每秒成千，上万条链接会造成资源巨大的浪费，而且操作系统每秒处理TCP链接数也是有限制的，必定造成性能瓶颈。
+<br><br>3)  信道的原理是一条线程一条通道，多条线程多条通道同用一条TCP链接。一-条TCP链接可以容纳无限的信道，即使每秒成千，上万的请求也不会成为性能的瓶颈。
+<br><br>5.  RabbitMQ中的消息确认ACK机制
+<br><br>1. 什么是消息确认ACK?
+<br>如果在处理消息的过程中，消费者的服务器在处理消息时出现异常，那可能这条正在处理的消息就没有完成消息消费，数据就会丢失。为了确保数据不会丢失，lRabbi tMQ支持消息确认-ACK.
+<br><br>2. ACK的消息确认机制
+<br>ACK机制是消费者从RabbitMQ收到消息并处理完成后，反馈给Rabbi tMQ，RabbitMQ收到反馈后才将此消息从队列中删除。
+<br>1)  如果一一个消费者在处理消息出现了网络不稳定、服务器异常等现象，那么就不会有ACK反馈，Rabbi tMQ会认为这个消息没有正常消费，会将消息重新放入队列中。
+<br>2)  如果在集群的情况下: Rabbi tMQ会立即将这个消息推送给这个在线的其他消费者。这种机制保证了在消费者服务端故障的时候，不丢失任何消息和任务。
+<br>3)  消息永远不会从Rabbi tMQ中删除:只有当消费者正确发送ACK反馈，Rabbi tMQ确认收到后，消息才会从RabbitMQ服务器的数据中删除。
+<br>4)  消息的ACK确认机制默认是打开的。
+<br><br>3. ACK机制的开发注意事项
+<br>如果忘记了ACK,那么后果很严重。当Consumer退出时，Message会一直重新分发。然后Rabbi tMQ会占用越来越多的内存，由于RabbitMQ会长时间运行，因此这个“内存泄漏”是致命的。
+
+<br>5.  RabbitMQ具有以下优势：
+<br><br>可靠性：除了使用Erlang构建外，RabbitMQ还可以配置为持久化消息，以便在服务器崩溃时可以恢复所有消息。此外，生产者和消费者可以确认正确接收/传递消息。
+<br><br>定制路由： RabbitMQ支持通过交换使用的不同路由机制，它可以通过直接路由，选择性消息传递提供点对点通信，类似于JMS消息选择器，这样只有携带某个“路由密钥”的事件才能获得送到队列。
+<br><br>内置支持群集和高可用性： RabbitMQ的许多实例可以在单个群集下进行逻辑分组，以便在崩溃的情况下提供冗余并最终实现高可用性。
+<br><br>脚本和管理： RabbitMQ提供了一个基于Web的控制台，用于监视和管理。此外，它还提供了一个命令行界面，可通过脚本自动执行其管理。
+<br><br>多功能性：针对不同平台/技术的客户众多。
+![](img/15.png)
+
+<br>使用RabbitMQ，您可以避免服务之间的直接HTTP调用，并消除核心微服务的紧密耦合。这将帮助您在更高级别扩展微服务，并在微服务之间添加故障转移机制。
 ### 3、Kafka
 #### 1. zookeeper上注册的节点信息
 <br>cluster, controller, controller_epoch, brokers, zookeeper, admin, isr_change_notification, consumers, latest_producer_id_block, config
@@ -95,7 +132,7 @@ durable 持久化
 <br>Topic是用于存储消息的逻辑概念，可以看作一个消息集合。每个topic可以有多个生产者向其推送消息，也可以有任意多个消费者消费其中的消息
 <br>每个topic可以划分多个分区（每个Topic至少有一个分区），同一topic下的不同分区包含的消息是不同的。每个消息在被添加到分区时，都会被分配一个offset（称之为偏移量），它是消息在此分区中的唯一编号，kafka通过offset保证消息在分区内的顺序，offset的顺序不跨分区，即kafka只保证在同一个分区内的消息是有序的；
 <br><br>
-![](https://github.com/gaoyuanyuan2/distributed/blob/master/img/10.png) 
+![](img/10.png) 
 <br><br>Partition是以文件的形式存储在文件系统中，存储在kafka-log目录下，命名规则是：<topic_name>-<partition_id>
 #### 4. kafka的高吞吐量的因素
 <br>1)	顺序写的方式存储数据 ；
@@ -110,9 +147,9 @@ batch.size每批次发送的数据大小
 <br><br> d. 操作系统将数据从socket缓冲区复制到网卡缓冲区，以便将数据经网络发出
 <br><br>通过“零拷贝”技术可以去掉这些没必要的数据复制操作，同时也会减少上下文切换次数
 <br><br>
-![](https://github.com/gaoyuanyuan2/distributed/blob/master/img/11.png)
+![](img/11.png)
 <br><br>
-![](https://github.com/gaoyuanyuan2/distributed/blob/master/img/9.png)
+![](img/9.png)
 #### 5. 日志保留策略
 <br>无论消费者是否已经消费了消息，kafka都会一直保存这些消息，但并不会像数据库那样长期保存。为了避免磁盘被占满，kafka会配置响应的保留策略（retentionpolicy），以实现周期性地删除陈旧的消息
 <br><br>1) kafka有两种“保留策略”：
@@ -121,7 +158,7 @@ batch.size每批次发送的数据大小
 <br><br>2) 日志压缩策略
 <br><br>在很多场景中，消息的key与value的值之间的对应关系是不断变化的，就像数据库中的数据会不断被修改一样，消费者只关心key对应的最新的value。我们可以开启日志压缩功能，kafka定期将相同key的消息进行合并，只保留最新的value值
 <br><br>
-![](https://github.com/gaoyuanyuan2/distributed/blob/master/img/12.png)
+![](img/12.png)
 #### 6. 消息可靠性机制
 <br>1). 消息发送可靠性
 <br><br>生产者发送消息到broker，有三种确认方式（request.required.acks）
@@ -170,7 +207,7 @@ batch.size每批次发送的数据大小
 <br>segment file组成：由2大部分组成，分别为index file和data file，此2个文件一一对应，成对出现，后缀".index"和“.log”分别表示为segment索引文件、数据文件.
 <br>segment文件命名规则：partion全局的第一个segment从0开始，后续每个segment文件名为上一个segment文件最后一条消息的offset值。数值最大为64位long大小，19位数字字符长度，没有数字用0填充
 <br><br>
-![](https://github.com/gaoyuanyuan2/distributed/blob/master/img/13.png)
+![](img/13.png)
 <br><br>
 2) 查找方式
 <br>以上图为例，读取offset=170418的消息，首先查找segment文件，其中00000000000000000000.index为最开始的文件，第二个文件为00000000000000170410.index（起始偏移为170410+1=170411），而第三个文件为00000000000000239430.index（起始偏移为239430+1=239431），所以这个offset=170418就落到了第二个文件之中。其他后续文件可以依次类推，以其实偏移量命名并排列这些文件，然后根据二分查找法就可以快速定位到具体文件位置。其次根据00000000000000170410.index文件中的[8,1325]定位到00000000000000170410.log文件中的1325的位置进行读取。
@@ -222,7 +259,7 @@ batch.size每批次发送的数据大小
 <br>c1 [1,4,7]
 <br>c2 [2,5,8]
 ### 4、对比
-![对比](https://github.com/gaoyuanyuan2/notes/blob/master/img/3.png) 
+![对比](img/3.png) 
 <br><br>Netty：实时性好，互联（会话）。
 <br>Mq：复杂服务总线。
 <br>RabbitMQ：底层通信是netty
