@@ -348,27 +348,46 @@ GC日志
 
 JDK自带的 监控工具
 
-*https://docs.oracle.com/javase/8/docs/technotes/tools/windows/toc.html
-	*jmap -heap pid 堆使用情况
-	*jstat  -gcutil pid 1000
-	*jstack  线程dump 
-	*jvisualvm
-	*jconsole
-	*gc.log
+* https://docs.oracle.com/javase/8/docs/technotes/tools/windows/toc.html
+
+	* jmap -heap pid 堆使用情况
+	
+	* jstat  -gcutil pid 1000
+	
+	* jstack  线程dump 
+	
+	* jvisualvm
+	
+	* jconsole
+	
+	* gc.log
+	
 MAT
-	*http://help.eclipse.org/oxygen/index.jsp?topic=/org.eclipse.mat.ui.help/welcome.html
-	*-XX:+HeapDumpOnOutOfMemoryError 
-	*-XX:HeapDumpPath=/home/administrator/james/error.hprof
+
+	* http://help.eclipse.org/oxygen/index.jsp?topic=/org.eclipse.mat.ui.help/welcome.html
+	
+	* -XX:+HeapDumpOnOutOfMemoryError 
+	
+	* -XX:HeapDumpPath=/home/administrator/james/error.hprof
+	
 
 怀疑：
+
 	1.看GC日志  126719K->126719K(126720K)
+	
 	2.dump
+	
 	3.MAT
-		*1.占用Retained Heap
-		*2.看有没有GC Root指向
+	
+		* 1.占用Retained Heap
+		
+		* 2.看有没有GC Root指向
+		
 	 deadlock BLOCKED
+	 
  jps 查看进程号
-*kill 进程号	
+ 
+* kill 进程号	
 
 
 ![JVM](https://github.com/gaoyuanyuan2/distributed/blob/master/img/47.jpg) 
@@ -378,7 +397,7 @@ MAT
 
 
 VM参数
-*http://www.oracle.com/technetwork/java/javase/tech/vmoptions-jsp-140102.html
+* http://www.oracle.com/technetwork/java/javase/tech/vmoptions-jsp-140102.html
 
 
 安全点
@@ -396,22 +415,29 @@ https://note.youdao.com/share/?id=80df2676169cb223861869fb2a6017e5&type=note#/
 ### 7、Tomcat
 *servlet jsp rest wbsocket 
 #### Tomcat架构
-*1.  目录结构:介绍Tomcat目录结构,如`config`、`webapps` 等目录的用途,和各种配置文件的使用场景,如`server.xml`  `context.xm1` 以及`catalina.policy` 等
+
+1.  目录结构:介绍Tomcat目录结构,如`config`、`webapps` 等目录的用途,和各种配置文件的使用场景,如`server.xml`  `context.xm1` 以及`catalina.policy` 等
 2.  应用上下文:理解Web应用上下文与Servlet之间的关系,掌握上下文路径以及其他相关属性的使用场景连接器:了解阻塞式I/O以及非阻塞式I/O的配置方式,同时掌握请求连接的设置方法
+
 3.  线程池:了解Tomcat线程池的配置方式以及理解它与Java标准实现的关系
+
 4.  Java EE组件: JMX、 JDNI架构以及使用方法。
 
 #### 嵌入式Tomcat
-*1.  Maven插件:利用Maven Tomcat插件构建嵌入式Tomcat容器
+
+1.  Maven插件:利用Maven Tomcat插件构建嵌入式Tomcat容器
+
 2.  API编程:通过Tomcat API的角度,深入理解Tomcat运行机制以及组件之间的关系。
+
 3.  Spring Boot :深入探究Spring Boot利用嵌入式Tomcat API如何实现自定义容器
 
 #### 架构图
+
 ![整体架构](https://github.com/gaoyuanyuan2/distributed/blob/master/img/30.png) 
 
 #### 目录结构
 
-*1.  conf目录
+1.  conf目录
 
 `catalina.policy` : Tomcat安全策略文件,控制JVM相关权限,具体可以参考`java.security.Permission`
 
@@ -421,7 +447,7 @@ https://note.youdao.com/share/?id=80df2676169cb223861869fb2a6017e5&type=note#/
 
 `server.xml`: Tomcat Server配置文件
 
-* `GlobalNamingResource`:  全局JNDI资源
+`GlobalNamingResource`:  全局JNDI资源
 
 `context.xml`:  全局Context配置文件
 
@@ -429,9 +455,9 @@ https://note.youdao.com/share/?id=80df2676169cb223861869fb2a6017e5&type=note#/
 
 `web.xml`  : Servlet标准的web.xml部署文件, Tomcat默认实现部分配置入内:
 
-*`org.apache.catalina.servlets.DefaultServlet`
+`org.apache.catalina.servlets.DefaultServlet`
 
- *`org.apache.jasper.servlet.JspServlet`
+`org.apache.jasper.servlet.JspServlet`
 
 2.  lib目录
 
@@ -450,29 +476,44 @@ https://note.youdao.com/share/?id=80df2676169cb223861869fb2a6017e5&type=note#/
 *`ClassNotFoundException`
      
 *`catalina.${date}.log`: 控制台输出，`System.out` 外置
+
 4.  webapps 
+
 5.  work
+
 #### 部署
-*1.  放置在webapps目录
-*直接拖过去
+
+1.  放置在webapps目录
+
+直接拖过去
+
 2.  修改 `conf/server.xml`
-*添加Context元素:
+
+添加Context元素:
+
 ```xml
 <Context docBase=" ${webAppAbsolutePath}" path="/" reloadable="true" />
 <Context docBase=" ${webAppAbsolutePath}" path="/tomcat" reloadable="true" />
 ```
 
 熟悉配置元素可以参考`org.apache.catalina.core.StandardContext`  setter方法
-*`Container`
-*`Context`
+
+`Container`
+
+`Context`
+
 该方式不支持动态部署,建议考虑在生产环境使用。
 
 3.  独立 `context` xml配置文件
-*首先注意 `conf\Catalina\localhost`
-*独立context XML配置文件路径: `${TOMCAT_ HOME}/conf/Catalina/localhost+${ContextPath}.xml`
-*注意:该方式可以实现热部署、热加载，因此建议在开发环境使用。
+
+* 首先注意 `conf\Catalina\localhost`
+
+* 独立context XML配置文件路径: `${TOMCAT_ HOME}/conf/Catalina/localhost+${ContextPath}.xml`
+
+* 注意:该方式可以实现热部署、热加载，因此建议在开发环境使用。
 
 热部署：`reloadable="true" `
+
 ```xml
 <Context docBase="E:/Downloads/tomcat/target/tomcat-1.0-SNAPSHOT" reloadable="true" />
 ```
@@ -483,17 +524,23 @@ https://note.youdao.com/share/?id=80df2676169cb223861869fb2a6017e5&type=note#/
 ```
 
 #### 连接器
-*参考文件: https://tomcat.apache.org/tomcat-7.0-doc/config/http.html
+
+参考文件: https://tomcat.apache.org/tomcat-7.0-doc/config/http.html
+
 实现类:  `org.apache.catalina.connector.Connector`
 
 ![Connector Comparison](https://github.com/gaoyuanyuan2/distributed/blob/master/img/31.png) 
 
 #### 编码
-*默认 ISO-8859-1
+
+默认 ISO-8859-1
+
 解决编码问题
+
 ```xml
 <Connector port="8080"  protocol="HTTP/1.1" connectionTimeout="20000" redirectPort="8443" URIEncoding="UTF-8"/>
 ```
+
 ```java
 req.setCharacterEncoding("UTF-8");
 resp.setCharacterEncoding("UTF-8");
@@ -501,14 +548,22 @@ resp.setContentType("text/html ;charset=UTF-8");
 ```
 
 #### 问答互动
-*1.  如果配置path的话是以文件名为主还是以配置的为主
-* 独立context XML配置文件时,设置`path` 属性是无效的。
+
+1.  如果配置path的话是以文件名为主还是以配置的为主
+独立context XML配置文件时,设置`path` 属性是无效的。
+
 2.  根独立context XML配置文件路径
-*`${TOMCAT_ HOME }/conf/${Engine.name }/${HOST.name }/ROOT.xm1`
+
+`${TOMCAT_ HOME }/conf/${Engine.name }/${HOST.name }/ROOT.xm1`
+
 3.  如果实现热部署
-*调整`<context>` 元素中的属性`reloadable="true"`   
+
+调整`<context>` 元素中的属性`reloadable="true"`   
+
 4.  连接器里面的线程池是用的哪个线程池
-    *注意`conf/server.xm1l`文件中的一段注释:
+
+    注意`conf/server.xm1l`文件中的一段注释:
+    
  ```xml
  <Connector executor="tomcatThreadPool" port="8080" protocol="HTTP/1.1" connectionTimeout=" 20000" 
  redirectPort="8443"/>
@@ -524,11 +579,15 @@ public interface Executor extends java.util.concurrent.Executor, Lifecycle{
       void execute( Runnable command, long timeout, TimeUnit unit);
 }
 ```
-*标准实现: `org.apache.catalina.org.StandardThreadExecutor`将连接处理交付给Java标准线程池:
-*`org.apache.tomcat.util.threads.ThreadPoolExecutor`
+
+标准实现: `org.apache.catalina.org.StandardThreadExecutor`将连接处理交付给Java标准线程池:
+
+`org.apache.tomcat.util.threads.ThreadPoolExecutor`
+
 后面版本用队列，生产者，消费者。
 
 5.  INDI能不能稍微说下之前只是在数据源的时候用过,但是不是太理解
+
 ```xml
 <Context ...
     <Resource name= "mail/Session" auth="Container" type="javax.mail.Session" mail.smtp .host="localhost"/>
@@ -553,91 +612,146 @@ public interface Executor extends java.util.concurrent.Executor, Lifecycle{
 
 
 #### Web技术栈
+
 #### Servlet技术栈
-*servlet 容器启动spring
+
+* servlet 容器启动spring
+
 #### Web Flux ( Netty )
+
 #### BIO NIO
-*NIQ并非一定能够提高性能,比如请求数据量较大, NIO性能比BIQ还要差
-*NIQ多工，读、写,同步的
-*数量多效率高，数据量高反而效率低
+
+* NIQ并非一定能够提高性能,比如请求数据量较大, NIO性能比BIQ还要差
+
+* NIQ多工，读、写,同步的
+
+* 数量多效率高，数据量高反而效率低
+
 #### Tomcat Maven插件
+
 #### Tomcat API接口
+
 #### Spring Boot嵌入式Tomcat 
 
 #### Web自动动装
-*1.  API角度分析
-*Servlet3.0 + API实现  `ServletContainerInitializer`
+
+* 1.  API角度分析
+
+* Servlet3.0 + API实现  `ServletContainerInitializer`
 
 2.  容器角度分析
-*传统的Web应用,将webapp部署到Servlet容器中。
-*嵌入式Web应用,灵活部署,任意指定位置(或者通过复杂的条件判断)
-*Tomcat 7是Servlet 3.0的实现，`ServletContainerInitializer`
-*Tomcat 8是Servlet 3.1的实现， NIO `HttpServletRequest` 、`HttpServletResponse`
+
+* 传统的Web应用,将webapp部署到Servlet容器中。
+
+* 嵌入式Web应用,灵活部署,任意指定位置(或者通过复杂的条件判断)
+
+* Tomcat 7是Servlet 3.0的实现，`ServletContainerInitializer`
+
+* Tomcat 8是Servlet 3.1的实现， NIO `HttpServletRequest` 、`HttpServletResponse`
 
 #### jar启动
-*`java -jar` 或者`jar` 读取`.jar`
-*参考JDKAPI : `java.util.jar.Manifest`
+
+* `java -jar` 或者`jar` 读取`.jar`
+
+* 参考JDK API : `java.util.jar.Manifest`
 
 META-INF /MANIFEST.MF , 其中属性Main-Class 就是引导类所在。
 
 ####  Tomcat Maven插件
-*1.  Tomcat 7 Maven插件
+
+1.  Tomcat 7 Maven插件
+
 ```xml
 <groupId>org.apache.tomcat.maven</groupId>
 <artifactId>tomcat7-maven-plugin</artifactId>
 <version>2.1</version>
 ```
+
 ```properties
 Manifest-Version: 1.0
 Main-Class: org.apache.tomcat.maven.runner.Tomcat7RunnerCli
 ```
 
 得出Tomcat 7可执行jar引导类是
+
 `org.apache.tomcat.maven.runner.Tomcat7RunnerCli`
 
 #### Tomcat API接口
+
 #### Embedded
+
 #### TomcatService
+
 #### Engine
+
 #### Host
+
 #### ConnectorContext
-*1.  创建Tomcat实例
-*`org.apache.catalina.startup.Tomcat`
-*Maven坐标: `org. apache. tomcat . embed : tomcat-embed-core:7.0.37`
+
+* 1.  创建Tomcat实例
+
+* `org.apache.catalina.startup.Tomcat`
+
+* Maven坐标: `org. apache. tomcat . embed : tomcat-embed-core:7.0.37`
+
 2.  设置Host对象
+
 ```java
 Host  host  =  tomcat.getHost() ;
 host.setName("localhost");
 host.setAppBase("webapps");|
 ```
+
 3.  设置Classpath
-*Classpath读取资源:配置、类文件
-*conf/web. xm1作为配置文件,并且放置Classpath目录下(绝对路径)
+
+* Classpath读取资源:配置、类文件
+
+* conf/web. xm1作为配置文件,并且放置Classpath目录下(绝对路径)
+
 4.  设置DemoServlet
+
 ```java
 //添加DemoServlet到Tomcat容器
 Wrapper wrapper = tomcat.addServlet(contextPath, "DemoServlet", newDemoServlet());
 wrapper.addMapping("/demo");
 ```
+
 #### Spring Boot 嵌入式 Tomcat
+
 #### EmbeddedServletContainerCustomizer
+
 #### ConfigurableEmbeddedServletContainer
+
 #### EmbeddedServletContainer
+
 #### TomcatContextCustomizerTomcatConnectorCustomizer
 
 #### Tomcat配置调优
-*1.  减少配置优化
+
+* 1.  减少配置优化
+
 场景一:假设当前应REST应用(微服务)
+
 分析:它不需要静态资源, Tomcat容器静态和动态
-*静态处理:`DefaultServlet`
-*优化方案:通过移除`conf/web.xm1`中`org.apache.catalina.servlets.DefaultServlet`
-*动态: `JspServlet`
-*优化方案:通过移除`conf/web.xm1`中`org.apache.jasper.servlet.JspServlet`
-*`DispatcherServlet` : Spring Web MVC应用Servlet 
-*`jspServlet` :编译并且执行lsp页面
-*`DefaultServlet` : Tomcat处理静态资源的Servlet
-*Last-Modified:如果服务器端的资源没有变化，则自动返回 HTTP 304 （Not Changed.）状态码，内容为空，这样就节省了传输数据量
+
+* 静态处理:`DefaultServlet`
+
+* 优化方案:通过移除`conf/web.xm1`中`org.apache.catalina.servlets.DefaultServlet`
+
+* 动态: `JspServlet`
+
+* 优化方案:通过移除`conf/web.xm1`中`org.apache.jasper.servlet.JspServlet`
+
+* `DispatcherServlet` : Spring Web MVC应用Servlet 
+
+* `jspServlet` :编译并且执行Jsp页面
+
+* `DefaultServlet` : Tomcat处理静态资源的Servlet
+
+* Last-Modified:如果服务器端的资源没有变化，则自动返回 HTTP 304 （Not Changed.）状态码，内容为空，这样就节省了传输数据量
+
 2.  移除welcome-file-list
+
 ```xml
 <welcome-file-list>
     <welcome-file>index.html</welcome-file>
@@ -645,54 +759,87 @@ wrapper.addMapping("/demo");
     <welcome-file> index.jsp</welcome-file>
 </welcome-file-list>
 ```
+
 3.  移除Session设置
-*如果程序是REST JSON Content-Type或者MIME Type : application/json。移除Session设置
-*对于微服务/REST应用,不需要Session ,因为不需要状态。Spring Security QAuth 2.0、JWT
-*Session通过jsessionld进行用户跟踪, HTTP无状态,需要一一个ID与当前用户会话联系。Spring Session HttpSession jessionld作为Redis ,实现多个机器登录,用户会话不丢失。
-*存储方法: Cookie、URL 重写、  SSL。
+
+* 如果程序是REST JSON Content-Type或者MIME Type : application/json。移除Session设置
+
+* 对于微服务/REST应用,不需要Session ,因为不需要状态。Spring Security QAuth 2.0、JWT
+
+* Session通过jsessionld进行用户跟踪, HTTP无状态,需要一一个ID与当前用户会话联系。Spring Session HttpSession jessionld作为Redis ,实现多个机器登录,用户会话不丢失。
+
+* 存储方法: Cookie、URL 重写、  SSL。
+
 4.  移除Valve 
-*Valve 类似于Filter
-*移除AccessLogValve, 可以通过Nginx的Access Log替代，Valve |实现都需要消耗Java应用的计算时间。
+
+* Valve 类似于Filter
+
+* 移除AccessLogValve, 可以通过Nginx的Access Log替代，Valve |实现都需要消耗Java应用的计算时间。
 
 场景二:需要JSP的情况
 
 分析: JspServlet无法，了解JspServlet处理原理
+
 Servlet周期:
-*实例化: Servlet和Filter实现类必须包含默认构造器。反射的方式进行实例化。
-*初始化: Servlet容器调用Servlet或Filter init()方法
-*销毁: Servlet容器关闭时, Servlet或者Filter destroy()方法被调用
-S*ervlet或者Filter 在一个容器中 ,是一般情况在一个Web App中是一个单例 ,不排除应用定义多个。
-*JspServlet相关的优化ServletConfig 
+
+* 实例化: Servlet和Filter实现类必须包含默认构造器。反射的方式进行实例化。
+
+* 初始化: Servlet容器调用Servlet或Filter init()方法
+
+* 销毁: Servlet容器关闭时, Servlet或者Filter destroy()方法被调用
+
+* Servlet或者Filter 在一个容器中 ,是一般情况在一个Web App中是一个单例 ,不排除应用定义多个。
+
+* JspServlet相关的优化ServletConfig 
+
 参数:
+
 需要编译
-*compiler
-*modificationTestInterval
+
+* compiler
+* modificationTestInterval
+
 不需要编译
-*development 设置false
-*development = false , 那么,这些JSP要如何编译。
+
+* development 设置false
+* development = false , 那么,这些JSP要如何编译。
+
 优化方法:
-*Ant Task执行JSP编译
-*Maven插件: `org.codehaus.mojo:jspc-maven-plugin`
+
+* Ant Task执行JSP编译
+
+* Maven插件: `org.codehaus.mojo:jspc-maven-plugin`
+
 ```xml
 <dependency>
     <groupId>org.apache.sling</ groupId>
     <artifactId>jspc-maven-plugin</artifactId>
     <version>2.1.0</version>
 </dependency>
+
 ```
+
 JSP ->翻译.jsp或者.jspx文件成.java ->编译.class
+
 总结, `conf/web.xml`  作为Servlet应用的默认`web.xml` ,实际上,应用程序存在两份`web.xm1` ,其中包括应用的`web.xml`,最终将两者合并。
 JspServlet如果development参数为true ,它会自定检查文件是否修改,如果修改重新翻译,再编译(加载和执行)。言外之意, JspServlet开发模式可能会导致内存溢出。卸载Class不及时所知道Perm区域不够。
 
 JspServlet如果development参数为true ,它会自定检查文件是否修改,如果修改重新翻译,再编译(加载和执行)。言外之意, JspServlet开发模式可能会导致内存溢出。卸载Class不及时会导致Perm区域不够。
-*ParentClassLoader -> 1.class 2.class 3.class
-*ChildClassLoader -> 4.class , 5.class
-*ChildClassloaderload    1-5.class
-*1.class需要卸载,需要将ParentClassLoader设置为null ,当Classloader被GC后, 1-3 class全部会被卸载。
-*1.class它是文件,文件被JVM加载, 二进制> Verify->解析
+
+* ParentClassLoader -> 1.class 2.class 3.class
+
+* ChildClassLoader -> 4.class , 5.class
+
+* ChildClassloaderload    1-5.class
+
+* 1.class需要卸载,需要将ParentClassLoader设置为null ,当Classloader被GC后, 1-3 class全部会被卸载。
+
+* 1.class它是文件,文件被JVM加载, 二进制> Verify->解析
 
 #### 修改连接池数量
-*通过server.xml
+
+* 通过server.xml
+
 ```xml
  <Connector executor="tomcatThreadPool"
                port="8080" protocol="HTTP/1.1"
@@ -702,11 +849,16 @@ JspServlet如果development参数为true ,它会自定检查文件是否修改,�
                        maxThreads="150" minSpareThreads="4"/>
 ```
 
-*通过程序来理解，`Executor`实际的Tomcat 接口:
-*`org.apache.catalina.Executor`
-*扩展:J.U.C标准接口`java.util.concurrent.Executor`
-*实现: `org.apache.catalina.core.StandardThreadExecutor`
-*线程数量
+* 通过程序来理解，`Executor`实际的Tomcat 接口:
+
+* `org.apache.catalina.Executor`
+
+* 扩展:J.U.C标准接口`java.util.concurrent.Executor`
+
+* 实现: `org.apache.catalina.core.StandardThreadExecutor`
+
+* 线程数量
+
 ```java
      /**
      * max number of threads
@@ -732,18 +884,26 @@ JspServlet如果development参数为true ,它会自定检查文件是否修改,�
         }
     }
 ```
-*线程池:
-*`org.apache.tomcat.util.threads.ThreadPoolExecutor` (`java.util.concurrent.ThreadPoolExecutor`)
+* 线程池:
+
+* `org.apache.tomcat.util.threads.ThreadPoolExecutor` (`java.util.concurrent.ThreadPoolExecutor`)
 
 总结: Tomcat 10连接器使用的线程池实际标准的Java线程池的扩展,最大线程数量和最小线程数量实际上分别是MaximumPoolSize和CorePoolSize. 
 
 #### 通过JMX
-*观察StandardThreadExecutor是否存在调整线程池数量的API
+
+* 观察StandardThreadExecutor是否存在调整线程池数量的API
+
 评估一些参考:
+
 1.正确率
+
 2. Load ( CPU-> JVM GC )
+
 3. TPS/QPS(越大越好)
+
 4. CPU密集型(加密/解密、算法)
+
 5. 1/O密集型,网络、文件读写等
 
 
@@ -753,9 +913,9 @@ JspServlet如果development参数为true ,它会自定检查文件是否修改,�
 
 第二,进行压力测试，需要一些测试样本, JMeter来实现,假设一次请求需要RT 10ms，1秒可以同时完成100个请求。10000/ 100= 100线程。
 
-*确保, Load太高。减少Full GC, GC取决于JVM堆的大小。  执行一次操作需要5MB内存，50GB。
+* 确保, Load太高。减少Full GC, GC取决于JVM堆的大小。  执行一次操作需要5MB内存，50GB。
 
-*20 GB内存,必然执行GC。要不调优程序,最好对象存储外化,比如Redis ,同时又需要评估Redis网络开销。又要评估网卡的接受能力。
+* 20 GB内存,必然执行GC。要不调优程序,最好对象存储外化,比如Redis ,同时又需要评估Redis网络开销。又要评估网卡的接受能力。
 
 第三,常规性压测,由于业务变更,会导致底层性能变化。
 
@@ -778,7 +938,7 @@ XX:MaxGCPauseMillis=250 -Djava.awt.headless=true stress-test-demo-0.0.1-SNAPSHOT
 
 SpringBoot
 
-*`application. properties`
+`application. properties`
 
 ```properties
 
@@ -832,7 +992,8 @@ OLTP On-Line Transaction Processioning
 
 ![](https://github.com/gaoyuanyuan2/distributed/blob/master/img/35.png) 
 
-*IO per second
+* IO per second
+
 OLAP  On-Line Analysis Processing
 
 ![](https://github.com/gaoyuanyuan2/distributed/blob/master/img/36.png) 
@@ -887,52 +1048,101 @@ select * from table_name [ force index( idx_name ) ]  where condition
 ![](https://github.com/gaoyuanyuan2/distributed/blob/master/img/43.png) 
 
 1)QEP Query Execution Plan
+
 使用 加上explain
+
 #### 我们先看一下在MySQL Explain功能中给我们展示的各种信息的解释
-*1. ID: Query 0ptimizer所选定的执行计划中查询的序列号;
+
+1. ID: Query 0ptimizer所选定的执行计划中查询的序列号;
+
 2. Select_type: 所使用的查询类型，主要有以下这几种查询类型
+
 DEPENDENT SUBQUERY: 子查询中内层的第一个 SELECT，依赖于外部查询的结果集;
+
 DEPENDENT UNION:子查询中的UNION，且为UNION中从第二个SELECT开始的后面所有
+
 SELECT，同样依赖于外部查询的结果集;
+
 PRIMARY:子查询中的最外层查询，注意并不是主键查询;SIMPLE:除子查询或者UNION之外的其他查询;
+
 SUBQUERY:子查询内层查询的第一个SELECT，结果不依赖于外部查询结果集;UNCACHEABLE SUBQUERY:结果集无法缓存的子查询;
+
 UNION: UNION 语句中第二个SELECT开始的后面所有SELECT，第一个SELECT为PRIMARYUNION RESULT: UNION 中的合并结果;
+
 3. Table: 显示这一步所访问的数据库中的表的名称:
-4. Type:告诉我们对表所使用的访问方式，主要包含如下集中类型:<
-*all: 全表扫描
-*const:读常量，且最多只会有一条记录匹配，由于是常量，所以实际上只需要读一次;
-*eq_ ref: 最多只会有一条匹配结果，一般是通过主键或者唯一  键索引来访问;O fulltext:
-*index:全索引扫描;
-*index_merge:查询中同时使用两个(或更多)索引，然后对索引结果进行merge之后再读取表数据:
-*index_subquery:子查询中的返回结果字段组合是一个索引(或索引组合)，但不是一个主键或者唯一索引:
-*rang:索引范围扫描;
-*ref: Join 语句中被驱动表索引引用查询:
-*ref_or_null:与ref的唯-区别就是在使用索引引用查询之外再增加一个空值的查询
-*system:系统表，表中只有一行数据:
-*unique_subquery: 子查询中的返回结果字段组合是主键或者唯-约東;
+
+4. Type:告诉我们对表所使用的访问方式，主要包含如下集中类型:
+
+* all: 全表扫描
+
+* const:读常量，且最多只会有一条记录匹配，由于是常量，所以实际上只需要读一次;
+
+* eq_ ref: 最多只会有一条匹配结果，一般是通过主键或者唯一  键索引来访问;O fulltext:
+
+* index:全索引扫描;
+
+* index_merge:查询中同时使用两个(或更多)索引，然后对索引结果进行merge之后再读取表数据:
+
+* index_subquery:子查询中的返回结果字段组合是一个索引(或索引组合)，但不是一个主键或者唯一索引:
+
+* rang:索引范围扫描;
+
+* ref: Join 语句中被驱动表索引引用查询:
+
+* ref_or_null:与ref的唯-区别就是在使用索引引用查询之外再增加一个空值的查询
+
+* system:系统表，表中只有一行数据:
+
+* unique_subquery: 子查询中的返回结果字段组合是主键或者唯-约東;
+
 依次从好到差: system , const , eq_ ref , ref , fulltext, ref_ or_ null ,
+
 unique_subquery ，index_ subquery , range , index_ merge , index , ALL
 
 ![](https://github.com/gaoyuanyuan2/distributed/blob/master/img/44.png) 
+
 5. Possible_ keys:该查询可以利用的索引.如果没有任何索引可以使用，就会显示成null,这一项内容对于优化时候索引的调整非常重要;
+
 6.  Key: MySQL Query Optimizer 从possible. keys 中所选择使用的索引;Key_ len:被选中使用索引的索引键长度;
+
 7.  Ref:列出是通过常量(const) ，还是某个表的某个字段(如果是join)来过滤(通过key)的;
+
 8.  Rows: MySQL Query Optimizer通过系统收集到的统计信息估算出来的结果集记录条数;
+
 9.  Extra:  查询中每一一步实现的额外细节信息，主要可能会是以下内容: 
-*Distinct:查找distinct值，所以当mysql找到了第一条匹配的结果后，将停止该值的查询而转为后面其他值的查询;
-*Full scan on NULL key: 子查询中的一种优化方式， 主要在遇到无法通过索引访问null值的使用使用;
-*Impossible WHERE noticed after reading const tables: MySQL Query Optimizer通过收集到的统计信息判断出不可能存在结果;
-*No tables: Query 语句中使用FROM DUAL 或者不包含任何FROM 子句;
-*Not exists: 在某些左连接中MySQL Query Optimizer所通过改变原有Query 的组成而使用的优化方法，可以部分减少数据访问次数;
-*Range checked for each record (index map: N):通过MySQL 官方手册的描述，当MySQL Query Opt imizer没有发现好的可以使用的索引的时候，如果发现如果来自前面的表的列值已知，可能部分索引可以使用。对前面的表的每个行组合，MySQL 检查是否可以使
-*用range或index_ merge访问方法来索取行。
-*Select tables optimized away:当我们使用某些聚合函数来访问存在索引的某个字段的时候，MySQL Query Optimizer会通过索引而直接一次定位到所需的数据行完成整个查询。当然，前提是在Query中不能有GROUP BY操作。如使用MIN()或者MAX ()的时候;
-*Using file sort: 当我们的Query 中包含ORDER BY操作，而且无法利用索引完成排序操作的时候，MySQL Query 0pt imizer不得不选择相应的排序算法来实现。
-*Using index:所需要的数据只需要在Index即可全部获得而不需要再到表中取数据;
-*Using index for group-by: 数据访问和Using index - *样，所需数据只需要读取索引即可，而当Query 中使用了GROUP BY或者DISTINCT 子句的时候，如果分组字段也在索引中，Extra 中的信息就会是Using index for group-by;
-*Using temporary:  当MySQL 在某些操作中必须使用临时表的时候，在Extra信息中就会出现Using temporary 。主要常见于GROUP BY和ORDER BY等操作中。
-*Using where:如果我们不是读取表的所有数据，或者不是仅仅通过索引就可以获取所有需要的数据，则会出现Using where 信息;
-*Using where with pushed condition:  这是一个仅仅在NDBCluster 存储引擎中才会出现的信息，而且还需要通过打开Condition Pushdown优化功能才可能会被使用。控制参数为encine condition nuishdown 。
+
+* Distinct:查找distinct值，所以当mysql找到了第一条匹配的结果后，将停止该值的查询而转为后面其他值的查询;
+
+* Full scan on NULL key: 子查询中的一种优化方式， 主要在遇到无法通过索引访问null值的使用使用;
+
+* Impossible WHERE noticed after reading const tables: MySQL Query Optimizer通过收集到的统计信息判断出不可能存在结果;
+
+* No tables: Query 语句中使用FROM DUAL 或者不包含任何FROM 子句;
+
+* Not exists: 在某些左连接中MySQL Query Optimizer所通过改变原有Query 的组成而使用的优化方法，可以部分减少数据访问次数;
+
+* Range checked for each record (index map: N):通过MySQL 官方手册的描述，当MySQL Query Optimizer没有发现好的可以使用的索引的时候，如果发现如果来自前面的表的列值已知，可能部分索引可以使用。对前面的表的每个行组合，MySQL 检查是否可以使
+
+* 用range或index_ merge访问方法来索取行。
+
+* Select tables optimized away:当我们使用某些聚合函数来访问存在索引的某个字段的时候，MySQL Query 
+Optimizer会通过索引而直接一次定位到所需的数据行完成整个查询。当然，前提是在Query中不能有GROUP BY操作。如使用MIN()或者MAX ()的时候;
+
+* Using file sort: 当我们的Query 中包含ORDER BY操作，而且无法利用索引完成排序操作的时候，MySQL Query 0ptimizer不得不选择相应的排序算法来实现。
+
+* Using index:所需要的数据只需要在Index即可全部获得而不需要再到表中取数据;
+
+* Using index for group-by: 数据访问和Using index 一样，所需数据只需要读取索引即可，而当Query 中使用了GROUP BY或者DISTINCT 
+子句的时候，如果分组字段也在索引中，Extra 中的信息就会是Using index for group-by;
+
+* Using temporary:  当MySQL 在某些操作中必须使用临时表的时候，在Extra信息中就会出现Using temporary 。主要常见于GROUP BY和ORDER BY等操作中。
+
+* Using where:如果我们不是读取表的所有数据，或者不是仅仅通过索引就可以获取所有需要的数据，则会出现Using where 信息;
+
+* Using where with pushed condition:  这是一个仅仅在NDBCluster 存储引擎中才会出现的信息，而且还需要通过打开Condition Push 
+
+down优化功能才可能会被使用。控制参数为encine condition nuishdown 。
+
 5.  Profiling (有个概念)
 ```sql
 set profiling=1;
