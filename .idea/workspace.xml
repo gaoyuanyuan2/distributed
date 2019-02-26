@@ -98,17 +98,17 @@
         <entry file="file://$PROJECT_DIR$/performance.md">
           <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
             <state split_layout="SPLIT">
-              <first_editor relative-caret-position="119">
-                <caret line="636" column="17" lean-forward="true" selection-start-line="636" selection-start-column="17" selection-end-line="636" selection-end-column="17" />
+              <first_editor relative-caret-position="533">
+                <caret line="484" column="8" lean-forward="false" selection-start-line="484" selection-start-column="8" selection-end-line="484" selection-end-column="8" />
                 <folding>
-                  <marker date="1551150694099" expanded="true" signature="8202:8225" ph="..." />
-                  <marker date="1551150694099" expanded="true" signature="11676:11829" ph="..." />
-                  <marker date="1551150694099" expanded="true" signature="12754:12885" ph="..." />
-                  <marker date="1551150694099" expanded="true" signature="13587:13712" ph="..." />
-                  <marker date="1551150694099" expanded="true" signature="13775:13836" ph="..." />
-                  <marker date="1551150694099" expanded="true" signature="14037:14077" ph="/.../" />
-                  <marker date="1551150694099" expanded="true" signature="17680:17732" ph="update user... " />
-                  <marker date="1551150694099" expanded="true" signature="20854:20910" ph="select nick_... user" />
+                  <marker date="1551150795065" expanded="true" signature="8203:8226" ph="..." />
+                  <marker date="1551150795065" expanded="true" signature="11677:11830" ph="..." />
+                  <marker date="1551150795065" expanded="true" signature="12755:12886" ph="..." />
+                  <marker date="1551150795065" expanded="true" signature="13588:13713" ph="..." />
+                  <marker date="1551150795065" expanded="true" signature="13776:13837" ph="..." />
+                  <marker date="1551150795065" expanded="true" signature="14038:14078" ph="/.../" />
+                  <marker date="1551150795065" expanded="true" signature="17681:17733" ph="update user... " />
+                  <marker date="1551150795065" expanded="true" signature="20855:20911" ph="select nick_... user" />
                 </folding>
               </first_editor>
               <second_editor />
@@ -415,14 +415,7 @@
       <workItem from="1547368931554" duration="1772000" />
       <workItem from="1547475143915" duration="111000" />
       <workItem from="1547906493616" duration="1852000" />
-      <workItem from="1551150462054" duration="232000" />
-    </task>
-    <task id="LOCAL-00089" summary="mq">
-      <created>1539075222879</created>
-      <option name="number" value="00089" />
-      <option name="presentableId" value="LOCAL-00089" />
-      <option name="project" value="LOCAL" />
-      <updated>1539075222880</updated>
+      <workItem from="1551150462054" duration="337000" />
     </task>
     <task id="LOCAL-00090" summary="mq">
       <created>1539075783460</created>
@@ -760,11 +753,18 @@
       <option name="project" value="LOCAL" />
       <updated>1551065147507</updated>
     </task>
-    <option name="localTasksCounter" value="138" />
+    <task id="LOCAL-00138" summary="格式">
+      <created>1551150711030</created>
+      <option name="number" value="00138" />
+      <option name="presentableId" value="LOCAL-00138" />
+      <option name="project" value="LOCAL" />
+      <updated>1551150711031</updated>
+    </task>
+    <option name="localTasksCounter" value="139" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="246702000" />
+    <option name="totallyTimeSpent" value="246807000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="2576" height="1416" extended-state="6" />
@@ -781,7 +781,7 @@
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.13116057" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.13116057" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -805,7 +805,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="性能优化" />
     <MESSAGE value="docker" />
     <MESSAGE value="redis" />
     <MESSAGE value="JVM" />
@@ -830,7 +829,8 @@
     <MESSAGE value="zk" />
     <MESSAGE value="mongodb" />
     <MESSAGE value="netty" />
-    <option name="LAST_COMMIT_MESSAGE" value="netty" />
+    <MESSAGE value="格式" />
+    <option name="LAST_COMMIT_MESSAGE" value="格式" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -1066,17 +1066,17 @@
     <entry file="file://$PROJECT_DIR$/performance.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
-          <first_editor relative-caret-position="119">
-            <caret line="636" column="17" lean-forward="true" selection-start-line="636" selection-start-column="17" selection-end-line="636" selection-end-column="17" />
+          <first_editor relative-caret-position="533">
+            <caret line="484" column="8" lean-forward="false" selection-start-line="484" selection-start-column="8" selection-end-line="484" selection-end-column="8" />
             <folding>
-              <marker date="1551150694099" expanded="true" signature="8202:8225" ph="..." />
-              <marker date="1551150694099" expanded="true" signature="11676:11829" ph="..." />
-              <marker date="1551150694099" expanded="true" signature="12754:12885" ph="..." />
-              <marker date="1551150694099" expanded="true" signature="13587:13712" ph="..." />
-              <marker date="1551150694099" expanded="true" signature="13775:13836" ph="..." />
-              <marker date="1551150694099" expanded="true" signature="14037:14077" ph="/.../" />
-              <marker date="1551150694099" expanded="true" signature="17680:17732" ph="update user... " />
-              <marker date="1551150694099" expanded="true" signature="20854:20910" ph="select nick_... user" />
+              <marker date="1551150795065" expanded="true" signature="8203:8226" ph="..." />
+              <marker date="1551150795065" expanded="true" signature="11677:11830" ph="..." />
+              <marker date="1551150795065" expanded="true" signature="12755:12886" ph="..." />
+              <marker date="1551150795065" expanded="true" signature="13588:13713" ph="..." />
+              <marker date="1551150795065" expanded="true" signature="13776:13837" ph="..." />
+              <marker date="1551150795065" expanded="true" signature="14038:14078" ph="/.../" />
+              <marker date="1551150795065" expanded="true" signature="17681:17733" ph="update user... " />
+              <marker date="1551150795065" expanded="true" signature="20855:20911" ph="select nick_... user" />
             </folding>
           </first_editor>
           <second_editor />

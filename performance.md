@@ -466,7 +466,7 @@ https://note.youdao.com/share/?id=80df2676169cb223861869fb2a6017e5&type=note#/
 
 2.  lib目录
 
-* Tomcat存放公用类库
+*  Tomcat存放公用类库
 
 * `ecj-*.jar` : Eclipse Java编译器
 
@@ -482,7 +482,7 @@ https://note.youdao.com/share/?id=80df2676169cb223861869fb2a6017e5&type=note#/
      
 * `catalina.${date}.log`: 控制台输出，`System.out` 外置
 
-4.  webapps 
+4.  webApps 
 
 5.  work
 
