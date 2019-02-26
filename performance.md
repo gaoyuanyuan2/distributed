@@ -364,11 +364,11 @@ JDK自带的 监控工具
 	
 MAT
 
-	* http://help.eclipse.org/oxygen/index.jsp?topic=/org.eclipse.mat.ui.help/welcome.html
+	 http://help.eclipse.org/oxygen/index.jsp?topic=/org.eclipse.mat.ui.help/welcome.html
 	
-	* -XX:+HeapDumpOnOutOfMemoryError 
+	 -XX:+HeapDumpOnOutOfMemoryError 
 	
-	* -XX:HeapDumpPath=/home/administrator/james/error.hprof
+	 -XX:HeapDumpPath=/home/administrator/james/error.hprof
 	
 
 怀疑：
@@ -387,7 +387,7 @@ MAT
 	 
  jps 查看进程号
  
-* kill 进程号	
+ kill 进程号	
 
 
 ![JVM](https://github.com/gaoyuanyuan2/distributed/blob/master/img/47.jpg) 
@@ -397,11 +397,14 @@ MAT
 
 
 VM参数
-* http://www.oracle.com/technetwork/java/javase/tech/vmoptions-jsp-140102.html
+
+ http://www.oracle.com/technetwork/java/javase/tech/vmoptions-jsp-140102.html
 
 
 安全点
+
 GC优化	 
+
 https://mp.weixin.qq.com/s/t1Cx1n6irN1RWG8HQyHU2w
 
 swap  https://blog.csdn.net/u010602357/article/details/54286346?tdsourcetag=s_pctim_aiomsg
@@ -413,7 +416,9 @@ https://github.com/oldmanpushcart/greys-anatomy
 https://note.youdao.com/share/?id=80df2676169cb223861869fb2a6017e5&type=note#/
 
 ### 7、Tomcat
-*servlet jsp rest wbsocket 
+
+* servlet jsp rest webSocket 
+
 #### Tomcat架构
 
 1.  目录结构:介绍Tomcat目录结构,如`config`、`webapps` 等目录的用途,和各种配置文件的使用场景,如`server.xml`  `context.xm1` 以及`catalina.policy` 等
@@ -465,17 +470,17 @@ https://note.youdao.com/share/?id=80df2676169cb223861869fb2a6017e5&type=note#/
 
 * `ecj-*.jar` : Eclipse Java编译器
 
-*`jasper.jar` : JSP编译器
+* `jasper.jar` : JSP编译器
 
 3.  logs目录
 
-*`localhost.${date}.log` :当Tomcat应用起不来的时候,多看该文件,比如:类冲突
+* `localhost.${date}.log` :当Tomcat应用起不来的时候,多看该文件,比如:类冲突
 
 * `NoClassDefFoundError`
 
-*`ClassNotFoundException`
+* `ClassNotFoundException`
      
-*`catalina.${date}.log`: 控制台输出，`System.out` 外置
+* `catalina.${date}.log`: 控制台输出，`System.out` 外置
 
 4.  webapps 
 
@@ -635,7 +640,7 @@ public interface Executor extends java.util.concurrent.Executor, Lifecycle{
 
 #### Web自动动装
 
-* 1.  API角度分析
+1.  API角度分析
 
 * Servlet3.0 + API实现  `ServletContainerInitializer`
 
@@ -1006,7 +1011,7 @@ OLAP  On-Line Analysis Processing
 
 ![](https://github.com/gaoyuanyuan2/distributed/blob/master/img/38.png) 
 
-*B+ Tree 自增id做索引效率更高
+* B+ Tree 自增id做索引效率更高
 索引有序，排序效率高
 查看缓存 
 ```sql
