@@ -1,10 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="1a69c435-9430-420c-b841-ddb13cb8216f" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/img/69.jpg" afterDir="false" />
+    <list default="true" id="1a69c435-9430-420c-b841-ddb13cb8216f" name="Default" comment="收集器">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/performance.md" beforeDir="false" afterPath="$PROJECT_DIR$/performance.md" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/../springcloud-config/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -67,17 +65,17 @@
         <entry file="file://$PROJECT_DIR$/performance.md">
           <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
             <state split_layout="FIRST">
-              <first_editor relative-caret-position="344">
-                <caret line="641" column="60" selection-start-line="641" selection-start-column="60" selection-end-line="641" selection-end-column="60" />
+              <first_editor relative-caret-position="137">
+                <caret line="641" lean-forward="true" selection-start-line="641" selection-end-line="641" />
                 <folding>
-                  <marker date="1555930554915" expanded="true" signature="16458:16481" ph="..." />
-                  <marker date="1555930554915" expanded="true" signature="19932:20085" ph="..." />
-                  <marker date="1555930554915" expanded="true" signature="21010:21141" ph="..." />
-                  <marker date="1555930554915" expanded="true" signature="21843:21968" ph="..." />
-                  <marker date="1555930554915" expanded="true" signature="22031:22092" ph="..." />
-                  <marker date="1555930554915" expanded="true" signature="22293:22333" ph="/.../" />
-                  <marker date="1555930554915" expanded="true" signature="25936:25988" ph="update user... " />
-                  <marker date="1555930554915" expanded="true" signature="29110:29166" ph="select nick_... user" />
+                  <marker date="1555930630188" expanded="true" signature="16459:16482" ph="..." />
+                  <marker date="1555930630188" expanded="true" signature="19933:20086" ph="..." />
+                  <marker date="1555930630188" expanded="true" signature="21011:21142" ph="..." />
+                  <marker date="1555930630188" expanded="true" signature="21844:21969" ph="..." />
+                  <marker date="1555930630188" expanded="true" signature="22032:22093" ph="..." />
+                  <marker date="1555930630188" expanded="true" signature="22294:22334" ph="/.../" />
+                  <marker date="1555930630188" expanded="true" signature="25937:25989" ph="update user... " />
+                  <marker date="1555930630188" expanded="true" signature="29111:29167" ph="select nick_... user" />
                 </folding>
               </first_editor>
               <second_editor />
@@ -202,7 +200,7 @@
     <property name="SearchEverywhereHistoryKey" value="&#9;FILE&#9;file://D:/study/distributed/README.md" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1555930555311" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1555930634537" />
     <property name="jdk.selected.JAVA_MODULE" value="1.8" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../notes" />
   </component>
@@ -323,14 +321,7 @@
       <workItem from="1547475143915" duration="111000" />
       <workItem from="1547906493616" duration="1852000" />
       <workItem from="1551150462054" duration="1656000" />
-      <workItem from="1555916340086" duration="11345000" />
-    </task>
-    <task id="LOCAL-00097" summary="spring boot">
-      <created>1539156995830</created>
-      <option name="number" value="00097" />
-      <option name="presentableId" value="LOCAL-00097" />
-      <option name="project" value="LOCAL" />
-      <updated>1539156995830</updated>
+      <workItem from="1555916340086" duration="11420000" />
     </task>
     <task id="LOCAL-00098" summary="spring boot">
       <created>1539157222026</created>
@@ -668,11 +659,18 @@
       <option name="project" value="LOCAL" />
       <updated>1555927115871</updated>
     </task>
-    <option name="localTasksCounter" value="146" />
+    <task id="LOCAL-00146" summary="收集器">
+      <created>1555930569011</created>
+      <option name="number" value="00146" />
+      <option name="presentableId" value="LOCAL-00146" />
+      <option name="project" value="LOCAL" />
+      <updated>1555930569015</updated>
+    </task>
+    <option name="localTasksCounter" value="147" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="259471000" />
+    <option name="totallyTimeSpent" value="259546000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="2576" height="1416" extended-state="6" />
@@ -954,17 +952,17 @@
     <entry file="file://$PROJECT_DIR$/performance.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="FIRST">
-          <first_editor relative-caret-position="344">
-            <caret line="641" column="60" selection-start-line="641" selection-start-column="60" selection-end-line="641" selection-end-column="60" />
+          <first_editor relative-caret-position="137">
+            <caret line="641" lean-forward="true" selection-start-line="641" selection-end-line="641" />
             <folding>
-              <marker date="1555930554915" expanded="true" signature="16458:16481" ph="..." />
-              <marker date="1555930554915" expanded="true" signature="19932:20085" ph="..." />
-              <marker date="1555930554915" expanded="true" signature="21010:21141" ph="..." />
-              <marker date="1555930554915" expanded="true" signature="21843:21968" ph="..." />
-              <marker date="1555930554915" expanded="true" signature="22031:22092" ph="..." />
-              <marker date="1555930554915" expanded="true" signature="22293:22333" ph="/.../" />
-              <marker date="1555930554915" expanded="true" signature="25936:25988" ph="update user... " />
-              <marker date="1555930554915" expanded="true" signature="29110:29166" ph="select nick_... user" />
+              <marker date="1555930630188" expanded="true" signature="16459:16482" ph="..." />
+              <marker date="1555930630188" expanded="true" signature="19933:20086" ph="..." />
+              <marker date="1555930630188" expanded="true" signature="21011:21142" ph="..." />
+              <marker date="1555930630188" expanded="true" signature="21844:21969" ph="..." />
+              <marker date="1555930630188" expanded="true" signature="22032:22093" ph="..." />
+              <marker date="1555930630188" expanded="true" signature="22294:22334" ph="/.../" />
+              <marker date="1555930630188" expanded="true" signature="25937:25989" ph="update user... " />
+              <marker date="1555930630188" expanded="true" signature="29111:29167" ph="select nick_... user" />
             </folding>
           </first_editor>
           <second_editor />
