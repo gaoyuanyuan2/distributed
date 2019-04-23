@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1a69c435-9430-420c-b841-ddb13cb8216f" name="Default" comment="收集器">
+      <change afterPath="$PROJECT_DIR$/img/70.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/performance.md" beforeDir="false" afterPath="$PROJECT_DIR$/performance.md" afterDir="false" />
     </list>
@@ -66,17 +67,17 @@
         <entry file="file://$PROJECT_DIR$/performance.md">
           <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
             <state split_layout="FIRST">
-              <first_editor relative-caret-position="436">
-                <caret line="642" column="76" selection-start-line="642" selection-start-column="76" selection-end-line="642" selection-end-column="76" />
+              <first_editor relative-caret-position="421">
+                <caret line="752" lean-forward="true" selection-start-line="752" selection-end-line="752" />
                 <folding>
-                  <marker date="1555987725937" expanded="true" signature="16471:16494" ph="..." />
-                  <marker date="1555987725937" expanded="true" signature="19945:20098" ph="..." />
-                  <marker date="1555987725937" expanded="true" signature="21023:21154" ph="..." />
-                  <marker date="1555987725937" expanded="true" signature="21856:21981" ph="..." />
-                  <marker date="1555987725937" expanded="true" signature="22044:22105" ph="..." />
-                  <marker date="1555987725937" expanded="true" signature="22306:22346" ph="/.../" />
-                  <marker date="1555987725937" expanded="true" signature="25949:26001" ph="update user... " />
-                  <marker date="1555987725937" expanded="true" signature="29123:29179" ph="select nick_... user" />
+                  <marker date="1555992082428" expanded="true" signature="21117:21140" ph="..." />
+                  <marker date="1555992082428" expanded="true" signature="24591:24744" ph="..." />
+                  <marker date="1555992082428" expanded="true" signature="25669:25800" ph="..." />
+                  <marker date="1555992082428" expanded="true" signature="26502:26627" ph="..." />
+                  <marker date="1555992082428" expanded="true" signature="26690:26751" ph="..." />
+                  <marker date="1555992082428" expanded="true" signature="26952:26992" ph="/.../" />
+                  <marker date="1555992082428" expanded="true" signature="30595:30647" ph="update user... " />
+                  <marker date="1555992082428" expanded="true" signature="33769:33825" ph="select nick_... user" />
                 </folding>
               </first_editor>
               <second_editor />
@@ -201,7 +202,7 @@
     <property name="SearchEverywhereHistoryKey" value="&#9;FILE&#9;file://D:/study/distributed/README.md" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1555932970521" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1555992428237" />
     <property name="jdk.selected.JAVA_MODULE" value="1.8" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
   </component>
@@ -323,14 +324,7 @@
       <workItem from="1547906493616" duration="1852000" />
       <workItem from="1551150462054" duration="1656000" />
       <workItem from="1555916340086" duration="12273000" />
-      <workItem from="1555986942568" duration="627000" />
-    </task>
-    <task id="LOCAL-00100" summary="spring">
-      <created>1539157353724</created>
-      <option name="number" value="00100" />
-      <option name="presentableId" value="LOCAL-00100" />
-      <option name="project" value="LOCAL" />
-      <updated>1539157353724</updated>
+      <workItem from="1555986942568" duration="4971000" />
     </task>
     <task id="LOCAL-00101" summary="spring">
       <created>1539157506826</created>
@@ -668,14 +662,21 @@
       <option name="project" value="LOCAL" />
       <updated>1555930741675</updated>
     </task>
-    <option name="localTasksCounter" value="149" />
+    <task id="LOCAL-00149" summary="收集器">
+      <created>1555987742690</created>
+      <option name="number" value="00149" />
+      <option name="presentableId" value="LOCAL-00149" />
+      <option name="project" value="LOCAL" />
+      <updated>1555987742690</updated>
+    </task>
+    <option name="localTasksCounter" value="150" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="261026000" />
+    <option name="totallyTimeSpent" value="265370000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="2576" height="1416" extended-state="6" />
+    <frame x="-8" y="-8" width="2576" height="1416" extended-state="7" />
     <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.13036565" />
@@ -954,17 +955,17 @@
     <entry file="file://$PROJECT_DIR$/performance.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="FIRST">
-          <first_editor relative-caret-position="436">
-            <caret line="642" column="76" selection-start-line="642" selection-start-column="76" selection-end-line="642" selection-end-column="76" />
+          <first_editor relative-caret-position="421">
+            <caret line="752" lean-forward="true" selection-start-line="752" selection-end-line="752" />
             <folding>
-              <marker date="1555987725937" expanded="true" signature="16471:16494" ph="..." />
-              <marker date="1555987725937" expanded="true" signature="19945:20098" ph="..." />
-              <marker date="1555987725937" expanded="true" signature="21023:21154" ph="..." />
-              <marker date="1555987725937" expanded="true" signature="21856:21981" ph="..." />
-              <marker date="1555987725937" expanded="true" signature="22044:22105" ph="..." />
-              <marker date="1555987725937" expanded="true" signature="22306:22346" ph="/.../" />
-              <marker date="1555987725937" expanded="true" signature="25949:26001" ph="update user... " />
-              <marker date="1555987725937" expanded="true" signature="29123:29179" ph="select nick_... user" />
+              <marker date="1555992082428" expanded="true" signature="21117:21140" ph="..." />
+              <marker date="1555992082428" expanded="true" signature="24591:24744" ph="..." />
+              <marker date="1555992082428" expanded="true" signature="25669:25800" ph="..." />
+              <marker date="1555992082428" expanded="true" signature="26502:26627" ph="..." />
+              <marker date="1555992082428" expanded="true" signature="26690:26751" ph="..." />
+              <marker date="1555992082428" expanded="true" signature="26952:26992" ph="/.../" />
+              <marker date="1555992082428" expanded="true" signature="30595:30647" ph="update user... " />
+              <marker date="1555992082428" expanded="true" signature="33769:33825" ph="select nick_... user" />
             </folding>
           </first_editor>
           <second_editor />
