@@ -640,7 +640,7 @@ JVM不会了解这些:操作系统完全屏蔽了内存交换的细节。这样�
 
 #### 默认堆的大小
 
-![](https://github.com/gaoyuanyuan2/distributed/blob/master/img/69.png) 
+![默认堆的大小](https://github.com/gaoyuanyuan2/distributed/blob/master/img/69.jpg) 
 
 ### 7、Tomcat
 
