@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="BookmarkManager">
+    <bookmark url="file://$PROJECT_DIR$/performance.md" line="1364" />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="1a69c435-9430-420c-b841-ddb13cb8216f" name="Default" comment="收集器">
-      <change afterPath="$PROJECT_DIR$/img/70.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/performance.md" beforeDir="false" afterPath="$PROJECT_DIR$/performance.md" afterDir="false" />
     </list>
@@ -67,18 +69,30 @@
         <entry file="file://$PROJECT_DIR$/performance.md">
           <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
             <state split_layout="FIRST">
-              <first_editor relative-caret-position="421">
-                <caret line="752" lean-forward="true" selection-start-line="752" selection-end-line="752" />
+              <first_editor relative-caret-position="735">
+                <caret line="1511" column="15" selection-start-line="1511" selection-start-column="15" selection-end-line="1511" selection-end-column="15" />
                 <folding>
-                  <marker date="1555992082428" expanded="true" signature="21117:21140" ph="..." />
-                  <marker date="1555992082428" expanded="true" signature="24591:24744" ph="..." />
-                  <marker date="1555992082428" expanded="true" signature="25669:25800" ph="..." />
-                  <marker date="1555992082428" expanded="true" signature="26502:26627" ph="..." />
-                  <marker date="1555992082428" expanded="true" signature="26690:26751" ph="..." />
-                  <marker date="1555992082428" expanded="true" signature="26952:26992" ph="/.../" />
-                  <marker date="1555992082428" expanded="true" signature="30595:30647" ph="update user... " />
-                  <marker date="1555992082428" expanded="true" signature="33769:33825" ph="select nick_... user" />
+                  <marker date="1556186085162" expanded="true" signature="40128:40151" ph="..." />
+                  <marker date="1556186085162" expanded="true" signature="43602:43755" ph="..." />
+                  <marker date="1556186085162" expanded="true" signature="44680:44811" ph="..." />
+                  <marker date="1556186085162" expanded="true" signature="45513:45638" ph="..." />
+                  <marker date="1556186085162" expanded="true" signature="45701:45762" ph="..." />
+                  <marker date="1556186085162" expanded="true" signature="45963:46003" ph="/.../" />
+                  <marker date="1556186085162" expanded="true" signature="49606:49658" ph="update user... " />
+                  <marker date="1556186085162" expanded="true" signature="52780:52836" ph="select nick_... user" />
                 </folding>
+              </first_editor>
+              <second_editor />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/table.md">
+          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+            <state split_layout="SPLIT">
+              <first_editor relative-caret-position="-1004">
+                <caret column="10" selection-start-column="3" selection-end-column="13" />
               </first_editor>
               <second_editor />
             </state>
@@ -113,6 +127,7 @@
       <find>&lt;br&gt;</find>
       <find>B+ Tree</find>
       <find>引用计数</find>
+      <find>JDBC</find>
     </findStrings>
     <replaceStrings>
       <replace>务</replace>
@@ -157,10 +172,10 @@
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="835" />
-    <option name="y" value="291" />
-    <option name="width" value="1612" />
-    <option name="height" value="1171" />
+    <option name="x" value="-8" />
+    <option name="y" value="-8" />
+    <option name="width" value="1040" />
+    <option name="height" value="744" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
@@ -168,8 +183,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
-      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -185,26 +198,24 @@
             <path>
               <item name="distributed" type="b2602c69:ProjectViewProjectNode" />
               <item name="distributed" type="462c0819:PsiDirectoryNode" />
-              <item name="img" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="distributed" type="b2602c69:ProjectViewProjectNode" />
-              <item name="distributed" type="462c0819:PsiDirectoryNode" />
               <item name="springboot" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="PackagesPane" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="SearchEverywhereHistoryKey" value="&#9;FILE&#9;file://D:/study/distributed/README.md" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1555992428237" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1556187974720" />
     <property name="jdk.selected.JAVA_MODULE" value="1.8" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="settings.editor.selected.configurable" value="configurable.group.tools" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -324,28 +335,9 @@
       <workItem from="1547906493616" duration="1852000" />
       <workItem from="1551150462054" duration="1656000" />
       <workItem from="1555916340086" duration="12273000" />
-      <workItem from="1555986942568" duration="4971000" />
-    </task>
-    <task id="LOCAL-00101" summary="spring">
-      <created>1539157506826</created>
-      <option name="number" value="00101" />
-      <option name="presentableId" value="LOCAL-00101" />
-      <option name="project" value="LOCAL" />
-      <updated>1539157506826</updated>
-    </task>
-    <task id="LOCAL-00102" summary="readme">
-      <created>1539672968183</created>
-      <option name="number" value="00102" />
-      <option name="presentableId" value="LOCAL-00102" />
-      <option name="project" value="LOCAL" />
-      <updated>1539672968183</updated>
-    </task>
-    <task id="LOCAL-00103" summary="spring boot">
-      <created>1539762920131</created>
-      <option name="number" value="00103" />
-      <option name="presentableId" value="LOCAL-00103" />
-      <option name="project" value="LOCAL" />
-      <updated>1539762920131</updated>
+      <workItem from="1555986942568" duration="15681000" />
+      <workItem from="1556068322453" duration="89000" />
+      <workItem from="1556156007298" duration="10719000" />
     </task>
     <task id="LOCAL-00104" summary="spring boot">
       <created>1539764019775</created>
@@ -669,17 +661,38 @@
       <option name="project" value="LOCAL" />
       <updated>1555987742690</updated>
     </task>
-    <option name="localTasksCounter" value="150" />
+    <task id="LOCAL-00150" summary="收集器">
+      <created>1555992454099</created>
+      <option name="number" value="00150" />
+      <option name="presentableId" value="LOCAL-00150" />
+      <option name="project" value="LOCAL" />
+      <updated>1555992454099</updated>
+    </task>
+    <task id="LOCAL-00151" summary="收集器">
+      <created>1556015688730</created>
+      <option name="number" value="00151" />
+      <option name="presentableId" value="LOCAL-00151" />
+      <option name="project" value="LOCAL" />
+      <updated>1556015688730</updated>
+    </task>
+    <task id="LOCAL-00152" summary="收集器">
+      <created>1556015721949</created>
+      <option name="number" value="00152" />
+      <option name="presentableId" value="LOCAL-00152" />
+      <option name="project" value="LOCAL" />
+      <updated>1556015721949</updated>
+    </task>
+    <option name="localTasksCounter" value="153" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="265370000" />
+    <option name="totallyTimeSpent" value="286888000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="2576" height="1416" extended-state="7" />
+    <frame x="-8" y="-8" width="2576" height="1416" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.13036565" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.13195549" />
       <window_info id="Structure" order="1" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -750,16 +763,6 @@
       <provider selected="true" editor-type-id="images" />
     </entry>
     <entry file="file://$PROJECT_DIR$/springcloud.md" />
-    <entry file="file://$PROJECT_DIR$/table.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SPLIT">
-          <first_editor>
-            <caret column="10" selection-start-column="3" selection-end-column="13" />
-          </first_editor>
-          <second_editor />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/springboot.md" />
     <entry file="file://$PROJECT_DIR$/img/28.png" />
     <entry file="file://$PROJECT_DIR$/redis.md">
@@ -952,25 +955,50 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/table.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="-1004">
+            <caret column="10" selection-start-column="3" selection-end-column="13" />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/performance.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="FIRST">
-          <first_editor relative-caret-position="421">
-            <caret line="752" lean-forward="true" selection-start-line="752" selection-end-line="752" />
+          <first_editor relative-caret-position="735">
+            <caret line="1511" column="15" selection-start-line="1511" selection-start-column="15" selection-end-line="1511" selection-end-column="15" />
             <folding>
-              <marker date="1555992082428" expanded="true" signature="21117:21140" ph="..." />
-              <marker date="1555992082428" expanded="true" signature="24591:24744" ph="..." />
-              <marker date="1555992082428" expanded="true" signature="25669:25800" ph="..." />
-              <marker date="1555992082428" expanded="true" signature="26502:26627" ph="..." />
-              <marker date="1555992082428" expanded="true" signature="26690:26751" ph="..." />
-              <marker date="1555992082428" expanded="true" signature="26952:26992" ph="/.../" />
-              <marker date="1555992082428" expanded="true" signature="30595:30647" ph="update user... " />
-              <marker date="1555992082428" expanded="true" signature="33769:33825" ph="select nick_... user" />
+              <marker date="1556186085162" expanded="true" signature="40128:40151" ph="..." />
+              <marker date="1556186085162" expanded="true" signature="43602:43755" ph="..." />
+              <marker date="1556186085162" expanded="true" signature="44680:44811" ph="..." />
+              <marker date="1556186085162" expanded="true" signature="45513:45638" ph="..." />
+              <marker date="1556186085162" expanded="true" signature="45701:45762" ph="..." />
+              <marker date="1556186085162" expanded="true" signature="45963:46003" ph="/.../" />
+              <marker date="1556186085162" expanded="true" signature="49606:49658" ph="update user... " />
+              <marker date="1556186085162" expanded="true" signature="52780:52836" ph="select nick_... user" />
             </folding>
           </first_editor>
           <second_editor />
         </state>
       </provider>
     </entry>
+  </component>
+  <component name="masterDetails">
+    <states>
+      <state key="ScopeChooserConfigurable.UI">
+        <settings>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+    </states>
   </component>
 </project>
