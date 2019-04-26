@@ -4,9 +4,8 @@
     <bookmark url="file://$PROJECT_DIR$/performance.md" line="1364" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1a69c435-9430-420c-b841-ddb13cb8216f" name="Default" comment="收集器">
+    <list default="true" id="1a69c435-9430-420c-b841-ddb13cb8216f" name="Default" comment="性能优化">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/performance.md" beforeDir="false" afterPath="$PROJECT_DIR$/performance.md" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/../springcloud-config/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -69,17 +68,17 @@
         <entry file="file://$PROJECT_DIR$/performance.md">
           <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
             <state split_layout="FIRST">
-              <first_editor relative-caret-position="735">
-                <caret line="1511" column="15" selection-start-line="1511" selection-start-column="15" selection-end-line="1511" selection-end-column="15" />
+              <first_editor relative-caret-position="666">
+                <caret line="1546" column="53" selection-start-line="1546" selection-start-column="53" selection-end-line="1546" selection-end-column="53" />
                 <folding>
-                  <marker date="1556186085162" expanded="true" signature="40128:40151" ph="..." />
-                  <marker date="1556186085162" expanded="true" signature="43602:43755" ph="..." />
-                  <marker date="1556186085162" expanded="true" signature="44680:44811" ph="..." />
-                  <marker date="1556186085162" expanded="true" signature="45513:45638" ph="..." />
-                  <marker date="1556186085162" expanded="true" signature="45701:45762" ph="..." />
-                  <marker date="1556186085162" expanded="true" signature="45963:46003" ph="/.../" />
-                  <marker date="1556186085162" expanded="true" signature="49606:49658" ph="update user... " />
-                  <marker date="1556186085162" expanded="true" signature="52780:52836" ph="select nick_... user" />
+                  <marker date="1556188005283" expanded="true" signature="40735:40758" ph="..." />
+                  <marker date="1556188005283" expanded="true" signature="44209:44362" ph="..." />
+                  <marker date="1556188005283" expanded="true" signature="45287:45418" ph="..." />
+                  <marker date="1556188005283" expanded="true" signature="46120:46245" ph="..." />
+                  <marker date="1556188005283" expanded="true" signature="46308:46369" ph="..." />
+                  <marker date="1556188005283" expanded="true" signature="46570:46610" ph="/.../" />
+                  <marker date="1556188005283" expanded="true" signature="50213:50265" ph="update user... " />
+                  <marker date="1556188005283" expanded="true" signature="53387:53443" ph="select nick_... user" />
                 </folding>
               </first_editor>
               <second_editor />
@@ -212,7 +211,7 @@
     <property name="SearchEverywhereHistoryKey" value="&#9;FILE&#9;file://D:/study/distributed/README.md" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1556187974720" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1556240916620" />
     <property name="jdk.selected.JAVA_MODULE" value="1.8" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="settings.editor.selected.configurable" value="configurable.group.tools" />
@@ -337,14 +336,7 @@
       <workItem from="1555916340086" duration="12273000" />
       <workItem from="1555986942568" duration="15681000" />
       <workItem from="1556068322453" duration="89000" />
-      <workItem from="1556156007298" duration="10719000" />
-    </task>
-    <task id="LOCAL-00104" summary="spring boot">
-      <created>1539764019775</created>
-      <option name="number" value="00104" />
-      <option name="presentableId" value="LOCAL-00104" />
-      <option name="project" value="LOCAL" />
-      <updated>1539764019775</updated>
+      <workItem from="1556156007298" duration="12179000" />
     </task>
     <task id="LOCAL-00105" summary="spring boot">
       <created>1539764107662</created>
@@ -682,15 +674,21 @@
       <option name="project" value="LOCAL" />
       <updated>1556015721949</updated>
     </task>
-    <option name="localTasksCounter" value="153" />
+    <task id="LOCAL-00153" summary="性能优化">
+      <created>1556188029385</created>
+      <option name="number" value="00153" />
+      <option name="presentableId" value="LOCAL-00153" />
+      <option name="project" value="LOCAL" />
+      <updated>1556188029387</updated>
+    </task>
+    <option name="localTasksCounter" value="154" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="286888000" />
+    <option name="totallyTimeSpent" value="288348000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="2576" height="1416" extended-state="6" />
-    <editor active="true" />
+    <frame x="-8" y="-8" width="2576" height="1416" extended-state="7" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.13195549" />
       <window_info id="Structure" order="1" weight="0.25" />
@@ -728,7 +726,6 @@
     <option name="version" value="1" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="redis" />
     <MESSAGE value="JVM" />
     <MESSAGE value="tomcat" />
     <MESSAGE value="Spring WebMVC" />
@@ -753,7 +750,8 @@
     <MESSAGE value="netty" />
     <MESSAGE value="格式" />
     <MESSAGE value="收集器" />
-    <option name="LAST_COMMIT_MESSAGE" value="收集器" />
+    <MESSAGE value="性能优化" />
+    <option name="LAST_COMMIT_MESSAGE" value="性能优化" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/img/9.png">
@@ -968,17 +966,17 @@
     <entry file="file://$PROJECT_DIR$/performance.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="FIRST">
-          <first_editor relative-caret-position="735">
-            <caret line="1511" column="15" selection-start-line="1511" selection-start-column="15" selection-end-line="1511" selection-end-column="15" />
+          <first_editor relative-caret-position="666">
+            <caret line="1546" column="53" selection-start-line="1546" selection-start-column="53" selection-end-line="1546" selection-end-column="53" />
             <folding>
-              <marker date="1556186085162" expanded="true" signature="40128:40151" ph="..." />
-              <marker date="1556186085162" expanded="true" signature="43602:43755" ph="..." />
-              <marker date="1556186085162" expanded="true" signature="44680:44811" ph="..." />
-              <marker date="1556186085162" expanded="true" signature="45513:45638" ph="..." />
-              <marker date="1556186085162" expanded="true" signature="45701:45762" ph="..." />
-              <marker date="1556186085162" expanded="true" signature="45963:46003" ph="/.../" />
-              <marker date="1556186085162" expanded="true" signature="49606:49658" ph="update user... " />
-              <marker date="1556186085162" expanded="true" signature="52780:52836" ph="select nick_... user" />
+              <marker date="1556188005283" expanded="true" signature="40735:40758" ph="..." />
+              <marker date="1556188005283" expanded="true" signature="44209:44362" ph="..." />
+              <marker date="1556188005283" expanded="true" signature="45287:45418" ph="..." />
+              <marker date="1556188005283" expanded="true" signature="46120:46245" ph="..." />
+              <marker date="1556188005283" expanded="true" signature="46308:46369" ph="..." />
+              <marker date="1556188005283" expanded="true" signature="46570:46610" ph="/.../" />
+              <marker date="1556188005283" expanded="true" signature="50213:50265" ph="update user... " />
+              <marker date="1556188005283" expanded="true" signature="53387:53443" ph="select nick_... user" />
             </folding>
           </first_editor>
           <second_editor />
