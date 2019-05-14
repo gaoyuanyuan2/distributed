@@ -4,8 +4,10 @@
     <bookmark url="file://$PROJECT_DIR$/performance.md" line="1364" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1a69c435-9430-420c-b841-ddb13cb8216f" name="Default" comment="性能优化">
-      <change afterPath="$PROJECT_DIR$/img/71.png" afterDir="false" />
+    <list default="true" id="1a69c435-9430-420c-b841-ddb13cb8216f" name="Default" comment="Spring Boot">
+      <change afterPath="$PROJECT_DIR$/img/72.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img/73.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img/74.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/springboot/springcloud.md" beforeDir="false" afterPath="$PROJECT_DIR$/springboot/springcloud.md" afterDir="false" />
     </list>
@@ -92,10 +94,10 @@
         <entry file="file://$PROJECT_DIR$/springboot/springcloud.md">
           <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
             <state split_layout="FIRST">
-              <first_editor relative-caret-position="596">
-                <caret line="375" lean-forward="true" selection-start-line="375" selection-end-line="375" />
+              <first_editor relative-caret-position="445">
+                <caret line="799" column="23" selection-start-line="799" selection-start-column="23" selection-end-line="799" selection-end-column="23" />
                 <folding>
-                  <marker date="1557735568354" expanded="true" signature="22178:22231" ph="..." />
+                  <marker date="1557824696852" expanded="true" signature="22178:22231" ph="..." />
                 </folding>
               </first_editor>
               <second_editor />
@@ -145,6 +147,7 @@
       <find>引用计数</find>
       <find>JDBC</find>
       <find>服务发现</find>
+      <find>Stream</find>
     </findStrings>
     <replaceStrings>
       <replace>务</replace>
@@ -189,10 +192,10 @@
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-8" />
-    <option name="y" value="-8" />
-    <option name="width" value="1040" />
-    <option name="height" value="744" />
+    <option name="x" value="720" />
+    <option name="y" value="230" />
+    <option name="width" value="1022" />
+    <option name="height" value="726" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
@@ -229,12 +232,15 @@
     <property name="SearchEverywhereHistoryKey" value="&#9;FILE&#9;file://D:/study/distributed/README.md" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1556243029719" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1557824697153" />
     <property name="jdk.selected.JAVA_MODULE" value="1.8" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="settings.editor.selected.configurable" value="configurable.group.tools" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\study\distributed\img" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="D:\study\distributed\img" />
       <recent name="D:\study\idea\distributed\img" />
@@ -355,14 +361,7 @@
       <workItem from="1555986942568" duration="15681000" />
       <workItem from="1556068322453" duration="89000" />
       <workItem from="1556156007298" duration="13512000" />
-      <workItem from="1557715553722" duration="8341000" />
-    </task>
-    <task id="LOCAL-00106" summary="spring boot">
-      <created>1539764195837</created>
-      <option name="number" value="00106" />
-      <option name="presentableId" value="LOCAL-00106" />
-      <option name="project" value="LOCAL" />
-      <updated>1539764195837</updated>
+      <workItem from="1557715553722" duration="10489000" />
     </task>
     <task id="LOCAL-00107" summary="spring boot">
       <created>1539764824674</created>
@@ -700,14 +699,21 @@
       <option name="project" value="LOCAL" />
       <updated>1556240929601</updated>
     </task>
-    <option name="localTasksCounter" value="155" />
+    <task id="LOCAL-00155" summary="Spring Boot">
+      <created>1557818327348</created>
+      <option name="number" value="00155" />
+      <option name="presentableId" value="LOCAL-00155" />
+      <option name="project" value="LOCAL" />
+      <updated>1557818327349</updated>
+    </task>
+    <option name="localTasksCounter" value="156" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="298022000" />
+    <option name="totallyTimeSpent" value="300170000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="2576" height="1416" extended-state="7" />
+    <frame x="-8" y="-8" width="2576" height="1416" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.13275039" />
@@ -746,7 +752,6 @@
     <option name="version" value="1" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="JVM" />
     <MESSAGE value="tomcat" />
     <MESSAGE value="Spring WebMVC" />
     <MESSAGE value="spring-boot" />
@@ -771,7 +776,8 @@
     <MESSAGE value="格式" />
     <MESSAGE value="收集器" />
     <MESSAGE value="性能优化" />
-    <option name="LAST_COMMIT_MESSAGE" value="性能优化" />
+    <MESSAGE value="Spring Boot" />
+    <option name="LAST_COMMIT_MESSAGE" value="Spring Boot" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/img/9.png">
@@ -993,10 +999,10 @@
     <entry file="file://$PROJECT_DIR$/springboot/springcloud.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="FIRST">
-          <first_editor relative-caret-position="596">
-            <caret line="375" lean-forward="true" selection-start-line="375" selection-end-line="375" />
+          <first_editor relative-caret-position="445">
+            <caret line="799" column="23" selection-start-line="799" selection-start-column="23" selection-end-line="799" selection-end-column="23" />
             <folding>
-              <marker date="1557735568354" expanded="true" signature="22178:22231" ph="..." />
+              <marker date="1557824696852" expanded="true" signature="22178:22231" ph="..." />
             </folding>
           </first_editor>
           <second_editor />

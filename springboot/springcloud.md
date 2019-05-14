@@ -796,6 +796,9 @@ RequestContext是任何Servlet或者Filter都能处理，  那么为了防止不
 <br><br>消息大致分为两个部分:
 <br>消息头(Headers)
 <br>消息体( Body/Payload )
+
+![Spring Cloud Stream架构](https://github.com/gaoyuanyuan2/distributed/blob/master/img/74.png) 
+
 ### RabbitMQ 实现
 ### 问答部分
 <br><br>1.  当使用Future时， 异步调用都可以使用get()方式强制执行吗?
@@ -876,6 +879,28 @@ Reactive是推模式，所以被动更新。Page 是Iterable接口，它是拉�
 <br>监控:数据埋点、数据收集
 <br>Web:. Servlet、 Spring WebMVC、JAX-RS、 WebSocket、 WebServices
 <br>配置: System Properties、Properties、 YAML、启动参数、CSV、XML
+
+###  OAuth2 简介
+
+是基于令牌的安全认证和授权框架将安全性分解为四个组件
+
+1 受保护的资源
+
+2 资源所有者 
+
+资源所有者定义哪些应用程序可以将其命名为恶意，允许用户访问服务，以及他们可以做什么服务。资源所有者注册的每个应用程序都将获得一个应用程序名称，用于标识应用程序和应用程序密钥。应用程序名称和密钥的组合是一部分验证的一个时所传递的凭据OAuth2 令牌。
+
+3 应用程序
+
+4 OAuth2用户认证服务器- 该 OAuth2 认证服务器是应用程序和正在使用的服务之间的中介。OAuth2 server允许用户进行身份验证，而不需要将用户凭证传递给应用程序将要调用的每个服务。
+
+![OAuth2](https://github.com/gaoyuanyuan2/distributed/blob/master/img/72.png) 
+
+
+
+OAuth2规范有四种类型:密码,客户端证书,授权代码,隐式授权
+
+![微服务安全体系结构不仅仅是实现OAuth2](https://github.com/gaoyuanyuan2/distributed/blob/master/img/72.png) 
 
 
 
