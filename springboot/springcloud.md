@@ -338,11 +338,51 @@ spring.cloud.config.label
 <br>作为实例还涉及到注册表（通过客户端serviceUrl）的定期心跳，默认持续时间为30秒。在实例，服务器和客户端在其本地缓存中都具有相同的元数据之前，
 客户端无法发现服务（因此可能需要3次心跳）。您可以通过设置更改期间`eureka.instance.leaseRenewalIntervalInSeconds` 。
 将其设置为小于30的值可加快使客户端连接到其他服务的过程。在生产中，最好坚持使用默认值，因为服务器中的内部计算会对租赁续订期做出假设。
-## Spring Cloud Netfix Ribbon
+
+12. 服务发现的好处
+
+首先，它为应用团队提供了快速水平扩展的能力并减少在环境中运行的服务实例的数量，可以在池中添加或删除新的服务实例可用的服务。
+
+第二个好处是它有助于提高应用程序的弹性 。当微服务实例变得不健康或不可用时，大多数服务发现引擎将从其内部可用服务列表中删除该实例。由于服务发现，下行服务造成的损害将最小化引擎将围绕不可用的服务路由服务。
+
+高度可用 、对等、负载均衡、弹性、容错
+
+13. 服务发现
+
+在此模型中，当消费者需要调用服务时
+
+1 它将联系服务发现服务以获取服务的所有服务实例消费者要求然后在服务消费者的本地缓存数据机。
+
+2 每次客户想要调用服务时，服务使用者都会查找来自缓存的服务的位置信息。通常是客户端缓存将使用简单的负载平衡算法，如“循环”加载平衡算法，以确保服务调用分布在多个服务器上副案件。
+
+3 然后，客户端将定期联系服务发现服务刷新其服务实例的缓存。客户端缓存最终是一致的，但是在客户联系服务的时候总是有风险用于刷新和调用的discovery实例，可以将调用指向服务器副作用不健康。
+如果在调用服务的过程中，服务调用失败，则为本地服务发现缓存无效，服务发现客户端将尝试从服务发现代理刷新其条目。
+
+14. 在Spring Cloud，Netflix Eureka和Netflix中使用了三种不同的机制Netflix Ribbon用于调用服务。
+
+使用Spring Cloud服务DiscoveryClient
+
+使用Spring Cloud和Ribbon支持的RestTemplate
+
+使用Spring Cloud和Netflix的Feign客户端
+
+15. 四种客户端弹性模式
+
+1 客户端负载平衡
+
+2 断路器
+
+3 Fallbacks
+
+4 Bulkheads
+
+![客户端弹性模式](https://github.com/gaoyuanyuan2/distributed/blob/master/img/71.png) 
+
+## Spring Cloud Netflix Ribbon
 <br>Ribbon是一个客户端负载均衡器，可以让您对HTTP和TCP客户端的行为进行大量控制。Feign已经使用了Ribbon。如果您不想使用Eureka，Ribbon和Feign也可以使用。
 <br><br>简介负载均衡客户端和服务端的相关理论,包括调度算法:如先来先服务、轮训、多级队列等。基本特性:非对称负载、健康检查、优先级队列等
 <br><br>技术回顾:回顾Spring Framework HTTP组件RestTemplate的使用方法,结台ClientHttpRequestInterceptor实现简单负载均衡客户端
-<br><br>整合Netfix Ribbon :作为Spring Cloud客户端负载均衡实现, Netflix Ribbon提供了丰富的组件,包括负载均衡器、负载均衡规则、PING 策略等,根据前章所积累的经验,实现客户端负载均衡
+<br><br>Netflix Ribbon :作为Spring Cloud客户端负载均衡实现, Netflix Ribbon提供了丰富的组件,包括负载均衡器、负载均衡规则、PING 策略等,根据前章所积累的经验,实现客户端负载均衡
 <br><br> Ribbon 提供云端负载均衡，有多种负载均衡策略可供选择，可配合服务发现和断路器使用。
 ![](https://github.com/gaoyuanyuan2/distributed/blob/master/img/24.png) 
 <br><br>Ribbon在工作时分成两步
