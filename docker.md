@@ -10,7 +10,7 @@ Docker支持将软件编译成一个镜像 ;然后在镜像中各种软件做好
 非常快速的。类似windows里面的ghost操  docker作系统,安装好后什么都有了。
 
 
->2. Docker核心概念
+2. Docker核心概念
 
 1) docker镜像(lmages) : Docker镜像是用于创建Docker容器的  Clients  Hosts  Registries模板。
 
@@ -56,7 +56,7 @@ systemctl disable docker 关闭开机启动
 
 3. docker命令
 
-1) docker –v 查看版本
+1) docker version 查看版本
 
 2) docker search 
 
@@ -84,19 +84,25 @@ eg:docker run -d -p 6379:6379 -name myredis docker.io/redis
 
 8)  容器日志docker logs container name/container id
 
+9)docker images 查看所有下载的镜像
+
+10)docker rmi dlac13423d3c 删除镜像
+
 ## 常见软件安装
 
-#### Docker 官方中国区
+#### Docker 国内镜像
 
 https://registry.docker-cn.com
 
-#### 网易
-
 http://hub-mirror.c.163.com
 
-#### ustc
+https://3laho3y3.mirror.aliyuncs.com
 
-https://docker.mirrors.ustc.edu.cn
+http://f1361db2.m.daocloud.io
+
+https://mirror.ccs.tencentyun.com
+
+
 
 1. elasticsearch
 

@@ -5,9 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1a69c435-9430-420c-b841-ddb13cb8216f" name="Default" comment="笔记">
-      <change afterPath="$PROJECT_DIR$/memcache.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/redis.md" beforeDir="false" afterPath="$PROJECT_DIR$/redis.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docker.md" beforeDir="false" afterPath="$PROJECT_DIR$/docker.md" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/../springcloud-config/target/" />
     <ignored path="$PROJECT_DIR$/maven-study/target/" />
@@ -54,7 +53,7 @@
         <entry file="file://$PROJECT_DIR$/README.md">
           <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
             <state split_layout="SPLIT">
-              <first_editor relative-caret-position="1077">
+              <first_editor relative-caret-position="2668">
                 <caret line="116" column="1" selection-start-line="116" selection-start-column="1" selection-end-line="116" selection-end-column="1" />
               </first_editor>
               <second_editor />
@@ -66,7 +65,7 @@
         <entry file="file://$PROJECT_DIR$/redis.md">
           <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
             <state split_layout="FIRST">
-              <first_editor relative-caret-position="764">
+              <first_editor relative-caret-position="18952">
                 <caret line="824" selection-start-line="824" selection-end-line="824" />
               </first_editor>
               <second_editor />
@@ -74,12 +73,70 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/memcache.md">
           <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
             <state split_layout="SPLIT">
               <first_editor relative-caret-position="115">
-                <caret line="5" lean-forward="true" selection-start-line="5" selection-end-line="5" />
+                <caret line="5" selection-start-line="5" selection-end-line="5" />
+              </first_editor>
+              <second_editor />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/performance.md">
+          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+            <state split_layout="FIRST">
+              <first_editor relative-caret-position="35558">
+                <caret line="1546" column="53" selection-start-line="1546" selection-start-column="53" selection-end-line="1546" selection-end-column="53" />
+                <folding>
+                  <marker date="1556188005283" expanded="true" signature="40735:40758" ph="..." />
+                  <marker date="1556188005283" expanded="true" signature="44209:44362" ph="..." />
+                  <marker date="1556188005283" expanded="true" signature="45287:45418" ph="..." />
+                  <marker date="1556188005283" expanded="true" signature="46120:46245" ph="..." />
+                  <marker date="1556188005283" expanded="true" signature="46308:46369" ph="..." />
+                  <marker date="1556188005283" expanded="true" signature="46570:46610" ph="/.../" />
+                  <marker date="1556188005283" expanded="true" signature="50213:50265" ph="update user... " />
+                  <marker date="1556188005283" expanded="true" signature="53387:53443" ph="select nick_... user" />
+                </folding>
+              </first_editor>
+              <second_editor />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/nginx.md">
+          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+            <state split_layout="FIRST">
+              <first_editor relative-caret-position="667">
+                <caret line="206" selection-start-line="206" selection-end-line="206" />
+              </first_editor>
+              <second_editor />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/dubbo.md">
+          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+            <state split_layout="SPLIT">
+              <first_editor relative-caret-position="-420">
+                <caret column="13" selection-start-column="13" selection-end-column="13" />
+              </first_editor>
+              <second_editor />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/docker.md">
+          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+            <state split_layout="SPLIT">
+              <first_editor relative-caret-position="460">
+                <caret line="92" column="16" selection-start-line="92" selection-start-column="16" selection-end-line="92" selection-end-column="16" />
               </first_editor>
               <second_editor />
             </state>
@@ -90,7 +147,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>临时节点</find>
       <find>序列化</find>
       <find>努</find>
       <find>凋用</find>
@@ -119,6 +175,8 @@
       <find>Stream</find>
       <find>study</find>
       <find>maven-study</find>
+      <find>##</find>
+      <find>rabb</find>
     </findStrings>
     <replaceStrings>
       <replace>务</replace>
@@ -129,6 +187,7 @@
       <replace>这</replace>
       <replace>导致</replace>
       <replace />
+      <replace>#</replace>
     </replaceStrings>
   </component>
   <component name="Git.Settings">
@@ -139,8 +198,6 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/springcloud.md" />
-        <option value="$PROJECT_DIR$/nginx.md" />
-        <option value="$PROJECT_DIR$/docker.md" />
         <option value="$PROJECT_DIR$/springboot.md" />
         <option value="$PROJECT_DIR$/springboot/temp.md" />
         <option value="$PROJECT_DIR$/.idea/modules.xml" />
@@ -162,14 +219,16 @@
         <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/redis.md" />
         <option value="$PROJECT_DIR$/memcache.md" />
+        <option value="$PROJECT_DIR$/nginx.md" />
+        <option value="$PROJECT_DIR$/docker.md" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="835" />
-    <option name="y" value="291" />
-    <option name="width" value="1612" />
-    <option name="height" value="1171" />
+    <option name="x" value="-8" />
+    <option name="y" value="-8" />
+    <option name="width" value="2576" />
+    <option name="height" value="1416" />
   </component>
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="2" id="Add" />
@@ -201,12 +260,13 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
+    <property name="SONARLINT_PRECOMMIT_ANALYSIS" value="true" />
     <property name="SearchEverywhereHistoryKey" value="&#9;FILE&#9;file://D:/study/distributed/README.md" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1563778079276" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1565090825393" />
     <property name="jdk.selected.JAVA_MODULE" value="1.8.0_161" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../notes" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
@@ -340,28 +400,9 @@
       <workItem from="1557888675135" duration="3561000" />
       <workItem from="1558056831071" duration="148000" />
       <workItem from="1563241204617" duration="655000" />
-      <workItem from="1563766960697" duration="2202000" />
-    </task>
-    <task id="LOCAL-00110" summary="TCP">
-      <created>1540107671678</created>
-      <option name="number" value="00110" />
-      <option name="presentableId" value="LOCAL-00110" />
-      <option name="project" value="LOCAL" />
-      <updated>1540107671679</updated>
-    </task>
-    <task id="LOCAL-00111" summary="TCP">
-      <created>1540107768823</created>
-      <option name="number" value="00111" />
-      <option name="presentableId" value="LOCAL-00111" />
-      <option name="project" value="LOCAL" />
-      <updated>1540107768824</updated>
-    </task>
-    <task id="LOCAL-00112" summary="TCP">
-      <created>1540107995585</created>
-      <option name="number" value="00112" />
-      <option name="presentableId" value="LOCAL-00112" />
-      <option name="project" value="LOCAL" />
-      <updated>1540107995585</updated>
+      <workItem from="1563766960697" duration="2985000" />
+      <workItem from="1564970095382" duration="2847000" />
+      <workItem from="1565056411008" duration="3661000" />
     </task>
     <task id="LOCAL-00113" summary="TCP">
       <created>1540108078447</created>
@@ -685,17 +726,38 @@
       <option name="project" value="LOCAL" />
       <updated>1563776408811</updated>
     </task>
-    <option name="localTasksCounter" value="159" />
+    <task id="LOCAL-00159" summary="笔记">
+      <created>1563778193525</created>
+      <option name="number" value="00159" />
+      <option name="presentableId" value="LOCAL-00159" />
+      <option name="project" value="LOCAL" />
+      <updated>1563778193525</updated>
+    </task>
+    <task id="LOCAL-00160" summary="nginx">
+      <created>1564999137042</created>
+      <option name="number" value="00160" />
+      <option name="presentableId" value="LOCAL-00160" />
+      <option name="project" value="LOCAL" />
+      <updated>1564999137042</updated>
+    </task>
+    <task id="LOCAL-00161" summary="docker">
+      <created>1565058233999</created>
+      <option name="number" value="00161" />
+      <option name="presentableId" value="LOCAL-00161" />
+      <option name="project" value="LOCAL" />
+      <updated>1565058233999</updated>
+    </task>
+    <option name="localTasksCounter" value="162" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="309995000" />
+    <option name="totallyTimeSpent" value="317286000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="2576" height="1416" extended-state="6" />
+    <frame x="-8" y="-8" width="2576" height="1416" extended-state="7" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.0727345" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.091017485" />
       <window_info id="Structure" order="1" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -711,10 +773,11 @@
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Terminal" order="7" />
       <window_info anchor="bottom" id="Event Log" order="8" side_tool="true" />
-      <window_info anchor="bottom" id="Version Control" order="9" visible="true" weight="0.08424337" />
+      <window_info anchor="bottom" id="Version Control" order="9" visible="true" weight="0.06786271" />
       <window_info anchor="bottom" id="Messages" order="10" visible="true" weight="0.32994527" />
       <window_info anchor="bottom" id="Docker" order="11" show_stripe_button="false" />
       <window_info anchor="bottom" id="Database Changes" order="12" />
+      <window_info anchor="bottom" id="SonarLint" order="13" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -731,8 +794,6 @@
     <option name="version" value="1" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="spring-boot" />
-    <MESSAGE value="springboot" />
     <MESSAGE value="Eureka" />
     <MESSAGE value="springcloud" />
     <MESSAGE value="zookeeper" />
@@ -756,7 +817,9 @@
     <MESSAGE value="Spring Boot" />
     <MESSAGE value="Spring Cloud Stream架构" />
     <MESSAGE value="笔记" />
-    <option name="LAST_COMMIT_MESSAGE" value="笔记" />
+    <MESSAGE value="nginx" />
+    <MESSAGE value="docker" />
+    <option name="LAST_COMMIT_MESSAGE" value="docker" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/img/9.png">
@@ -775,16 +838,6 @@
     <entry file="file://$PROJECT_DIR$/../springcloud-config/pom.xml" />
     <entry file="file://$PROJECT_DIR$/springboot/Spring Boot REST.md" />
     <entry file="file://$PROJECT_DIR$/springboot/Spring WebMVC.md" />
-    <entry file="file://$PROJECT_DIR$/docker.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SPLIT">
-          <first_editor relative-caret-position="276">
-            <caret line="12" column="8" selection-start-line="12" selection-start-column="8" selection-end-line="12" selection-end-column="8" />
-          </first_editor>
-          <second_editor />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/img/59.png">
       <provider selected="true" editor-type-id="images" />
     </entry>
@@ -795,16 +848,6 @@
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
           <first_editor />
-          <second_editor />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/dubbo.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SPLIT">
-          <first_editor>
-            <caret column="13" selection-start-column="13" selection-end-column="13" />
-          </first_editor>
           <second_editor />
         </state>
       </provider>
@@ -858,16 +901,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/nginx.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="FIRST">
-          <first_editor relative-caret-position="690">
-            <caret line="30" column="60" selection-start-line="30" selection-start-column="58" selection-end-line="30" selection-end-column="60" />
-          </first_editor>
-          <second_editor />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/netty.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
@@ -893,26 +926,6 @@
         <state split_layout="FIRST">
           <first_editor relative-caret-position="1012">
             <caret line="44" selection-start-line="44" selection-end-line="44" selection-end-column="1" />
-          </first_editor>
-          <second_editor />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/performance.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="FIRST">
-          <first_editor relative-caret-position="666">
-            <caret line="1546" column="53" selection-start-line="1546" selection-start-column="53" selection-end-line="1546" selection-end-column="53" />
-            <folding>
-              <marker date="1556188005283" expanded="true" signature="40735:40758" ph="..." />
-              <marker date="1556188005283" expanded="true" signature="44209:44362" ph="..." />
-              <marker date="1556188005283" expanded="true" signature="45287:45418" ph="..." />
-              <marker date="1556188005283" expanded="true" signature="46120:46245" ph="..." />
-              <marker date="1556188005283" expanded="true" signature="46308:46369" ph="..." />
-              <marker date="1556188005283" expanded="true" signature="46570:46610" ph="/.../" />
-              <marker date="1556188005283" expanded="true" signature="50213:50265" ph="update user... " />
-              <marker date="1556188005283" expanded="true" signature="53387:53443" ph="select nick_... user" />
-            </folding>
           </first_editor>
           <second_editor />
         </state>
@@ -998,7 +1011,7 @@
     <entry file="file://$PROJECT_DIR$/README.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
-          <first_editor relative-caret-position="1077">
+          <first_editor relative-caret-position="2668">
             <caret line="116" column="1" selection-start-line="116" selection-start-column="1" selection-end-line="116" selection-end-column="1" />
           </first_editor>
           <second_editor />
@@ -1008,8 +1021,48 @@
     <entry file="file://$PROJECT_DIR$/redis.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="FIRST">
-          <first_editor relative-caret-position="764">
+          <first_editor relative-caret-position="18952">
             <caret line="824" selection-start-line="824" selection-end-line="824" />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/performance.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="FIRST">
+          <first_editor relative-caret-position="35558">
+            <caret line="1546" column="53" selection-start-line="1546" selection-start-column="53" selection-end-line="1546" selection-end-column="53" />
+            <folding>
+              <marker date="1556188005283" expanded="true" signature="40735:40758" ph="..." />
+              <marker date="1556188005283" expanded="true" signature="44209:44362" ph="..." />
+              <marker date="1556188005283" expanded="true" signature="45287:45418" ph="..." />
+              <marker date="1556188005283" expanded="true" signature="46120:46245" ph="..." />
+              <marker date="1556188005283" expanded="true" signature="46308:46369" ph="..." />
+              <marker date="1556188005283" expanded="true" signature="46570:46610" ph="/.../" />
+              <marker date="1556188005283" expanded="true" signature="50213:50265" ph="update user... " />
+              <marker date="1556188005283" expanded="true" signature="53387:53443" ph="select nick_... user" />
+            </folding>
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/nginx.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="FIRST">
+          <first_editor relative-caret-position="667">
+            <caret line="206" selection-start-line="206" selection-end-line="206" />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dubbo.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="-420">
+            <caret column="13" selection-start-column="13" selection-end-column="13" />
           </first_editor>
           <second_editor />
         </state>
@@ -1019,7 +1072,17 @@
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
           <first_editor relative-caret-position="115">
-            <caret line="5" lean-forward="true" selection-start-line="5" selection-end-line="5" />
+            <caret line="5" selection-start-line="5" selection-end-line="5" />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/docker.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="460">
+            <caret line="92" column="16" selection-start-line="92" selection-start-column="16" selection-end-line="92" selection-end-column="16" />
           </first_editor>
           <second_editor />
         </state>
