@@ -329,40 +329,46 @@ sc.connect(address);
 这也就意味着只需要一个线程负责Selector的轮询(一个单一的线程便可以处理多个并发的连接)，
    就可以接入成千上万的客户端，这确实是个非常巨大的进步。
 
- JDK1.7升级了NIO类库，升级后的NIO类库被称为NIO 2.0。 引人注目的是,
+JDK1.7升级了NIO类库，升级后的NIO类库被称为NIO 2.0。 引人注目的是,
   Java正式提供了异步文件I/O操作，  同时提供了与UNIX网络编程事件驱动1/O对应的AIO。
+  
+4. 非常丰富的工具类
 
 ## pipeline 无锁化串行(链路)
  
- 1. Netty采用了串行无锁化设计，在I/O线程内部进行串行操作，避免多线程竞争导致的性能下降。 表面上看，串行化设计似乎CPU利用率不高，并发程度不够。但是，通过调整NIO线程池的线程参数，可以同时启动多个串行化的线程并行运行，
- 这种局部无锁化的串行线程设计相比一个队列-多个工作线程模型性能更优。
- 实现异步非常重要的一环，无锁化串行的实现 变得可控。同时执行，按顺序取结果。
- 
- 
- 2. Channel 与 ChannelPipeline
- 
- ![ChannelPipeline](https://github.com/gaoyuanyuan2/distributed/blob/master/img/23.png) 
-  
-  
-  tail  inbound=true, outbound= false  尾进
-  
-  head  inbound=false, outbound=true  头出
-  
-  参照物:程序，channelNetty异步非阻塞IO框架
-  
-  异步发生，都是在线程中响应的
-  
-  我要往外面发送东西了Out 请求型的动作
-  
-  业务程序来主动触发
-  
-  我要开始接收东西了  In  响应型的动作
-  
-  Netty来主动触发的，业务程序是被动接收(事件)
+1. Netty采用了串行无锁化设计，在I/O线程内部进行串行操作，避免多线程竞争导致的性能下降。 表面上看，串行化设计似乎CPU利用率不高，并发程度不够。但是，通过调整NIO线程池的线程参数，可以同时启动多个串行化的线程并行运行，
+这种局部无锁化的串行线程设计相比一个队列-多个工作线程模型性能更优。
+实现异步非常重要的一环，无锁化串行的每个线程执行的顺序变得可控。同时执行，按顺序取结果。
+
+
+2. Channel 与 ChannelPipeline
+
+![ChannelPipeline](https://github.com/gaoyuanyuan2/distributed/blob/master/img/23.png) 
+
+* 不是队列
+
+参照物：channel
+
+tail  inbound=true, outbound= false  尾进 （接收）Netty来主动触发的，业务程序是被动接收(事件)
+
+head  inbound=false, outbound=true  头出 （发出） 业务程序来主动触发
+
+
+参照物:程序，channelNetty异步非阻塞IO框架
+
+异步发生，都是在线程中响应的
+
+我要往外面发送东西了Out 请求型的动作
+
+业务程序来主动触发
+
+我要开始接收东西了  In  响应型的动作
+
+Netty来主动触发的，业务程序是被动接收(事件)
 
 ## 拆包、粘包
 
-1.TCP粘包、拆包
+1.TCP底层 粘包、拆包
 
 
 a. 定长，不够空格补全
@@ -813,6 +819,10 @@ ChannelFuture有两种状态; uncompleted 和completed。当开始-一个l/O操�
 方法，这会导致死锁。原因是发起I/O操作之后，由I/O线程负责异步通知发起1/O操作的用户线程，如果I/O线程和用户线程是同一个线程，
 就会导致1/O线程等待自己通知操作完成，这就导致了死锁，这跟经典的两个线程互等待死锁不同，  属于自己把自已挂死。
 Promise是可写的Future, Future 自身并没有写操作相关的接口，Netty 通过Promise对Future进行扩展，用于设置I/O操作的结果。
+
+## 设计模式
+
+装饰器 模板方法 工厂 反应堆 责任链
 
 ## 实战
 
