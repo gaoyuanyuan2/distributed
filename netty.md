@@ -139,6 +139,12 @@ Boss调度资源的总管家(Dispatcher)接待大厅，用来负责轮询Selecto
 
 Worker 子线程一个一个地去执行Handler
 
+## nio 
+
+Selector会不断地轮询注册在其上的Channel,如果某个Channel上面发生读或者写事件，这个Channel就处于就绪状态，会被Selector轮询出来，然后通过SelectionKey可以获取就绪Channel的集合，进行后续的I/O操作。
+
+
+
 ## 零拷贝
  
  1. 零拷贝:是指计算机操作的过程中，CPU不需要为数据在内存之间的拷贝消耗资源。而它通常是指计算机在网络上发送文件时，
