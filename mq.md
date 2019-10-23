@@ -227,6 +227,8 @@ ACK机制是消费者从RabbitMQ收到消息并处理完成后，反馈给Rabbi 
 
 cluster, controller, controller_epoch, brokers, zookeeper, admin, isr_change_notification, consumers, latest_producer_id_block, config
 
+pv、uv运营统计 日志 消息中间件
+
 ### 2. 消息
 
 消息是kafka中最基本的数据单元。消息由一串字节构成，其中主要由key和value构成，key和value也都是byte数组。key的主要作用是根据一定的策略，将消息路由到指定的分区中，这样就可以保证包含同一key的消息全部写入到同一个分区中，key可以是null。为了提高网络的存储和利用率，生产者会批量发送消息到kafka，并在发送之前对消息进行压缩
