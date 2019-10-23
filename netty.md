@@ -4,37 +4,27 @@
 
 1.  采用异步非阻塞的I/O类库，  基于Reactor模式实现，解决了传统同步阻塞1/O模式下一个服务端无法平滑地处理线性增长的客户端的问题。
 
-
-2.  TCP接收和发送缓冲区使用直接内存代替堆内存，避免了内存复制，提升了I/O读取和写入的性能。
-
+2.  TCP接收和发送缓冲区使用直接内存代替堆内存，避免了内存复制，提升了I/O读取和写入的性能。（可以回收，一般不回收）
 
 3.  支持通过内存池的方式循环利用ByteBuf,避免了频繁创建和销毁ByteBuf带来的性能损耗。
 
-
 4.  可配置的I/O线程数、TCP参数等，为不同的用户场景提供定制化的调优参数，满足不同的性能场景。
 
-
-5.  采用环形数组缓冲区实现无锁化并发编程，代替传统的线程安全容器或者锁。 合理地使用线程安全容器、原子类等，  提升系统的并发处理能力。
+5.  采用环形数组缓冲区实现无锁化并发编程，代替传统的线程安全容器或者锁。 合理地使用线程安全容器、原子类等， 提升系统的并发处理能力。
 
 7.  关键资源的处理使用单线程串行化的方式，避免多线程并发访问带来的锁竞争和额外的CPU资源消耗问题。
 
-
 8.  通过引用计数器及时地申请释放不再被引用的对象，细粒度的内存管理降低了GC的频率，减少了频繁GC带来的时延增大和CPU损耗。
-
 
 ## Netty的可定制性主要体现在以下几点
 
 责任链模式: ChannelPipeline 基于责任链模式开发，便于业务逻辑的拦截、定制和扩展。
 
-
 基于接口的开发:  关键的类库都提供了接口或者抽象类，  如果Netty自身的实现无法满足用户的需求，可以由用户自定义实现相关接口。
-
 
 提供了大量工厂类，通过重载这些工厂类可以按需创建出用户实现的对象。
 
-
 提供了大量的系统参数供用户按需设置，增强系统的场景定制性。
-
 
 ## Netty高性能之道
 
@@ -84,7 +74,7 @@
 6.  社区活跃，版本迭代周期短，发现的BUG可以被及时修复，  同时，更多的新功能会加入;
 
 
-7.  历了大规模的商业应用考验，质量得到验证。Netty 在互联网、大数据、网络
+7.  经历了大规模的商业应用考验，质量得到验证。Netty 在互联网、大数据、网络
 
 
 8.  游戏、企业应用、电信软件等众多行业已经得到了成功商用，证明它已经完全能够满足不同行业的商业应用了。
@@ -135,15 +125,13 @@ Acceptor线程池只用于客户端的登录、握手和安全认证，一旦链
 
 ![主从多线程模型](https://github.com/gaoyuanyuan2/distributed/blob/master/img/22.png) 
 
-Boss调度资源的总管家(Dispatcher)接待大厅，用来负责轮询Selector、事件的管理(SelectionKey):while(true)轮询
+Boss 调度资源的总管家(Dispatcher)接待大厅，用来负责轮询Selector、事件的管理(SelectionKey):while(true)轮询
 
 Worker 子线程一个一个地去执行Handler
 
 ## nio 
 
 Selector会不断地轮询注册在其上的Channel,如果某个Channel上面发生读或者写事件，这个Channel就处于就绪状态，会被Selector轮询出来，然后通过SelectionKey可以获取就绪Channel的集合，进行后续的I/O操作。
-
-
 
 ## 零拷贝
  
@@ -318,7 +306,7 @@ sc.connect(address);
 
 ## NIO编程的优点
 
-1. 客户端发起的连接操作是异步的，可以通过在多路复用器注册OP_ CONNECT等待后续结果，不需要像之前的客户端那样被同步阻塞。
+1. 客户端发起的连接操作是异步的，可以通过在多路复用器注册OP_CONNECT等待后续结果，不需要像之前的客户端那样被同步阻塞。
 
 
 2. SocketChannel 的读写操作都是异步的，如果没有可读写的数据它不会同步等待，直接返回，
@@ -343,7 +331,7 @@ JDK1.7升级了NIO类库，升级后的NIO类库被称为NIO 2.0。 引人注目
 ## pipeline 无锁化串行(链路)
  
 1. Netty采用了串行无锁化设计，在I/O线程内部进行串行操作，避免多线程竞争导致的性能下降。 表面上看，串行化设计似乎CPU利用率不高，并发程度不够。但是，通过调整NIO线程池的线程参数，可以同时启动多个串行化的线程并行运行，
-这种局部无锁化的串行线程设计相比一个队列-多个工作线程模型性能更优。
+这种局部无锁化的串行线程设计相比一个队列多个工作线程模型性能更优。
 实现异步非常重要的一环，无锁化串行的每个线程执行的顺序变得可控。同时执行，按顺序取结果。
 
 
@@ -388,7 +376,7 @@ c. 约定协议（将消息分为消息头和消息体）
 
 2. 常见用法
 
-应用DelimiterBasedFrameDecoder和FixedL engthFrameDecoder进行开发非常简单，在绝大数情况下，
+应用DelimiterBasedFrameDecoder和FixedLengthFrameDecoder进行开发非常简单，在绝大数情况下，
 
 只要将DelimiterBasedFrameDecoder或FixedLengthFrameDecoder添加到对应ChannelPipeline的起始位即可。
 
@@ -416,9 +404,10 @@ HTTP协议的主要弊端总结如下。
 3.  针对服务器推送的黑客攻击。例如长时间轮询。
 
 
-现在，很多网站为了实现消息推送，所用的技术都是轮询。轮询是在特定的的时间间隔(如每1秒)，由浏览器对服务器发出HTTPrequest,然后由服务器返回最新的数据给客户端浏览器。这种传统的模式具有很明显的缺点，即浏览器需要不断地向服务器发出请求，然而HTTPrequest的Header是非常冗长的，里面包含的可用数据比例可能非常低，这会占用很多的带宽和服务器资源。
+现在，很多网站为了实现消息推送，所用的技术都是轮询。轮询是在特定的的时间间隔(如每1秒)，由浏览器对服务器发出HTTP request,然后由服务器返回最新的数据给客户端浏览器。
+这种传统的模式具有很明显的缺点，即浏览器需要不断地向服务器发出请求，然而HTTP request的Header是非常冗长的，里面包含的可用数据比例可能非常低，这会占用很多的带宽和服务器资源。
 比较新的一种轮询技术是Comet,  使用了AJAX。  这种技术虽然可达到双向通信，但依然需要发出请求，而且在Comet中，  普遍采用了长连接，这也会大量消耗服务器带宽和资源。
-为了解决HTTP协议效率低下的问题，HTML5定义了WebSocket 协议，能更好地节省服务器资源和带宽并达到实时通信，下个小节让我们--起来学习WebSocket的入门知识。
+为了解决HTTP协议效率低下的问题，HTML5定义了WebSocket 协议，能更好地节省服务器资源和带宽并达到实时通信。
 WebSocket 基于TCP双向全双工进行消息传递，  在同一时刻，既可以发送消息，  也可以接收消息，相比HTTP的半双工协议，  性能得到很大提升。
 
 
@@ -469,17 +458,24 @@ WebSocket 只需要建立一次连接，就可以一直保持连接状态。这�
  ![服务端时序图](https://github.com/gaoyuanyuan2/distributed/blob/master/img/7.png) 
  
  
- 步骤1：创建ServerBootstrap实例。ServerBootstrap是Netty服务端的启动辅助类，它提供了一系列的方法用于设置服务端启动相关的参数。底层通过门面模式对各种能力进行抽象和封装，尽量不需要用户跟过多的底层API打交道，降低用户的开发难度。
-我们在创建ServerBootstrap实例时，会惊讶的发现ServerBootstrap只有一个无参的构造函数，作为启动辅助类这让人不可思议，因为它需要与多个其它组件或者类交互。ServerBootstrap构造函数没有参数的根本原因是因为它的参数太多了，而且未来也可能会发生变化，为了解决这个问题，就需要引入Builder模式。《Effective Java》第二版第2条建议遇到多个构造器参数时要考虑用构建器，关于多个参数构造函数的缺点和使用构建器的优点大家可以查阅《Effective Java》,在此不再详述。
+步骤1：创建ServerBootstrap实例。ServerBootstrap是Netty服务端的启动辅助类，它提供了一系列的方法用于设置服务端启动相关的参数。底层通过门面模式对各种能力进行抽象和封装，尽量不需要用户跟过多的底层API打交道，降低用户的开发难度。
+我们在创建ServerBootstrap实例时，会惊讶的发现ServerBootstrap只有一个无参的构造函数，作为启动辅助类这让人不可思议，因为它需要与多个其它组件或者类交互。ServerBootstrap构造函数没有参数的根本原因是因为它的参数太多了，
+而且未来也可能会发生变化，为了解决这个问题，就需要引入Builder模式。《Effective Java》第二版第2条建议遇到多个构造器参数时要考虑用构建器。
   
   
-  步骤2：设置并绑定Reactor线程池。Netty的Reactor线程池是EventLoopGroup，它实际就是EventLoop的数组。EventLoop的职责是处理所有注册到本线程多路复用器Selector上的Channel，Selector的轮询操作由绑定的EventLoop线程run方法驱动，在一个循环体内循环执行。值得说明的是，EventLoop的职责不仅仅是处理网络I/O事件，用户自定义的Task和定时任务Task也统一由EventLoop负责处理，这样线程模型就实现了统一。从调度层面看，也不存在在EventLoop线程中再启动其它类型的线程用于异步执行其它的任务，这样就避免了多线程并发操作和锁竞争，提升了I/O线程的处理和调度性能。
+步骤2：设置并绑定Reactor线程池。Netty的Reactor线程池是EventLoopGroup，它实际就是EventLoop的数组。
+EventLoop的职责是处理所有注册到本线程多路复用器Selector上的Channel，Selector的轮询操作由绑定的EventLoop线程run方法驱动，
+在一个循环体内循环执行。值得说明的是，EventLoop的职责不仅仅是处理网络I/O事件，用户自定义的Task和定时任务Task也统一由EventLoop负责处理，
+这样线程模型就实现了统一。从调度层面看，也不存在在EventLoop线程中再启动其它类型的线程用于异步执行其它的任务，这样就避免了多线程并发操作和锁竞争，提升了I/O线程的处理和调度性能。
  
  
- 步骤3：设置并绑定服务端Channel。作为NIO服务端，需要创建ServerSocketChannel,Netty对原生的NIO类库进行了封装，对应实现是NioServerSocketChannel。对于用户而言，不需要关心服务端Channel的底层实现细节和工作原理，只需要指定具体使用哪种服务端Channel即可。因此，Netty的ServerBootstrap方法提供了channel方法用于指定服务端Channel的类型。Netty通过工厂类，利用反射创建NioServerSocketChannel对象。由于服务端监听端口往往只需要在系统启动时才会调用，因此反射对性能的影响并不大。相关代码如下所示：
+步骤3：设置并绑定服务端Channel。作为NIO服务端，需要创建ServerSocketChannel,Netty对原生的NIO类库进行了封装，对应实现是NioServerSocketChannel。对于用户而言，不需要关心服务端Channel的底层实现细节和工作原理，
+只需要指定具体使用哪种服务端Channel即可。因此，Netty的ServerBootstrap方法提供了channel方法用于指定服务端Channel的类型。
+Netty通过工厂类，利用反射创建NioServerSocketChannel对象。由于服务端监听端口往往只需要在系统启动时才会调用，因此反射对性能的影响并不大。
  
  
- 步骤4：链路建立的时候创建并初始化ChannelPipeline。ChannelPipeline并不是NIO服务端必需的，它本质就是一个负责处理网络事件的职责链，负责管理和执行ChannelHandler。网络事件以事件流的形式在ChannelPipeline中流转，由ChannelPipeline根据ChannelHandler的执行策略调度ChannelHandler的执行。典型的网络事件如下：
+步骤4：链路建立的时候创建并初始化ChannelPipeline。ChannelPipeline并不是NIO服务端必需的，它本质就是一个负责处理网络事件的职责链，
+负责管理和执行ChannelHandler。网络事件以事件流的形式在ChannelPipeline中流转，由ChannelPipeline根据ChannelHandler的执行策略调度ChannelHandler的执行。典型的网络事件如下：
   
   链路注册；
   
@@ -498,7 +494,9 @@ WebSocket 只需要建立一次连接，就可以一直保持连接状态。这�
   发生用户自定义事件。
   
   
-  步骤5：初始化ChannelPipeline完成之后，添加并设置ChannelHandler。ChannelHandler是Netty提供给用户定制和扩展的关键接口。利用ChannelHandler用户可以完成大多数的功能定制，例如消息编解码、心跳、安全认证、TSL/SSL认证、流量控制和流量整形等。Netty同时也提供了大量的系统ChannelHandler供用户使用，比较实用的系统ChannelHandler总结如下：
+  步骤5：初始化ChannelPipeline完成之后，添加并设置ChannelHandler。ChannelHandler是Netty提供给用户定制和扩展的关键接口。
+  利用ChannelHandler用户可以完成大多数的功能定制，
+  例如消息编解码、心跳、安全认证、TSL/SSL认证、流量控制和流量整形等。Netty同时也提供了大量的系统ChannelHandler供用户使用，比较实用的系统ChannelHandler总结如下：
   
   系统编解码框架-ByteToMessageCodec；
  
@@ -610,7 +608,7 @@ Channel的工作原理
 Channel是Netty抽象出来的网络1/O读写相关的接口，为什么不使用JDK NIO原生的Channel而要另起炉灶呢，主要原因如下。
 
 
-1. JDK的SocketChannel和ServerSocketChannel没有统一 的Channel接口供业务开发者使用，对于用户而言，没有统一的操作视图，使用起来并不方便。
+1. JDK的SocketChannel和ServerSocketChannel没有统一的Channel接口供业务开发者使用，对于用户而言，没有统一的操作视图，使用起来并不方便。
 
 
 2. JDK的SocketChannel和ServerSocketChannel的主要职责就是网络1/O操作，由于它们是SPI类接口，由具体的虚拟机厂家来提供，所以通过继承SPI功能类来扩展其功能的难度很大;
@@ -626,10 +624,9 @@ Channel是Netty抽象出来的网络1/O读写相关的接口，为什么不使�
 基于上述4个原因，Netty 重新设计了Channel 接口，并且给予了很多不同的实现。它的设计原理比较简单，但是功能却比较繁杂，主要的设计理念如下。
 
 
-1.  在Channel接口层，采用Facade模式进行统-封装，将网络l/O操作、网络I/O相关联的其他操作封装起来，统一对外提 供。
+1.  在Channel接口层，采用Facade模式进行统-封装，将网络l/O操作、网络I/O相关联的其他操作封装起来，统一对外提供。
 
-
-2.  Channel 接口的定义尽量大而全，为SocketChannel 和ServerSocketChannel提供充一的视图，由不同子类实现不同的功能，公共功能在抽象父类中实现，最大程度地实现功能和接口的重用。
+2.  Channel 接口的定义尽量大而全，为SocketChannel 和ServerSocketChannel提供统一的视图，由不同子类实现不同的功能，公共功能在抽象父类中实现，最大程度地实现功能和接口的重用。
 
 3.  具体实现采用聚合而非包含的方式,将相关的功能类聚合在Channel中，由Channel统一负责分配和调度，功能实现更加灵活。
 
@@ -645,7 +642,7 @@ ChannelPipeline是ChannelHandler的容器，它负责ChannelHandler的管理和�
 
 ChannelPipeline通过ChannelHandler 接口来实现事件的拦截和处理，
 
-由于ChannelHandler中的事件种类繁多，不同的ChannelHandler可能只需要关心其中的某一一个或者几个事件，所以，
+由于ChannelHandler中的事件种类繁多，不同的ChannelHandler可能只需要关心其中的某一个或者几个事件，所以，
 
 通常ChannelHandler只需要继承ChannelHandlerAdapter 类覆盖自已关心的方法即可。
 
@@ -659,7 +656,7 @@ ChannelPipeline支持运行态动态的添加或者删除ChannelHandler,在某�
 
 ChannelPipeline是线程安全的,这意味着N个业务线程可以并发地操作ChannelPipeline而不存在多线程并发问题。但是，  
 
-ChannelHandler却不是线程安全的，这意味着尽管ChannelPipeline是线程安全的，但是用户仍然需要自己保证ChannelHandler的线程安全。
+* ChannelHandler却不是线程安全的，这意味着尽管ChannelPipeline是线程安全的，但是用户仍然需要自己保证ChannelHandler的线程安全。
 
 
 ChannelHandler功能说明
@@ -670,7 +667,7 @@ ChannelHandler类似于Servlet 的Filter 过滤器，负责对1/O 事件或者1/
 
 ChannelHandler支持注解，目前支持的注解有两种。
 
-Sharable:多 个ChannelPipeline共用同- - 个ChannelHandler; 
+Sharable:多个ChannelPipeline共用同一个ChannelHandler; 
 
 Skip:被Skip注解的方法不会被调用，直接被忽略。
 
@@ -683,23 +680,24 @@ ChannelHandlerAdapter功能说明
 我们的ChannelHandler都是直接继承自ChannelHandlerAdapter,开发起来非常简单和高效。
 
 
-Byte ToMessageDecoder功能说明
+ByteToMessageDecoder功能说明
 
-利用NIO进行网络编程时，往往需要将读取到的字节数组或者字节缓冲区解码为业务可以使用的POJO对象。为了方便业务将ByteBuf解码成业务POJO对象，Netty 提供了Byte ToMessageDecoder抽象工具解码类。
-用户的解码器继承Byte ToMessageDecoder,只需要实现`void decode(ChannelHandlerContext ctx, ByteBuf in, List<Object> out)`
+利用NIO进行网络编程时，往往需要将读取到的字节数组或者字节缓冲区解码为业务可以使用的POJO对象。为了方便业务将ByteBuf解码成业务POJO对象，Netty 提供了ByteToMessageDecoder抽象工具解码类。
+用户的解码器继承ByteToMessageDecoder,只需要实现`void decode(ChannelHandlerContext ctx, ByteBuf in, List<Object> out)`
 
 抽象方法即可完成ByteBuf到POJO对象的解码。
 
-由于Byte ToMessageDecoder并没有考虑TCP粘包和组包等场景，读半包需要用户解码器自己负责处理。正因为如此，对于大多数场景不会直接继承ByteToMessageDecoder,而是继承另外一些更高级的解码器来屏蔽半包的处理。
+由于ByteToMessageDecoder并没有考虑TCP粘包和组包等场景，读半包需要用户解码器自己负责处理。正因为如此，对于大多数场景不会直接继承ByteToMessageDecoder,而是继承另外一些更高级的解码器来屏蔽半包的处理。
 
 
-Message ToMessageDecoder功能说明
+MessageToMessageDecoder功能说明
 
 MessageToMessageDecoder实际上是Netty 的二次解码器， 它的职责是将一个对象二次解码为其他对象。
 
-为什么称它为二次解码器呢?我们知道，从SocketChannel 读取到的TCP数据报是ByteBuffer,实际就是字节数组，我们首先需要将ByteBuffer缓冲区中的数据报读取出来，并将其解码为Java对象;然后对Java对象根据某些规则做二次解码，将其解码为另一个POJO对象。因为Message ToMessageDecoder在Byte ToMessageDecoder之后，所以称之为二次解码器。
+为什么称它为二次解码器呢?我们知道，从SocketChannel 读取到的TCP数据报是ByteBuffer,实际就是字节数组，我们首先需要将ByteBuffer缓冲区中的数据报读取出来，并将其解码为Java对象;然后对Java对象根据某些规则做二次解码，将其解码为另一个POJO对象。因为MessageToMessageDecoder在ByteToMessageDecoder之后，所以称之为二次解码器。
 二次解码器在实际的商业项目中非常有用，以HTTP+XML协议栈为例，第一次解码往往是将字节数组解码成HttpRequest对象，然后对HttpRequest消息中的消息体字符串进行二次解码，将XML格式的字符串解码为POJO对象，这就用到了二次解码器。类似这样的场景还有很多，不再  枚举。
-事实上，做一个超级复杂的解码器将多个解码器组合成一个大而全的MessageToMessageDecoder解码器似乎也能解决多次解码的问题，但是采用这种方式的代码可维护性会非常差。例如，如果我们打算在HTTP+XML协议栈中增加一个打印码流的功能，即首次解码获取HttpRequest对象之后打印XML格式的码流。如果采用多个解码器组合，在中间插入一个打印消息体的Handler即可，不需要修改原有的代码;如果做一个大而全的解码器，就需要在解码的方法中增加打印码流的代码，可扩展性和可维护性都会变差。
+事实上，做一个超级复杂的解码器将多个解码器组合成一个大而全的MessageToMessageDecoder解码器似乎也能解决多次解码的问题，但是采用这种方式的代码可维护性会非常差。例如，如果我们打算在HTTP+XML协议栈中增加一个打印码流的功能，即首次解码获取HttpRequest对象之后打印XML格式的码流。
+如果采用多个解码器组合，在中间插入一个打印消息体的Handler即可，不需要修改原有的代码;如果做一个大而全的解码器，就需要在解码的方法中增加打印码流的代码，可扩展性和可维护性都会变差。
 用户的解码器只需要实现`void decode(ChannelHandlerContext ctx, I msg, List<Object> out)` 
 抽象方法即可，由于它是将一个POJO解码为另一个POJO，所以一-般不会涉及到半包的处理，相对于ByteToMessageDecoder 更加简单些。
 
@@ -743,13 +741,13 @@ ChannelPipeline的系统ChannelHandler,用于I/O操作和对事件进行预处�
 其他系统功能性ChannelHandler,包括流量整型Handler、读写超时Handler、日志Handler等。
 
 
-Byte ToMessageDecoder源码分析 顾名思义，ByteToMessageDecoder 解码器用于将ByteBuf解码成POJO对象，下面一起看它的实现。。
+Byte ToMessageDecoder源码分析 顾名思义，ByteToMessageDecoder 解码器用于将ByteBuf解码成POJO对象，下面一起看它的实现。
 
 
 MessageToMessageDecoder负责将一个POJO对象解码成另一个POJO对象。
 
 
- LengthFieldBasedFrameDecoder基于消息长度的半包解码器。
+LengthFieldBasedFrameDecoder基于消息长度的半包解码器。
 
 
 MessageToByteEncoder负责将用户的POJO对象编码成ByteBuf, 以便通过网络进行传输。
@@ -805,7 +803,7 @@ Netty的NioEventLoop并不是一个纯粹的I/O线程，兼顾处理以下两类
 
 ## Future和Promise
 
-ChannelFuture有两种状态; uncompleted 和completed。当开始-一个l/O操作时， 一个新的ChannelFuture被创建，此时它处于uncompleted状态一非失败、 非成功、非取消，
+ChannelFuture有两种状态; uncompleted 和completed。当开始一个l/O操作时， 一个新的ChannelFuture被创建，此时它处于uncompleted状态一非失败、 非成功、非取消，
 因为I/O操作此时还没有完成。一旦1/O操作完成,ChannelFuture将会被设置成completed,它的结果有如”下三种可能。
 
 操作成功;
@@ -816,7 +814,7 @@ ChannelFuture有两种状态; uncompleted 和completed。当开始-一个l/O操�
 
 
 当I/O操作完成之后，I/O线程会回调ChannelFuture 中GenericFutureListener 的operationComplete方法，  
-并把ChannelFuture对象当作方法的入参。如果用户需要做.上下文相关的操作，  需要将，上下文信息保存到对应的ChannelFuture中。
+并把ChannelFuture对象当作方法的入参。如果用户需要做上下文相关的操作，  需要将，上下文信息保存到对应的ChannelFuture中。
 推荐通过GenericFutureListener代替ChannelFuture的get等方法的原因是:当我们进行异步I/O操作时，完成的时间是无法预测的
 ，如果不设置超时时间，它会导致调用线程长时间被阻塞，  甚至挂死。而设置超时时间，  时间又无法精确预测。利用异步通知机制回调GenericFutureListener是最佳的解决方案，它的性能最优。
 
@@ -845,6 +843,8 @@ Promise是可写的Future, Future 自身并没有写操作相关的接口，Nett
 过程：连接、读、写...
 
 **注意：耗时操作（http请求、数据库连接、io操作）不能放在io线程，要另起线程，否则会阻塞**
+
+优点：通过心跳维持的连接不会经常断开，即可实现即时的通信，而且可自定义头，减小流量的耗用
 
 
 
