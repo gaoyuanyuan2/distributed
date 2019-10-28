@@ -18,7 +18,7 @@ Spring Boot简单应用:使用Spring Web MVC以及Spring Web Flux技术,编程�
 
 ## 更多SpringBoot整合示例
 
-https://github.com/spring-projects/spring-boot/tree/master/spring-boot-samples
+[spring-boot-starters](https://github.com/spring-projects/spring-boot/tree/master/spring-boot-project/spring-boot-starters)
 
 ## Spring Boot实际使用场景
 
