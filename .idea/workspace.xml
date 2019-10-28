@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="1a69c435-9430-420c-b841-ddb13cb8216f" name="Default" comment="netty">
+    <list default="true" id="1a69c435-9430-420c-b841-ddb13cb8216f" name="Default" comment="springboot">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/springboot/springboot.md" beforeDir="false" afterPath="$PROJECT_DIR$/springboot/springboot.md" afterDir="false" />
     </list>
@@ -34,8 +34,8 @@
         <entry file="file://$PROJECT_DIR$/performance.md">
           <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
             <state split_layout="FIRST">
-              <first_editor relative-caret-position="35558">
-                <caret line="1546" column="53" selection-start-line="1546" selection-start-column="53" selection-end-line="1546" selection-end-column="53" />
+              <first_editor relative-caret-position="35627">
+                <caret line="1549" lean-forward="true" selection-start-line="1549" selection-end-line="1549" />
                 <folding>
                   <marker date="1556188005283" expanded="true" signature="40735:40758" ph="..." />
                   <marker date="1556188005283" expanded="true" signature="44209:44362" ph="..." />
@@ -114,28 +114,8 @@
         <entry file="file://$PROJECT_DIR$/springboot/springboot.md">
           <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
             <state split_layout="FIRST">
-              <first_editor relative-caret-position="883">
-                <caret line="1400" column="57" lean-forward="true" selection-start-line="1400" selection-start-column="57" selection-end-line="1400" selection-end-column="57" />
-                <folding>
-                  <element signature="e#917#918#0" expanded="true" />
-                  <element signature="e#952#953#0" expanded="true" />
-                  <element signature="e#336#337#0" expanded="true" />
-                  <element signature="e#395#396#0" expanded="true" />
-                  <element signature="e#242#243#0" expanded="true" />
-                  <element signature="e#322#323#0" expanded="true" />
-                  <element signature="e#271#272#0" expanded="true" />
-                  <element signature="e#300#301#0" expanded="true" />
-                  <element signature="e#343#344#0" expanded="true" />
-                  <element signature="e#379#380#0" expanded="true" />
-                  <element signature="e#411#412#0" expanded="true" />
-                  <element signature="e#440#441#0" expanded="true" />
-                  <element signature="e#483#484#0" expanded="true" />
-                  <element signature="e#519#520#0" expanded="true" />
-                  <element signature="e#142#143#0" expanded="true" />
-                  <element signature="e#180#181#0" expanded="true" />
-                  <element signature="e#250#251#0" expanded="true" />
-                  <element signature="e#304#305#0" expanded="true" />
-                </folding>
+              <first_editor relative-caret-position="414">
+                <caret line="129" column="24" selection-start-line="129" selection-start-column="24" selection-end-line="129" selection-end-column="24" />
               </first_editor>
               <second_editor />
             </state>
@@ -278,16 +258,6 @@
             <path>
               <item name="distributed" type="b2602c69:ProjectViewProjectNode" />
               <item name="distributed" type="462c0819:PsiDirectoryNode" />
-              <item name=".idea" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="distributed" type="b2602c69:ProjectViewProjectNode" />
-              <item name="distributed" type="462c0819:PsiDirectoryNode" />
-              <item name="img" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="distributed" type="b2602c69:ProjectViewProjectNode" />
-              <item name="distributed" type="462c0819:PsiDirectoryNode" />
               <item name="springboot" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
@@ -301,7 +271,7 @@
     <property name="SearchEverywhereHistoryKey" value="&#9;FILE&#9;file://D:/study/distributed/README.md" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1572245121682" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1572246466433" />
     <property name="jdk.selected.JAVA_MODULE" value="1.8.0_161" />
     <property name="last_opened_file_path" value="D:/workspace/hlcar-soa" />
     <property name="project.structure.last.edited" value="Modules" />
@@ -439,21 +409,7 @@
       <workItem from="1571791781286" duration="676000" />
       <workItem from="1571821741794" duration="4389000" />
       <workItem from="1571826800252" duration="1720000" />
-      <workItem from="1572229980371" duration="4168000" />
-    </task>
-    <task id="LOCAL-00091" summary="mq">
-      <created>1539083813746</created>
-      <option name="number" value="00091" />
-      <option name="presentableId" value="LOCAL-00091" />
-      <option name="project" value="LOCAL" />
-      <updated>1539083813746</updated>
-    </task>
-    <task id="LOCAL-00092" summary="spring cloud">
-      <created>1539141341972</created>
-      <option name="number" value="00092" />
-      <option name="presentableId" value="LOCAL-00092" />
-      <option name="project" value="LOCAL" />
-      <updated>1539141341972</updated>
+      <workItem from="1572229980371" duration="5409000" />
     </task>
     <task id="LOCAL-00093" summary="spring boot">
       <created>1539142571150</created>
@@ -784,11 +740,25 @@
       <option name="project" value="LOCAL" />
       <updated>1571828048552</updated>
     </task>
-    <option name="localTasksCounter" value="140" />
+    <task id="LOCAL-00140" summary="springboot">
+      <created>1572245182439</created>
+      <option name="number" value="00140" />
+      <option name="presentableId" value="LOCAL-00140" />
+      <option name="project" value="LOCAL" />
+      <updated>1572245182439</updated>
+    </task>
+    <task id="LOCAL-00141" summary="springboot">
+      <created>1572245906270</created>
+      <option name="number" value="00141" />
+      <option name="presentableId" value="LOCAL-00141" />
+      <option name="project" value="LOCAL" />
+      <updated>1572245906270</updated>
+    </task>
+    <option name="localTasksCounter" value="142" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="342428000" />
+    <option name="totallyTimeSpent" value="343669000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="2576" height="1416" extended-state="6" />
@@ -836,7 +806,6 @@
     <MESSAGE value="tomcat" />
     <MESSAGE value="Spring WebMVC" />
     <MESSAGE value="spring-boot" />
-    <MESSAGE value="springboot" />
     <MESSAGE value="Eureka" />
     <MESSAGE value="springcloud" />
     <MESSAGE value="zookeeper" />
@@ -855,7 +824,8 @@
     <MESSAGE value="mq" />
     <MESSAGE value="kfk" />
     <MESSAGE value="netty" />
-    <option name="LAST_COMMIT_MESSAGE" value="netty" />
+    <MESSAGE value="springboot" />
+    <option name="LAST_COMMIT_MESSAGE" value="springboot" />
   </component>
   <component name="antWorkspaceConfiguration">
     <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />
@@ -961,26 +931,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/performance.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="FIRST">
-          <first_editor relative-caret-position="35558">
-            <caret line="1546" column="53" selection-start-line="1546" selection-start-column="53" selection-end-line="1546" selection-end-column="53" />
-            <folding>
-              <marker date="1556188005283" expanded="true" signature="40735:40758" ph="..." />
-              <marker date="1556188005283" expanded="true" signature="44209:44362" ph="..." />
-              <marker date="1556188005283" expanded="true" signature="45287:45418" ph="..." />
-              <marker date="1556188005283" expanded="true" signature="46120:46245" ph="..." />
-              <marker date="1556188005283" expanded="true" signature="46308:46369" ph="..." />
-              <marker date="1556188005283" expanded="true" signature="46570:46610" ph="/.../" />
-              <marker date="1556188005283" expanded="true" signature="50213:50265" ph="update user... " />
-              <marker date="1556188005283" expanded="true" signature="53387:53443" ph="select nick_... user" />
-            </folding>
-          </first_editor>
-          <second_editor />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/session.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
@@ -1052,31 +1002,31 @@
     <entry file="file://$PROJECT_DIR$/img/49.jpg">
       <provider selected="true" editor-type-id="images" />
     </entry>
+    <entry file="file://$PROJECT_DIR$/performance.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="FIRST">
+          <first_editor relative-caret-position="35627">
+            <caret line="1549" lean-forward="true" selection-start-line="1549" selection-end-line="1549" />
+            <folding>
+              <marker date="1556188005283" expanded="true" signature="40735:40758" ph="..." />
+              <marker date="1556188005283" expanded="true" signature="44209:44362" ph="..." />
+              <marker date="1556188005283" expanded="true" signature="45287:45418" ph="..." />
+              <marker date="1556188005283" expanded="true" signature="46120:46245" ph="..." />
+              <marker date="1556188005283" expanded="true" signature="46308:46369" ph="..." />
+              <marker date="1556188005283" expanded="true" signature="46570:46610" ph="/.../" />
+              <marker date="1556188005283" expanded="true" signature="50213:50265" ph="update user... " />
+              <marker date="1556188005283" expanded="true" signature="53387:53443" ph="select nick_... user" />
+            </folding>
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/springboot/springboot.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="FIRST">
-          <first_editor relative-caret-position="883">
-            <caret line="1400" column="57" lean-forward="true" selection-start-line="1400" selection-start-column="57" selection-end-line="1400" selection-end-column="57" />
-            <folding>
-              <element signature="e#917#918#0" expanded="true" />
-              <element signature="e#952#953#0" expanded="true" />
-              <element signature="e#336#337#0" expanded="true" />
-              <element signature="e#395#396#0" expanded="true" />
-              <element signature="e#242#243#0" expanded="true" />
-              <element signature="e#322#323#0" expanded="true" />
-              <element signature="e#271#272#0" expanded="true" />
-              <element signature="e#300#301#0" expanded="true" />
-              <element signature="e#343#344#0" expanded="true" />
-              <element signature="e#379#380#0" expanded="true" />
-              <element signature="e#411#412#0" expanded="true" />
-              <element signature="e#440#441#0" expanded="true" />
-              <element signature="e#483#484#0" expanded="true" />
-              <element signature="e#519#520#0" expanded="true" />
-              <element signature="e#142#143#0" expanded="true" />
-              <element signature="e#180#181#0" expanded="true" />
-              <element signature="e#250#251#0" expanded="true" />
-              <element signature="e#304#305#0" expanded="true" />
-            </folding>
+          <first_editor relative-caret-position="414">
+            <caret line="129" column="24" selection-start-line="129" selection-start-column="24" selection-end-line="129" selection-end-column="24" />
           </first_editor>
           <second_editor />
         </state>

@@ -72,7 +72,7 @@ Spring Boot简单应用:使用Spring Web MVC以及Spring Web Flux技术,编程�
 
 10)无需配置XML ,无代码生成,开箱即用准生产环境的运行时应用监控与云计算的天然集成
 
-7.  SpringBoot 是对spring 的封装 要了解spring底层api
+  SpringBoot 是对spring 的封装 要了解spring底层api
 
 ## 打包
 
@@ -127,7 +127,7 @@ spring.devtools.restart.additional-paths=src/main/java
 
 1. SpringBoot :底层是Spring框架, Spring框架默认是用JCL 
 
-SpringBoot选用SLF4j和(日志门面)logback(日志实现) ;
+SpringBoot选用SLF4j(日志门面)和logback(日志实现) ;
 
 2. 日志的级别
 
