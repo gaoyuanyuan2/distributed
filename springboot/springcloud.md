@@ -1493,7 +1493,7 @@ MDC : Mapped Diagnostic Context
 
 ## 问答
 
-1.  SpringBoot 和springCloud区别
+1.  SpringBoot 和SpringCloud区别
 
 Spring Framework,封装了大多数Java EE标准技术以及开源实现方法，提高生成力。不过Spring应用需要配置的相关组件，Spring Boot帮助简化了配置步骤，采用默认的配置能够快速的启动或者构建一个Java EE应用。Spring Boot单机应用，SpringCloud是将Spring Boot变成云应用，那么里面需要增强一些组件，监控、限流、服务注册和发现等等。
 
