@@ -1113,7 +1113,7 @@ Web服务:HTTP的方式作为通讯协议
 
 客户端:  用于服务调用的存根
 
-Feign:  原生并不是Spring Web MVC的实现，基于AX-RS (Java REST规范)实现。Spring Cloud封装了Feign，
+Feign:  原生并不是Spring Web MVC的实现，基于JAX-RS (Java REST规范)实现。Spring Cloud封装了Feign，
 
 使其支持Spring Web MVC。RestTemplate 、HttpMessageConverter
 
@@ -1285,7 +1285,7 @@ private static final ThreadLocal<RequestAttributes> inheritableRequestAttributes
 }
 ```
 
-5. `ZuulServlet`经管理了`RequestContext`的生命周期了，为什么`ContextLifecycleFilter`还要在做一遍?
+5. `ZuulServlet`已经管理了`RequestContext`的生命周期了，为什么`ContextLifecycleFilter`还要在做一遍?
 
 `ZuulServelt`最终也会清理掉`RequestContext`
 
@@ -1314,9 +1314,9 @@ RequestContext是任何Servlet或者Filter都能处理，  那么为了防止不
 
 相当于兜底操作，就是防止ThreadLocal没有被remove掉。
 
-6. ThreadLocal对应了一个Thread,那么是不是意味着者Thread处理完了，那么ThreadLocal也随之GC?
+ThreadLocal对应了一个Thread,那么是不是意味着者Thread处理完了，那么ThreadLocal也随之GC?
 
-所有Servlet均采用线程池，因此，不清空的话，可能会出现意想不到的情况。除非，每次都异常!(这种情况也要依赖于线程池的实现)
+所有Servlet容器均采用线程池，因此，不清空的话，可能会出现意想不到的情况。除非，每次都异常!(这种情况也要依赖于线程池的实现)
 
 ## 动态路由
 
