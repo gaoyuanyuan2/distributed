@@ -41,3 +41,115 @@
 |Eureka|AP|<30k|支持|低|
 |Zookepper|CP|<20k|不支持|中|
 |Consul|AP|<5K|支持|高|
+
+### Spring Cloud 服务发现基本模式
+
+1、启动注册中心
+
+2、增加客户端依赖
+
+spring-cloud-starter-*
+
+3、注册客户端
+
+`@EnablerDiscoverClient`
+
+### Spring Cloud Commons 抽象原理
+
+1.激活注册 @EnableDiscoveryClient
+
+2.服务注册 ServiceRegistry、Registration
+
+3.负载均衡 Ribbon Server、ServerList
+
+4.Actuator HealthIndicatror @Endpoint
+
+
+## Spring Cloud 分布式配置实现
+
+###　对比
+
+1、Git实现
+
+版本化配置，不推荐使用
+
+2、Spring Cloud Zookeeper
+
+Apache Zookeeper
+
+3、Spring Cloud Consul
+
+
+4、JDBC实现
+
+Edgware 版本引入，不推荐使用
+
+### Spring Cloud Context 抽象-配置相关
+
+1、Spring Environment
+
+EnvironmentManager
+
+2、Bean动态刷新
+
+`@RefreshScope`
+
+3、Spring 应用上下文
+
+RefreshScope
+
+ContexRefresher
+
+scope - refresh
+
+4、 Spring Boot Actuator
+
+EnvironmentEndpoint
+
+WritableEnvironmentEndpoint
+
+5、Spring Cloud 事件
+
+EnvironmentChangeEvent
+
+RefreshEvent
+
+mvn -Dmaven.test.skip -U clean install
+
+## Spring Cloud 服务熔断现状-Hystrix
+
+1、熔断模式
+
+服务超时（Timeout）
+
+信号量（Semaphore）
+
+2、编程模型
+
+面向接口（Interface）
+
+面向注解（Annotation）
+
+3、策略规则
+
+自定义实现
+
+注解配置
+
+多数据源适配
+
+4、 控制台
+
+Hystrix Dashboard
+
+5、生态整合
+
+JVM进程服务
+
+RPC服务
+
+Spring Cloud Statck 等
+
+
+
+
