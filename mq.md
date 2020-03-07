@@ -223,6 +223,12 @@ ACK机制是消费者从RabbitMQ收到消息并处理完成后，反馈给Rabbi 
 
 ## 3、Kafka
 
+高性能：高吞吐量、低延时、高并发、时间复杂度为O(1)
+
+持久性与扩展性：数据可持久化、容错性、支持在线水平扩展、消息自动平衡
+
+应用场景：日志收集、流处理、事件源、持久化日志
+
 ### 1. zookeeper上注册的节点信息
 
 cluster, controller, controller_epoch, brokers, zookeeper, admin, isr_change_notification, consumers, latest_producer_id_block, config
@@ -237,7 +243,10 @@ pv、uv运营统计 日志 消息中间件
 
 Topic是用于存储消息的逻辑概念，可以看作一个消息集合。每个topic可以有多个生产者向其推送消息，也可以有任意多个消费者消费其中的消息
 
-每个topic可以划分多个分区（每个Topic至少有一个分区），同一topic下的不同分区包含的消息是不同的。每个消息在被添加到分区时，都会被分配一个offset（称之为偏移量），它是消息在此分区中的唯一编号，kafka通过offset保证消息在分区内的顺序，offset的顺序不跨分区，即kafka只保证在同一个分区内的消息是有序的；
+每个topic可以划分多个partition（每个Topic至少有一个分区），同一topic下的不同分区包含的消息是不同的。每个消息在被添加到分区时，
+都会被分配一个offset（称之为偏移量），它是消息在此分区中的唯一编号，kafka通过offset保证消息在分区内的顺序，offset的顺序不跨分区，
+即kafka只保证在同一个分区内的消息是有序的；
+
 
 ![](img/10.png) 
 
