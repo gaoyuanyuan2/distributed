@@ -527,6 +527,11 @@ Fast Fail:快速失败
 
 Fault-Tolerance :容错
 
+* HE SELF PRESERVATION MODE IS TURNED OFF.THIS MAY NOT PROTECT INSTANCE EXPIRY IN CASE OF NETWORK/OTHER PROBLEMS.
+
+* 自我保存模式关闭。当网络或其他问题发生时，此模式可能无法保护实例过期。
+
+
 ## 问题互动
 
 1.consul和Eureka是一样的吗
