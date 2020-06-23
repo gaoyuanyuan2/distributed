@@ -1,6 +1,6 @@
 # Spring Boot
 
-![持久化存储](https://github.com/gaoyuanyuan2/distributed/blob/master/img/49.jpg) 
+![持久化存储](/img/49.jpg) 
 
 主要内容
 

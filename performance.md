@@ -183,10 +183,10 @@ http://www.man7.org/linux/man-pages/man1/iostat.1.html
 线程恢复等基础功能都需要依赖这个计数器来完成。
 
 
-![JVM](https://github.com/gaoyuanyuan2/distributed/blob/master/img/27.png) 
+![JVM](/img/27.png) 
 
 
-![JMM](https://github.com/gaoyuanyuan2/distributed/blob/master/img/28.png) 
+![JMM](/img/28.png) 
 
 ### 什么样的对象需要被GC
 
@@ -236,7 +236,7 @@ Java 虚拟机使用该算法来判断对象是否可被回收，GC Roots 一般
 
 * 该类对应的 Class 对象没有在任何地方被引用，也就无法在任何地方通过反射访问该类方法。
 
-![回收算法](https://github.com/gaoyuanyuan2/distributed/blob/master/img/29.png) 
+![回收算法](/img/29.png) 
 
 
 一般将堆分为新生代和老年代。
@@ -477,10 +477,10 @@ MAT
  kill 进程号	
 
 
-![JVM](https://github.com/gaoyuanyuan2/distributed/blob/master/img/47.jpg) 
+![JVM](/img/47.jpg) 
 
 
-![JMM](https://github.com/gaoyuanyuan2/distributed/blob/master/img/48.jpg) 
+![JMM](/img/48.jpg) 
 
 
 VM参数
@@ -703,7 +703,7 @@ JVM不会了解这些:操作系统完全屏蔽了内存交换的细节。这样�
 
 #### 默认堆的大小
 
-![默认堆的大小](https://github.com/gaoyuanyuan2/distributed/blob/master/img/69.jpg) 
+![默认堆的大小](/img/69.jpg) 
 
 ### 12
 
@@ -745,7 +745,7 @@ Initial Young Gen Size = Initial Heap Size / (1 + NewRatio)
 ### 13
 
 #### 久代/元空间的默认大小 
-![默认堆的大小](https://github.com/gaoyuanyuan2/distributed/blob/master/img/70.png) 
+![默认堆的大小](/img/70.png) 
 
 这些内存区域的行为就像是分隔开的普通堆空间。它们会根据初始的大小动态地调整，需要的时候会增大到最大的堆空间。对于永久代而言，可以通过-XX:PermSize=N、-XX:MaxPermSize=N标志调整大小。而元空间的大小可以通过-XX:MetaspaceSize=N和-XX:MaxMetaspaceSize=N调整。
 
@@ -1633,7 +1633,7 @@ Random和ThreadLocalRandom两个类的差别是，Random 类的主要操作(next
 
 #### 架构图
 
-![整体架构](https://github.com/gaoyuanyuan2/distributed/blob/master/img/30.png) 
+![整体架构](/img/30.png) 
 
 #### 目录结构
 
@@ -1729,7 +1729,7 @@ Random和ThreadLocalRandom两个类的差别是，Random 类的主要操作(next
 
 实现类:  `org.apache.catalina.connector.Connector`
 
-![Connector Comparison](https://github.com/gaoyuanyuan2/distributed/blob/master/img/31.png) 
+![Connector Comparison](/img/31.png) 
 
 #### 编码
 
@@ -2162,11 +2162,11 @@ server.jspServlet.registered=false
 
 ### 8、性能优化MySQL
 #### 1. 架构图
-![架构图](https://github.com/gaoyuanyuan2/distributed/blob/master/img/32.png) 
+![架构图](/img/32.png) 
 
-![架构图](https://github.com/gaoyuanyuan2/distributed/blob/master/img/33.png) 
+![架构图](/img/33.png) 
 
-![架构图](https://github.com/gaoyuanyuan2/distributed/blob/master/img/34.png) 
+![架构图](/img/34.png) 
 
 ##### 引擎介绍 
 
@@ -2190,21 +2190,21 @@ server.jspServlet.registered=false
 6) 应用场景
 OLTP On-Line Transaction Processioning
 
-![](https://github.com/gaoyuanyuan2/distributed/blob/master/img/35.png) 
+![](/img/35.png) 
 
 * IO per second
 
 OLAP  On-Line Analysis Processing
 
-![](https://github.com/gaoyuanyuan2/distributed/blob/master/img/36.png) 
+![](/img/36.png) 
 
 2. 提高性能
 1) 索引
 *索引结构
 
-![](https://github.com/gaoyuanyuan2/distributed/blob/master/img/37.png) 
+![](/img/37.png) 
 
-![](https://github.com/gaoyuanyuan2/distributed/blob/master/img/38.png) 
+![](/img/38.png) 
 
 * B+ Tree 自增id做索引效率更高
 索引有序，排序效率高
@@ -2218,13 +2218,13 @@ distinct 基于group by
 3. 锁
 *行锁
 
-![](https://github.com/gaoyuanyuan2/distributed/blob/master/img/39.png) 
+![](/img/39.png) 
 
-![](https://github.com/gaoyuanyuan2/distributed/blob/master/img/40.png) 
+![](/img/40.png) 
 
-![](https://github.com/gaoyuanyuan2/distributed/blob/master/img/41.png) 
+![](/img/41.png) 
 
-![](https://github.com/gaoyuanyuan2/distributed/blob/master/img/42.png) 
+![](/img/42.png) 
 
 无索引自动升级为表锁
 死锁
@@ -2237,7 +2237,7 @@ lock table user write
 update user set name = 'xxx' where id > 1 and id < 4 
 ```
 
-![](https://github.com/gaoyuanyuan2/distributed/blob/master/img/46.png) 
+![](/img/46.png) 
 
 4. 优化
 
@@ -2245,7 +2245,7 @@ update user set name = 'xxx' where id > 1 and id < 4
 select * from table_name [ force index( idx_name ) ]  where condition
 
 
-![](https://github.com/gaoyuanyuan2/distributed/blob/master/img/43.png) 
+![](/img/43.png) 
 
 1)QEP Query Execution Plan
 
@@ -2299,7 +2299,7 @@ UNION: UNION 语句中第二个SELECT开始的后面所有SELECT，第一个SELE
 
 unique_subquery ，index_ subquery , range , index_ merge , index , ALL
 
-![](https://github.com/gaoyuanyuan2/distributed/blob/master/img/44.png) 
+![](/img/44.png) 
 
 5. Possible_ keys:该查询可以利用的索引.如果没有任何索引可以使用，就会显示成null,这一项内容对于优化时候索引的调整非常重要;
 
@@ -2355,7 +2355,7 @@ show profile cpu,block io for query 75;
 1. join \ order by \group by解释
 
 
-![](https://github.com/gaoyuanyuan2/distributed/blob/master/img/45.png) 
+![](/img/45.png) 
 
 
 

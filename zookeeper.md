@@ -133,7 +133,7 @@ zookeeper集群, 包含三种角色: leader / follower /observer（访问量高�
 
 3)不属于zookeeper的关键部位。
 
-![整体图](https://github.com/gaoyuanyuan2/distributed/blob/master/img/1.png) 
+![整体图](/img/1.png) 
 
 2.	在zoo.cfg里面增加
 
@@ -196,7 +196,7 @@ zookeeper的数据模型和文件系统类似，每一个节点称为：znode.  
 3.会话
 
 
-![整体图](https://github.com/gaoyuanyuan2/distributed/blob/master/img/3.png) 
+![整体图](/img/3.png) 
 
 4.Watcher
 
@@ -488,7 +488,7 @@ a)	判断逻辑时钟(Epoch) ，如果Epoch大于自己当前的Epoch，说明�
 
 b)	如果Epoch小于目前的Epoch，说明对方的epoch过期了，也就意味着对方服务器的选举轮数是过期的。这个时候，只需要讲自己的信息发送给对方
 
-![c)](https://github.com/gaoyuanyuan2/distributed/blob/master/img/4.png) 
+![c)](/img/4.png) 
 
 
 3.ZAB协议
@@ -536,7 +536,7 @@ zab协议的工作原理
 2)当新的机器加入到集群中的时候，如果已经存在leader服务器，那么新加入的服务器就会自觉进入数据恢复模式，找到leader进行数据同步
 
 
-![zab](https://github.com/gaoyuanyuan2/distributed/blob/master/img/5.png) 
+![zab](/img/5.png) 
 
 ### 16.Acl权限的操作
 
