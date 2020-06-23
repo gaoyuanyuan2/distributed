@@ -134,135 +134,135 @@ Worker 子线程一个一个地去执行Handler
 Selector会不断地轮询注册在其上的Channel,如果某个Channel上面发生读或者写事件，这个Channel就处于就绪状态，会被Selector轮询出来，然后通过SelectionKey可以获取就绪Channel的集合，进行后续的I/O操作。
 
 ## 零拷贝
- 
- 1. 零拷贝:是指计算机操作的过程中，CPU不需要为数据在内存之间的拷贝消耗资源。而它通常是指计算机在网络上发送文件时，
- 不需要将文件内容拷贝到用户空间（JVM）而直接在内核空间（Kernel Space）中传输到网络的方式。
+
+1. 零拷贝:是指计算机操作的过程中，CPU不需要为数据在内存之间的拷贝消耗资源。而它通常是指计算机在网络上发送文件时，
+不需要将文件内容拷贝到用户空间（JVM）而直接在内核空间（Kernel Space）中传输到网络的方式。
 
 ##  源码 
 
 只要是方法后面加了个0的，都是实现类的方法，不是接口在Netty中提供了非常丰富的工具类。
 
 ##  对比
- 
- 同步:相对于IO操作而言的，在同一时间，只能完成一个操作(JDK NIO)
- 
- 
- 异步:相对于I0操作而言的，在同一时间，  同时完成多个操作(JDK AIO)
- 
- 
- 阻塞:相对于数据而言，判断数据有没有准备好，如果没有准备好，停住不前（BIO  accept）
- 
- 
- 非阻塞:不管数据有没有准备好，都会给一个反馈（NIO） 
+
+同步:相对于IO操作而言的，在同一时间，只能完成一个操作(JDK NIO)
+
+
+异步:相对于I0操作而言的，在同一时间，  同时完成多个操作(JDK AIO)
+
+
+阻塞:相对于数据而言，判断数据有没有准备好，如果没有准备好，停住不前（BIO  accept）
+
+
+非阻塞:不管数据有没有准备好，都会给一个反馈（NIO） 
 
 Socket又称套接字：服务端监听、客户端请求服务器，服务器确认，客户端确认，进行通信
- 
- 1. BIO 同步阻塞
- 
- ```java
+
+1. BIO 同步阻塞
+
+```java
 Socket client = server.accept();//等待客户端连接，阻塞方法
 ```
- 
- 
- 2. NIO 同步非阻塞
- 
- 
- 3. AIO 异步非阻塞
- 
- NIO2.0的异步套接字通道是真正的异步非阻塞I/O,对应于UNIX网络编程中的事件驱动I/O(AIO)。
-  它不需要通过多路复用器(Selector)对注册的通道进行轮询操作即可实现异步读写，从而简化了NIO的编程模型。
-   通过java. util.concurrent.Future类来表示异步操作的结果;
-  在执行异步操作的时候传入一个java.nio.channels。
-  CompletionHandler接口的实现类作为操作完成的回调。 
-  Netty   NIO框架(加了线程池ThreadPool )
-  异步非阻塞(基于NI0来实现)
- 
- ## 执行流程
-  
-  1. Server:
- 
- 
- 步骤一:打开ServerSocketChannel,用于监听客户端的连接，它是所有客户端连接的父管道
- 
- ```java
- ServerSocketChannel ssc = ServerSocketChannel.open();
- ```
+
+
+2. NIO 同步非阻塞
+
+
+3. AIO 异步非阻塞
+
+NIO2.0的异步套接字通道是真正的异步非阻塞I/O,对应于UNIX网络编程中的事件驱动I/O(AIO)。
+它不需要通过多路复用器(Selector)对注册的通道进行轮询操作即可实现异步读写，从而简化了NIO的编程模型。
+通过java. util.concurrent.Future类来表示异步操作的结果;
+在执行异步操作的时候传入一个java.nio.channels。
+CompletionHandler接口的实现类作为操作完成的回调。 
+Netty   NIO框架(加了线程池ThreadPool )
+异步非阻塞(基于NI0来实现)
+
+## 执行流程
+
+1. Server:
+
+
+步骤一:打开ServerSocketChannel,用于监听客户端的连接，它是所有客户端连接的父管道
+
+```java
+ServerSocketChannel ssc = ServerSocketChannel.open();
+```
 
 
 步骤二:绑定监听端口，设置连接为非阻塞模式
- 
- ```java
- ssc.bind(new InetSocketAddress(port));
- ssc.configureBlocking(false);
- ```
+
+```java
+ssc.bind(new InetSocketAddress(port));
+ssc.configureBlocking(false);
+```
 
 
 步骤三:创建Reactor线程，创建多路复用器并启动线程
- 
- ```java
+
+```java
 this.seletor = Selector.open();
 ```
 
 
 步骤四:将ServerSocketChannel注册到Reactor线程的多路复用器Selector.上，监听ACCEPT事件
- 
- ```java
+
+```java
 ssc.register(this.seletor, SelectionKey.OP_ACCEPT);
 ```
 
 
 步骤五:多路复用器在线程run方法的无限循环体内轮询准备就绪的Key
- 
- ```java
+
+```java
 this.seletor.select();
 Iterator<SelectionKey> keys = this.seletor.selectedKeys().iterator();
 ```
 
 
 步骤六:多路复用器监听到有新的客户端接入，处理新的接入请求，完成TCP三次握手，建立物理链路
- 
- ```java
+
+```java
 SocketChannel sc = ssc.accept();
 ```
- 
- 
- 步骤七:设置客户端链路为非阻塞模式
- 
- ```java
+
+
+步骤七:设置客户端链路为非阻塞模式
+
+```java
 sc.configureBlocking(false);
 ```
 
 
 步骤八:将新接入的客户端连接注册到Reactor 线程的多路复用器上，监听读操作，读取客户端发送的网络消息
- 
- ```java
+
+```java
 sc.register(this.seletor, SelectionKey.OP_READ);
 ```
 
 
 步骤九:异步读取客户端请求消息到缓冲区
 
- ```java
+```java
 sc.read(this.readBuf);
 ```
 
 
 步骤十:对ByteBuffer进行编解码，如果有半包消息指针reset,继续读取后续的报文，将解码成功的消息封装成Task,投递到业务线程池中，进行业务逻辑编排。
- 步骤十一:将POJO对象encode成ByteBuffer, 调用SocketChannel的异步write 接口，将消息异步发送给客户端
+步骤十一:将POJO对象encode成ByteBuffer, 调用SocketChannel的异步write 接口，将消息异步发送给客户端
 
 2. Client
 
 
- 步骤一:打开SocketChannel,绑定客户端本地地址(可选，默认系统会随机分配一个可用的本地地址)
- 
- ```java
+步骤一:打开SocketChannel,绑定客户端本地地址(可选，默认系统会随机分配一个可用的本地地址)
+
+```java
 sc = SocketChannel.open();
 ```
 
 
 步骤二：设置SocketChannel为非阻塞模式，同时设置客户端连接的TCP参数
- 
- ```java
+
+```java
 sc.configureBlocking(false);
 ```
 
@@ -275,13 +275,13 @@ sc.connect(address);
 
 
 步骤四:判断是否连接成功，如果连接成功，则直接注册读状态位到多路复用器中
- 
+
 
 步骤五:向Reactor线程的多路复用器注册OP_CONNECT状态位，监听服务端的TCPACK应答
- 
+
 
 步骤六:创建Reactor线程，创建多路复用器并启动线程
- 
+
 
 步骤七:多路复用器在线程run方法的无限循环体内轮询准备就绪的Key
 
@@ -310,26 +310,26 @@ sc.connect(address);
 
 
 2. SocketChannel 的读写操作都是异步的，如果没有可读写的数据它不会同步等待，直接返回，
-  这样1/O通信线程就可以处理其他的链路，不需要同步等待这个链路可用。
+这样1/O通信线程就可以处理其他的链路，不需要同步等待这个链路可用。
 
 
 3. 线程模型的优化:由于JDK的Selector 在Linux等主流操作系统.上通过epoll 实现，
-  它没有连接句柄数的限制(只受限于操作系统的最大句柄数或者对单个进程的句柄限制)，
- 这意味着一个Selector 线程可以同时处理成千，上万个客户端连接，而且性能不会随着客户端的增加而线性下降。
-  因此，它非常适合做高性能、高负载的网络服务器。
-    一个多路复用器Selector可以同时轮询多个Channel，由于JDK使用了epoll()代替 传统的select 实现，
-   所以它并没有最大连接句柄1024/2048 的限制。
+它没有连接句柄数的限制(只受限于操作系统的最大句柄数或者对单个进程的句柄限制)，
+这意味着一个Selector 线程可以同时处理成千，上万个客户端连接，而且性能不会随着客户端的增加而线性下降。
+因此，它非常适合做高性能、高负载的网络服务器。
+一个多路复用器Selector可以同时轮询多个Channel，由于JDK使用了epoll()代替 传统的select 实现，
+所以它并没有最大连接句柄1024/2048 的限制。
 
 这也就意味着只需要一个线程负责Selector的轮询(一个单一的线程便可以处理多个并发的连接)，
-   就可以接入成千上万的客户端，这确实是个非常巨大的进步。
+就可以接入成千上万的客户端，这确实是个非常巨大的进步。
 
 JDK1.7升级了NIO类库，升级后的NIO类库被称为NIO 2.0。 引人注目的是,
-  Java正式提供了异步文件I/O操作，  同时提供了与UNIX网络编程事件驱动1/O对应的AIO。
-  
+Java正式提供了异步文件I/O操作，  同时提供了与UNIX网络编程事件驱动1/O对应的AIO。
+
 4. 非常丰富的工具类
 
 ## pipeline 无锁化串行(链路)
- 
+
 1. Netty采用了串行无锁化设计，在I/O线程内部进行串行操作，避免多线程竞争导致的性能下降。 表面上看，串行化设计似乎CPU利用率不高，并发程度不够。但是，通过调整NIO线程池的线程参数，可以同时启动多个串行化的线程并行运行，
 这种局部无锁化的串行线程设计相比一个队列多个工作线程模型性能更优。
 实现异步非常重要的一环，无锁化串行的每个线程执行的顺序变得可控。同时执行，按顺序取结果。
@@ -454,66 +454,66 @@ WebSocket 只需要建立一次连接，就可以一直保持连接状态。这�
 ## 时序图
 
 1. 服务端
- 
- ![服务端时序图](https://github.com/gaoyuanyuan2/distributed/blob/master/img/7.png) 
- 
- 
+
+![服务端时序图](https://github.com/gaoyuanyuan2/distributed/blob/master/img/7.png) 
+
+
 步骤1：创建ServerBootstrap实例。ServerBootstrap是Netty服务端的启动辅助类，它提供了一系列的方法用于设置服务端启动相关的参数。底层通过门面模式对各种能力进行抽象和封装，尽量不需要用户跟过多的底层API打交道，降低用户的开发难度。
 我们在创建ServerBootstrap实例时，会惊讶的发现ServerBootstrap只有一个无参的构造函数，作为启动辅助类这让人不可思议，因为它需要与多个其它组件或者类交互。ServerBootstrap构造函数没有参数的根本原因是因为它的参数太多了，
 而且未来也可能会发生变化，为了解决这个问题，就需要引入Builder模式。《Effective Java》第二版第2条建议遇到多个构造器参数时要考虑用构建器。
-  
-  
+
+
 步骤2：设置并绑定Reactor线程池。Netty的Reactor线程池是EventLoopGroup，它实际就是EventLoop的数组。
 EventLoop的职责是处理所有注册到本线程多路复用器Selector上的Channel，Selector的轮询操作由绑定的EventLoop线程run方法驱动，
 在一个循环体内循环执行。值得说明的是，EventLoop的职责不仅仅是处理网络I/O事件，用户自定义的Task和定时任务Task也统一由EventLoop负责处理，
 这样线程模型就实现了统一。从调度层面看，也不存在在EventLoop线程中再启动其它类型的线程用于异步执行其它的任务，这样就避免了多线程并发操作和锁竞争，提升了I/O线程的处理和调度性能。
- 
- 
+
+
 步骤3：设置并绑定服务端Channel。作为NIO服务端，需要创建ServerSocketChannel,Netty对原生的NIO类库进行了封装，对应实现是NioServerSocketChannel。对于用户而言，不需要关心服务端Channel的底层实现细节和工作原理，
 只需要指定具体使用哪种服务端Channel即可。因此，Netty的ServerBootstrap方法提供了channel方法用于指定服务端Channel的类型。
 Netty通过工厂类，利用反射创建NioServerSocketChannel对象。由于服务端监听端口往往只需要在系统启动时才会调用，因此反射对性能的影响并不大。
- 
- 
+
+
 步骤4：链路建立的时候创建并初始化ChannelPipeline。ChannelPipeline并不是NIO服务端必需的，它本质就是一个负责处理网络事件的职责链，
 负责管理和执行ChannelHandler。网络事件以事件流的形式在ChannelPipeline中流转，由ChannelPipeline根据ChannelHandler的执行策略调度ChannelHandler的执行。典型的网络事件如下：
-  
-  链路注册；
-  
-  链路激活；
-  
-  链路断开；
-  
-  接收到请求消息；
- 
-  请求消息接收并处理完毕；
-  
-  发送应答消息；
- 
-  链路发生异常；
-  
-  发生用户自定义事件。
-  
-  
-  步骤5：初始化ChannelPipeline完成之后，添加并设置ChannelHandler。ChannelHandler是Netty提供给用户定制和扩展的关键接口。
-  利用ChannelHandler用户可以完成大多数的功能定制，
-  例如消息编解码、心跳、安全认证、TSL/SSL认证、流量控制和流量整形等。Netty同时也提供了大量的系统ChannelHandler供用户使用，比较实用的系统ChannelHandler总结如下：
-  
-  系统编解码框架-ByteToMessageCodec；
- 
- 通用基于长度的半包解码器-LengthFieldBasedFrameDecoder;
- 
- 码流日志打印Handler-LoggingHandler；
- 
- SSL安全认证Handler-SslHandler；
- 
- 链路空闲检测Handler-IdleStateHandler；
 
- 流量整形Handler-ChannelTrafficShapingHandler;
- 
- Base64编解码-Base64Decoder和Base64Encoder。
- 
- 
- 步骤6：绑定并启动监听端口。在绑定监听端口之前系统会做一系列的初始化和检测工作，完成之后，会启动监听端口，并将ServerSocketChannel注册到Selector上监听客户端连接
+链路注册；
+
+链路激活；
+
+链路断开；
+
+接收到请求消息；
+
+请求消息接收并处理完毕；
+
+发送应答消息；
+
+链路发生异常；
+
+发生用户自定义事件。
+
+
+步骤5：初始化ChannelPipeline完成之后，添加并设置ChannelHandler。ChannelHandler是Netty提供给用户定制和扩展的关键接口。
+利用ChannelHandler用户可以完成大多数的功能定制，
+例如消息编解码、心跳、安全认证、TSL/SSL认证、流量控制和流量整形等。Netty同时也提供了大量的系统ChannelHandler供用户使用，比较实用的系统ChannelHandler总结如下：
+
+系统编解码框架-ByteToMessageCodec；
+
+通用基于长度的半包解码器-LengthFieldBasedFrameDecoder;
+
+码流日志打印Handler-LoggingHandler；
+
+SSL安全认证Handler-SslHandler；
+
+链路空闲检测Handler-IdleStateHandler；
+
+流量整形Handler-ChannelTrafficShapingHandler;
+
+Base64编解码-Base64Decoder和Base64Encoder。
+
+
+步骤6：绑定并启动监听端口。在绑定监听端口之前系统会做一系列的初始化和检测工作，完成之后，会启动监听端口，并将ServerSocketChannel注册到Selector上监听客户端连接
 
 
 步骤7：Selector轮询。由Reactor线程NioEventLoop负责调度和执行Selector轮询操作，选择准备就绪的Channel集合
@@ -523,10 +523,10 @@ Netty通过工厂类，利用反射创建NioServerSocketChannel对象。由于�
 
 
 步骤9：执行Netty系统ChannelHandler和用户添加定制的ChannelHandler。ChannelPipeline根据网络事件的类型，调度并执行ChannelHandler
- 
- 2. 客户端
 
- ![客户端时序图](https://github.com/gaoyuanyuan2/distributed/blob/master/img/7.png) 
+2. 客户端
+
+![客户端时序图](https://github.com/gaoyuanyuan2/distributed/blob/master/img/7.png) 
 
 
 步骤1：用户线程创建Bootstrap实例
@@ -576,8 +576,8 @@ Netty协议栈承载了业务内部各模块之间的消息交互和服务调用
 
 
 ## ByteBuf
- 
- ByteBuffer缺点 
+
+ByteBuffer缺点 
 
 
 1.  ByteBuffer长度固定，一旦分配完成，它的容量不能动态扩展和收缩，当需要编码的POJO对象大于ByteBuffer的容量时，会发生索引越界异常;
@@ -861,7 +861,7 @@ Promise是可写的Future, Future 自身并没有写操作相关的接口，Nett
 
 
 
-      
+  
 
 
 
