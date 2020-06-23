@@ -1,6 +1,6 @@
 # Spring Boot
 
-![持久化存储](/img/49.jpg) 
+![持久化存储](../img/49.jpg) 
 
 主要内容
 
@@ -261,7 +261,9 @@ public class HttpEncodingProperties {
 }
 ```
 ## 配置
-<br>导入配置文件处理器，配置文件进行绑定就会有提示
+
+导入配置文件处理器，配置文件进行绑定就会有提示
+
 ```xml
 <dependency>
 	<groupId>org.springframework.boot</groupId>
@@ -292,7 +294,8 @@ public class HttpEncodingProperties {
 Spring Web MVC介绍:整体介绍Spring Web MVC框架设计思想、功能特性、以及插播式实现
 
 Spring Web MVC实战:详细说明DispatcherServlet、`@Controller` 和`@RequestMapping`的基本原理、`@RequestParam` 、`@RequestBody` 和`@ResponseBody`使用方式、以及它们之间关系
-<br>映射处理:介绍DispatcherServlet与RequestMappingHandlerMapping之间的交互原理，HandlerInterceptor 的职责以及使用
+
+映射处理:介绍DispatcherServlet与RequestMappingHandlerMapping之间的交互原理，HandlerInterceptor 的职责以及使用
 
 异常处理:介绍DispatcherServlet中执行过程中,如何优雅并且高效地处理异常的逻辑,如归类处理以及提供友好的交互界面等Thymeleaf
 
@@ -1039,9 +1042,9 @@ private void initialize(Object[] sources) {
 }
 ```
 
-![](images/搜狗截图20180306145727.png)
+![](../images/搜狗截图20180306145727.png)
 
-![](images/搜狗截图20180306145855.png)
+![](../images/搜狗截图20180306145855.png)
 
 ##  运行run方法
 

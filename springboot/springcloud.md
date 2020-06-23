@@ -54,10 +54,10 @@
 测试。整体架构使用开箱即用的WAR。QA专家只需启动该文件即可确认monolith与底层数据库的连接。相反，微服务要求在开始测试之前验证每个服务。
 
 \
-![对比](/img/16.png) 
+![对比](../img/16.png) 
 
 
-![对比](/img/17.png) 
+![对比](../img/17.png) 
 
 
 
@@ -388,7 +388,7 @@ Netty类似于Reactive
 
 ## Spring Cloud Netflix Eureka
 
-![](/img/19.png) 
+![](../img/19.png) 
 
 前微服务时代:介绍前微服务时代，服务发现和注册在SOA甚至是更早的时代的技术实现和实施方法,如WebService中的UDDI、REST 中的HEATOAS
 
@@ -646,7 +646,7 @@ Eureka Server 在运行期间，会统计心跳失败的比例在15分钟内是�
 
 4 Bulkheads
 
-![客户端弹性模式](/img/71.png) 
+![客户端弹性模式](../img/71.png) 
 
 ## Spring Cloud Netflix Ribbon
 
@@ -660,7 +660,7 @@ Netflix Ribbon :作为Spring Cloud客户端负载均衡实现, Netflix Ribbon提
 
 Ribbon 提供云端负载均衡，有多种负载均衡策略可供选择，可配合服务发现和断路器使用。
 
-![](/img/24.png) 
+![](../img/24.png) 
 
 Ribbon在工作时分成两步
 
@@ -1403,7 +1403,7 @@ Processor
 
 消息体( Body/Payload )
 
-![Spring Cloud Stream架构](/img/74.png) 
+![Spring Cloud Stream架构](../img/74.png) 
 
 ## RabbitMQ 实现
 
@@ -1576,13 +1576,13 @@ Web:. Servlet、 Spring WebMVC、JAX-RS、 WebSocket、 WebServices
 
 4 OAuth2用户认证服务器- 该 OAuth2 认证服务器是应用程序和正在使用的服务之间的中介。OAuth2 server允许用户进行身份验证，而不需要将用户凭证传递给应用程序将要调用的每个服务。
 
-![OAuth2](/img/72.png) 
+![OAuth2](../img/72.png) 
 
 
 
 OAuth2规范有四种类型:密码,客户端证书,授权代码,隐式授权
 
-![微服务安全体系结构不仅仅是实现OAuth2](/img/72.png) 
+![微服务安全体系结构不仅仅是实现OAuth2](../img/72.png) 
 
 
 
