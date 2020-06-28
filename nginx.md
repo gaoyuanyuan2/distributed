@@ -102,7 +102,7 @@ If 空格 (条件) {设定条件进行重写}
 
 1)	在html目录下创建一个images文件，在该文件中放一张图片
 
-2)	修改index.html, 增加<img src=”图片”/>
+2)	修改index.html, 增加`<img src=”图片”/>`
 
 3)	修改nginx.conf配置。配置两个location实现动静分离，并且在静态文件中增加expires的缓存期限
 

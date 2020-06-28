@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="1a69c435-9430-420c-b841-ddb13cb8216f" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/2020/k8s.md" />
+    <list default="true" id="1a69c435-9430-420c-b841-ddb13cb8216f" name="Default" comment="MyCat">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change beforePath="$PROJECT_DIR$/nginx.md" afterPath="$PROJECT_DIR$/nginx.md" />
     </list>
     <ignored path="$PROJECT_DIR$/../springcloud-config/target/" />
     <ignored path="$PROJECT_DIR$/maven-study/target/" />
@@ -31,12 +31,12 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
-      <file leaf-file-name="SpringCloud.md" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/2020/SpringCloud.md">
+      <file leaf-file-name="docker.md" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/docker.md">
           <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
             <state split_layout="SPLIT">
-              <first_editor relative-caret-position="2888">
-                <caret line="152" column="0" lean-forward="false" selection-start-line="152" selection-start-column="0" selection-end-line="152" selection-end-column="0" />
+              <first_editor relative-caret-position="278">
+                <caret line="80" column="20" lean-forward="false" selection-start-line="80" selection-start-column="20" selection-end-line="80" selection-end-column="20" />
                 <folding />
               </first_editor>
               <second_editor />
@@ -44,51 +44,12 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="微服务.md" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/2020/微服务.md">
-          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-            <state split_layout="SPLIT">
-              <first_editor relative-caret-position="931">
-                <caret line="49" column="0" lean-forward="false" selection-start-line="49" selection-start-column="0" selection-end-line="49" selection-end-column="0" />
-                <folding />
-              </first_editor>
-              <second_editor />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="k8s.md" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/2020/k8s.md">
-          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-            <state split_layout="SPLIT">
-              <first_editor relative-caret-position="423">
-                <caret line="129" column="3" lean-forward="false" selection-start-line="129" selection-start-column="3" selection-end-line="129" selection-end-column="3" />
-                <folding />
-              </first_editor>
-              <second_editor />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="es.md" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/2020/es.md">
-          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-            <state split_layout="SPLIT">
-              <first_editor relative-caret-position="494">
-                <caret line="26" column="0" lean-forward="false" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
-                <folding />
-              </first_editor>
-              <second_editor />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="mq.md" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/mq.md">
+      <file leaf-file-name="nginx.md" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/nginx.md">
           <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
             <state split_layout="FIRST">
-              <first_editor relative-caret-position="4351">
-                <caret line="229" column="23" lean-forward="false" selection-start-line="229" selection-start-column="23" selection-end-line="229" selection-end-column="23" />
+              <first_editor relative-caret-position="180">
+                <caret line="104" column="37" lean-forward="false" selection-start-line="104" selection-start-column="37" selection-end-line="104" selection-end-column="37" />
                 <folding />
               </first_editor>
               <second_editor />
@@ -96,12 +57,12 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="skill.md" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/2020/skill.md">
+      <file leaf-file-name="dubbo.md" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/dubbo.md">
           <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-            <state split_layout="FIRST">
-              <first_editor relative-caret-position="475">
-                <caret line="25" column="0" lean-forward="false" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
+            <state split_layout="SPLIT">
+              <first_editor relative-caret-position="0">
+                <caret line="0" column="13" lean-forward="false" selection-start-line="0" selection-start-column="13" selection-end-line="0" selection-end-column="13" />
                 <folding />
               </first_editor>
               <second_editor />
@@ -113,13 +74,10 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>Ribbon</find>
       <find>嵌入式</find>
       <find>数据库</find>
       <find>ribbon</find>
-      <find>https://github.com/gaoyuanyuan2/distributed/blob/master</find>
       <find>数字证书</find>
-      <find>&lt;br&gt;</find>
       <find>B+ Tree</find>
       <find>引用计数</find>
       <find>JDBC</find>
@@ -140,9 +98,12 @@
       <find>System.gc()</find>
       <find>生命周期</find>
       <find>类加载机制</find>
-      <find>分组</find>
-      <find>高吞吐</find>
-      <find>场景</find>
+      <find>ArrayBlockingQueue</find>
+      <find>https://github.com/gaoyuanyuan2/distributed/blob/master</find>
+      <find>https://github.com/gaoyuanyuan2</find>
+      <find>/img</find>
+      <find>截图</find>
+      <find>&lt;br&gt;</find>
     </findStrings>
     <replaceStrings>
       <replace>务</replace>
@@ -154,7 +115,13 @@
       <replace>导致</replace>
       <replace>#</replace>
       <replace />
+      <replace>../img</replace>
     </replaceStrings>
+    <dirStrings>
+      <dir>D:\study\idea\distributed</dir>
+      <dir>D:\study\idea\distributed\springboot</dir>
+      <dir>D:\study\idea\distributed\2020</dir>
+    </dirStrings>
   </component>
   <component name="Git.Settings">
     <option name="PUSH_AUTO_UPDATE" value="true" />
@@ -177,28 +144,24 @@
         <option value="$PROJECT_DIR$/springboot/Spring-Cloud.md" />
         <option value="$PROJECT_DIR$/springboot/Spring-Boot.md" />
         <option value="$PROJECT_DIR$/zookeeper.md" />
-        <option value="$PROJECT_DIR$/mongodb.md" />
         <option value="$PROJECT_DIR$/maven-study/pom.xml" />
         <option value="$PROJECT_DIR$/../maven-study/pom.xml" />
         <option value="$PROJECT_DIR$/.gitignore" />
-        <option value="$PROJECT_DIR$/redis.md" />
         <option value="$PROJECT_DIR$/memcache.md" />
-        <option value="$PROJECT_DIR$/nginx.md" />
-        <option value="$PROJECT_DIR$/docker.md" />
         <option value="$PROJECT_DIR$/number.md" />
-        <option value="$PROJECT_DIR$/netty.md" />
         <option value="$PROJECT_DIR$/dubbo.md" />
-        <option value="$PROJECT_DIR$/springboot/springboot.md" />
-        <option value="$PROJECT_DIR$/springboot/springcloud.md" />
         <option value="$PROJECT_DIR$/README.md" />
         <option value="$PROJECT_DIR$/performance.md" />
-        <option value="$PROJECT_DIR$/2020/SpringCloud.md" />
-        <option value="$PROJECT_DIR$/2020/skill.md" />
-        <option value="$PROJECT_DIR$/2020/SpringFramework.md" />
-        <option value="$PROJECT_DIR$/2020/es.md" />
         <option value="$PROJECT_DIR$/mq.md" />
-        <option value="$PROJECT_DIR$/2020/微服务.md" />
-        <option value="$PROJECT_DIR$/2020/k8s.md" />
+        <option value="$PROJECT_DIR$/springboot/springcloud.md" />
+        <option value="$PROJECT_DIR$/mongodb.md" />
+        <option value="$PROJECT_DIR$/netty.md" />
+        <option value="$PROJECT_DIR$/redis.md" />
+        <option value="$PROJECT_DIR$/session.md" />
+        <option value="$PROJECT_DIR$/springboot/springboot.md" />
+        <option value="$PROJECT_DIR$/table.md" />
+        <option value="$PROJECT_DIR$/docker.md" />
+        <option value="$PROJECT_DIR$/nginx.md" />
       </list>
     </option>
   </component>
@@ -208,17 +171,11 @@
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
   </component>
-  <component name="MavenProjectNavigator">
-    <treeState>
-      <expand />
-      <select />
-    </treeState>
-  </component>
-  <component name="ProjectFrameBounds">
-    <option name="x" value="-9" />
-    <option name="y" value="-9" />
-    <option name="width" value="1386" />
-    <option name="height" value="666" />
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="-7" />
+    <option name="y" value="2" />
+    <option name="width" value="1932" />
+    <option name="height" value="1045" />
   </component>
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="2" id="Add" />
@@ -241,6 +198,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="AndroidView" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -253,14 +211,18 @@
               <item name="distributed" type="462c0819:PsiDirectoryNode" />
               <item name="2020" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="distributed" type="b2602c69:ProjectViewProjectNode" />
+              <item name="distributed" type="462c0819:PsiDirectoryNode" />
+              <item name="springboot" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
       <pane id="Scratches" />
+      <pane id="Scope" />
       <pane id="PackagesPane" />
-      <pane id="AndroidView" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -458,25 +420,24 @@
       <workItem from="1574991155874" duration="2824000" />
       <workItem from="1575083153266" duration="2969000" />
       <workItem from="1575217159313" duration="599000" />
-      <workItem from="1575370317256" duration="10000" />
-      <workItem from="1583066136255" duration="6777000" />
-      <workItem from="1583551887459" duration="123000" />
-      <workItem from="1583553479802" duration="7407000" />
-      <workItem from="1583575747269" duration="641000" />
-    </task>
-    <task id="LOCAL-00097" summary="spring boot">
-      <created>1539156995830</created>
-      <option name="number" value="00097" />
-      <option name="presentableId" value="LOCAL-00097" />
-      <option name="project" value="LOCAL" />
-      <updated>1539156995830</updated>
-    </task>
-    <task id="LOCAL-00098" summary="spring boot">
-      <created>1539157222026</created>
-      <option name="number" value="00098" />
-      <option name="presentableId" value="LOCAL-00098" />
-      <option name="project" value="LOCAL" />
-      <updated>1539157222026</updated>
+      <workItem from="1575370317256" duration="1401000" />
+      <workItem from="1575428247910" duration="631000" />
+      <workItem from="1575510328238" duration="1819000" />
+      <workItem from="1575602411922" duration="1204000" />
+      <workItem from="1576510249639" duration="1231000" />
+      <workItem from="1576938297184" duration="598000" />
+      <workItem from="1586014678877" duration="199000" />
+      <workItem from="1586096702888" duration="594000" />
+      <workItem from="1586697737064" duration="597000" />
+      <workItem from="1586878561402" duration="596000" />
+      <workItem from="1587799865642" duration="379000" />
+      <workItem from="1587820498881" duration="86000" />
+      <workItem from="1592641454002" duration="1208000" />
+      <workItem from="1592832057631" duration="666000" />
+      <workItem from="1592909601349" duration="6535000" />
+      <workItem from="1592987777368" duration="2726000" />
+      <workItem from="1593230188320" duration="644000" />
+      <workItem from="1593310767538" duration="881000" />
     </task>
     <task id="LOCAL-00099" summary="spring boot">
       <created>1539157269728</created>
@@ -758,82 +719,96 @@
       <option name="project" value="LOCAL" />
       <updated>1574991929868</updated>
     </task>
-    <task id="LOCAL-00139" summary="spring cloud">
-      <created>1583067640952</created>
+    <task id="LOCAL-00139" summary="update">
+      <created>1575370348882</created>
       <option name="number" value="00139" />
       <option name="presentableId" value="LOCAL-00139" />
       <option name="project" value="LOCAL" />
-      <updated>1583067640967</updated>
+      <updated>1575370348892</updated>
     </task>
-    <task id="LOCAL-00140" summary="spring cloud">
-      <created>1583070495988</created>
+    <task id="LOCAL-00140" summary="update">
+      <created>1587800221629</created>
       <option name="number" value="00140" />
       <option name="presentableId" value="LOCAL-00140" />
       <option name="project" value="LOCAL" />
-      <updated>1583070495988</updated>
+      <updated>1587800221631</updated>
     </task>
-    <task id="LOCAL-00141" summary="2020学习">
-      <created>1583552002272</created>
+    <task id="LOCAL-00141" summary="update">
+      <created>1587820523395</created>
       <option name="number" value="00141" />
       <option name="presentableId" value="LOCAL-00141" />
       <option name="project" value="LOCAL" />
-      <updated>1583552002288</updated>
+      <updated>1587820523395</updated>
     </task>
-    <task id="LOCAL-00142" summary="es">
-      <created>1583568273349</created>
+    <task id="LOCAL-00142" summary="mongodb">
+      <created>1592913004781</created>
       <option name="number" value="00142" />
       <option name="presentableId" value="LOCAL-00142" />
       <option name="project" value="LOCAL" />
-      <updated>1583568273349</updated>
+      <updated>1592913004781</updated>
     </task>
-    <task id="LOCAL-00143" summary="kafka">
-      <created>1583570903190</created>
+    <task id="LOCAL-00143" summary="netty">
+      <created>1592915699582</created>
       <option name="number" value="00143" />
       <option name="presentableId" value="LOCAL-00143" />
       <option name="project" value="LOCAL" />
-      <updated>1583570903190</updated>
+      <updated>1592915699582</updated>
     </task>
-    <task id="LOCAL-00144" summary="柔性可用">
-      <created>1583571636828</created>
+    <task id="LOCAL-00144" summary="redis">
+      <created>1592915764253</created>
       <option name="number" value="00144" />
       <option name="presentableId" value="LOCAL-00144" />
       <option name="project" value="LOCAL" />
-      <updated>1583571636828</updated>
+      <updated>1592915764253</updated>
     </task>
-    <task id="LOCAL-00145" summary="监控">
-      <created>1583572008944</created>
+    <task id="LOCAL-00145" summary="update">
+      <created>1592915970192</created>
       <option name="number" value="00145" />
       <option name="presentableId" value="LOCAL-00145" />
       <option name="project" value="LOCAL" />
-      <updated>1583572008944</updated>
+      <updated>1592915970192</updated>
     </task>
-    <option name="localTasksCounter" value="146" />
+    <task id="LOCAL-00146" summary="update">
+      <created>1592917243902</created>
+      <option name="number" value="00146" />
+      <option name="presentableId" value="LOCAL-00146" />
+      <option name="project" value="LOCAL" />
+      <updated>1592917243902</updated>
+    </task>
+    <task id="LOCAL-00147" summary="MyCat">
+      <created>1592988646532</created>
+      <option name="number" value="00147" />
+      <option name="presentableId" value="LOCAL-00147" />
+      <option name="project" value="LOCAL" />
+      <updated>1592988646533</updated>
+    </task>
+    <option name="localTasksCounter" value="148" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="374198000" />
+    <option name="totallyTimeSpent" value="381235000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-9" y="-9" width="1386" height="666" extended-state="0" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3295626" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.031835206" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32100108" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.19532429" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.08795309" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -851,12 +826,16 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
+    <MESSAGE value="tomcat" />
+    <MESSAGE value="Spring WebMVC" />
+    <MESSAGE value="spring-boot" />
     <MESSAGE value="springboot" />
     <MESSAGE value="Eureka" />
     <MESSAGE value="springcloud" />
     <MESSAGE value="zookeeper" />
     <MESSAGE value="mq" />
     <MESSAGE value="spring" />
+    <MESSAGE value="spring cloud" />
     <MESSAGE value="readme" />
     <MESSAGE value="spring boot" />
     <MESSAGE value="TCP" />
@@ -866,17 +845,13 @@
     <MESSAGE value="https" />
     <MESSAGE value="webservice" />
     <MESSAGE value="zk" />
+    <MESSAGE value="OSI模型七层" />
     <MESSAGE value="mongodb" />
     <MESSAGE value="netty" />
+    <MESSAGE value="redis" />
     <MESSAGE value="update" />
-    <MESSAGE value="OSI模型七层" />
-    <MESSAGE value="spring cloud" />
-    <MESSAGE value="2020学习" />
-    <MESSAGE value="es" />
-    <MESSAGE value="kafka" />
-    <MESSAGE value="柔性可用" />
-    <MESSAGE value="监控" />
-    <option name="LAST_COMMIT_MESSAGE" value="监控" />
+    <MESSAGE value="MyCat" />
+    <option name="LAST_COMMIT_MESSAGE" value="MyCat" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -1015,49 +990,14 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/img/9.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/img/16.png">
       <provider selected="true" editor-type-id="images">
         <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/springcloud.md" />
-    <entry file="file://$PROJECT_DIR$/nginx.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="FIRST">
-          <first_editor relative-caret-position="851">
-            <caret line="37" column="7" lean-forward="false" selection-start-line="37" selection-start-column="7" selection-end-line="37" selection-end-column="7" />
-          </first_editor>
-          <second_editor />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/table.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SPLIT">
-          <first_editor relative-caret-position="0">
-            <caret line="0" column="10" lean-forward="false" selection-start-line="0" selection-start-column="3" selection-end-line="0" selection-end-column="13" />
-          </first_editor>
-          <second_editor />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/springboot.md" />
     <entry file="file://$PROJECT_DIR$/img/28.png" />
-    <entry file="file://$PROJECT_DIR$/redis.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="FIRST">
-          <first_editor relative-caret-position="92">
-            <caret line="4" column="51" lean-forward="false" selection-start-line="4" selection-start-column="51" selection-end-line="4" selection-end-column="51" />
-          </first_editor>
-          <second_editor />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/img/46.png">
       <provider selected="true" editor-type-id="images">
         <state />
@@ -1076,13 +1016,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="92">
           <caret line="4" column="116" lean-forward="false" selection-start-line="4" selection-start-column="116" selection-end-line="4" selection-end-column="116" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/.gitignore">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="552">
-          <caret line="24" column="12" lean-forward="false" selection-start-line="24" selection-start-column="12" selection-end-line="24" selection-end-column="12" />
         </state>
       </provider>
     </entry>
@@ -1118,7 +1051,39 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/session.md">
+    <entry file="file://$PROJECT_DIR$/img/11.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/img/9.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/img/10.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="81">
+          <caret line="3" column="5" lean-forward="false" selection-start-line="3" selection-start-column="5" selection-end-line="3" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/springboot/springcloud.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="FIRST">
+          <first_editor relative-caret-position="-727">
+            <caret line="523" column="6" lean-forward="false" selection-start-line="523" selection-start-column="6" selection-end-line="523" selection-end-column="6" />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/memcache.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
           <first_editor relative-caret-position="0">
@@ -1128,21 +1093,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/dubbo.md">
+    <entry file="file://$PROJECT_DIR$/mq.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SPLIT">
-          <first_editor relative-caret-position="0">
-            <caret line="0" column="13" lean-forward="false" selection-start-line="0" selection-start-column="13" selection-end-line="0" selection-end-column="13" />
-          </first_editor>
-          <second_editor />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/zookeeper.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SPLIT">
-          <first_editor relative-caret-position="1587">
-            <caret line="69" column="0" lean-forward="false" selection-start-line="69" selection-start-column="0" selection-end-line="69" selection-end-column="74" />
+        <state split_layout="FIRST">
+          <first_editor relative-caret-position="13608">
+            <caret line="504" column="0" lean-forward="false" selection-start-line="504" selection-start-column="0" selection-end-line="504" selection-end-column="0" />
           </first_editor>
           <second_editor />
         </state>
@@ -1151,28 +1106,18 @@
     <entry file="file://$PROJECT_DIR$/netty.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
-          <first_editor relative-caret-position="9828">
-            <caret line="364" column="8" lean-forward="false" selection-start-line="364" selection-start-column="8" selection-end-line="364" selection-end-column="8" />
+          <first_editor relative-caret-position="19818">
+            <caret line="734" column="0" lean-forward="false" selection-start-line="734" selection-start-column="0" selection-end-line="734" selection-end-column="20" />
           </first_editor>
           <second_editor />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/springboot/springboot.md">
+    <entry file="file://$PROJECT_DIR$/number.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
-          <first_editor relative-caret-position="378">
-            <caret line="14" column="22" lean-forward="false" selection-start-line="14" selection-start-column="18" selection-end-line="14" selection-end-column="22" />
-          </first_editor>
-          <second_editor />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/README.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SPLIT">
-          <first_editor relative-caret-position="1121">
-            <caret line="59" column="7" lean-forward="false" selection-start-line="59" selection-start-column="0" selection-end-line="59" selection-end-column="7" />
+          <first_editor relative-caret-position="0">
+            <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           </first_editor>
           <second_editor />
         </state>
@@ -1181,28 +1126,18 @@
     <entry file="file://$PROJECT_DIR$/performance.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
-          <first_editor relative-caret-position="19">
-            <caret line="319" column="0" lean-forward="false" selection-start-line="319" selection-start-column="0" selection-end-line="319" selection-end-column="0" />
+          <first_editor relative-caret-position="63369">
+            <caret line="2347" column="16" lean-forward="false" selection-start-line="2347" selection-start-column="16" selection-end-line="2347" selection-end-column="16" />
           </first_editor>
           <second_editor />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/springboot/springcloud.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="FIRST">
-          <first_editor relative-caret-position="348">
-            <caret line="1387" column="9" lean-forward="false" selection-start-line="1387" selection-start-column="9" selection-end-line="1387" selection-end-column="9" />
-          </first_editor>
-          <second_editor />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/docker.md">
+    <entry file="file://$PROJECT_DIR$/README.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
-          <first_editor relative-caret-position="-3198">
-            <caret line="12" column="8" lean-forward="false" selection-start-line="12" selection-start-column="8" selection-end-line="12" selection-end-column="8" />
+          <first_editor relative-caret-position="1593">
+            <caret line="59" column="7" lean-forward="false" selection-start-line="59" selection-start-column="0" selection-end-line="59" selection-end-column="7" />
           </first_editor>
           <second_editor />
         </state>
@@ -1211,74 +1146,100 @@
     <entry file="file://$PROJECT_DIR$/mongodb.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="FIRST">
-          <first_editor relative-caret-position="226">
-            <caret line="44" column="0" lean-forward="false" selection-start-line="44" selection-start-column="0" selection-end-line="45" selection-end-column="26" />
+          <first_editor relative-caret-position="9828">
+            <caret line="364" column="0" lean-forward="false" selection-start-line="364" selection-start-column="0" selection-end-line="364" selection-end-column="0" />
           </first_editor>
           <second_editor />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/2020/skill.md">
+    <entry file="file://$PROJECT_DIR$/springboot/springboot.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="FIRST">
-          <first_editor relative-caret-position="475">
-            <caret line="25" column="0" lean-forward="false" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
-            <folding />
+          <first_editor relative-caret-position="27">
+            <caret line="297" column="0" lean-forward="false" selection-start-line="297" selection-start-column="0" selection-end-line="297" selection-end-column="0" />
           </first_editor>
           <second_editor />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/2020/SpringFramework.md" />
-    <entry file="file://$PROJECT_DIR$/2020/es.md">
+    <entry file="file://$PROJECT_DIR$/session.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
-          <first_editor relative-caret-position="494">
-            <caret line="26" column="0" lean-forward="false" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
-            <folding />
+          <first_editor relative-caret-position="216">
+            <caret line="8" column="17" lean-forward="false" selection-start-line="8" selection-start-column="17" selection-end-line="8" selection-end-column="17" />
           </first_editor>
           <second_editor />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/mq.md">
+    <entry file="file://$PROJECT_DIR$/redis.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="FIRST">
-          <first_editor relative-caret-position="4351">
-            <caret line="229" column="23" lean-forward="false" selection-start-line="229" selection-start-column="23" selection-end-line="229" selection-end-column="23" />
+          <first_editor relative-caret-position="27">
+            <caret line="1327" column="55" lean-forward="false" selection-start-line="1327" selection-start-column="55" selection-end-line="1327" selection-end-column="55" />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/table.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="-2592">
+            <caret line="0" column="10" lean-forward="true" selection-start-line="0" selection-start-column="7" selection-end-line="0" selection-end-column="12" />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/zookeeper.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="-7344">
+            <caret line="69" column="0" lean-forward="false" selection-start-line="69" selection-start-column="0" selection-end-line="69" selection-end-column="0" />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/images/搜狗截图20180306145855.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/images/搜狗截图20180306145727.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dubbo.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="0">
+            <caret line="0" column="13" lean-forward="false" selection-start-line="0" selection-start-column="13" selection-end-line="0" selection-end-column="13" />
             <folding />
           </first_editor>
           <second_editor />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/2020/SpringCloud.md">
+    <entry file="file://$PROJECT_DIR$/docker.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
-          <first_editor relative-caret-position="2888">
-            <caret line="152" column="0" lean-forward="false" selection-start-line="152" selection-start-column="0" selection-end-line="152" selection-end-column="0" />
+          <first_editor relative-caret-position="278">
+            <caret line="80" column="20" lean-forward="false" selection-start-line="80" selection-start-column="20" selection-end-line="80" selection-end-column="20" />
             <folding />
           </first_editor>
           <second_editor />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/2020/微服务.md">
+    <entry file="file://$PROJECT_DIR$/nginx.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SPLIT">
-          <first_editor relative-caret-position="931">
-            <caret line="49" column="0" lean-forward="false" selection-start-line="49" selection-start-column="0" selection-end-line="49" selection-end-column="0" />
-            <folding />
-          </first_editor>
-          <second_editor />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/2020/k8s.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SPLIT">
-          <first_editor relative-caret-position="423">
-            <caret line="129" column="3" lean-forward="false" selection-start-line="129" selection-start-column="3" selection-end-line="129" selection-end-column="3" />
+        <state split_layout="FIRST">
+          <first_editor relative-caret-position="180">
+            <caret line="104" column="37" lean-forward="false" selection-start-line="104" selection-start-column="37" selection-end-line="104" selection-end-column="37" />
             <folding />
           </first_editor>
           <second_editor />
