@@ -1,5 +1,7 @@
 # Docker
 
+
+
 ## Docker 是什么
 
 1. Docker是一个开源的应用容器引擎,基于Go语言并遵从Apache2.0协议开源。Docker可以让开发者打包他们的应用以及依赖包到一个轻量级、可移植的容器中,然后发布到任何流行的Linux机器上,也可以实现虚拟化。
@@ -12,7 +14,7 @@ Docker支持将软件编译成一个镜像 ;然后在镜像中各种软件做好
 
 2. Docker核心概念
 
-1) docker镜像(lmages) : Docker镜像是用于创建Docker容器的  Clients  Hosts  Registries模板。
+1) docker镜像(images) : Docker镜像是用于创建Docker容器的  Clients  Hosts  Registries模板。
 
 2) docker容器(Container) :容器是独立运行的一个或一组应用。 
 
@@ -23,6 +25,19 @@ Docker支持将软件编译成一个镜像 ;然后在镜像中各种软件做好
 5) docker仓库(Registry) : Docker仓库用来保存镜像,可以理解为代码控制中的代码仓库。
 
 6) DockerHub(tts://hub.docker.com)提供了庞大的镜像集合供使用。
+
+## 对比
+
+||Docker容器| 虚拟机(VM)|
+|:--:|:--:|:--:|
+|操作系统|与宿主机共享0S|宿主机0S,上运行虚拟机0S|
+|存储大小|镜像小，便于存储与传输|镜像庞大(vmdk、vdi等)|
+|运行性能|几乎无额外性能损失|操作系统额外的CPU、内存消耗|
+|移植性|轻便、灵活，适应于Linux|笨重， 与虚拟化技术耦合度高|
+|硬件亲和性|面向软件开发者|面向硬件运维者|
+|部署速度|快速，秒级|较慢，10s以上|
+
+镜像 容器 -> 类 对象
 
 ## 解决问题
 
@@ -47,6 +62,37 @@ Docker支持将软件编译成一个镜像 ;然后在镜像中各种软件做好
 可封装性
 
 隔离性
+
+
+
+### 一次构建、随处运行
+
+更快速的应用交付和部署
+
+更便捷的升级和扩缩容
+
+更简单的系统运维
+
+更高效的计算资源利用
+
+### Why Docker
+
+更轻量:基于容器的虚拟化，仅包含业务运行所需的runtime环境，CentOS/Ubuntu基础镜像仅170M;宿主机可部署100~ 1000个容器
+
+更高效:无操作系统虚拟化开销
+
+* 计算:轻量，无额外开销
+
+* 存储:系统盘aufs/dm/overlayts;数据盘volume
+
+* 网络:宿主机网络，NS隔高
+
+更敏捷、更灵活:
+
+* 分层的存储和包管理，devops理念
+
+* 支持多种网络配置
+
 
 ## 常用命令
 
@@ -96,21 +142,9 @@ eg:docker run -d -p 6379:6379 -name myredis docker.io/redis
 
 10)docker rmi dlac13423d3c 删除镜像
 
-## 常见软件安装
+## 常见软件运行
 
-#### Docker 国内镜像
-
-https://registry.docker-cn.com
-
-http://hub-mirror.c.163.com
-
-https://3laho3y3.mirror.aliyuncs.com
-
-http://f1361db2.m.daocloud.io
-
-https://mirror.ccs.tencentyun.com
-
-
+工作在前台的至少一个守护进程
 
 1. elasticsearch
 
@@ -158,46 +192,45 @@ docker pull registry.docker-cn.com/library/zookeeper
 
 docker run --name zk01 -p 2181:2181 --restart always -d 3621823e2780
 
-## Service Mesh为:
+## DockerPile
 
-专用基础设施层:独立的运行单元。
+Dockerfile是一种被Docker程序解释的脚本, Dockerfile 由一条条的指令组成， 每条指令对应Linux 下面
 
-包括数据层和控制层:数据层负责交付应用请求，控制层控制服务如何通讯。轻量级透明代理:实现形式为轻量级网络代理。
+的一条命令。Docker程序将这些Dockerfile指令翻译真正的Linux 命令。
 
-处理服务间通讯:主要目的是实现复杂网络中服务间通讯。
+Dockerfile有自己书写格式和支持的命令，Docker程序解决这些命令间的依赖关系，类似于Makefile. Docker程序将读取Dockerfile, 根据指令生成定制的image
 
-可靠地交付服务请求:提供网络弹性机制，确保可靠交付请求。
-
-与服务部署一起，但服务无需感知:尽管跟应用部署在-起，但对应用是透明的。
-
-## Service Mesh能做什么
-
-Service Mesh作为透明代理，它可以运行在任何基础设施环境，而且跟应用非常靠近，那么，Service Mesh能做什么呢?
-
-负载均衡:运行环境中微服务实例通常处于动态变化状态，而且经常可能出现个别实例不能正常提供服务、处理能力减弱、卡顿等现象。但由于所有请求对Service 
-Mesh来说是可见的，因此可以通过提供高级负载均衡算法来实现更加智能、高效的流量分发，降低延时，提高可靠性。
-
-服务发现:以微服务模式运行的应用变更非常频繁，应用实例的频繁增加减少带来的问题是如何精确地发现新增实例以及避免将请求发送给已不存在的实例变得更加复杂。Service Mesh可以提供简单、统一、 平台无关的多种服务发现机制，如基于DNS, KN键值对存储的服务发现机制。
-
-熔断:动态的环境中服务实例中断或者不健康导致服务中断可能会经常发生，这就要求应用或者其他工具具有快速监测并从负载均衡池中移除不提供服务实例的能力，这种能力也称熔断，以此使得应用无需消耗更多不必要的资源不断地尝试，而是快速失败或者降级，甚至这样可避免一些潜在的关联性错误。而Service Mesh可以很容易实现基于请求和连接级别的熔断机制。
-
-动态路由:随着服务提供商以提供高稳定性、高可用性以及高SLA服务为主要目标，为了实现所述目标，出现各种应用部署策略尽可能从技术手段达到无服务中断部署，以此避免变更导致服务的中断和稳定性降低，例如: 
-Blue/Green部署、Canary部署，但是实现这些高级部署策略通常非常困难。关于应用部署策略，可参考Etienne 
-Tremel的文章，他对各种部署策略做了详细的比较。而如果运维人员可以轻松的将应用流量从staging环境到生产线环境，一个版本到另外一个版本，更或者从一个数据中心到另外一个数据中心进行动态切换，甚至可以通过一个中心控制层控制多 
-少比例的流量被切换。那么Service Mesh提供的动态路由机制和特定的部署策略如Blue/Green部署结合起来，实现上述目标更加容易。
-
-安全通讯:无论何时，安全在整个公司、业务系统中都有着举足轻重的位置，也是非常难以实现和控制的部分。而微服务环境中，不同的服务实例间通讯变得更加复杂，那么如何保证这些通讯是在安全、授权情况下进行非常重要。通过将安全机制如TLS加解密和授权实现在Service Mesh上，不仅可以避免在不同应用的重复实现，而且很容易在整个基础设施层更新安全机制，甚至无需对应用做任何操作。多语言支持:由于Service Mesh作为独立运行的透明代理，很容易支持多语言。多协议支持:同多语言支持一样，实现多协议支持也非常容易。
-
-指标和分布式追踪: Service Mesh对整个基础设施层的可见性使得它不仅可以暴露单个服务的运行指标，而且可以暴露整个集群的运行指标。
-
-重试和最后期限: Service Mesh的重试功能避免将其嵌入到业务代码，同时最后期限使得应用允许一个请求的最长生命周期，而不是无休止的重试。
+最大不超过128层
 
 
 
 
+1、Dockerfile, 需要定义一个Dockerfile， Dockerfile定义了进程需要的一切东西。Dockerfile涉及的内容包括执行代码或者是文件、环境变量、依赖包、运行时环境、
+动态链接库、操作系统的发行版、服务进程和内核进程(当应用进程需要和系统服务和内核进程打交道，这时需要考虑如何设计namespace的权限控制)等等;
+
+2、 Docker镜像， 在用Dockerfile定义一个文件之后，docker build时会产生一个Docker镜像， 当运行Docker镜像时， 会真正开始提供服务。
+
+3、Docker容器，容器是直接提供服务的。
+
+## 其他 
+
+docker build -f .\Dockerfile -t yan/centos:5.0 .
+
+docker commit -m='my first commit' -a='vyvyan' fee031f16de6 yan/centos
+
+docker run -it -v D:/docker:/docker centos /bin/bash
+
+docker rm -f $(docker ps -a -q)
 
 
+进入docker-compose 容器
 
+docker exec -it 288b1ce5f869 /bin/bash
+
+![](img/77.png) 
+
+
+https://blog.csdn.net/shykevin/article/details/105503596
 
 
 

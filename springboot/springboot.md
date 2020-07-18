@@ -1042,9 +1042,9 @@ private void initialize(Object[] sources) {
 }
 ```
 
-![](../images/搜狗截图20180306145727.png)
+![](../images/1.png)
 
-![](../images/搜狗截图20180306145855.png)
+![](../images/2.png)
 
 ##  运行run方法
 
