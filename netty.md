@@ -330,9 +330,13 @@ Java正式提供了异步文件I/O操作，  同时提供了与UNIX网络编程�
 
 ## pipeline 无锁化串行(链路)
 
-1. Netty采用了串行无锁化设计，在I/O线程内部进行串行操作，避免多线程竞争导致的性能下降。 表面上看，串行化设计似乎CPU利用率不高，并发程度不够。但是，通过调整NIO线程池的线程参数，可以同时启动多个串行化的线程并行运行，
+1. Netty采用了串行无锁化设计，在I/O线程内部进行串行操作，避免多线程竞争导致的性能下降。
+表面上看，串行化设计似乎CPU利用率不高，并发程度不够。但是，通过调整NIO线程池的线程参数，
+可以同时启动多个串行化的线程并行运行（每个逻辑都是一个线程），有序可控。
 这种局部无锁化的串行线程设计相比一个队列多个工作线程模型性能更优。
 实现异步非常重要的一环，无锁化串行的每个线程执行的顺序变得可控。同时执行，按顺序取结果。
+
+
 
 
 2. Channel 与 ChannelPipeline
@@ -798,7 +802,7 @@ Netty的NioEventLoop并不是一个纯粹的I/O线程，兼顾处理以下两类
 定时任务:通过调用NioEventLoop 的`schedule( Runnable command, long delay,TimeUnit unit)`方法实现。
 
 正是因为NioEventLoop具备多种职责，所以它的实现比较特殊，它并不是个简单的Runnable。
-它实现了EventLoop 接口、EventExecutorGroup接口和ScheduledExecutorService接口，正是因为这种设计，导致NioEventLoop和其父类功能实现非常复杂。下面我们就重点分析它的源码实现，理解它的设计原理。
+它实现了EventLoop 接口、EventExecutorGroup接口和ScheduledExecutorService接口，正是因为这种设计，导致NioEventLoop和其父类功能实现非常复杂。
 
 
 ## Future和Promise
@@ -861,7 +865,7 @@ Promise是可写的Future, Future 自身并没有写操作相关的接口，Nett
 
 
 
-  
+
 
 
 
