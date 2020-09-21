@@ -62,7 +62,7 @@ spring-cloud-starter-*
 
 3.负载均衡 Ribbon Server、ServerList
 
-4.Actuator HealthIndicatror @Endpoint
+4.Actuator HealthIndicators @Endpoint
 
 
 ## Spring Cloud 分布式配置实现
