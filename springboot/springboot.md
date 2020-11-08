@@ -1403,3 +1403,6 @@ Actuator端点上的AngularJs应用程序
 Spring Boot管理服务器可以使用Spring Clouds DiscoveryClient来发现应用程序。优点是客户不必包括spring-boot-admin-starter-client。
 您只需要向DiscoveryClient管理服务器添加一个实现 其他一切都由AutoConfiguration完成
 
+http://localhost:8080/actuator/beans
+
+
