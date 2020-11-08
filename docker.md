@@ -204,9 +204,6 @@ Dockerfile有自己书写格式和支持的命令，Docker程序解决这些命�
 
 最大不超过128层
 
-
-
-
 1、Dockerfile, 需要定义一个Dockerfile， Dockerfile定义了进程需要的一切东西。Dockerfile涉及的内容包括执行代码或者是文件、环境变量、依赖包、运行时环境、
 动态链接库、操作系统的发行版、服务进程和内核进程(当应用进程需要和系统服务和内核进程打交道，这时需要考虑如何设计namespace的权限控制)等等;
 
@@ -233,6 +230,19 @@ docker exec -it 288b1ce5f869 /bin/bash
 
 
 https://blog.csdn.net/shykevin/article/details/105503596
+
+
+## 通过Maven构建Docker镜像
+
+* 准备工作
+  * 提供一个Dockerfile
+  * 配置dockerfile-maven-plugin插件
+* 执行构建
+  * mvn package
+  * mvn dockerfile:build
+* 检查结果
+  * docker images
+
 
 
 
