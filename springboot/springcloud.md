@@ -53,7 +53,7 @@
 
 测试。整体架构使用开箱即用的WAR。QA专家只需启动该文件即可确认monolith与底层数据库的连接。相反，微服务要求在开始测试之前验证每个服务。
 
-\
+
 ![对比](../img/16.png) 
 
 
@@ -562,6 +562,8 @@ consumer 是否要分为多个服务，  要情况，大多数情况是需要，
 
 当向注册中心查询服务列表时，我们可以容忍注册中心返回的是几分钟以前的注册信息，但不能接受服务直接down掉不可用。也就是说，服务注册功能对可用性的要求要高于一致性。 但是zk会出现这样-种情况，当master节点因为网络故障 与其他节点失去联系时，剩余节点会重新进行leader选举。问题在于,选举leader的时间太长，30 ~ 120s,且选举期间整个zk集群都是不可用的，这就导致在选举期间注册服务瘫痪。在云部署的环境下，因网络问题使得zk集群失去master节点是较大概率会发生的事，虽然服务能够最终恢复，但是漫长的选举时间导致的注册长期不可用是不能容忍的。
 
+尽量不要跨机房使用。
+
 8. Eureka保证AP
 
 Eureka看明白了这一点， 因此在设计时就优先保证可用性。`Eureka各个节点都是平等的`，几个节点挂掉不会影响正常节点的工作剩余的节点依然可以提供注册和查询服务。而Eureka的客户端在向某个Eureka注册或时如果发现连接失败，则会自动切换至其它节点，只要有一台Eureka还在， 就能保证注册服务可用(保证可用性),只不过查到的信息可能不是最新的(不保证强一致性)。 除此之外，Eureka还有一种自我保护机制， 如果在15分钟内超过85%的节点都没有正常的心跳，那么Eureka就认为客户端与注册中心出现了网络故障，此时会出现以下几种情况:
@@ -982,6 +984,9 @@ Hystrix Endpoint( /hystrix.stream )
 ## 整合Netflix Turbine 
 
 数据聚合
+
+
+
 
 ## 问题互动
 
@@ -1519,7 +1524,7 @@ Feign 作为声明式客户端调用，Ribbon 主要负责负载均衡。Feign �
 
 4.  整合图，zuul换成nginx，nginx应该怎么配置才能使用sleuth,从网关开始监控?
 
-nginx 需要增加HTTP.上报监控信息到zipkin Server
+nginx 需要增加HTTP上报监控信息到zipkin Server
 
 5.  SpringCloud服务治理能和dubbo共存，或者替换成dubbo吗
 
@@ -1588,6 +1593,105 @@ Web:. Servlet、 Spring WebMVC、JAX-RS、 WebSocket、 WebServices
 OAuth2规范有四种类型:密码,客户端证书,授权代码,隐式授权
 
 ![微服务安全体系结构不仅仅是实现OAuth2](../img/72.png) 
+
+
+
+
+
+## Resilience4j
+
+Netflix 停止维护，给了官方推荐Resilience4j
+
+* 一款受Hystrix启发的轻量级且易于使用的容错库
+
+* 针对Java 8与函数式编程设计
+
+## Bulkhead
+
+* 目的
+  * 防止下游依赖被并发请求冲击
+  * 防止发生连环故障
+  
+* 用法
+  * BulkheadRegistry / BulkheadConfig
+  * @Bulkhead( name = "名称")
+
+## RateLimiter
+
+* 目的
+  * 限制特定时间段内的执行次数
+* 用法
+  * RateLimiterRegistry / RateLimiterConfig
+  * @RateLimiter(name = "名称")
+  
+## 配置中心
+
+### git
+
+* 刷新
+
+curl -X POST http://localhost:8080/actuator/refresh
+
+### zk
+
+无效刷新
+
+### 抽象
+
+* 目标
+  * 在分布式系统中，提供外置配置支持
+  
+* 实现
+  * 类似于Spring应用中的Environment与PropertySource
+  * 在上下文中增加Spring Cloud Config的PropertySource
+  
+* Spring Cloud Config的PropertySource
+  * PropertySource
+    * Spring Cloud Config Client - CompositePropertySource
+    * Zookeeper - ZookeeperPropertySource
+    * Consul - ConsulPropertySource / ConsulFilesPropertySource
+  * PropertySourceLocator
+    * 通过PropertySourceLocator提供PropertySource
+    
+### 配置的组合顺序
+
+* 以yml为例
+  * 应用名-profile.yml
+  * 应用名.yml
+  * application-profile.yml
+  * application.yml
+  
+## 通过Dapper理解链路治理
+
+* Span-基本的工作单元
+* Trace-由一组Span构成的树形结构.
+* Annotation- 用于及时记录事件
+  * cs- Client Sent
+  * sr- Server Received
+  * ss - Server Sent
+  * cr- Client Received
+    
+![对比](../img/Dapper.png) 
+
+### 使用Spring Cloud Sleuth实现链路追踪
+
+* 依赖
+  * Spring Cloud Sleuth - spring-cloud-starter-sleuth
+  * Spring Cloud Sleuth with Zipkin - spring-cloud-starter-zipkin
+* 日志输出
+  * [appname, traceId, spanId, exportable]
+
+* 埋点方式
+  * http
+  * mq
+    * kafka
+    * rabbitMq
+
+* 如需通过MQ埋点，需增加RabbitMQ或Kafka依赖
+    
+docker run --name zipkin -d -p 9411:9411 openzipkin/zipkin
+
+
 
 
 
