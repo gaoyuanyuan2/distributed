@@ -265,6 +265,31 @@
   * 通过Meta Server获取Config Service服务列表
   * 客户端软负载
 
+### Apollo监控
+
+* 内置支持CAT
+  * https://github.com/dianping/cat
+  * 客户端+服务器端埋点
+  * 自动依赖扫描
+* 定制扩展
+  * InfluxDB .
+  * Prometheus
+* 关键指标
+  * 接入应用数量
+  * 配置项数量
+  * 变更和发布数量
+  * 推送拉取次数(success/failure)
+  * Config Service 
+    * 接口性能
+    * GC
+    * CPU
+
+### 环境部署
+
+* DEV~开发环境
+* FAT~测试环境
+* UAT~集成环境
+* PRO~生产环境
 
 
 
