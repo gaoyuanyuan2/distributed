@@ -45,6 +45,71 @@ Tremel的文章，他对各种部署策略做了详细的比较。而如果运�
 
 ## 监控
 
-### Metrics监控分层
+### Metrics种类
+
+* Counter(计数器)
+  * 始终增加
+  * http请求数，下单数
+* Gauge(测量仪)
+  * 当前值的一次快照(snapshot)测量，可增可减
+  * 磁盘使用率，当前同时在线用户数
+* Histogram(直方图)
+  * 通过分桶(bucket)方式统计样本分布
+* Summary(汇总)
+  * 根据样本统计出百分位
+  * 客户端计算
 
 ### Prometheus
+
+* 四个黄金指标(Google)
+  * 延迟： 服务请求所需耗时
+    * 例如HTTP请求平均延迟
+  * 流量/吞吐： 衡量服务容量需求
+    * 例如每秒处理HTTP请求数
+  * 错误： 衡量错误发生的情况
+    * 例如HTTP 500错误数
+  * 饱和度： 衡量资源使用情况
+    * 例如CPU/内存/磁盘使用量
+
+
+Cardinality(基数)
+
+*  Label的可能取值
+* 新增一个Label值=新增一个时间序列
+* 经验值：单实例Cardinality <= 10个
+* 不适合做Label
+  *  Email地址
+  * 用户名
+  * IP地址
+  * HTTP Path
+*  关注10个最大的metrics
+* 高Cardinality场景用Log系统
+
+### Exporters
+
+* OS - Node Exporter
+  * Linux, Windows
+* Database
+  * Mysql, Postgres, CouchDB...
+* Messaging
+  * Kafka, RabbitMQ, NATS...
+* Logging
+  * ElasticSearch, Fluentd, Telegraf..
+* Key-Value
+  * Redis, Memcached...
+* WebServer
+  * Apache, Nginx...
+* Proxy
+  * Haproxy, Varnish...
+* DNS
+  * BIND, PowerDNS, Unbound
+* BlackBox
+
+4小时磁盘是否满？
+
+### 四层轻量监控体系
+
+* 系统层监控
+* 应用层监控
+* 业务层监控
+* 端用户体验监控
