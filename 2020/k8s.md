@@ -128,8 +128,6 @@ Kubernetes架构和组件:
  * Kubernetes集群使用Kubernetes对象来表示集群的状态
  
  * 通过API/kubectl管理Kubernetes对象
-   
-   "慕课网
 
 
    
