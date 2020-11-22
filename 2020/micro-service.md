@@ -191,7 +191,7 @@
 * 配置散乱格式不标准
   * 有的用xml格式,有的用properties ,有的存DB
 * 易引发生产事故
-  * 发布的时候容易将非生产的配置带到生产上,弓|发事故
+  * 发布的时候容易将非生产的配置带到生产上,引发事故
 * 配置修改麻烦,周期长
   * 当部署的服务器很多时,修改配置费时费力
 * 配置信息缺少安全审计和版本控制功能
@@ -290,6 +290,166 @@
 * FAT~测试环境
 * UAT~集成环境
 * PRO~生产环境
+
+## Spring Cloud Config
+
+### 优势不足
+
+* 优势
+  * 配置存储支持Git
+  * 和Spring无缝集成
+  * 设计简单轻量
+
+* 不足
+  * 动态配置能力弱
+  * 治理能力弱
+  * 不算严格企业级
+
+
+
+* Apollo vs Spring Cloud Config
+
+|功能点 |Apollo Spring| Cloud Config|
+|:--:|:--:|:--:|
+|配置界面 |统一界面管理不同环境/集群配置 |无，通过git操作|
+|配置生效时间 |实时 |重启生效，或者Refresh，或git hook + MQ扩展|
+|版本管理 |界面上直接提供发布历史和回滚按钮 |无，通过git操作|
+|灰度发布 |支持| 不支持|
+|授权/审计/审核 |界面上直接操作，且支持修改和发布权限分离 |需要通过git仓库设置，且不支持修改和发布权限分离|
+|实例配置监控| 可以方便看到当前哪些客户端在使用哪些配置| 不支持|
+|配置获取性能 |快，通过数据库访问+缓存支持 |较慢，需从git clone repo，然后本地文件读取|
+|客户端支持| 原生支持Java/.Net，提供API，支持Spring annotation |Spring应用+annotation支持|
+
+## Zuul
+
+### Zuul网关最佳实践
+
+* 异步AsyncServlet优化连接数
+* Apollo配置中心集成动态配置
+* Hystrix熔断限流
+  * 信号量隔离
+* 连接池管理
+* CAT和Hystrix监控
+* 过滤器调试技巧
+* 网关无业务逻辑
+* 自助路由(需定制扩展)
+
+## 监控
+
+### 应用监控缺失造成的坑
+
+* 线上发布了服务,怎么知道- -切正常?
+* 大量报错,到底哪里产生的,谁才是根因?
+* 人工配置错误,通宵排错,劳民伤财!
+* 应用程序有性能问题,怎么尽早发现问题?
+* 数据库问题,在出问题之前能洞察吗?
+* “网络问题”成为"最好借口”, 运维如何反击?
+* 任何可能出问题的地方都会出错! ! ! (康威定律)
+* 微服务需要应用监控! ! !
+
+### 核心概念
+
+* Trace一次分布式调用的链路踪迹
+* Span一个方法(局部或远程)调用踪迹
+* Annotation附着在Span.上的日志信息
+* Sampling采样率
+
+### 资深用户反馈
+
+* 报表丰富,有助于从各个角度了解系统整体状况
+* 便于故障快速发现和根因定位
+* 有助于培养互联网人的:
+  * DevOps自主和自助理念
+  * 卓越质量意识( 200ms问题)
+* 用于监督和检验:
+  * 系统设计,依赖关系的合理性
+  * 服务分层治理, 聚合层/业务层/基础层
+* 发现技术债
+  * 红黑榜
+
+### 生产治理实践
+
+* 框架统一埋点
+  * MVC/RPC/Cache/DAL
+  * 日志关联TraceId
+  * Error log（log4j/logback）集成Cat
+* 技术债
+  * 红黑榜
+  * Matrix/Cross调用和依赖关系合理性
+  * 数据库N+1问题
+* Metric
+  *  推荐使用专门时间序列数据库TSDB(KairosDB/InfluxDB等)作为补充
+* 告警
+  * 推荐使用专门的告警服务(Zmon)作为补充
+* 项目定期分组
+* 定期关注State报表和HDFS使用情况
+
+
+### Spring Cloud Sleuth简介
+* Spring Cloud封装的Zipkin兼容客户端Tracer
+* 添加traceId和spanId到Slf4J MDC
+* 支持埋点的库
+  * Hystrix
+  *  RestTemplate
+  * Feign
+  * Messaging with Spring Integration
+  * Zuul
+
+*  支持采样策略
+* 老版本基于HTrace，最新版本基于Brave
+* 依赖
+  * spring-cloud-sleuth-zipkin
+  * spring-cloud-sleuth-stream
+  
+## Hystrix
+
+
+### 线程Vs信号量隔离
+
+信号量隔离
+
+* 优点
+  * 轻量,无额外开销
+* 不足
+  * 不支持任务排人和主动超时
+  * 不支持异步调用
+* 适用
+  * 受信客户
+  * 高扇出(网关)
+  * 高频高速调用(cache)
+
+线程池隔离
+
+* 优点
+  * 支持排队和超时
+  * 支持异步调用
+* 不足
+  * 线程调用会产生额外的开销
+* 适用
+  * 不受信客户
+  * 有限扇出
+
+## Spring Cloud Eureka
+
+### 服务端主要配置项
+
+|配置参数(eureka.server.*)| 默认值| 说明|
+|:--:|:--:|:--:|
+|enableSelfPreservation| true| 启用注册中心的自保护机制, Eureka如果统计到15分钟之内损失> 15%的微服务心跳,则将会触发自保护机制,不再剔除服务提供者。|
+|waitTimeInMsWhenSyncEmpty| 1000*60*5| 在Eureka服务器获取不到集群里对等服务器上的实例时,需要等待的时间,单位为毫秒,默认为1000 * 60* 5。单机开发模式建议设置为0。|
+
+### HealthCheckHandler
+* 定制注册
+  * EurekaClient#registerHealthCheck
+* Spring Cloud
+  * `eureka.client.healthcheck.enabled` =true
+  * EurekaHealthCheckHandler
+    * DiskSpaceHealthIndicator
+    * RefreshScopeHealthIndicator
+    * HystrixHealthIndicator
+
+
+
 
 
 
