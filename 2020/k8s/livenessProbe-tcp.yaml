@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Pod
+metadata :
+  name: probe-tcp
+spec :
+  containers :
+  - name: nginx
+    image: hub.atguigu.com/library/myapp:v1
+    livenessProbe:
+      initialDelaySeconds: 5
+      timeoutSeconds: 1
+      tcpSocket :
+        port: 80
+      periodSeconds: 3
