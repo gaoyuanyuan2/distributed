@@ -1,0 +1,17 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: nginx-deployment
+spec:
+  replicas: 3
+  template:
+    metadata:
+      ## 标签很重要要设置好
+      labels:
+        app: nginx
+    spec:
+      containers:
+        - name: nginx
+          image: hub.atguigu.com/library/myapp:v1
+          ports:
+            - containerPort: 80
