@@ -58,7 +58,7 @@ Kubernetes集群大脑，控制平面：
 和controller-manager)以及集群数据配置中心etcd
 
 ## 组件: API Server
- 
+
 * 集群控制的唯一入口 , 是提供Kubernetes集群控制RESTful API的核心组件
 
 * 集群内各个组件之间数据交互和通信的中枢
@@ -74,7 +74,7 @@ Kubernetes集群大脑，控制平面：
 * 默认调度算法内置预选策略和优选策略,决策考量资源需求、服务质量、软硬件约束、亲缘性、数据局部性等指标参数
 
 ## 组件: ControllerManager
-  
+
 * 集群内各种资源controller的核心管理者
 
 * 针对每一种具体的资源,都有相应的Controller
@@ -84,11 +84,11 @@ Kubernetes集群大脑，控制平面：
 ## Node:工作负载节点
 
 Node : Kubernetes集群中真正的工作负载节点
-   
+
 * Kubernetes集群由多个Node共同承担工作负载, Pod被分配到某个具体的Node上执行
 
 * kubernetes通过node controller对node资源进行管理。支持动态在集群中添加或删除Node
- 
+
 * 每个集群Node上都会部署Kubelet和Kube-proxy两个组件
 
 ## 组件: Kubelet
@@ -106,7 +106,7 @@ Kube-proxy :运行在每个Node.上
 * Service抽象概念的实现 ,将到Service的请求按策略(负载均衡)算法分发到后端Pod(Endpoint)上
 
 * 默认使用iptables mode实现
-   
+  
 * 支持nodeport模式 ,实现从外部访问集群内的service
 
 ## 小结
@@ -120,13 +120,13 @@ Kubernetes架构和组件:
 * 节点组件 : kubelet, kube- proxy
 
 ## Kubernetes对象
- 
+
  Kubernetes对象:是一-种持久化的、用于表示集群状态的实体
-  
+
  * 一种声明式的意图的记录,一般使用yam|文件描述对象
- 
+
  * Kubernetes集群使用Kubernetes对象来表示集群的状态
- 
+
  * 通过API/kubectl管理Kubernetes对象
 
 
@@ -134,18 +134,64 @@ Kubernetes架构和组件:
 声明式编程:它侧重于定义想要什么，然后告诉计算机/引擎，让他帮你去实现（sql）
 
 
-   
+
+|概念|作用|
+|:--:|:--:|
+|Cluster|超大计算机抽象，由节点组成|
+|Container|应用居住和运行在容器中|
+|Pod|Kubernetes基本调度单位|
+|ReplicaSet|创建和管理Pod,支持无状态应用|
+|Service|应用Pods的访问点，屏蔽IP寻址和负载均衡|
+|Deployment|管理ReplicaSet,支持滚动等高级发布机制|
+|ConfigMap/Secrets|应用配置，secret 敏感数据配置|
+|DaemonSet|保证每个节点有且仅有一一个Pod,常见于监控|
+|StatefulSet |类似ReplicaSet,但支持有状态应用|
+|Job|运行一次就结束的任务|
+|CronJob|周期性运行的任务|
+|Volume|可装载磁盘文件存储|
+|PersistentVolume/PersistentVolumeClaims|超大磁盘存储抽象和分配机制|
+|Label/Selector|资源打标签和定位机制|
+|Namespace|资源逻辑隔离机制|
+|Readiness Probe|就绪探针，流量接入Pod判断依据|
+|Liveness Probe|存活探针，是否kill Pod的判断依据|
+
+### 网络
+|对比项|作用|实现|
+|:--:|:--:|:--:|
+|节点网络|Master/Worker节点之间网络互通|路由器，交换机，网卡|
+|Pod网络|Pod之间互通|虚拟网卡，虚拟网桥，路由器|
+|Service网络|屏蔽Pod地址变化+负载均衡|Kube-proxy, Netfilter, Api-Server, DNS|
+|NodePort|将Service暴露在节点网络上|Kube-proxy + Netfliter|
+|LoadBalancer|将Service暴露在公网上+负载均衡|公有云LB + NodePort|
+|Ingress|反向路由，安全，日志监控 (类似反向代理or网关)|Nginx/Envoy/Traefik/Faraday|
+
+安装
+
+https://github.com/AliyunContainerService/k8s-for-docker-desktop
+
+校验Kubernetes安装
+1. kubectl version
+2. kubectl config current-context
+3. kubectl cluster-info
+4. kubectl get nodes
+
+命令行校验
+kubectl get pods -0 wide
+Kubectl get services
+Kubectl get deployments
+
+清理
+kubectl delete deployments - -all
+kubectl delete services - -all
+kubectl delete configmaps - -all
+
 
    
 
 
 
-   
-   
 
 
-
-   
 
 
 
