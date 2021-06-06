@@ -32,9 +32,9 @@ cookie会带到http请求头中发送给服务器端
 
 1.  session是容器对象，客户端在请求服务端的时候，服务端会根据客户端的请求判断是否包含了sessionid的标识
 
-2. 如果已经包含了，说明该客户端之前已经建立了会话。sessionid是一- 个唯一的值
+2. 如果已经包含了，说明该客户端之前已经建立了会话。sessionid是一个唯一的值
 
-3. 如果sessionid不存在，那么服务端会为这个客户端生成一- 个sessionid。  JSESSIONID
+3. 如果sessionid不存在，那么服务端会为这个客户端生成一个sessionid。  JSESSIONID
 
 ## 3、基于JWT的解决方案
 
