@@ -6,7 +6,7 @@
 
 正向代理的对象是客户端
 
- 2. 反向代理
+2. 反向代理
 
 反向代理代理的是服务端
 
@@ -48,7 +48,7 @@ Tomcat运行在JVM之上，它和HTTP服务器一样，绑定IP地址并监听TC
 
 2) 将URL映射到指定的Servlet进行处理
 
->3)  与Servlet程序合作处理HTTP请求——根据HTTP请求生成HttpServletResponse对象并传递给Servlet进行处理，将Servlet中的HttpServletResponse对象生成的内容返回给浏览器
+3)  与Servlet程序合作处理HTTP请求——根据HTTP请求生成HttpServletResponse对象并传递给Servlet进行处理，将Servlet中的HttpServletResponse对象生成的内容返回给浏览器
 
 虽然Tomcat也可以认为是HTTP服务器，但通常它仍然会和Nginx配合在一起使用：
 
@@ -195,11 +195,11 @@ master进程先建好需要listen的socket后，然后再fork出多个woker进�
 
 ## 9、 Nginx配置https的请求
 
-•	https基于SSL/TLS这个协议；
+* https基于SSL/TLS这个协议；
 
-•	非对称加密、对称加密、 hash算法
+* 非对称加密、对称加密、 hash算法
 
-•	crt的证书->返回给浏览器
+* crt的证书->返回给浏览器
 
 
 
