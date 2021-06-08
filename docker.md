@@ -5,26 +5,26 @@
 ## Docker 是什么
 
 1. Docker是一个开源的应用容器引擎,基于Go语言并遵从Apache2.0协议开源。
+
 Docker可以让开发者打包他们的应用以及依赖包到一个轻量级、可移植的容器中,然后发布到任何流行的Linux机器上,也可以实现虚拟化。
 
 容器是完全使用沙箱机制,相互之间不会有任何接口，更重要的是容器性能开销极低。
 
-Docker支持将软件编译成一个镜像，然后在镜像中各种软件做好配置,将镜像发布出去,其他使用者可以直接使用这个镜像。运行中的这个镜像称为容器，容器启动是
-非常快速的。
+Docker支持将软件编译成一个镜像，然后在镜像中各种软件做好配置,将镜像发布出去,其他使用者可以直接使用这个镜像。运行中的这个镜像称为容器，容器启动是非常快速的。
 
 2. Docker核心概念
 
-1) docker镜像(images) : Docker镜像是用于创建Docker容器的  Clients  Hosts  Registries模板。
+* docker镜像(images) : Docker镜像是用于创建Docker容器的  Clients  Hosts  Registries模板。
 
-2) docker容器(Container) :容器是独立运行的一个或一组应用。 
+* docker容器(Container) :容器是独立运行的一个或一组应用。 
 
-3) 客户端(Client) :客户端通过命令行或者其他工具使用 Docker  APl与Docker的守护进程通信。
+* 客户端(Client) :客户端通过命令行或者其他工具使用 Docker  APl与Docker的守护进程通信。
 
-4) docker主机(Host) :一个物理或者虚拟的机器用于执行Docker守护进程和容器。
+* docker主机(Host) :一个物理或者虚拟的机器用于执行Docker守护进程和容器。
 
-5) docker仓库(Registry) : Docker仓库用来保存镜像,可以理解为代码控制中的代码仓库。
+* docker仓库(Registry) : Docker仓库用来保存镜像,可以理解为代码控制中的代码仓库。
 
-6) DockerHub(tts://hub.docker.com)提供了庞大的镜像集合供使用。
+* DockerHub(tts://hub.docker.com)提供了庞大的镜像集合供使用。
 
 ## 对比
 
@@ -55,7 +55,7 @@ Docker支持将软件编译成一个镜像，然后在镜像中各种软件做�
 
 易于扩展、伸缩
 
- Go to Product快速
+Go to Product快速
 
 一致性
 
