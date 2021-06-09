@@ -8,8 +8,7 @@
 
 ### 1. 什么是MOM
 
-面向消息的中间件，使用消息传送提供者来协调消息传输操作。 MOM需要提供API和管理工具。 客户端调用api。 把消息发送到消息传送提供者指定的目的地
-在消息发送之后，客户端会技术执行其他的工作。并且在接收方收到这个消息确认之前。提供者一直保留该消息。
+面向消息的中间件，使用消息传送提供者来协调消息传输操作。 MOM需要提供API和管理工具。 客户端调用api。 把消息发送到消息传送提供者指定的目的地。在消息发送之后，客户端会技术执行其他的工作。并且在接收方收到这个消息确认之前。提供者一直保留该消息。
 
 ### 2. 消息传递
 
@@ -27,7 +26,7 @@ a.	订阅可以分为非持久订阅和持久订阅；
 
 b.	当所有的消息必须接收的时候，则需要用到持久订阅。反之，则用非持久订阅。
 
-3. 消息组成
+3) 消息组成
 
 a. 消息头
 
@@ -65,7 +64,7 @@ CLIENT_ACKNOWLEDGE
 
 客户端通过调用消息的textMessage.acknowledge();确认消息。
 
-在这种模式中，如果一个消息消费者消费一共是10个消息，那么消费了5个消息，然后在第5个消息通过textMessage.acknowledge()，那么之前的所有消息都会被消确认
+在这种模式中，如果一个消息消费者消费一共是10个消息，那么消费了5个消息，然后在第5个消息通过textMessage.acknowledge()，那么之前的所有消息都会被消确认。
 
 DUPS_OK_ACKNOWLEDGE
 
@@ -75,11 +74,11 @@ DUPS_OK_ACKNOWLEDGE
 
 在一个JMS客户端，可以使用本地事务来组合消息的发送和接收。JMSSession接口提供了commit和rollback方法。
 
-JMSProvider会缓存每个生产者当前生产的所有消息，直到commit或者rollback，commit操作将会导致事务中所有的消息被持久存储；rollback意味着JMSProvider将会清除此事务下所有的消息记录。在事务未提交之前，消息是不会被持久化存储的，也不会被消费者消费
+JMSProvider会缓存每个生产者当前生产的所有消息，直到commit或者rollback，commit操作将会导致事务中所有的消息被持久存储；rollback意味着JMSProvider将会清除此事务下所有的消息记录。在事务未提交之前，消息是不会被持久化存储的，也不会被消费者消费。
 
 事务提交意味着生产的所有消息都被发送。消费的所有消息都被确认； 
 
-事务回滚意味着生产的所有消息被销毁，消费的所有消息被恢复，也就是下次仍然能够接收到发送端的消息，除非消息已经过期了
+事务回滚意味着生产的所有消息被销毁，消费的所有消息被恢复，也就是下次仍然能够接收到发送端的消息，除非消息已经过期了。
 
 ### 4. ActiveMQ支持的传输协议
 
@@ -117,7 +116,7 @@ TCP、UDP 、NIO、SSL、Http（s）、vm
 
 ![](img/14.png)
 
-1. 概念
+### 1. 概念
 
 1) Message 是不具名的，它由消息头和消息体组成。消息体是不透明的，页消息头则由一系列的可选属性组
 包括routing-key。(路由键、priority (相对于其他消息的优先权)、delivery-mode (指出该消意可能需要持久性存储)等。
@@ -127,13 +126,11 @@ TCP、UDP 、NIO、SSL、Http（s）、vm
 3) Exchange 交换器，用来接收生产者发送的消息并将这些消息路由给服务器中的队列。
 
 Exchange有4种类型: direct(默认)， fanout，topic，和headers,不同类型的Exchange转发消息的策略有所区别。
-headers匹配AMQP消息的header而不是路由键，headers 交换器和direct交换器完全一致，但性能差很多，目前几不用。
+headers匹配AMQP消息的header而不是路由键，headers 交换器和direct交换器完全一致，但性能差很多，目前几乎不用。
 
-4) Queue 消息队列，用来保存消息直到发送给消费者。它是消息的容器，也是消息的终点。一个消息可以投入一个或者多个队列。消息一直在队列里，
-等待消费者连接到这个队列将其取走。
+4) Queue 消息队列，用来保存消息直到发送给消费者。它是消息的容器，也是消息的终点。一个消息可以投入一个或者多个队列。消息一直在队列里，等待消费者连接到这个队列将其取走。
 
-5) Binding 绑定，用于消息队列和交换器之间的关联，一个绑定就是基于路由键将交换器和消息队列连接起来的路由规则，所以可以将交换器理解成一个
-有绑定构成的路由表。
+5) Binding 绑定，用于消息队列和交换器之间的关联，一个绑定就是基于路由键将交换器和消息队列连接起来的路由规则，所以可以将交换器理解成一个有绑定构成的路由表。
 
 Exchange和Queue的绑定可以是多对多的关系。
 
@@ -159,7 +156,7 @@ Exchange和Queue的绑定可以是多对多的关系。
 
 12) Broker 表示消息队列服务器实体
 
-2. Exchange Type有三种：fanout、direct、topic。
+### 2. Exchange Type有三种：fanout、direct、topic。
 
 1) fanout:把所有发送到该Exchange的消息投递到所有与它绑定的队列中。很像子网广播，每台子网内的主机都获得了一份复制的消息。fanout 类型转发消息是最快的。
 
@@ -169,13 +166,13 @@ durable 持久化
 
 3) topic:将消息路由到binding key与routing key模式匹配的队列中。
 
-3.  交换器和队列的关系
+### 3.  交换器和队列的关系
 
 交换器是通过路由键和队列绑定在一起的，如果消息拥有的路由键跟队列和交换器的路由键匹配，那么消息就会被路由到该绑定的队列中。
 也就是说，  消息到队列的过程中，消息首先会经过交换器，接下来交换器在通过路由键匹配分发消息到具体的队列中。
 路由键可以理解为匹配的规则。
 
-4.  RabbitMQ为什么需要信道?为什么不是TCP直接通信?
+### 4.  RabbitMQ为什么需要信道?为什么不是TCP直接通信?
 
 1)  TCP的创建和销毁开销特别大。创建需要3次握手， 销毁需要4次分手。
 
@@ -183,13 +180,13 @@ durable 持久化
 
 3)  信道的原理是一条线程一条通道，多条线程多条通道同用一条TCP链接。一条TCP链接可以容纳无限的信道，即使每秒成千，上万的请求也不会成为性能的瓶颈。
 
-5.  RabbitMQ中的消息确认ACK机制
+### 5.  RabbitMQ中的消息确认ACK机制
 
-1. 什么是消息确认ACK?
+#### 1. 什么是消息确认ACK?
 
 如果在处理消息的过程中，消费者的服务器在处理消息时出现异常，那可能这条正在处理的消息就没有完成消息消费，数据就会丢失。为了确保数据不会丢失，lRabbi tMQ支持消息确认-ACK.
 
-2. ACK的消息确认机制
+#### 2. ACK的消息确认机制
 
 ACK机制是消费者从RabbitMQ收到消息并处理完成后，反馈给Rabbi tMQ，RabbitMQ收到反馈后才将此消息从队列中删除。
 
@@ -201,11 +198,11 @@ ACK机制是消费者从RabbitMQ收到消息并处理完成后，反馈给Rabbi 
 
 4)  消息的ACK确认机制默认是打开的。
 
-3. ACK机制的开发注意事项
+#### 3. ACK机制的开发注意事项
 
-如果忘记了ACK,那么后果很严重。当Consumer退出时，Message会一直重新分发。然后Rabbi tMQ会占用越来越多的内存，由于RabbitMQ会长时间运行，因此这个“内存泄漏”是致命的。
+如果忘记了ACK,那么后果很严重。当Consumer退出时，Message会一直重新分发。然后RabbitMQ会占用越来越多的内存，由于RabbitMQ会长时间运行，因此这个“内存泄漏”是致命的。
 
-5.  RabbitMQ具有以下优势：
+#### 4.  RabbitMQ具有以下优势：
 
 可靠性：除了使用Erlang构建外，RabbitMQ还可以配置为持久化消息，以便在服务器崩溃时可以恢复所有消息。此外，生产者和消费者可以确认正确接收/传递消息。
 
@@ -233,7 +230,7 @@ ACK机制是消费者从RabbitMQ收到消息并处理完成后，反馈给Rabbi 
 
 cluster, controller, controller_epoch, brokers, zookeeper, admin, isr_change_notification, consumers, latest_producer_id_block, config
 
-pv、uv运营统计 日志 消息中间件
+pv、uv运营统计、日志、消息中间件
 
 ### 2. 消息
 
@@ -241,11 +238,9 @@ pv、uv运营统计 日志 消息中间件
 
 ### 3. topic&partition
 
-Topic是用于存储消息的逻辑概念，可以看作一个消息集合。每个topic可以有多个生产者向其推送消息，也可以有任意多个消费者消费其中的消息
+Topic是用于存储消息的逻辑概念，可以看作一个消息集合。每个topic可以有多个生产者向其推送消息，也可以有任意多个消费者消费其中的消息。
 
-每个topic可以划分多个partition（每个Topic至少有一个分区），同一topic下的不同分区包含的消息是不同的。每个消息在被添加到分区时，
-都会被分配一个offset（称之为偏移量），它是消息在此分区中的唯一编号，kafka通过offset保证消息在分区内的顺序，offset的顺序不跨分区，
-即kafka只保证在同一个分区内的消息是有序的；
+每个topic可以划分多个partition（每个Topic至少有一个分区），同一topic下的不同分区包含的消息是不同的。每个消息在被添加到分区时，都会被分配一个offset（称之为偏移量），它是消息在此分区中的唯一编号，kafka通过offset保证消息在分区内的顺序，offset的顺序不跨分区，即kafka只保证在同一个分区内的消息是有序的；
 
 
 ![](img/10.png) 
@@ -256,13 +251,13 @@ Partition是以文件的形式存储在文件系统中，存储在kafka-log目�
 
 1)	顺序写的方式存储数据；
 
-2)	批量发送；在异步发送模式中。kafka允许进行批量发送，也就是先讲消息缓存到内存中，然后一次请求批量发送出去。这样减少了磁盘频繁io以及网络IO造成的性能瓶颈batch.size每批次发送的数据大小
+2)	批量发送；在异步发送模式中。kafka允许进行批量发送，也就是先讲消息缓存到内存中，然后一次请求批量发送出去。这样减少了磁盘频繁IO以及网络IO造成的性能瓶颈batch.size每批次发送的数据大小
 
 linger.ms间隔时间
 
 3)	零拷贝
 
-消息从发送到落地保存，broker维护的消息日志本身就是文件目录，每个文件都是二进制保存，生产者和消费者使用相同的格式来处理。在消费者获取消息时，服务器先从硬盘读取数据到内存，然后把内存中的数据原封不动的通过socket发送给消费者。虽然这个操作描述起来很简单，但实际上经历了很多步骤
+消息从发送到落地保存，broker维护的消息日志本身就是文件目录，每个文件都是二进制保存，生产者和消费者使用相同的格式来处理。在消费者获取消息时，服务器先从硬盘读取数据到内存，然后把内存中的数据原封不动的通过socket发送给消费者。虽然这个操作描述起来很简单，但实际上经历了很多步骤。
 
 a. 操作系统将数据从磁盘读入到内核空间的页缓存
 
@@ -332,13 +327,13 @@ b.	副本的最后一条消息的offset和leader副本的最后一条消息的of
 
 5) 高可用副本机制回顾
 
-在kfaka0.8版本前，并没有提供这种High Availablity机制，也就是说一旦一个或者多个broker宕机，则在这期间内所有的partition都无法继续提供服务。如果broker无法再恢复，则上面的数据就会丢失。所以在8.0版本以后引入了HighAvailablity机制
+在kfaka8.0版本前，并没有提供这种High Availablity机制，也就是说一旦一个或者多个broker宕机，则在这期间内所有的partition都无法继续提供服务。如果broker无法再恢复，则上面的数据就会丢失。所以在8.0版本以后引入了HighAvailablity机制
 
-1. 关于leaderelection
+#### 1. 关于leaderelection
 
 在kafka引入replication机制以后，同一个partition会有多个Replica。那么在这些replication之间需要选出一个Leader，Producer或者Consumer只与这个Leader进行交互，其他的Replica作为Follower从leader中复制数据（因为需要保证一个Partition中的多个Replica之间的数据一致性，其中一个Replica宕机以后其他的Replica必须要能继续提供服务且不能造成数据重复和数据丢失）。 如果没有leader，所有的Replica都可以同时读写数据，那么就需要保证多个Replica之间互相同步数据，数据一致性和有序性就很难保证，同时也增加了Replication实现的复杂性和出错的概率。在引入leader以后，leader负责数据读写，follower只向leader顺序fetch数据，简单而且高效
 
-2. 如何将所有的Replica均匀分布到整个集群
+#### 2. 如何将所有的Replica均匀分布到整个集群
 
 为了更好的做到负载均衡，kafka尽量会把所有的partition均匀分配到整个集群上。如果所有的replica都在同一个broker上，那么一旦broker宕机所有的Replica都无法工作。kafka分配Replica的算法
 
@@ -348,7 +343,7 @@ b.	把第i个partition分配到 （i mod n）个broker上
 
 c.	把第i个partition的第j个Replica分配到 ( (i+j) mod n) 个broker上
 
-3. 如何处理所有的Replica不工作的情况
+#### 3. 如何处理所有的Replica不工作的情况
 
 在ISR中至少有一个follower时，Kafka可以确保已经commit的数据不丢失，但如果某个Partition的所有Replica都宕机了，就无法保证数据不丢失了
 
@@ -448,13 +443,13 @@ bin/kafka-simple-consumer-shell.sh --topic __consumer_offsets --partition 15 -br
 
 1.	同一个consumergroup内新增了消费者
 
-2.	消费者离开当前所属的consumergroup，包括shutsdown或crashes
+	.	消费者离开当前所属的consumergroup，包括shutsdown或crashes
 
-3.	订阅的主题新增分区（分区数量发生变化）
+	.	订阅的主题新增分区（分区数量发生变化）
 
-4.	消费者主动取消对某个topic的订阅
+	.	消费者主动取消对某个topic的订阅
 
-5.	也就是说，把分区的所有权从一个消费者移到另外一个消费者上，这个是kafkaconsumer的rebalance机制。如何rebalance就涉及到前面说的分区分配策略。
+	.	也就是说，把分区的所有权从一个消费者移到另外一个消费者上，这个是kafkaconsumer的rebalance机制。如何rebalance就涉及到前面说的分区分配策略。
 
 3) 两种分区策略
 

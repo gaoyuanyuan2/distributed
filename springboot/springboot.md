@@ -14,7 +14,7 @@ Spring Boot简单应用:使用Spring Web MVC以及Spring Web Flux技术,编程�
 
 理解Spring Boot三大特性:自动装配、嵌入式容器、为生产准备的特性
 
-三种嵌入式容器 实现通用接口 不同环境通过不同classpath读取不同的类 spring自动装配 的条件装配 如果有就加载 一直查找
+三种嵌入式容器，实现通用接口 ，不同环境通过不同classpath读取不同的类， spring按条件自动装配 ，如果有就加载。
 
 ## 更多SpringBoot整合示例
 
@@ -195,7 +195,7 @@ org.springframework.boot.autoconfigure.context.MessageSourceAutoConfiguration,\
 org.springframework.boot.autoconfigure.context.PropertyPlaceholderAutoConfiguration,\
 org.springframework.boot.autoconfigure.couchbase.CouchbaseAutoConfiguration,\
 ```
- 
+
  有了自动配置类,免去了我们手动编写配置注入功能组件等的工作;
 
 `SpringFactoriesLoader.loadFactoryNames(EnableAutoConfiguration.class,classloader)` ;
@@ -379,33 +379,33 @@ spring.mvc.servlet
 <error-page> 处理逻辑：
 
  * 处理状态码 <error-code>
- 
+
  * 处理异常类型 <exception-type>
 
  * 处理服务：<location>
 
 2. Spring Web MVC 异常处理
- 
+
  * @ExceptionHandler
-    
+   
     * 优点：易于理解，尤其是全局异常处理
     
     * 不足：很难完全掌握所有的异常类型
- 
+
  * @RestControllerAdvice = @ControllerAdvice + @ResponseBody
- 
+
  * @ControllerAdvice 专门拦截（AOP） @Controller
 
 3.  Spring Boot 错误处理页面
- 
+
  * 实现 ErrorPageRegistrar
    
     * 状态码：比较通用，不需要理解Spring WebMVC 异常体系
     
     * 不足：页面处理的路径必须固定
- 
+
  * 注册 ErrorPage 对象
- 
+
  * 实现 ErrorPage 对象中的Path 路径Web服务
 
 ### 视图技术
@@ -469,7 +469,7 @@ Locale
 REST = RESTful = Representational State Transfer，is one way of providing interoperability between computer systems on the Internet.
 
  [参考资源](https://en.wikipedia.org/wiki/Representational_state_transfer)    
- 
+
 ### 1、目标
 
 1.  理解“资源操作”（Manipulation of resources through representations）
