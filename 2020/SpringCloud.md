@@ -7,7 +7,7 @@
 1、Sping Cloud Eureka
 
 优点：
-* CAP：AP,数据最终一致性
+* CAP：AP数据最终一致性
 * 简单易用：开箱即用，控制台管理
 
 缺点：
