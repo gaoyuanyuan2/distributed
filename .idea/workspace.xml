@@ -19,13 +19,8 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1a69c435-9430-420c-b841-ddb13cb8216f" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/2020/docker/Docker基础篇之快速上手.xmind" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/2020/dubbo/dubbo源码.xmind" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/2020/dubbo/dubbo笔记.xmind" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/2020/kafka/kafka.xmind" afterDir="false" />
+    <list default="true" id="1a69c435-9430-420c-b841-ddb13cb8216f" name="Default" comment="update">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/2020/SpringCloud.md" beforeDir="false" afterPath="$PROJECT_DIR$/2020/SpringCloud.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -46,57 +41,6 @@
     <expand />
     <select />
   </component>
-  <component name="FindInProjectRecents">
-    <findStrings>
-      <find>数字证书</find>
-      <find>B+ Tree</find>
-      <find>引用计数</find>
-      <find>JDBC</find>
-      <find>服务发现</find>
-      <find>Stream</find>
-      <find>study</find>
-      <find>maven-study</find>
-      <find>##</find>
-      <find>rabb</find>
-      <find>串行</find>
-      <find>in</find>
-      <find>inb</find>
-      <find>dubbo</find>
-      <find>自动装配</find>
-      <find>interce</find>
-      <find>Feign</find>
-      <find>System.gc()</find>
-      <find>生命周期</find>
-      <find>类加载机制</find>
-      <find>ArrayBlockingQueue</find>
-      <find>https://github.com/gaoyuanyuan2/distributed/blob/master</find>
-      <find>https://github.com/gaoyuanyuan2</find>
-      <find>/img</find>
-      <find>截图</find>
-      <find>&lt;br&gt;</find>
-      <find>修改index.html, 增加</find>
-      <find>&lt;br</find>
-      <find>无锁化</find>
-      <find>LoopGroup</find>
-    </findStrings>
-    <replaceStrings>
-      <replace>务</replace>
-      <replace>调用</replace>
-      <replace>统</replace>
-      <replace>对</replace>
-      <replace>资源</replace>
-      <replace>这</replace>
-      <replace>导致</replace>
-      <replace>#</replace>
-      <replace />
-      <replace>../img</replace>
-    </replaceStrings>
-    <dirStrings>
-      <dir>D:\study\idea\distributed</dir>
-      <dir>D:\study\idea\distributed\springboot</dir>
-      <dir>D:\study\idea\distributed\2020</dir>
-    </dirStrings>
-  </component>
   <component name="Git.Settings">
     <option name="PUSH_AUTO_UPDATE" value="true" />
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -113,6 +57,7 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="GO_FMT" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SONARLINT_PRECOMMIT_ANALYSIS" value="true" />
@@ -120,23 +65,28 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1572246466433" />
-    <property name="jdk.selected.JAVA_MODULE" value="1.8.0_161" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/2020/kafka" />
+    <property name="go.import.settings.migrated" value="true" />
+    <property name="jdk.selected.JAVA_MODULE" value="1.8" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="nodejs_package_manager_path" value="npm" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
-    <property name="settings.editor.selected.configurable" value="configurable.group.tools" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\idea\2019\distributed\2020\k8s\service" />
+      <recent name="C:\idea\2019\distributed\2020" />
+      <recent name="C:\idea\2019\distributed\k8s" />
       <recent name="D:\study\distributed\img" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\idea\2019\distributed\2020\k8s" />
+      <recent name="C:\idea\2019\distributed\img" />
       <recent name="C:\idea\2019\distributed\2020\kafka" />
       <recent name="C:\idea\2019\distributed\2020\dubbo" />
       <recent name="C:\idea\2019\distributed\2020\docker" />
-      <recent name="D:\study\idea\distributed\img" />
-      <recent name="D:\study\distributed\img" />
     </key>
   </component>
   <component name="RunManager">
@@ -288,167 +238,66 @@
       <workItem from="1599492966505" duration="1756000" />
       <workItem from="1600485735897" duration="2474000" />
       <workItem from="1600575661643" duration="2381000" />
-    </task>
-    <task id="LOCAL-00106" summary="spring boot">
-      <created>1539764195837</created>
-      <option name="number" value="00106" />
-      <option name="presentableId" value="LOCAL-00106" />
-      <option name="project" value="LOCAL" />
-      <updated>1539764195837</updated>
-    </task>
-    <task id="LOCAL-00107" summary="spring boot">
-      <created>1539764824674</created>
-      <option name="number" value="00107" />
-      <option name="presentableId" value="LOCAL-00107" />
-      <option name="project" value="LOCAL" />
-      <updated>1539764824674</updated>
-    </task>
-    <task id="LOCAL-00108" summary="spring boot">
-      <created>1539764870935</created>
-      <option name="number" value="00108" />
-      <option name="presentableId" value="LOCAL-00108" />
-      <option name="project" value="LOCAL" />
-      <updated>1539764870935</updated>
-    </task>
-    <task id="LOCAL-00109" summary="spring boot">
-      <created>1539766414323</created>
-      <option name="number" value="00109" />
-      <option name="presentableId" value="LOCAL-00109" />
-      <option name="project" value="LOCAL" />
-      <updated>1539766414323</updated>
-    </task>
-    <task id="LOCAL-00110" summary="TCP">
-      <created>1540107671678</created>
-      <option name="number" value="00110" />
-      <option name="presentableId" value="LOCAL-00110" />
-      <option name="project" value="LOCAL" />
-      <updated>1540107671679</updated>
-    </task>
-    <task id="LOCAL-00111" summary="TCP">
-      <created>1540107768823</created>
-      <option name="number" value="00111" />
-      <option name="presentableId" value="LOCAL-00111" />
-      <option name="project" value="LOCAL" />
-      <updated>1540107768824</updated>
-    </task>
-    <task id="LOCAL-00112" summary="TCP">
-      <created>1540107995585</created>
-      <option name="number" value="00112" />
-      <option name="presentableId" value="LOCAL-00112" />
-      <option name="project" value="LOCAL" />
-      <updated>1540107995585</updated>
-    </task>
-    <task id="LOCAL-00113" summary="TCP">
-      <created>1540108078447</created>
-      <option name="number" value="00113" />
-      <option name="presentableId" value="LOCAL-00113" />
-      <option name="project" value="LOCAL" />
-      <updated>1540108078447</updated>
-    </task>
-    <task id="LOCAL-00114" summary="TCP">
-      <created>1540108158680</created>
-      <option name="number" value="00114" />
-      <option name="presentableId" value="LOCAL-00114" />
-      <option name="project" value="LOCAL" />
-      <updated>1540108158680</updated>
-    </task>
-    <task id="LOCAL-00115" summary="TCP">
-      <created>1540108247392</created>
-      <option name="number" value="00115" />
-      <option name="presentableId" value="LOCAL-00115" />
-      <option name="project" value="LOCAL" />
-      <updated>1540108247392</updated>
-    </task>
-    <task id="LOCAL-00116" summary="TCP">
-      <created>1540111660382</created>
-      <option name="number" value="00116" />
-      <option name="presentableId" value="LOCAL-00116" />
-      <option name="project" value="LOCAL" />
-      <updated>1540111660382</updated>
-    </task>
-    <task id="LOCAL-00117" summary="dubbo">
-      <created>1540113295889</created>
-      <option name="number" value="00117" />
-      <option name="presentableId" value="LOCAL-00117" />
-      <option name="project" value="LOCAL" />
-      <updated>1540113295889</updated>
-    </task>
-    <task id="LOCAL-00118" summary="序列化">
-      <created>1540118568516</created>
-      <option name="number" value="00118" />
-      <option name="presentableId" value="LOCAL-00118" />
-      <option name="project" value="LOCAL" />
-      <updated>1540118568516</updated>
-    </task>
-    <task id="LOCAL-00119" summary="序列化">
-      <created>1540118650080</created>
-      <option name="number" value="00119" />
-      <option name="presentableId" value="LOCAL-00119" />
-      <option name="project" value="LOCAL" />
-      <updated>1540118650080</updated>
-    </task>
-    <task id="LOCAL-00120" summary="序列化">
-      <created>1540120898814</created>
-      <option name="number" value="00120" />
-      <option name="presentableId" value="LOCAL-00120" />
-      <option name="project" value="LOCAL" />
-      <updated>1540120898815</updated>
-    </task>
-    <task id="LOCAL-00121" summary="http">
-      <created>1540132098670</created>
-      <option name="number" value="00121" />
-      <option name="presentableId" value="LOCAL-00121" />
-      <option name="project" value="LOCAL" />
-      <updated>1540132098670</updated>
-    </task>
-    <task id="LOCAL-00122" summary="https">
-      <created>1540133644912</created>
-      <option name="number" value="00122" />
-      <option name="presentableId" value="LOCAL-00122" />
-      <option name="project" value="LOCAL" />
-      <updated>1540133644912</updated>
-    </task>
-    <task id="LOCAL-00123" summary="https">
-      <created>1540134559587</created>
-      <option name="number" value="00123" />
-      <option name="presentableId" value="LOCAL-00123" />
-      <option name="project" value="LOCAL" />
-      <updated>1540134559587</updated>
-    </task>
-    <task id="LOCAL-00124" summary="https">
-      <created>1540134826385</created>
-      <option name="number" value="00124" />
-      <option name="presentableId" value="LOCAL-00124" />
-      <option name="project" value="LOCAL" />
-      <updated>1540134826385</updated>
-    </task>
-    <task id="LOCAL-00125" summary="https">
-      <created>1540135595432</created>
-      <option name="number" value="00125" />
-      <option name="presentableId" value="LOCAL-00125" />
-      <option name="project" value="LOCAL" />
-      <updated>1540135595432</updated>
-    </task>
-    <task id="LOCAL-00126" summary="webservice">
-      <created>1540138180491</created>
-      <option name="number" value="00126" />
-      <option name="presentableId" value="LOCAL-00126" />
-      <option name="project" value="LOCAL" />
-      <updated>1540138180491</updated>
-    </task>
-    <task id="LOCAL-00127" summary="zk">
-      <created>1540224803704</created>
-      <option name="number" value="00127" />
-      <option name="presentableId" value="LOCAL-00127" />
-      <option name="project" value="LOCAL" />
-      <updated>1540224803705</updated>
-    </task>
-    <task id="LOCAL-00128" summary="zk">
-      <created>1540225231510</created>
-      <option name="number" value="00128" />
-      <option name="presentableId" value="LOCAL-00128" />
-      <option name="project" value="LOCAL" />
-      <updated>1540225231510</updated>
+      <workItem from="1600706077084" duration="908000" />
+      <workItem from="1600882322893" duration="1197000" />
+      <workItem from="1600962605687" duration="1171000" />
+      <workItem from="1601138016352" duration="794000" />
+      <workItem from="1601218292769" duration="1315000" />
+      <workItem from="1601391775911" duration="948000" />
+      <workItem from="1601547823193" duration="1711000" />
+      <workItem from="1601730027112" duration="1375000" />
+      <workItem from="1601808053034" duration="1182000" />
+      <workItem from="1604753098632" duration="2094000" />
+      <workItem from="1604800201172" duration="9085000" />
+      <workItem from="1605111771988" duration="587000" />
+      <workItem from="1605193689592" duration="2834000" />
+      <workItem from="1605283295568" duration="807000" />
+      <workItem from="1605320085774" duration="17475000" />
+      <workItem from="1605403036189" duration="6655000" />
+      <workItem from="1605445582865" duration="4139000" />
+      <workItem from="1605537887748" duration="507000" />
+      <workItem from="1605541875823" duration="3006000" />
+      <workItem from="1605624320775" duration="1342000" />
+      <workItem from="1605712804107" duration="1695000" />
+      <workItem from="1605799836795" duration="1656000" />
+      <workItem from="1605955746357" duration="1287000" />
+      <workItem from="1605959386358" duration="7406000" />
+      <workItem from="1606016043315" duration="10027000" />
+      <workItem from="1606040879871" duration="3099000" />
+      <workItem from="1606144765541" duration="398000" />
+      <workItem from="1606146880506" duration="1757000" />
+      <workItem from="1606229554284" duration="614000" />
+      <workItem from="1606231604908" duration="601000" />
+      <workItem from="1606646575018" duration="8517000" />
+      <workItem from="1606751343272" duration="3918000" />
+      <workItem from="1606837179691" duration="1595000" />
+      <workItem from="1606921609249" duration="4358000" />
+      <workItem from="1607008007480" duration="1399000" />
+      <workItem from="1607139285986" duration="1878000" />
+      <workItem from="1607222849279" duration="1221000" />
+      <workItem from="1611379369140" duration="1813000" />
+      <workItem from="1615038063602" duration="3779000" />
+      <workItem from="1615093103095" duration="2589000" />
+      <workItem from="1615736199283" duration="860000" />
+      <workItem from="1615819319761" duration="628000" />
+      <workItem from="1615910922357" duration="1951000" />
+      <workItem from="1615996367846" duration="836000" />
+      <workItem from="1616081741140" duration="603000" />
+      <workItem from="1617597910459" duration="1573000" />
+      <workItem from="1622954051835" duration="13576000" />
+      <workItem from="1623079751469" duration="2314000" />
+      <workItem from="1623166079512" duration="707000" />
+      <workItem from="1623252113605" duration="3159000" />
+      <workItem from="1623337722912" duration="1583000" />
+      <workItem from="1624206335767" duration="654000" />
+      <workItem from="1624288315539" duration="1658000" />
+      <workItem from="1624291332078" duration="1147000" />
+      <workItem from="1624292920268" duration="668000" />
+      <workItem from="1624377172262" duration="2106000" />
+      <workItem from="1624462142060" duration="1978000" />
+      <workItem from="1624549283620" duration="1091000" />
+      <workItem from="1624637790743" duration="1439000" />
+      <workItem from="1624681983894" duration="114000" />
     </task>
     <task id="LOCAL-00129" summary="mongodb">
       <created>1540615811674</created>
@@ -632,7 +481,168 @@
       <option name="project" value="LOCAL" />
       <updated>1596985901336</updated>
     </task>
-    <option name="localTasksCounter" value="155" />
+    <task id="LOCAL-00155" summary="update">
+      <created>1600706142468</created>
+      <option name="number" value="00155" />
+      <option name="presentableId" value="LOCAL-00155" />
+      <option name="project" value="LOCAL" />
+      <updated>1600706142468</updated>
+    </task>
+    <task id="LOCAL-00156" summary="springboot">
+      <created>1604818884122</created>
+      <option name="number" value="00156" />
+      <option name="presentableId" value="LOCAL-00156" />
+      <option name="project" value="LOCAL" />
+      <updated>1604818884123</updated>
+    </task>
+    <task id="LOCAL-00157" summary="docker">
+      <created>1604828637055</created>
+      <option name="number" value="00157" />
+      <option name="presentableId" value="LOCAL-00157" />
+      <option name="project" value="LOCAL" />
+      <updated>1604828637055</updated>
+    </task>
+    <task id="LOCAL-00158" summary="zk">
+      <created>1604828648491</created>
+      <option name="number" value="00158" />
+      <option name="presentableId" value="LOCAL-00158" />
+      <option name="project" value="LOCAL" />
+      <updated>1604828648491</updated>
+    </task>
+    <task id="LOCAL-00159" summary="授权">
+      <created>1605324401403</created>
+      <option name="number" value="00159" />
+      <option name="presentableId" value="LOCAL-00159" />
+      <option name="project" value="LOCAL" />
+      <updated>1605324401404</updated>
+    </task>
+    <task id="LOCAL-00160" summary="Apollo">
+      <created>1605403085513</created>
+      <option name="number" value="00160" />
+      <option name="presentableId" value="LOCAL-00160" />
+      <option name="project" value="LOCAL" />
+      <updated>1605403085514</updated>
+    </task>
+    <task id="LOCAL-00161" summary="Apollo">
+      <created>1605418215085</created>
+      <option name="number" value="00161" />
+      <option name="presentableId" value="LOCAL-00161" />
+      <option name="project" value="LOCAL" />
+      <updated>1605418215085</updated>
+    </task>
+    <task id="LOCAL-00162" summary="ServiceMesh">
+      <created>1605972256652</created>
+      <option name="number" value="00162" />
+      <option name="presentableId" value="LOCAL-00162" />
+      <option name="project" value="LOCAL" />
+      <updated>1605972256653</updated>
+    </task>
+    <task id="LOCAL-00163" summary="k8s">
+      <created>1606062559927</created>
+      <option name="number" value="00163" />
+      <option name="presentableId" value="LOCAL-00163" />
+      <option name="project" value="LOCAL" />
+      <updated>1606062559927</updated>
+    </task>
+    <task id="LOCAL-00164" summary="ServiceMesh">
+      <created>1606062576756</created>
+      <option name="number" value="00164" />
+      <option name="presentableId" value="LOCAL-00164" />
+      <option name="project" value="LOCAL" />
+      <updated>1606062576756</updated>
+    </task>
+    <task id="LOCAL-00165" summary="微服务">
+      <created>1606062604438</created>
+      <option name="number" value="00165" />
+      <option name="presentableId" value="LOCAL-00165" />
+      <option name="project" value="LOCAL" />
+      <updated>1606062604438</updated>
+    </task>
+    <task id="LOCAL-00166" summary="k8s学习">
+      <created>1606666881662</created>
+      <option name="number" value="00166" />
+      <option name="presentableId" value="LOCAL-00166" />
+      <option name="project" value="LOCAL" />
+      <updated>1606666881664</updated>
+    </task>
+    <task id="LOCAL-00167" summary="k8s学习">
+      <created>1606757043607</created>
+      <option name="number" value="00167" />
+      <option name="presentableId" value="LOCAL-00167" />
+      <option name="project" value="LOCAL" />
+      <updated>1606757043609</updated>
+    </task>
+    <task id="LOCAL-00168" summary="update">
+      <created>1606840202735</created>
+      <option name="number" value="00168" />
+      <option name="presentableId" value="LOCAL-00168" />
+      <option name="project" value="LOCAL" />
+      <updated>1606840202736</updated>
+    </task>
+    <task id="LOCAL-00169" summary="k8s">
+      <created>1611379400715</created>
+      <option name="number" value="00169" />
+      <option name="presentableId" value="LOCAL-00169" />
+      <option name="project" value="LOCAL" />
+      <updated>1611379400716</updated>
+    </task>
+    <task id="LOCAL-00170" summary="update">
+      <created>1615911037529</created>
+      <option name="number" value="00170" />
+      <option name="presentableId" value="LOCAL-00170" />
+      <option name="project" value="LOCAL" />
+      <updated>1615911037530</updated>
+    </task>
+    <task id="LOCAL-00171" summary="性能优化">
+      <created>1622993934551</created>
+      <option name="number" value="00171" />
+      <option name="presentableId" value="LOCAL-00171" />
+      <option name="project" value="LOCAL" />
+      <updated>1622993934552</updated>
+    </task>
+    <task id="LOCAL-00172" summary="redis">
+      <created>1622993948014</created>
+      <option name="number" value="00172" />
+      <option name="presentableId" value="LOCAL-00172" />
+      <option name="project" value="LOCAL" />
+      <updated>1622993948014</updated>
+    </task>
+    <task id="LOCAL-00173" summary="session">
+      <created>1622993957813</created>
+      <option name="number" value="00173" />
+      <option name="presentableId" value="LOCAL-00173" />
+      <option name="project" value="LOCAL" />
+      <updated>1622993957813</updated>
+    </task>
+    <task id="LOCAL-00174" summary="分表">
+      <created>1622993978686</created>
+      <option name="number" value="00174" />
+      <option name="presentableId" value="LOCAL-00174" />
+      <option name="project" value="LOCAL" />
+      <updated>1622993978686</updated>
+    </task>
+    <task id="LOCAL-00175" summary="zk">
+      <created>1622993987676</created>
+      <option name="number" value="00175" />
+      <option name="presentableId" value="LOCAL-00175" />
+      <option name="project" value="LOCAL" />
+      <updated>1622993987676</updated>
+    </task>
+    <task id="LOCAL-00176" summary="云原生">
+      <created>1622994098468</created>
+      <option name="number" value="00176" />
+      <option name="presentableId" value="LOCAL-00176" />
+      <option name="project" value="LOCAL" />
+      <updated>1622994098468</updated>
+    </task>
+    <task id="LOCAL-00177" summary="update">
+      <created>1623339394089</created>
+      <option name="number" value="00177" />
+      <option name="presentableId" value="LOCAL-00177" />
+      <option name="project" value="LOCAL" />
+      <updated>1623339394091</updated>
+    </task>
+    <option name="localTasksCounter" value="178" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -651,54 +661,50 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Spring WebMVC" />
-    <MESSAGE value="spring-boot" />
-    <MESSAGE value="springboot" />
-    <MESSAGE value="Eureka" />
-    <MESSAGE value="springcloud" />
-    <MESSAGE value="zookeeper" />
-    <MESSAGE value="mq" />
-    <MESSAGE value="spring" />
-    <MESSAGE value="spring cloud" />
-    <MESSAGE value="readme" />
-    <MESSAGE value="spring boot" />
-    <MESSAGE value="TCP" />
-    <MESSAGE value="dubbo" />
     <MESSAGE value="序列化" />
     <MESSAGE value="http" />
     <MESSAGE value="https" />
     <MESSAGE value="webservice" />
-    <MESSAGE value="zk" />
     <MESSAGE value="OSI模型七层" />
     <MESSAGE value="mongodb" />
     <MESSAGE value="netty" />
-    <MESSAGE value="redis" />
     <MESSAGE value="MyCat" />
-    <MESSAGE value="update" />
     <MESSAGE value="Cloud Native" />
-    <option name="LAST_COMMIT_MESSAGE" value="Cloud Native" />
+    <MESSAGE value="springboot.md" />
+    <MESSAGE value="springboot" />
+    <MESSAGE value="docker" />
+    <MESSAGE value="授权" />
+    <MESSAGE value="Apollo" />
+    <MESSAGE value="ServiceMesh" />
+    <MESSAGE value="微服务" />
+    <MESSAGE value="k8s学习" />
+    <MESSAGE value="k8s" />
+    <MESSAGE value="性能优化" />
+    <MESSAGE value="redis" />
+    <MESSAGE value="session" />
+    <MESSAGE value="分表" />
+    <MESSAGE value="zk" />
+    <MESSAGE value="云原生" />
+    <MESSAGE value="update" />
+    <option name="LAST_COMMIT_MESSAGE" value="update" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="558" y="83" key="CommitChangelistDialog2" timestamp="1596985900123">
+    <state x="558" y="83" key="CommitChangelistDialog2" timestamp="1623339392280">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="558" y="83" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1596985900123" />
-    <state x="184" y="85" key="DiffContextDialog" timestamp="1596985525189">
+    <state x="558" y="83" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1623339392280" />
+    <state x="740" y="275" key="FileChooserDialogImpl" timestamp="1624293130277">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="184" y="85" key="DiffContextDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1596985525189" />
-    <state x="740" y="274" key="FileChooserDialogImpl" timestamp="1600490836072">
+    <state x="740" y="275" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1624293130277" />
+    <state x="552" y="252" key="Vcs.Push.Dialog.v2" timestamp="1623339414839">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="740" y="274" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1600490836072" />
-    <state x="552" y="252" key="Vcs.Push.Dialog.v2" timestamp="1596985545694">
+    <state x="552" y="252" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1623339414839" />
+    <state x="647" y="307" key="git4idea.merge.GitPullDialog" timestamp="1615912767137">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="552" y="252" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1596985545694" />
-    <state x="647" y="306" key="git4idea.merge.GitPullDialog" timestamp="1596985535865">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="647" y="306" key="git4idea.merge.GitPullDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1596985535865" />
+    <state x="647" y="307" key="git4idea.merge.GitPullDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1615912767137" />
   </component>
   <component name="antWorkspaceConfiguration">
     <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />
