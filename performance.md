@@ -42,6 +42,7 @@ http://man7.org/linux/man-pages/man1/top.1.html
 
 * 简写：jstack 38983 | grep '12af' -C5 --color
 
+死锁会占用两个线程不释放，不一定占用cpu因为在等待状态
 
 4.  vmstat
 
@@ -87,7 +88,7 @@ http://www.man7.org/linux/man-pages/man1/iostat.1.html
 ### 小结
 1.对于所有应用来说，监控磁盘使用率非常重要。即便不直接写磁盘的应用，系统交换仍然会影响它们的性能。
 
-2.写入磁盘的应用遇到瓶颈，是因为写人数据的效率不高(吞吐量太低),或者是因为写人太多数据(吞吐量太高)。
+2.写入磁盘的应用遇到瓶颈，是因为写入数据的效率不高(吞吐量太低),或者是因为写人太多数据(吞吐量太高)。
 
 ## 4、NetWork
 
@@ -263,11 +264,15 @@ Java 虚拟机使用该算法来判断对象是否可被回收，GC Roots 一般
 * 8:1:1
 
 
+查看参数 
+jps
+jmap -heap 48547
+
 TLAB  Thread Local Allaction Buffer
 (栈上分配，不存在并发，减少并发争夺内存，避免锁)
 
 
-2.  对象很大
+2.  对象很大 直接进入老年代
 
 * -XX:PretenureSizeThreshold=3145728   3M
 
@@ -335,7 +340,7 @@ TLAB  Thread Local Allaction Buffer
 
 * 软  (全局变量，优化缓存，value软引用（内存不够，下一次gc会被回收）)
 
-* 弱  
+* 弱  （回收）
 
 * 虚  (引用会被通知)
 	
@@ -437,9 +442,10 @@ JDK自带的 监控工具
 
 * https://docs.oracle.com/javase/8/docs/technotes/tools/windows/toc.html
 
-	* jmap -heap pid 堆使用情况
+	* jmap -heap pid 堆使用情况（jps）
 	
-	* jstat  -gcutil pid 1000
+	* jstat  -gcutil pid 3000（3秒一次） gc耗时
+	* jstat  -gccause pid 3000（3秒一次） gc引起原因
 	
 	* jstack  线程dump 
 	
